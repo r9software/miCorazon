@@ -1,0 +1,146 @@
+/*
+//////////////////////////////
+//////////////////////////////
+**** INFONAVIT STRUCTURE **** 
+//////////////////////////////
+//////////////////////////////
+*/
+/*WHITNEY*/
+/*<h1>*/
+.tlogin{background:url('../images/whitney/bienvenidos.png') no-repeat; background-position:center 0px;  width:500px; height:35px; margin-bottom:20px;     }
+/*<h2>*/
+.slogan{height:200px; display:table; text-align:right; width:100%;   }
+.slogan h2{color:#FFFFFF; font-size:43px;   text-shadow: 2px 2px 2px rgba(150, 150, 150, 1); line-height:45px; font-weight:600; font-style:italic;  display:table-cell; vertical-align:middle;    }
+.slogan h2 span{display:block; }
+.slogan .tcomienza{ padding-right:40px;     }
+.slogan .tcomienza span{ padding-right:80px;   }
+.slogan .tpreparate{ padding-right:40px;    }
+.slogan .tpreparate span{ padding-right:110px; }
+.slogan .tponte{ padding-right:40px;    }
+.slogan .tponte span{ padding-right:110px; }
+.slogan .tconoce{ padding-right:20px;    }
+.slogan .tconoce span{ padding-right:40px; }
+.slogan .tperfil{ padding-right:60px;    }
+.slogan .tperfil span{ padding-right:100px; }
+/*<h3>*/
+.registro-box h3{color:#53A8DC; font-weight:700; text-align:center; margin-bottom:20px; font-size:25px;     }
+
+/*LOGIN*/
+.box-login{ width:500px; background:url('../images/pack.infonavit/bg_login_box.jpg') no-repeat center top fixed; overflow:hidden;  background-size:cover;   }
+
+.logo1{width:80%; height:80px;  float:left; overflow:hidden; background:url('../images/pack.infonavit/logo1.png') no-repeat; background-position:left 50%;}
+.logo2{width:20%; height:80px; float:left; overflow:hidden; background:url('../images/pack.infonavit/logo2.png') no-repeat; background-position:right 50%;}
+
+/*REGISTRO*/
+.bg_registro{background:url('../images/base/bg.jpg') no-repeat center; background-position:center 100px; background-size:cover;  min-height:764px; position:absolute; width:100%; max-height:664px;   }
+.bg_perfil{background:url('../images/pack.infonavit/bg_login.jpg') no-repeat center 0px;  background-size:cover;  min-height:764px; position:absolute; width:100%; max-height: 664px;   }
+/*PREPARATE*/
+.bg_preparate{background:url('../images/pack.infonavit/cover_preparate.jpg') no-repeat center; background-position:center 100px; background-size:cover;  min-height:764px; position:absolute; width:100%; max-height:664px;   }
+/*PONTE EN MARCHA*/
+.bg_marcha{background:url('../images/pack.infonavit/cover_ponte_en_marcha.jpg') no-repeat center; background-position:center 100px; background-size:cover;  min-height:764px; position:absolute; width:100%; max-height:664px;   }
+/*CONOCE MAS*/
+.bg_conoce{background:url('../images/pack.infonavit/cover_conoce_mas.jpg') no-repeat center; background-position:center 100px; background-size:cover;  min-height:764px; position:absolute; width:100%; max-height:664px;   }
+
+.logo3{width:90%; height:100px; float:left; overflow:hidden; background:url('../images/base/logo_corazon.png') no-repeat; background-position:left 50%;}
+.logo4{width:10%; height:100px; float:left; overflow:hidden; background:url('../images/pack.infonavit/logo4.png') no-repeat; background-position:right 50%;}
+
+/*MAIN NAVIGATION*/
+.main-navigation a{color:#4D4542; text-decoration:none; font-size:20px; font-weight:600; font-style:italic; line-height:74px; text-align:center;    }
+
+.preparate{  width:250px; height:80px; float:left; margin-right:10px;  background-color: #DBDBD2;border-bottom: 10px solid #63B7E3;}
+.preparate a{ display:block; width:250px; height:80px; position:relative; z-index:5;    }
+.preparate a:hover{color:#63B7E3 }
+.preparate.on{ background-color: #63B7E3;  }
+.preparate.on a{color:#FFFFFF;}
+
+.ponte{position:relative;  width:250px; height:80px; float:left; margin-right:10px;  background-color: #DBDBD2;border-bottom: 10px solid #48AE33;}
+.ponte a{ display:block; width:250px; height:80px; position:relative; z-index:5;    }
+.ponte a:hover{color:#48AE33; }
+.ponte.on{ background-color: #48AE33;}
+.ponte.on a{color:#FFFFFF;}
+
+.conoce{position:relative;  width:250px; height:80px; float:left; margin-right:10px;  background-color: #DBDBD2;border-bottom: 10px solid #F5723D;}
+.conoce a{ display:block; width:250px; height:80px; position:relative; z-index:5;    }
+.conoce a:hover{color:#F5723D; }
+.conoce.on{ background-color: #F5723D;}
+.conoce.on a{color:#FFFFFF;}
+
+
+/*SIDEBAR*/
+.tactividad{ height:15px; margin-bottom:15px; font-size:18px; color:#FFFFFF; line-height:20px; font-weight:600;   font-style:italic; text-align:center;    }
+.tmiregistro{ color:#4D4542; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;    font-weight:600;  height:40px; background-color: #DBDBD2;  }
+.tmisretos{color:#4D4542; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;    font-weight:600; height:40px; background-color: #DBDBD2;  }
+.tmismotivaciones{color:#4D4542; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;    font-weight:600; height:40px; background-color: #DBDBD2;  }
+/*ASIDE*/
+.mas-actividades{color:#F05B2F; text-decoration:none; text-align:center; font-weight:600; font-style:italic; display:block;     }
+.tactividades{ color:#FFFFFF; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;    font-weight:600;   height:40px; background-color: #F5723D; }
+/*HOME*/
+.tparticipa{color:#FFFFFF; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;  font-weight:600; height:40px; background-color:#2961A2;  width:100%;  }
+.trecetas{ color:#FFFFFF; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;  font-weight:600; height:40px; background-color: #F5723D;  width:100%;  }
+.tejercicios{color:#FFFFFF; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;  font-weight:600; height:40px; background-color: #F5723D;  width:100%;  }
+/*FOOTER*/
+.tmapa{color:#FFFFFF; font-style:italic; line-height:38px; padding-right:10px; text-align:left;  font-size:28px;  font-weight:600; height:25px; }
+
+/*PREPARATE SECCIÓN*/
+#cssmenu .abierto{display:block; }
+#cssmenu.category-preparate>ul>li>a>span{background: #63B7E3;  }
+#cssmenu.category-preparate>ul>li.active>a span{background: #63B7E3;}
+#cssmenu.category-preparate ul ul li{background-color:#DCEFF1; }
+#cssmenu.category-preparate ul ul li .active{color:#63B7E3; }
+.post.category-preparate .shortcode1{background-color: #63B7E3;  }
+.post.category-preparate .shortcode1 a{color:#FFFFFF; }
+.post.category-preparate ul li a,
+.post.category-preparate p a{color: #63B7E3;  }
+.post.category-preparate{border-bottom: 1px solid #63B7E3; }
+.category-preparate h1{color: #63B7E3; }
+.category-preparate h2{color:#9B9B9B;}
+.category-preparate .quiz h3{ background-color:#63B7E3; padding:15px;}
+.category-preparate .quiz{background-color:#DCEFF1; }
+.category-preparate .quiz label{color:#63B7E3; margin-right:30px;  }
+.category-preparate .post .quiz p span{color:#29919B;}
+.category-preparate .submit1{background-color:#63B7E3;}
+.category-preparate .respo span{color:#63B7E3; font-weight:bold;  }
+
+/*PONTE SECCIÓN*/
+#cssmenu.category-ponte-en-marca>ul>li>a>span{background: #48AE33;  }
+#cssmenu.category-ponte-en-marca>ul>li.active>a span{background: #48AE33;}
+#cssmenu.category-ponte-en-marca ul ul li{background-color: #EDF7EB; }
+#cssmenu.category-ponte-en-marca ul ul li .active{color: #3CA227; }
+.post.category-ponte-en-marca .shortcode1{background-color:#E89D4C;  }
+.post.category-ponte-en-marca .shortcode1 a{color:#FFFFFF; }
+.post.category-ponte-en-marca ul li a,
+.post.category-ponte-en-marca p a{color:#3CA227;  }
+.post.category-ponte-en-marca{border-bottom:1px solid #3CA227; }
+.category-ponte-en-marca h1{color: #3CA227; }
+.category-ponte-en-marca h2{color:#9B9B9B;}
+.category-ponte-en-marca .quiz h3{ background-color: #3CA227; padding:15px;}
+.category-ponte-en-marca .quiz{background-color: #EDF7EB; }
+.category-ponte-en-marca .quiz label{color: #3CA227; margin-right:30px;  }
+.category-ponte-en-marca .post .quiz p span{color:#E18B3C;}
+.category-ponte-en-marca .submit1{background-color: #48AE33;}
+.category-ponte-en-marca .respo span{color:#3CA227; font-weight:bold;  }
+
+
+/*CONOCE SECCIÓN*/
+#cssmenu.category-conoce-mas>ul>li>a>span{background: #F5723D;  }
+#cssmenu.category-conoce-mas>ul>li.active>a span{background: #F5723D;}
+#cssmenu.category-conoce-mas ul ul li{background-color: #FDE7DE; }
+#cssmenu.category-conoce-mas ul ul li .active{color: #F05B2F; }
+.post.category-conoce-mas .shortcode1{background-color:#7241B0;  }
+.post.category-conoce-mas .shortcode1 a{color:#FFFFFF; }
+.post.category-conoce-mas ul li a,
+.post.category-conoce-mas p a{color:#F5723D;  }
+.post.category-conoce-mas{border-bottom: 1px solid #F5723D; }
+.category-conoce-mas h1{color: #F5723D; }
+.category-conoce-mas h2{color:#9B9B9B;}
+.category-conoce-mas .quiz h3{ background-color: #F5723D; padding:15px;}
+.category-conoce-mas .quiz{background-color: #FDE7DE; }
+.category-conoce-mas .quiz label{color: #F05B2F; margin-right:30px;  }
+.category-conoce-mas .post .quiz p span{color:#7241B0;}
+.category-conoce-mas .submit1{background-color: #F5723D;}
+.category-conoce-mas .respo span{color:#F5723D; font-weight:bold;  }
+
+/*ACTIVIDAD*/
+.type-actividad{border-bottom:0px !important; }
+.type-actividad h1{color: #3CA227;}
+.type-actividad p{font-size:18px; font-weight:400; color:#999999; line-height:25px; margin-bottom:15px; display:block;      }

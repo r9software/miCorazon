@@ -1,0 +1,29 @@
+.zilla-likes {
+	background:#EFEFEB url(../images/cora_on.png) no-repeat 10px 49% !important;
+         padding: 2px 4px 2px 4px;
+         margin:0 0 10px 0; 
+	border: 0 !important;
+	float:right; 
+	margin-bottom: 10px;
+	min-height: 29px;
+	padding-left: 18px;
+        padding-right:9px !important ;
+	text-decoration: none;
+          -moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;
+}
+.zilla-likes *{color:#3D3D3D; }
+.zilla-likes:hover,
+.zilla-likes.active {
+	background: url(../images/cora_on.png) no-repeat 10px 49%;
+	border: 0 !important;
+	margin: 0 0 10px 0 !important;
+	text-decoration: none;
+}
+
+.zilla-blog-widget .zilla-likes,
+.tz_recentwork_widget .zilla-likes,
+.tz_blog_widget .zilla-likes,
+.home div#the_body #slider .excerpt .zilla-likes,
+.archive div#the_body #slider .excerpt .zilla-likes { display: none; } /* Hide Zilla Share in custom post widget and sliders in themes */
+.zilla-likes-count{line-height:29px; }
+.zilla-likes{padding-left:35px !important;}

@@ -1,0 +1,34 @@
+div.zaki_like_dislike_box {
+    margin: 0 0 10px 0;
+    padding: 2px 4px 2px 4px;
+    float:right;
+    background-color:#EFEFEB;
+    -moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;
+}
+    div.zaki_like_dislike_box > div.zaki_like_dislike,
+    div.zaki_like_dislike_box > div.zaki_like_dislike_count {
+        float:left;
+        margin:0 5px 0 5px;
+    }
+    
+    div.zaki_like_dislike_box > div.zaki_like_dislike > span {
+        margin: 0 0 0 3px;
+        position:relative;
+       
+    }
+    
+    div.zaki_like_dislike_box > div.zaki_like_dislike_count {
+        line-height: 25px;
+    }
+
+    div.zaki_like_dislike_box > div.zaki_like_dislike {
+        cursor: pointer;
+        color:#003cb3; 
+    }
+    
+    .zaki_like_dislike_dislike{display:none !important; }
+    .zaki_like_dislike_count_neutral,
+    .zaki_like_dislike_count_positive{color:#3D3D3D;  top:-2px;
+        font-size:13px;}
+    
+    .ump img{ position:relative; top:6px; }
