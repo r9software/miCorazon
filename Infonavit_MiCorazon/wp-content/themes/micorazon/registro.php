@@ -3,6 +3,19 @@
   @package micorazon
   Template Name: Registro
  */
+global $current_user;
+
+				
+			
+// Obtenemos la informacion del usuario conectado y asignamos los valores a las variables globales
+// Mas info sobre 'get_currentuserinfo()':
+// http://codex.wordpress.org/Function_Reference/get_currentuserinfo
+get_currentuserinfo();
+// Guardamos el nombre del usuario en una variable
+
+if ( is_user_logged_in() ) {
+	header( "Location: " . site_url() . "" );
+}
 ?>
 <?php include 'header-registro.php'; ?>
 <body >

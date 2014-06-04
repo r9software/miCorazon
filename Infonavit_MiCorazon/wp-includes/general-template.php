@@ -705,7 +705,7 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 	if ( 'display' == $filter ) {
 		if ( $url ) {
 			/**
-			 * Filter the URL returned by get_bloginfo().
+			 * Filter the URL returned by login().
 			 *
 			 * @since 2.0.5
 			 *

@@ -3,6 +3,11 @@
  * @package micorazon
   Template Name: Home Page
  */
+
+
+if ( !is_user_logged_in() ) {
+	header( "Location: " . site_url() . "/login" );
+}
 ?>
 <?php get_header(); ?>
 <div class="content">
