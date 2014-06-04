@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.0.6
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Jun 02, 2014 at 12:40 PM
--- Server version: 5.5.30
--- PHP Version: 5.4.16
+-- Host: localhost
+-- Generation Time: Jun 04, 2014 at 06:24 PM
+-- Server version: 5.5.33
+-- PHP Version: 5.5.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `micorazon`
@@ -23,10 +17,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `empresa`
+--
+
+CREATE TABLE `empresa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `codigo` varchar(100) NOT NULL,
+  `url` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `empresa`
+--
+
+INSERT INTO `empresa` (`id`, `nombre`, `codigo`, `url`) VALUES
+(1, 'infonavit', 'micasita', 'http://infonavit.micorazon.wp:8888/login/'),
+(2, 'Walmart', 'miscompras', 'http://walmart.micorazon.wp:8888');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wp_bp_activity`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_bp_activity` (
+CREATE TABLE `wp_bp_activity` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `component` varchar(75) NOT NULL,
@@ -71,7 +87,7 @@ INSERT INTO `wp_bp_activity` (`id`, `user_id`, `component`, `type`, `action`, `c
 -- Table structure for table `wp_bp_activity_meta`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_bp_activity_meta` (
+CREATE TABLE `wp_bp_activity_meta` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `activity_id` bigint(20) NOT NULL,
   `meta_key` varchar(255) DEFAULT NULL,
@@ -94,7 +110,7 @@ INSERT INTO `wp_bp_activity_meta` (`id`, `activity_id`, `meta_key`, `meta_value`
 -- Table structure for table `wp_bp_notifications`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_bp_notifications` (
+CREATE TABLE `wp_bp_notifications` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NOT NULL,
   `item_id` bigint(20) NOT NULL,
@@ -119,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `wp_bp_notifications` (
 -- Table structure for table `wp_bp_xprofile_data`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_bp_xprofile_data` (
+CREATE TABLE `wp_bp_xprofile_data` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `field_id` bigint(20) unsigned NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
@@ -144,7 +160,7 @@ INSERT INTO `wp_bp_xprofile_data` (`id`, `field_id`, `user_id`, `value`, `last_u
 -- Table structure for table `wp_bp_xprofile_fields`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_bp_xprofile_fields` (
+CREATE TABLE `wp_bp_xprofile_fields` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `group_id` bigint(20) unsigned NOT NULL,
   `parent_id` bigint(20) unsigned NOT NULL,
@@ -178,7 +194,7 @@ INSERT INTO `wp_bp_xprofile_fields` (`id`, `group_id`, `parent_id`, `type`, `nam
 -- Table structure for table `wp_bp_xprofile_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_bp_xprofile_groups` (
+CREATE TABLE `wp_bp_xprofile_groups` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `description` mediumtext NOT NULL,
@@ -201,7 +217,7 @@ INSERT INTO `wp_bp_xprofile_groups` (`id`, `name`, `description`, `group_order`,
 -- Table structure for table `wp_bp_xprofile_meta`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_bp_xprofile_meta` (
+CREATE TABLE `wp_bp_xprofile_meta` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `object_id` bigint(20) NOT NULL,
   `object_type` varchar(150) NOT NULL,
@@ -218,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `wp_bp_xprofile_meta` (
 -- Table structure for table `wp_ccpo_post_order_rel`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_ccpo_post_order_rel` (
+CREATE TABLE `wp_ccpo_post_order_rel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` varchar(250) NOT NULL,
   `post_id` int(11) NOT NULL,
@@ -249,7 +265,7 @@ INSERT INTO `wp_ccpo_post_order_rel` (`id`, `category_id`, `post_id`, `incl`, `w
 -- Table structure for table `wp_commentmeta`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
+CREATE TABLE `wp_commentmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `comment_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) DEFAULT NULL,
@@ -277,7 +293,7 @@ INSERT INTO `wp_commentmeta` (`meta_id`, `comment_id`, `meta_key`, `meta_value`)
 -- Table structure for table `wp_comments`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_comments` (
+CREATE TABLE `wp_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `comment_post_ID` bigint(20) unsigned NOT NULL DEFAULT '0',
   `comment_author` tinytext NOT NULL,
@@ -298,7 +314,7 @@ CREATE TABLE IF NOT EXISTS `wp_comments` (
   KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
   KEY `comment_date_gmt` (`comment_date_gmt`),
   KEY `comment_parent` (`comment_parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `wp_comments`
@@ -325,7 +341,8 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 (18, 457, 'lilo gaez', 'lilo@blend.mx', '', '127.0.0.1', '2014-05-22 18:49:07', '2014-05-22 18:49:07', 'Supoe', 0, '1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '', 0, 2),
 (19, 457, 'lilo gaez', 'lilo@blend.mx', '', '127.0.0.1', '2014-05-22 18:57:19', '2014-05-22 18:57:19', 'sdsd00', 0, '1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '', 0, 2),
 (20, 262, 'admin', 'angel@blend.mx', '', '127.0.0.1', '2014-05-22 21:25:34', '2014-05-22 21:25:34', 'sdsdsdsd', 0, 'trash', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '', 0, 1),
-(21, 457, 'admin', 'angel@blend.mx', '', '127.0.0.1', '2014-05-22 23:16:17', '2014-05-22 23:16:17', 'Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande', 0, '1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '', 0, 1);
+(21, 457, 'admin', 'angel@blend.mx', '', '127.0.0.1', '2014-05-22 23:16:17', '2014-05-22 23:16:17', 'Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande Este texto es un texto muy grande', 0, '1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36', '', 0, 1),
+(22, 457, 'admin', 'angel@blend.mx', '', '127.0.0.1', '2014-06-03 17:55:35', '2014-06-03 17:55:35', 'hola mundo', 0, '1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:29.0) Gecko/20100101 Firefox/29.0', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -333,7 +350,7 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- Table structure for table `wp_links`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_links` (
+CREATE TABLE `wp_links` (
   `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `link_url` varchar(255) NOT NULL DEFAULT '',
   `link_name` varchar(255) NOT NULL DEFAULT '',
@@ -357,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `wp_links` (
 -- Table structure for table `wp_mf_custom_fields`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_mf_custom_fields` (
+CREATE TABLE `wp_mf_custom_fields` (
   `id` int(19) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `label` varchar(150) NOT NULL,
@@ -390,7 +407,7 @@ INSERT INTO `wp_mf_custom_fields` (`id`, `name`, `label`, `description`, `post_t
 -- Table structure for table `wp_mf_custom_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_mf_custom_groups` (
+CREATE TABLE `wp_mf_custom_groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `label` varchar(255) NOT NULL,
@@ -415,7 +432,7 @@ INSERT INTO `wp_mf_custom_groups` (`id`, `name`, `label`, `post_type`, `duplicat
 -- Table structure for table `wp_mf_custom_taxonomy`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_mf_custom_taxonomy` (
+CREATE TABLE `wp_mf_custom_taxonomy` (
   `id` mediumint(9) NOT NULL AUTO_INCREMENT,
   `type` varchar(20) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -428,37 +445,10 @@ CREATE TABLE IF NOT EXISTS `wp_mf_custom_taxonomy` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_mf_posttypes`
---
-
-CREATE TABLE IF NOT EXISTS `wp_mf_posttypes` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `type` varchar(20) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` text,
-  `arguments` text,
-  `active` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `wp_mf_posttypes`
---
-
-INSERT INTO `wp_mf_posttypes` (`id`, `type`, `name`, `description`, `arguments`, `active`) VALUES
-(2, 'home_slider', 'Home Slider', '', 'a:4:{s:4:"core";a:6:{s:2:"id";s:0:"";s:5:"label";s:11:"Home Slider";s:6:"labels";s:11:"Home Slider";s:4:"type";s:11:"home_slider";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:2:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:11:"Home Slider";s:13:"singular_name";s:11:"Home Slider";s:7:"add_new";s:15:"Add Home Slider";s:9:"all_items";s:15:"All Home Slider";s:12:"add_new_item";s:19:"Add New Home Slider";s:9:"edit_item";s:16:"Edit Home Slider";s:8:"new_item";s:15:"New Home Slider";s:9:"view_item";s:16:"View Home Slider";s:12:"search_items";s:18:"Search Home Slider";s:9:"not_found";s:20:"No Home Slider found";s:18:"not_found_in_trash";s:29:"No Home Slider found in Trash";s:17:"parent_item_colon";s:19:"Parent Home Slider:";s:9:"menu_name";s:11:"Home Slider";}}', 1),
-(3, 'actividad', 'Actividades Interactivas', '', 'a:5:{s:4:"core";a:6:{s:2:"id";s:1:"3";s:5:"label";s:24:"Actividades Interactivas";s:6:"labels";s:11:"Actividades";s:4:"type";s:9:"actividad";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:3:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";s:9:"thumbnail";s:1:"1";}s:8:"taxonomy";a:1:{s:8:"category";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:11:"Actividades";s:13:"singular_name";s:24:"Actividades Interactivas";s:7:"add_new";s:28:"Add Actividades Interactivas";s:9:"all_items";s:15:"All Actividades";s:12:"add_new_item";s:32:"Add New Actividades Interactivas";s:9:"edit_item";s:29:"Edit Actividades Interactivas";s:8:"new_item";s:28:"New Actividades Interactivas";s:9:"view_item";s:29:"View Actividades Interactivas";s:12:"search_items";s:18:"Search Actividades";s:9:"not_found";s:20:"No Actividades found";s:18:"not_found_in_trash";s:29:"No Actividades found in Trash";s:17:"parent_item_colon";s:32:"Parent Actividades Interactivas:";s:9:"menu_name";s:11:"Actividades";}}', 1),
-(4, 'recetas', 'Recetas para un corazón saludable', '', 'a:5:{s:4:"core";a:6:{s:2:"id";s:1:"4";s:5:"label";s:34:"Recetas para un corazón saludable";s:6:"labels";s:18:"Recetas Saludables";s:4:"type";s:7:"recetas";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:4:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";s:9:"thumbnail";s:1:"1";s:7:"excerpt";s:1:"1";}s:8:"taxonomy";a:1:{s:8:"category";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:18:"Recetas Saludables";s:13:"singular_name";s:34:"Recetas para un corazón saludable";s:7:"add_new";s:38:"Add Recetas para un corazón saludable";s:9:"all_items";s:22:"All Recetas Saludables";s:12:"add_new_item";s:42:"Add New Recetas para un corazón saludable";s:9:"edit_item";s:39:"Edit Recetas para un corazón saludable";s:8:"new_item";s:38:"New Recetas para un corazón saludable";s:9:"view_item";s:39:"View Recetas para un corazón saludable";s:12:"search_items";s:25:"Search Recetas Saludables";s:9:"not_found";s:27:"No Recetas Saludables found";s:18:"not_found_in_trash";s:36:"No Recetas Saludables found in Trash";s:17:"parent_item_colon";s:42:"Parent Recetas para un corazón saludable:";s:9:"menu_name";s:18:"Recetas Saludables";}}', 1),
-(5, 'ejercicios', 'Ejercicios para estar en forma', '', 'a:4:{s:4:"core";a:6:{s:2:"id";s:0:"";s:5:"label";s:30:"Ejercicios para estar en forma";s:6:"labels";s:10:"Ejercicios";s:4:"type";s:10:"ejercicios";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:4:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";s:9:"thumbnail";s:1:"1";s:7:"excerpt";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:10:"Ejercicios";s:13:"singular_name";s:30:"Ejercicios para estar en forma";s:7:"add_new";s:34:"Add Ejercicios para estar en forma";s:9:"all_items";s:14:"All Ejercicios";s:12:"add_new_item";s:38:"Add New Ejercicios para estar en forma";s:9:"edit_item";s:35:"Edit Ejercicios para estar en forma";s:8:"new_item";s:34:"New Ejercicios para estar en forma";s:9:"view_item";s:35:"View Ejercicios para estar en forma";s:12:"search_items";s:17:"Search Ejercicios";s:9:"not_found";s:19:"No Ejercicios found";s:18:"not_found_in_trash";s:28:"No Ejercicios found in Trash";s:17:"parent_item_colon";s:38:"Parent Ejercicios para estar en forma:";s:9:"menu_name";s:10:"Ejercicios";}}', 1),
-(6, 'comunidad', 'Comunidad para un corazon sano', '', 'a:5:{s:4:"core";a:6:{s:2:"id";s:1:"6";s:5:"label";s:30:"Comunidad para un corazon sano";s:6:"labels";s:30:"Comunidad para un corazon sano";s:4:"type";s:9:"comunidad";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:4:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";s:9:"thumbnail";s:1:"1";s:8:"comments";s:1:"1";}s:8:"taxonomy";a:1:{s:8:"category";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:30:"Comunidad para un corazon sano";s:13:"singular_name";s:30:"Comunidad para un corazon sano";s:7:"add_new";s:34:"Add Comunidad para un corazon sano";s:9:"all_items";s:34:"All Comunidad para un corazon sano";s:12:"add_new_item";s:38:"Add New Comunidad para un corazon sano";s:9:"edit_item";s:35:"Edit Comunidad para un corazon sano";s:8:"new_item";s:34:"New Comunidad para un corazon sano";s:9:"view_item";s:35:"View Comunidad para un corazon sano";s:12:"search_items";s:37:"Search Comunidad para un corazon sano";s:9:"not_found";s:39:"No Comunidad para un corazon sano found";s:18:"not_found_in_trash";s:48:"No Comunidad para un corazon sano found in Trash";s:17:"parent_item_colon";s:38:"Parent Comunidad para un corazon sano:";s:9:"menu_name";s:30:"Comunidad para un corazon sano";}}', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `wp_mf_post_meta`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_mf_post_meta` (
+CREATE TABLE `wp_mf_post_meta` (
   `meta_id` int(11) NOT NULL,
   `field_name` varchar(255) NOT NULL,
   `field_count` int(11) NOT NULL,
@@ -511,24 +501,51 @@ INSERT INTO `wp_mf_post_meta` (`meta_id`, `field_name`, `field_count`, `group_co
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `wp_mf_posttypes`
+--
+
+CREATE TABLE `wp_mf_posttypes` (
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `type` varchar(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` text,
+  `arguments` text,
+  `active` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `wp_mf_posttypes`
+--
+
+INSERT INTO `wp_mf_posttypes` (`id`, `type`, `name`, `description`, `arguments`, `active`) VALUES
+(2, 'home_slider', 'Home Slider', '', 'a:4:{s:4:"core";a:6:{s:2:"id";s:0:"";s:5:"label";s:11:"Home Slider";s:6:"labels";s:11:"Home Slider";s:4:"type";s:11:"home_slider";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:2:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:11:"Home Slider";s:13:"singular_name";s:11:"Home Slider";s:7:"add_new";s:15:"Add Home Slider";s:9:"all_items";s:15:"All Home Slider";s:12:"add_new_item";s:19:"Add New Home Slider";s:9:"edit_item";s:16:"Edit Home Slider";s:8:"new_item";s:15:"New Home Slider";s:9:"view_item";s:16:"View Home Slider";s:12:"search_items";s:18:"Search Home Slider";s:9:"not_found";s:20:"No Home Slider found";s:18:"not_found_in_trash";s:29:"No Home Slider found in Trash";s:17:"parent_item_colon";s:19:"Parent Home Slider:";s:9:"menu_name";s:11:"Home Slider";}}', 1),
+(3, 'actividad', 'Actividades Interactivas', '', 'a:5:{s:4:"core";a:6:{s:2:"id";s:1:"3";s:5:"label";s:24:"Actividades Interactivas";s:6:"labels";s:11:"Actividades";s:4:"type";s:9:"actividad";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:3:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";s:9:"thumbnail";s:1:"1";}s:8:"taxonomy";a:1:{s:8:"category";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:11:"Actividades";s:13:"singular_name";s:24:"Actividades Interactivas";s:7:"add_new";s:28:"Add Actividades Interactivas";s:9:"all_items";s:15:"All Actividades";s:12:"add_new_item";s:32:"Add New Actividades Interactivas";s:9:"edit_item";s:29:"Edit Actividades Interactivas";s:8:"new_item";s:28:"New Actividades Interactivas";s:9:"view_item";s:29:"View Actividades Interactivas";s:12:"search_items";s:18:"Search Actividades";s:9:"not_found";s:20:"No Actividades found";s:18:"not_found_in_trash";s:29:"No Actividades found in Trash";s:17:"parent_item_colon";s:32:"Parent Actividades Interactivas:";s:9:"menu_name";s:11:"Actividades";}}', 1),
+(4, 'recetas', 'Recetas para un corazón saludable', '', 'a:5:{s:4:"core";a:6:{s:2:"id";s:1:"4";s:5:"label";s:34:"Recetas para un corazón saludable";s:6:"labels";s:18:"Recetas Saludables";s:4:"type";s:7:"recetas";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:4:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";s:9:"thumbnail";s:1:"1";s:7:"excerpt";s:1:"1";}s:8:"taxonomy";a:1:{s:8:"category";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:18:"Recetas Saludables";s:13:"singular_name";s:34:"Recetas para un corazón saludable";s:7:"add_new";s:38:"Add Recetas para un corazón saludable";s:9:"all_items";s:22:"All Recetas Saludables";s:12:"add_new_item";s:42:"Add New Recetas para un corazón saludable";s:9:"edit_item";s:39:"Edit Recetas para un corazón saludable";s:8:"new_item";s:38:"New Recetas para un corazón saludable";s:9:"view_item";s:39:"View Recetas para un corazón saludable";s:12:"search_items";s:25:"Search Recetas Saludables";s:9:"not_found";s:27:"No Recetas Saludables found";s:18:"not_found_in_trash";s:36:"No Recetas Saludables found in Trash";s:17:"parent_item_colon";s:42:"Parent Recetas para un corazón saludable:";s:9:"menu_name";s:18:"Recetas Saludables";}}', 1),
+(5, 'ejercicios', 'Ejercicios para estar en forma', '', 'a:4:{s:4:"core";a:6:{s:2:"id";s:0:"";s:5:"label";s:30:"Ejercicios para estar en forma";s:6:"labels";s:10:"Ejercicios";s:4:"type";s:10:"ejercicios";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:4:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";s:9:"thumbnail";s:1:"1";s:7:"excerpt";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:10:"Ejercicios";s:13:"singular_name";s:30:"Ejercicios para estar en forma";s:7:"add_new";s:34:"Add Ejercicios para estar en forma";s:9:"all_items";s:14:"All Ejercicios";s:12:"add_new_item";s:38:"Add New Ejercicios para estar en forma";s:9:"edit_item";s:35:"Edit Ejercicios para estar en forma";s:8:"new_item";s:34:"New Ejercicios para estar en forma";s:9:"view_item";s:35:"View Ejercicios para estar en forma";s:12:"search_items";s:17:"Search Ejercicios";s:9:"not_found";s:19:"No Ejercicios found";s:18:"not_found_in_trash";s:28:"No Ejercicios found in Trash";s:17:"parent_item_colon";s:38:"Parent Ejercicios para estar en forma:";s:9:"menu_name";s:10:"Ejercicios";}}', 1),
+(6, 'comunidad', 'Comunidad para un corazon sano', '', 'a:5:{s:4:"core";a:6:{s:2:"id";s:1:"6";s:5:"label";s:30:"Comunidad para un corazon sano";s:6:"labels";s:30:"Comunidad para un corazon sano";s:4:"type";s:9:"comunidad";s:11:"description";s:0:"";s:8:"quantity";s:1:"0";}s:7:"support";a:4:{s:5:"title";s:1:"1";s:6:"editor";s:1:"1";s:9:"thumbnail";s:1:"1";s:8:"comments";s:1:"1";}s:8:"taxonomy";a:1:{s:8:"category";s:1:"1";}s:6:"option";a:16:{s:6:"public";s:1:"1";s:18:"publicly_queryable";s:1:"1";s:19:"exclude_from_search";s:1:"0";s:7:"show_ui";s:1:"1";s:12:"show_in_menu";s:1:"1";s:13:"menu_position";s:0:"";s:15:"capability_type";s:4:"post";s:12:"hierarchical";s:1:"0";s:11:"has_archive";s:1:"0";s:16:"has_archive_slug";s:0:"";s:7:"rewrite";s:1:"0";s:12:"rewrite_slug";s:0:"";s:10:"with_front";s:1:"1";s:9:"query_var";s:1:"1";s:10:"can_export";s:1:"1";s:17:"show_in_nav_menus";s:1:"1";}s:5:"label";a:13:{s:4:"name";s:30:"Comunidad para un corazon sano";s:13:"singular_name";s:30:"Comunidad para un corazon sano";s:7:"add_new";s:34:"Add Comunidad para un corazon sano";s:9:"all_items";s:34:"All Comunidad para un corazon sano";s:12:"add_new_item";s:38:"Add New Comunidad para un corazon sano";s:9:"edit_item";s:35:"Edit Comunidad para un corazon sano";s:8:"new_item";s:34:"New Comunidad para un corazon sano";s:9:"view_item";s:35:"View Comunidad para un corazon sano";s:12:"search_items";s:37:"Search Comunidad para un corazon sano";s:9:"not_found";s:39:"No Comunidad para un corazon sano found";s:18:"not_found_in_trash";s:48:"No Comunidad para un corazon sano found in Trash";s:17:"parent_item_colon";s:38:"Parent Comunidad para un corazon sano:";s:9:"menu_name";s:30:"Comunidad para un corazon sano";}}', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wp_options`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_options` (
+CREATE TABLE `wp_options` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `option_name` varchar(64) NOT NULL DEFAULT '',
   `option_value` longtext NOT NULL,
   `autoload` varchar(20) NOT NULL DEFAULT 'yes',
   PRIMARY KEY (`option_id`),
   UNIQUE KEY `option_name` (`option_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2797 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2833 ;
 
 --
 -- Dumping data for table `wp_options`
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://micorazon.blend.mx/', 'yes'),
+(1, 'siteurl', 'http://infonavit.micorazon.wp:8888/', 'yes'),
 (2, 'blogname', 'Mi Corazon Saludable', 'yes'),
 (3, 'blogdescription', 'Just another WordPress site', 'yes'),
 (4, 'users_can_register', '0', 'yes'),
@@ -560,7 +577,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (30, 'blog_charset', 'UTF-8', 'yes'),
 (31, 'moderation_keys', '', 'no'),
 (32, 'active_plugins', 'a:10:{i:0;s:51:"category-checklist-tree/category-checklist-tree.php";i:1;s:48:"enhanced-tooltipglossary/cm-tooltip-glossary.php";i:2;s:23:"magic-fields-2/main.php";i:3;s:21:"raw-html/raw_html.php";i:4;s:37:"relative-image-urls/relativeimage.php";i:5;s:43:"responsive-lightbox/responsive-lightbox.php";i:6;s:41:"search-and-replace/search-and-replace.php";i:7;s:45:"taxonomy-terms-order/taxonomy-terms-order.php";i:8;s:57:"zaki-like-dislike-comments/zaki-like-dislike-comments.php";i:9;s:27:"zilla-likes/zilla-likes.php";}', 'yes'),
-(33, 'home', 'http://micorazon.blend.mx/', 'yes'),
+(33, 'home', 'http://infonavit.micorazon.wp:8888/', 'yes'),
 (34, 'category_base', '/categoria', 'yes'),
 (35, 'ping_sites', 'http://rpc.pingomatic.com/', 'yes'),
 (36, 'advanced_edit', '0', 'yes'),
@@ -612,7 +629,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (82, 'uninstall_plugins', 'a:2:{s:43:"likebtn-like-button/likebtn_like_button.php";s:28:"likebtn_like_button_unistall";s:31:"wti-like-post/wti_like_post.php";s:23:"UnsetOptionsWtiLikePost";}', 'no'),
 (83, 'timezone_string', '', 'yes'),
 (84, 'page_for_posts', '0', 'yes'),
-(85, 'page_on_front', '368', 'yes'),
+(85, 'page_on_front', '4', 'yes'),
 (86, 'default_post_format', '0', 'yes'),
 (87, 'link_manager_enabled', '0', 'yes'),
 (88, 'initial_db_version', '27916', 'yes'),
@@ -623,11 +640,11 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (93, 'widget_archives', 'a:2:{i:2;a:3:{s:5:"title";s:0:"";s:5:"count";i:0;s:8:"dropdown";i:0;}s:12:"_multiwidget";i:1;}', 'yes'),
 (94, 'widget_meta', 'a:2:{i:2;a:1:{s:5:"title";s:0:"";}s:12:"_multiwidget";i:1;}', 'yes'),
 (95, 'sidebars_widgets', 'a:3:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}s:13:"array_version";i:3;}', 'yes'),
-(96, 'cron', 'a:5:{i:1401727338;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1401727411;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1401728677;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1401737220;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}s:7:"version";i:2;}', 'yes'),
+(96, 'cron', 'a:5:{i:1401943338;a:3:{s:16:"wp_version_check";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:17:"wp_update_plugins";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}s:16:"wp_update_themes";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1401953220;a:1:{s:20:"wp_maybe_auto_update";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:10:"twicedaily";s:4:"args";a:0:{}s:8:"interval";i:43200;}}}i:1401986611;a:1:{s:19:"wp_scheduled_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}i:1401987877;a:1:{s:30:"wp_scheduled_auto_draft_delete";a:1:{s:32:"40cd750bba9870f18aada2478b24840a";a:3:{s:8:"schedule";s:5:"daily";s:4:"args";a:0:{}s:8:"interval";i:86400;}}}s:7:"version";i:2;}', 'yes'),
 (104, '_site_transient_timeout_browser_a64afbf86ac7a1ef023e4b1e1f62f178', '1400258549', 'yes'),
 (105, '_site_transient_browser_a64afbf86ac7a1ef023e4b1e1f62f178', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"34.0.1847.131";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
 (106, 'can_compress_scripts', '1', 'yes'),
-(123, 'recently_activated', 'a:8:{s:15:"light/light.php";i:1401318474;s:33:"rel_lightbox/add_rel_lightbox.php";i:1401317516;s:24:"simple-lightbox/main.php";i:1401315042;s:31:"wti-like-post/wti_like_post.php";i:1401127594;s:43:"likebtn-like-button/likebtn_like_button.php";i:1401123898;s:47:"bp-avatar-suggestions/bp-avatar-suggestions.php";i:1400871046;s:34:"buddypress-like/bp-like-loader.php";i:1400871043;s:24:"buddypress/bp-loader.php";i:1400870852;}', 'yes'),
+(123, 'recently_activated', 'a:3:{s:15:"light/light.php";i:1401318474;s:33:"rel_lightbox/add_rel_lightbox.php";i:1401317516;s:24:"simple-lightbox/main.php";i:1401315042;}', 'yes'),
 (127, 'mf_db_version', '3', 'yes'),
 (128, 'theme_mods_twentyfourteen', 'a:1:{s:16:"sidebars_widgets";a:2:{s:4:"time";i:1399654023;s:4:"data";a:4:{s:19:"wp_inactive_widgets";a:0:{}s:9:"sidebar-1";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}s:9:"sidebar-2";a:0:{}s:9:"sidebar-3";a:0:{}}}}', 'yes'),
 (129, 'current_theme', 'micorazon', 'yes'),
@@ -699,8 +716,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (1030, 'slider_with_lightbox_messages', 'a:0:{}', 'yes'),
 (1040, 'slb_version', '2.3.1', 'yes'),
 (1041, 'slb_options', 'a:25:{s:7:"enabled";b:1;s:12:"enabled_home";b:1;s:12:"enabled_post";b:1;s:12:"enabled_page";b:1;s:15:"enabled_archive";b:1;s:14:"enabled_widget";b:0;s:11:"group_links";b:1;s:10:"group_post";b:1;s:13:"group_gallery";b:0;s:12:"group_widget";b:0;s:10:"ui_autofit";b:1;s:10:"ui_animate";b:1;s:19:"slideshow_autostart";b:1;s:18:"slideshow_duration";s:1:"6";s:10:"group_loop";b:1;s:18:"ui_overlay_opacity";s:3:"0.8";s:16:"ui_title_default";b:0;s:11:"txt_loading";s:7:"Loading";s:9:"txt_close";s:5:"Close";s:12:"txt_nav_next";s:4:"Next";s:12:"txt_nav_prev";s:8:"Previous";s:19:"txt_slideshow_start";s:15:"Start slideshow";s:18:"txt_slideshow_stop";s:14:"Stop slideshow";s:16:"txt_group_status";s:25:"Item %current% of %total%";s:13:"theme_default";s:11:"slb_default";}', 'yes'),
-(1099, '_transient_timeout_plugin_slugs', '1401488875', 'no'),
-(1100, '_transient_plugin_slugs', 'a:16:{i:0;s:19:"akismet/akismet.php";i:1;s:47:"bp-avatar-suggestions/bp-avatar-suggestions.php";i:2;s:24:"buddypress/bp-loader.php";i:3;s:34:"buddypress-like/bp-like-loader.php";i:4;s:51:"category-checklist-tree/category-checklist-tree.php";i:5;s:45:"taxonomy-terms-order/taxonomy-terms-order.php";i:6;s:48:"enhanced-tooltipglossary/cm-tooltip-glossary.php";i:7;s:9:"hello.php";i:8;s:23:"magic-fields-2/main.php";i:9;s:21:"raw-html/raw_html.php";i:10;s:37:"relative-image-urls/relativeimage.php";i:11;s:43:"responsive-lightbox/responsive-lightbox.php";i:12;s:41:"search-and-replace/search-and-replace.php";i:13;s:24:"simple-lightbox/main.php";i:14;s:57:"zaki-like-dislike-comments/zaki-like-dislike-comments.php";i:15;s:27:"zilla-likes/zilla-likes.php";}', 'no'),
+(1099, '_transient_timeout_plugin_slugs', '1401904087', 'no'),
+(1100, '_transient_plugin_slugs', 'a:17:{i:0;s:33:"rel_lightbox/add_rel_lightbox.php";i:1;s:19:"akismet/akismet.php";i:2;s:47:"bp-avatar-suggestions/bp-avatar-suggestions.php";i:3;s:24:"buddypress/bp-loader.php";i:4;s:34:"buddypress-like/bp-like-loader.php";i:5;s:51:"category-checklist-tree/category-checklist-tree.php";i:6;s:45:"taxonomy-terms-order/taxonomy-terms-order.php";i:7;s:48:"enhanced-tooltipglossary/cm-tooltip-glossary.php";i:8;s:9:"hello.php";i:9;s:23:"magic-fields-2/main.php";i:10;s:21:"raw-html/raw_html.php";i:11;s:37:"relative-image-urls/relativeimage.php";i:12;s:43:"responsive-lightbox/responsive-lightbox.php";i:13;s:41:"search-and-replace/search-and-replace.php";i:14;s:24:"simple-lightbox/main.php";i:15;s:57:"zaki-like-dislike-comments/zaki-like-dislike-comments.php";i:16;s:27:"zilla-likes/zilla-likes.php";}', 'no'),
 (1174, '_site_transient_timeout_browser_cb03b8b2180710a944792958eff84f1d', '1401311037', 'yes'),
 (1175, '_site_transient_browser_cb03b8b2180710a944792958eff84f1d', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"35.0.1916.114";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
 (1184, 'jqlb_help_text', '', 'yes'),
@@ -772,12 +789,10 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (2569, '_site_transient_browser_8ed9f48b7b44b10b861de7efcd6dbaf2', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:6:"Chrome";s:7:"version";s:13:"35.0.1916.114";s:10:"update_url";s:28:"http://www.google.com/chrome";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/chrome.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/chrome.png";s:15:"current_version";s:2:"18";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
 (2646, '_site_transient_timeout_browser_be79bc10cf1c6722e9a6c6f6d6804cfb', '1401902136', 'yes'),
 (2647, '_site_transient_browser_be79bc10cf1c6722e9a6c6f6d6804cfb', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:6:"Safari";s:7:"version";s:5:"7.0.3";s:10:"update_url";s:28:"http://www.apple.com/safari/";s:7:"img_src";s:49:"http://s.wordpress.org/images/browsers/safari.png";s:11:"img_src_ssl";s:48:"https://wordpress.org/images/browsers/safari.png";s:15:"current_version";s:1:"5";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
-(2651, 'rewrite_rules', 'a:139:{s:48:"categoria/(.+?)/feed/(feed|rdf|rss|rss2|atom)/?$";s:52:"index.php?category_name=$matches[1]&feed=$matches[2]";s:43:"categoria/(.+?)/(feed|rdf|rss|rss2|atom)/?$";s:52:"index.php?category_name=$matches[1]&feed=$matches[2]";s:36:"categoria/(.+?)/page/?([0-9]{1,})/?$";s:53:"index.php?category_name=$matches[1]&paged=$matches[2]";s:18:"categoria/(.+?)/?$";s:35:"index.php?category_name=$matches[1]";s:44:"tag/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?tag=$matches[1]&feed=$matches[2]";s:39:"tag/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?tag=$matches[1]&feed=$matches[2]";s:32:"tag/([^/]+)/page/?([0-9]{1,})/?$";s:43:"index.php?tag=$matches[1]&paged=$matches[2]";s:14:"tag/([^/]+)/?$";s:25:"index.php?tag=$matches[1]";s:45:"type/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?post_format=$matches[1]&feed=$matches[2]";s:40:"type/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?post_format=$matches[1]&feed=$matches[2]";s:33:"type/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?post_format=$matches[1]&paged=$matches[2]";s:15:"type/([^/]+)/?$";s:33:"index.php?post_format=$matches[1]";s:39:"home_slider/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:49:"home_slider/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:69:"home_slider/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:64:"home_slider/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:64:"home_slider/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:32:"home_slider/([^/]+)/trackback/?$";s:38:"index.php?home_slider=$matches[1]&tb=1";s:40:"home_slider/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?home_slider=$matches[1]&paged=$matches[2]";s:47:"home_slider/([^/]+)/comment-page-([0-9]{1,})/?$";s:51:"index.php?home_slider=$matches[1]&cpage=$matches[2]";s:32:"home_slider/([^/]+)(/[0-9]+)?/?$";s:50:"index.php?home_slider=$matches[1]&page=$matches[2]";s:28:"home_slider/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:38:"home_slider/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:58:"home_slider/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:53:"home_slider/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:53:"home_slider/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:37:"actividad/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:47:"actividad/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:67:"actividad/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"actividad/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"actividad/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:30:"actividad/([^/]+)/trackback/?$";s:36:"index.php?actividad=$matches[1]&tb=1";s:38:"actividad/([^/]+)/page/?([0-9]{1,})/?$";s:49:"index.php?actividad=$matches[1]&paged=$matches[2]";s:45:"actividad/([^/]+)/comment-page-([0-9]{1,})/?$";s:49:"index.php?actividad=$matches[1]&cpage=$matches[2]";s:30:"actividad/([^/]+)(/[0-9]+)?/?$";s:48:"index.php?actividad=$matches[1]&page=$matches[2]";s:26:"actividad/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:36:"actividad/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:56:"actividad/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"actividad/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"actividad/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:35:"recetas/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:45:"recetas/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:65:"recetas/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:60:"recetas/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:60:"recetas/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:28:"recetas/([^/]+)/trackback/?$";s:34:"index.php?recetas=$matches[1]&tb=1";s:36:"recetas/([^/]+)/page/?([0-9]{1,})/?$";s:47:"index.php?recetas=$matches[1]&paged=$matches[2]";s:43:"recetas/([^/]+)/comment-page-([0-9]{1,})/?$";s:47:"index.php?recetas=$matches[1]&cpage=$matches[2]";s:28:"recetas/([^/]+)(/[0-9]+)?/?$";s:46:"index.php?recetas=$matches[1]&page=$matches[2]";s:24:"recetas/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:34:"recetas/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:54:"recetas/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:49:"recetas/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:49:"recetas/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:38:"ejercicios/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:48:"ejercicios/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:68:"ejercicios/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:63:"ejercicios/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:63:"ejercicios/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:31:"ejercicios/([^/]+)/trackback/?$";s:37:"index.php?ejercicios=$matches[1]&tb=1";s:39:"ejercicios/([^/]+)/page/?([0-9]{1,})/?$";s:50:"index.php?ejercicios=$matches[1]&paged=$matches[2]";s:46:"ejercicios/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?ejercicios=$matches[1]&cpage=$matches[2]";s:31:"ejercicios/([^/]+)(/[0-9]+)?/?$";s:49:"index.php?ejercicios=$matches[1]&page=$matches[2]";s:27:"ejercicios/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:"ejercicios/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:57:"ejercicios/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"ejercicios/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"ejercicios/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:37:"comunidad/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:47:"comunidad/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:67:"comunidad/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"comunidad/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"comunidad/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:30:"comunidad/([^/]+)/trackback/?$";s:36:"index.php?comunidad=$matches[1]&tb=1";s:38:"comunidad/([^/]+)/page/?([0-9]{1,})/?$";s:49:"index.php?comunidad=$matches[1]&paged=$matches[2]";s:45:"comunidad/([^/]+)/comment-page-([0-9]{1,})/?$";s:49:"index.php?comunidad=$matches[1]&cpage=$matches[2]";s:30:"comunidad/([^/]+)(/[0-9]+)?/?$";s:48:"index.php?comunidad=$matches[1]&page=$matches[2]";s:26:"comunidad/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:36:"comunidad/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:56:"comunidad/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"comunidad/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"comunidad/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:12:"robots\\.txt$";s:18:"index.php?robots=1";s:48:".*wp-(atom|rdf|rss|rss2|feed|commentsrss2)\\.php$";s:18:"index.php?feed=old";s:20:".*wp-app\\.php(/.*)?$";s:19:"index.php?error=403";s:18:".*wp-register.php$";s:23:"index.php?register=true";s:32:"feed/(feed|rdf|rss|rss2|atom)/?$";s:27:"index.php?&feed=$matches[1]";s:27:"(feed|rdf|rss|rss2|atom)/?$";s:27:"index.php?&feed=$matches[1]";s:20:"page/?([0-9]{1,})/?$";s:28:"index.php?&paged=$matches[1]";s:27:"comment-page-([0-9]{1,})/?$";s:40:"index.php?&page_id=368&cpage=$matches[1]";s:41:"comments/feed/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?&feed=$matches[1]&withcomments=1";s:36:"comments/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?&feed=$matches[1]&withcomments=1";s:44:"search/(.+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:40:"index.php?s=$matches[1]&feed=$matches[2]";s:39:"search/(.+)/(feed|rdf|rss|rss2|atom)/?$";s:40:"index.php?s=$matches[1]&feed=$matches[2]";s:32:"search/(.+)/page/?([0-9]{1,})/?$";s:41:"index.php?s=$matches[1]&paged=$matches[2]";s:14:"search/(.+)/?$";s:23:"index.php?s=$matches[1]";s:47:"author/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?author_name=$matches[1]&feed=$matches[2]";s:42:"author/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?author_name=$matches[1]&feed=$matches[2]";s:35:"author/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?author_name=$matches[1]&paged=$matches[2]";s:17:"author/([^/]+)/?$";s:33:"index.php?author_name=$matches[1]";s:69:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$";s:80:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]";s:64:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$";s:80:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]";s:57:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/?$";s:81:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]";s:39:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$";s:63:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]";s:56:"([0-9]{4})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$";s:64:"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]";s:51:"([0-9]{4})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$";s:64:"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]";s:44:"([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$";s:65:"index.php?year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]";s:26:"([0-9]{4})/([0-9]{1,2})/?$";s:47:"index.php?year=$matches[1]&monthnum=$matches[2]";s:43:"([0-9]{4})/feed/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?year=$matches[1]&feed=$matches[2]";s:38:"([0-9]{4})/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?year=$matches[1]&feed=$matches[2]";s:31:"([0-9]{4})/page/?([0-9]{1,})/?$";s:44:"index.php?year=$matches[1]&paged=$matches[2]";s:13:"([0-9]{4})/?$";s:26:"index.php?year=$matches[1]";s:27:".?.+?/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:".?.+?/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:57:".?.+?/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:".?.+?/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:".?.+?/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:20:"(.?.+?)/trackback/?$";s:35:"index.php?pagename=$matches[1]&tb=1";s:40:"(.?.+?)/feed/(feed|rdf|rss|rss2|atom)/?$";s:47:"index.php?pagename=$matches[1]&feed=$matches[2]";s:35:"(.?.+?)/(feed|rdf|rss|rss2|atom)/?$";s:47:"index.php?pagename=$matches[1]&feed=$matches[2]";s:28:"(.?.+?)/page/?([0-9]{1,})/?$";s:48:"index.php?pagename=$matches[1]&paged=$matches[2]";s:35:"(.?.+?)/comment-page-([0-9]{1,})/?$";s:48:"index.php?pagename=$matches[1]&cpage=$matches[2]";s:20:"(.?.+?)(/[0-9]+)?/?$";s:47:"index.php?pagename=$matches[1]&page=$matches[2]";s:27:"[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:"[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:57:"[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:20:"([^/]+)/trackback/?$";s:31:"index.php?name=$matches[1]&tb=1";s:40:"([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?name=$matches[1]&feed=$matches[2]";s:35:"([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?name=$matches[1]&feed=$matches[2]";s:28:"([^/]+)/page/?([0-9]{1,})/?$";s:44:"index.php?name=$matches[1]&paged=$matches[2]";s:35:"([^/]+)/comment-page-([0-9]{1,})/?$";s:44:"index.php?name=$matches[1]&cpage=$matches[2]";s:20:"([^/]+)(/[0-9]+)?/?$";s:43:"index.php?name=$matches[1]&page=$matches[2]";s:16:"[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:26:"[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:46:"[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:41:"[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:41:"[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";}', 'yes'),
 (2660, '_site_transient_timeout_browser_a80ec4a57735c042236dd683b74b8b1d', '1401919078', 'yes'),
 (2661, '_site_transient_browser_a80ec4a57735c042236dd683b74b8b1d', 'a:9:{s:8:"platform";s:9:"Macintosh";s:4:"name";s:7:"Firefox";s:7:"version";s:4:"29.0";s:10:"update_url";s:23:"http://www.firefox.com/";s:7:"img_src";s:50:"http://s.wordpress.org/images/browsers/firefox.png";s:11:"img_src_ssl";s:49:"https://wordpress.org/images/browsers/firefox.png";s:15:"current_version";s:2:"16";s:7:"upgrade";b:0;s:8:"insecure";b:0;}', 'yes'),
 (2677, 'responsive_lightbox_version', '1.4.4', 'yes'),
-(2678, 'responsive_lightbox_settings', 'a:10:{s:6:"script";s:4:"nivo";s:8:"selector";s:8:"lightbox";s:9:"galleries";b:1;s:6:"videos";b:1;s:11:"image_links";b:1;s:17:"images_as_gallery";b:0;s:20:"enable_custom_events";b:0;s:13:"custom_events";s:12:"ajaxComplete";s:13:"loading_place";s:6:"header";s:19:"deactivation_delete";b:0;}', 'no');
-INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
+(2678, 'responsive_lightbox_settings', 'a:10:{s:6:"script";s:4:"nivo";s:8:"selector";s:8:"lightbox";s:9:"galleries";b:1;s:6:"videos";b:1;s:11:"image_links";b:1;s:17:"images_as_gallery";b:0;s:20:"enable_custom_events";b:0;s:13:"custom_events";s:12:"ajaxComplete";s:13:"loading_place";s:6:"header";s:19:"deactivation_delete";b:0;}', 'no'),
 (2679, 'responsive_lightbox_configuration', 'a:5:{s:11:"prettyphoto";a:21:{s:15:"animation_speed";s:6:"normal";s:9:"slideshow";b:0;s:15:"slideshow_delay";i:5000;s:18:"slideshow_autoplay";b:0;s:7:"opacity";i:75;s:10:"show_title";b:1;s:12:"allow_resize";b:1;s:12:"allow_expand";b:1;s:5:"width";i:1080;s:6:"height";i:720;s:9:"separator";s:1:"/";s:5:"theme";s:10:"pp_default";s:18:"horizontal_padding";i:20;s:10:"hide_flash";b:0;s:5:"wmode";s:6:"opaque";s:14:"video_autoplay";b:0;s:5:"modal";b:0;s:11:"deeplinking";b:0;s:15:"overlay_gallery";b:1;s:18:"keyboard_shortcuts";b:1;s:6:"social";b:0;}s:8:"swipebox";a:5:{s:9:"animation";s:3:"css";s:15:"force_png_icons";b:0;s:9:"hide_bars";b:1;s:15:"hide_bars_delay";i:5000;s:15:"video_max_width";i:1080;}s:8:"fancybox";a:25:{s:5:"modal";b:0;s:12:"show_overlay";b:1;s:17:"show_close_button";b:1;s:20:"enable_escape_button";b:1;s:21:"hide_on_overlay_click";b:1;s:21:"hide_on_content_click";b:0;s:6:"cyclic";b:0;s:15:"show_nav_arrows";b:1;s:10:"auto_scale";b:1;s:9:"scrolling";s:3:"yes";s:16:"center_on_scroll";b:1;s:7:"opacity";b:1;s:15:"overlay_opacity";i:70;s:13:"overlay_color";s:4:"#666";s:10:"title_show";b:1;s:14:"title_position";s:7:"outside";s:11:"transitions";s:4:"fade";s:7:"easings";s:5:"swing";s:6:"speeds";i:300;s:12:"change_speed";i:300;s:11:"change_fade";i:100;s:7:"padding";i:5;s:6:"margin";i:5;s:11:"video_width";i:1080;s:12:"video_height";i:720;}s:4:"nivo";a:3:{s:6:"effect";s:4:"fade";s:12:"keyboard_nav";b:1;s:13:"error_message";s:63:"The requested content cannot be loaded. Please try again later.";}s:13:"imagelightbox";a:6:{s:15:"animation_speed";i:250;s:12:"preload_next";b:1;s:15:"enable_keyboard";b:1;s:11:"quit_on_end";b:0;s:19:"quit_on_image_click";b:0;s:22:"quit_on_document_click";b:1;}}', 'no'),
 (2732, 'cmtt_glossaryOnPages', '1', 'yes'),
 (2733, 'cmtt_glossaryOnPosts', '1', 'yes'),
@@ -807,11 +822,14 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (2758, 'cmtt_glossary_backLinkText', '&laquo; Back to Glossary Index', 'yes'),
 (2759, 'cmtt_glossary_backLinkBottomText', '&laquo; Back to Glossary Index', 'yes'),
 (2760, 'cmtt_glossaryFilterTooltipA', '0', 'yes'),
-(2788, '_site_transient_timeout_theme_roots', '1401726630', 'yes'),
-(2789, '_site_transient_theme_roots', 'a:4:{s:9:"micorazon";s:7:"/themes";s:14:"twentyfourteen";s:7:"/themes";s:14:"twentythirteen";s:7:"/themes";s:12:"twentytwelve";s:7:"/themes";}', 'yes'),
-(2794, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:7:"upgrade";s:8:"download";s:65:"https://downloads.wordpress.org/release/es_ES/wordpress-3.9.1.zip";s:6:"locale";s:5:"es_ES";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:65:"https://downloads.wordpress.org/release/es_ES/wordpress-3.9.1.zip";s:10:"no_content";b:0;s:11:"new_bundled";b:0;s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"3.9.1";s:7:"version";s:5:"3.9.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"3.8";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1401724834;s:15:"version_checked";s:5:"3.9.1";s:12:"translations";a:0:{}}', 'yes'),
-(2795, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1401724834;s:7:"checked";a:4:{s:9:"micorazon";s:0:"";s:14:"twentyfourteen";s:3:"1.1";s:14:"twentythirteen";s:3:"1.2";s:12:"twentytwelve";s:3:"1.4";}s:8:"response";a:0:{}s:12:"translations";a:1:{i:0;a:7:{s:4:"type";s:5:"theme";s:4:"slug";s:12:"twentytwelve";s:8:"language";s:5:"es_ES";s:7:"version";s:3:"1.2";s:7:"updated";s:19:"2013-07-31 18:21:04";s:7:"package";s:69:"https://global.wordpress.org/builds/themes/twentytwelve/1.2/es_ES.zip";s:10:"autoupdate";b:1;}}}', 'yes'),
-(2796, '_site_transient_update_plugins', 'O:8:"stdClass":3:{s:12:"last_checked";i:1401724834;s:8:"response";a:0:{}s:12:"translations";a:2:{i:0;a:7:{s:4:"type";s:6:"plugin";s:4:"slug";s:7:"akismet";s:8:"language";s:5:"es_ES";s:7:"version";s:3:"3.0";s:7:"updated";s:19:"2014-04-15 17:42:48";s:7:"package";s:65:"https://global.wordpress.org/builds/plugins/akismet/3.0/es_ES.zip";s:10:"autoupdate";b:1;}i:1;a:7:{s:4:"type";s:6:"plugin";s:4:"slug";s:10:"buddypress";s:8:"language";s:5:"es_ES";s:7:"version";s:3:"1.8";s:7:"updated";s:19:"2013-09-06 16:31:56";s:7:"package";s:68:"https://global.wordpress.org/builds/plugins/buddypress/1.8/es_ES.zip";s:10:"autoupdate";b:1;}}}', 'yes');
+(2794, '_site_transient_update_core', 'O:8:"stdClass":4:{s:7:"updates";a:1:{i:0;O:8:"stdClass":10:{s:8:"response";s:6:"latest";s:8:"download";s:59:"https://downloads.wordpress.org/release/wordpress-3.9.1.zip";s:6:"locale";s:5:"en_US";s:8:"packages";O:8:"stdClass":5:{s:4:"full";s:59:"https://downloads.wordpress.org/release/wordpress-3.9.1.zip";s:10:"no_content";s:70:"https://downloads.wordpress.org/release/wordpress-3.9.1-no-content.zip";s:11:"new_bundled";s:71:"https://downloads.wordpress.org/release/wordpress-3.9.1-new-bundled.zip";s:7:"partial";b:0;s:8:"rollback";b:0;}s:7:"current";s:5:"3.9.1";s:7:"version";s:5:"3.9.1";s:11:"php_version";s:5:"5.2.4";s:13:"mysql_version";s:3:"5.0";s:11:"new_bundled";s:3:"3.8";s:15:"partial_version";s:0:"";}}s:12:"last_checked";i:1401911785;s:15:"version_checked";s:5:"3.9.1";s:12:"translations";a:0:{}}', 'yes'),
+(2795, '_site_transient_update_themes', 'O:8:"stdClass":4:{s:12:"last_checked";i:1401911785;s:7:"checked";a:4:{s:9:"micorazon";s:0:"";s:14:"twentyfourteen";s:3:"1.1";s:14:"twentythirteen";s:3:"1.2";s:12:"twentytwelve";s:3:"1.4";}s:8:"response";a:0:{}s:12:"translations";a:0:{}}', 'yes'),
+(2814, '_transient_micorazon_categories', '2', 'yes'),
+(2827, '_site_transient_timeout_theme_roots', '1401913584', 'yes'),
+(2828, '_site_transient_theme_roots', 'a:4:{s:9:"micorazon";s:7:"/themes";s:14:"twentyfourteen";s:7:"/themes";s:14:"twentythirteen";s:7:"/themes";s:12:"twentytwelve";s:7:"/themes";}', 'yes'),
+(2829, '_site_transient_update_plugins', 'O:8:"stdClass":3:{s:12:"last_checked";i:1401911785;s:8:"response";a:1:{s:48:"enhanced-tooltipglossary/cm-tooltip-glossary.php";O:8:"stdClass":6:{s:2:"id";s:5:"30350";s:4:"slug";s:24:"enhanced-tooltipglossary";s:6:"plugin";s:48:"enhanced-tooltipglossary/cm-tooltip-glossary.php";s:11:"new_version";s:5:"2.7.3";s:3:"url";s:55:"https://wordpress.org/plugins/enhanced-tooltipglossary/";s:7:"package";s:67:"https://downloads.wordpress.org/plugin/enhanced-tooltipglossary.zip";}}s:12:"translations";a:0:{}}', 'yes');
+INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
+(2830, 'rewrite_rules', 'a:153:{s:48:"categoria/(.+?)/feed/(feed|rdf|rss|rss2|atom)/?$";s:52:"index.php?category_name=$matches[1]&feed=$matches[2]";s:43:"categoria/(.+?)/(feed|rdf|rss|rss2|atom)/?$";s:52:"index.php?category_name=$matches[1]&feed=$matches[2]";s:36:"categoria/(.+?)/page/?([0-9]{1,})/?$";s:53:"index.php?category_name=$matches[1]&paged=$matches[2]";s:18:"categoria/(.+?)/?$";s:35:"index.php?category_name=$matches[1]";s:44:"tag/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?tag=$matches[1]&feed=$matches[2]";s:39:"tag/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?tag=$matches[1]&feed=$matches[2]";s:32:"tag/([^/]+)/page/?([0-9]{1,})/?$";s:43:"index.php?tag=$matches[1]&paged=$matches[2]";s:14:"tag/([^/]+)/?$";s:25:"index.php?tag=$matches[1]";s:45:"type/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?post_format=$matches[1]&feed=$matches[2]";s:40:"type/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?post_format=$matches[1]&feed=$matches[2]";s:33:"type/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?post_format=$matches[1]&paged=$matches[2]";s:15:"type/([^/]+)/?$";s:33:"index.php?post_format=$matches[1]";s:36:"glossary/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:46:"glossary/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:66:"glossary/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:61:"glossary/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:61:"glossary/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:29:"glossary/([^/]+)/trackback/?$";s:35:"index.php?glossary=$matches[1]&tb=1";s:37:"glossary/([^/]+)/page/?([0-9]{1,})/?$";s:48:"index.php?glossary=$matches[1]&paged=$matches[2]";s:44:"glossary/([^/]+)/comment-page-([0-9]{1,})/?$";s:48:"index.php?glossary=$matches[1]&cpage=$matches[2]";s:29:"glossary/([^/]+)(/[0-9]+)?/?$";s:47:"index.php?glossary=$matches[1]&page=$matches[2]";s:25:"glossary/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:35:"glossary/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:55:"glossary/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:50:"glossary/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:50:"glossary/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:39:"home_slider/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:49:"home_slider/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:69:"home_slider/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:64:"home_slider/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:64:"home_slider/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:32:"home_slider/([^/]+)/trackback/?$";s:38:"index.php?home_slider=$matches[1]&tb=1";s:40:"home_slider/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?home_slider=$matches[1]&paged=$matches[2]";s:47:"home_slider/([^/]+)/comment-page-([0-9]{1,})/?$";s:51:"index.php?home_slider=$matches[1]&cpage=$matches[2]";s:32:"home_slider/([^/]+)(/[0-9]+)?/?$";s:50:"index.php?home_slider=$matches[1]&page=$matches[2]";s:28:"home_slider/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:38:"home_slider/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:58:"home_slider/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:53:"home_slider/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:53:"home_slider/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:37:"actividad/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:47:"actividad/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:67:"actividad/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"actividad/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"actividad/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:30:"actividad/([^/]+)/trackback/?$";s:36:"index.php?actividad=$matches[1]&tb=1";s:38:"actividad/([^/]+)/page/?([0-9]{1,})/?$";s:49:"index.php?actividad=$matches[1]&paged=$matches[2]";s:45:"actividad/([^/]+)/comment-page-([0-9]{1,})/?$";s:49:"index.php?actividad=$matches[1]&cpage=$matches[2]";s:30:"actividad/([^/]+)(/[0-9]+)?/?$";s:48:"index.php?actividad=$matches[1]&page=$matches[2]";s:26:"actividad/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:36:"actividad/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:56:"actividad/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"actividad/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"actividad/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:35:"recetas/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:45:"recetas/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:65:"recetas/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:60:"recetas/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:60:"recetas/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:28:"recetas/([^/]+)/trackback/?$";s:34:"index.php?recetas=$matches[1]&tb=1";s:36:"recetas/([^/]+)/page/?([0-9]{1,})/?$";s:47:"index.php?recetas=$matches[1]&paged=$matches[2]";s:43:"recetas/([^/]+)/comment-page-([0-9]{1,})/?$";s:47:"index.php?recetas=$matches[1]&cpage=$matches[2]";s:28:"recetas/([^/]+)(/[0-9]+)?/?$";s:46:"index.php?recetas=$matches[1]&page=$matches[2]";s:24:"recetas/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:34:"recetas/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:54:"recetas/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:49:"recetas/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:49:"recetas/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:38:"ejercicios/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:48:"ejercicios/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:68:"ejercicios/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:63:"ejercicios/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:63:"ejercicios/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:31:"ejercicios/([^/]+)/trackback/?$";s:37:"index.php?ejercicios=$matches[1]&tb=1";s:39:"ejercicios/([^/]+)/page/?([0-9]{1,})/?$";s:50:"index.php?ejercicios=$matches[1]&paged=$matches[2]";s:46:"ejercicios/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?ejercicios=$matches[1]&cpage=$matches[2]";s:31:"ejercicios/([^/]+)(/[0-9]+)?/?$";s:49:"index.php?ejercicios=$matches[1]&page=$matches[2]";s:27:"ejercicios/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:"ejercicios/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:57:"ejercicios/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"ejercicios/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"ejercicios/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:37:"comunidad/[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:47:"comunidad/[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:67:"comunidad/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"comunidad/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:62:"comunidad/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:30:"comunidad/([^/]+)/trackback/?$";s:36:"index.php?comunidad=$matches[1]&tb=1";s:38:"comunidad/([^/]+)/page/?([0-9]{1,})/?$";s:49:"index.php?comunidad=$matches[1]&paged=$matches[2]";s:45:"comunidad/([^/]+)/comment-page-([0-9]{1,})/?$";s:49:"index.php?comunidad=$matches[1]&cpage=$matches[2]";s:30:"comunidad/([^/]+)(/[0-9]+)?/?$";s:48:"index.php?comunidad=$matches[1]&page=$matches[2]";s:26:"comunidad/[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:36:"comunidad/[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:56:"comunidad/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"comunidad/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:51:"comunidad/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:12:"robots\\.txt$";s:18:"index.php?robots=1";s:48:".*wp-(atom|rdf|rss|rss2|feed|commentsrss2)\\.php$";s:18:"index.php?feed=old";s:20:".*wp-app\\.php(/.*)?$";s:19:"index.php?error=403";s:18:".*wp-register.php$";s:23:"index.php?register=true";s:32:"feed/(feed|rdf|rss|rss2|atom)/?$";s:27:"index.php?&feed=$matches[1]";s:27:"(feed|rdf|rss|rss2|atom)/?$";s:27:"index.php?&feed=$matches[1]";s:20:"page/?([0-9]{1,})/?$";s:28:"index.php?&paged=$matches[1]";s:27:"comment-page-([0-9]{1,})/?$";s:38:"index.php?&page_id=4&cpage=$matches[1]";s:41:"comments/feed/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?&feed=$matches[1]&withcomments=1";s:36:"comments/(feed|rdf|rss|rss2|atom)/?$";s:42:"index.php?&feed=$matches[1]&withcomments=1";s:44:"search/(.+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:40:"index.php?s=$matches[1]&feed=$matches[2]";s:39:"search/(.+)/(feed|rdf|rss|rss2|atom)/?$";s:40:"index.php?s=$matches[1]&feed=$matches[2]";s:32:"search/(.+)/page/?([0-9]{1,})/?$";s:41:"index.php?s=$matches[1]&paged=$matches[2]";s:14:"search/(.+)/?$";s:23:"index.php?s=$matches[1]";s:47:"author/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?author_name=$matches[1]&feed=$matches[2]";s:42:"author/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:50:"index.php?author_name=$matches[1]&feed=$matches[2]";s:35:"author/([^/]+)/page/?([0-9]{1,})/?$";s:51:"index.php?author_name=$matches[1]&paged=$matches[2]";s:17:"author/([^/]+)/?$";s:33:"index.php?author_name=$matches[1]";s:69:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$";s:80:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]";s:64:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$";s:80:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]";s:57:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/?$";s:81:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]";s:39:"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$";s:63:"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]";s:56:"([0-9]{4})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$";s:64:"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]";s:51:"([0-9]{4})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$";s:64:"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]";s:44:"([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$";s:65:"index.php?year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]";s:26:"([0-9]{4})/([0-9]{1,2})/?$";s:47:"index.php?year=$matches[1]&monthnum=$matches[2]";s:43:"([0-9]{4})/feed/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?year=$matches[1]&feed=$matches[2]";s:38:"([0-9]{4})/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?year=$matches[1]&feed=$matches[2]";s:31:"([0-9]{4})/page/?([0-9]{1,})/?$";s:44:"index.php?year=$matches[1]&paged=$matches[2]";s:13:"([0-9]{4})/?$";s:26:"index.php?year=$matches[1]";s:27:".?.+?/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:".?.+?/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:57:".?.+?/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:".?.+?/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:".?.+?/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:20:"(.?.+?)/trackback/?$";s:35:"index.php?pagename=$matches[1]&tb=1";s:40:"(.?.+?)/feed/(feed|rdf|rss|rss2|atom)/?$";s:47:"index.php?pagename=$matches[1]&feed=$matches[2]";s:35:"(.?.+?)/(feed|rdf|rss|rss2|atom)/?$";s:47:"index.php?pagename=$matches[1]&feed=$matches[2]";s:28:"(.?.+?)/page/?([0-9]{1,})/?$";s:48:"index.php?pagename=$matches[1]&paged=$matches[2]";s:35:"(.?.+?)/comment-page-([0-9]{1,})/?$";s:48:"index.php?pagename=$matches[1]&cpage=$matches[2]";s:20:"(.?.+?)(/[0-9]+)?/?$";s:47:"index.php?pagename=$matches[1]&page=$matches[2]";s:27:"[^/]+/attachment/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:37:"[^/]+/attachment/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:57:"[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:52:"[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";s:20:"([^/]+)/trackback/?$";s:31:"index.php?name=$matches[1]&tb=1";s:40:"([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?name=$matches[1]&feed=$matches[2]";s:35:"([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:43:"index.php?name=$matches[1]&feed=$matches[2]";s:28:"([^/]+)/page/?([0-9]{1,})/?$";s:44:"index.php?name=$matches[1]&paged=$matches[2]";s:35:"([^/]+)/comment-page-([0-9]{1,})/?$";s:44:"index.php?name=$matches[1]&cpage=$matches[2]";s:20:"([^/]+)(/[0-9]+)?/?$";s:43:"index.php?name=$matches[1]&page=$matches[2]";s:16:"[^/]+/([^/]+)/?$";s:32:"index.php?attachment=$matches[1]";s:26:"[^/]+/([^/]+)/trackback/?$";s:37:"index.php?attachment=$matches[1]&tb=1";s:46:"[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:41:"[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$";s:49:"index.php?attachment=$matches[1]&feed=$matches[2]";s:41:"[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$";s:50:"index.php?attachment=$matches[1]&cpage=$matches[2]";}', 'yes');
 
 -- --------------------------------------------------------
 
@@ -819,7 +837,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 -- Table structure for table `wp_postmeta`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_postmeta` (
+CREATE TABLE `wp_postmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) DEFAULT NULL,
@@ -827,7 +845,7 @@ CREATE TABLE IF NOT EXISTS `wp_postmeta` (
   PRIMARY KEY (`meta_id`),
   KEY `post_id` (`post_id`),
   KEY `meta_key` (`meta_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2038 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2043 ;
 
 --
 -- Dumping data for table `wp_postmeta`
@@ -1669,7 +1687,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (1749, 599, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:538;s:6:"height";i:354;s:4:"file";s:19:"2014/05/failure.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:19:"failure-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:19:"failure-300x197.jpg";s:5:"width";i:300;s:6:"height";i:197;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:19:"failure-290x120.jpg";s:5:"width";i:290;s:6:"height";i:120;s:9:"mime-type";s:10:"image/jpeg";}s:6:"thumb1";a:4:{s:4:"file";s:19:"failure-300x220.jpg";s:5:"width";i:300;s:6:"height";i:220;s:9:"mime-type";s:10:"image/jpeg";}s:4:"post";a:4:{s:4:"file";s:19:"failure-490x250.jpg";s:5:"width";i:490;s:6:"height";i:250;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}'),
 (1750, 603, '_wp_attached_file', '2014/05/cometin-01.jpg'),
 (1751, 603, '_wp_attachment_metadata', 'a:5:{s:5:"width";i:638;s:6:"height";i:480;s:4:"file";s:22:"2014/05/cometin-01.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:22:"cometin-01-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:22:"cometin-01-300x225.jpg";s:5:"width";i:300;s:6:"height";i:225;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:22:"cometin-01-290x120.jpg";s:5:"width";i:290;s:6:"height";i:120;s:9:"mime-type";s:10:"image/jpeg";}s:6:"thumb1";a:4:{s:4:"file";s:22:"cometin-01-300x220.jpg";s:5:"width";i:300;s:6:"height";i:220;s:9:"mime-type";s:10:"image/jpeg";}s:4:"post";a:4:{s:4:"file";s:22:"cometin-01-490x250.jpg";s:5:"width";i:490;s:6:"height";i:250;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:10:{s:8:"aperture";i:0;s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";i:0;s:9:"copyright";s:0:"";s:12:"focal_length";i:0;s:3:"iso";i:0;s:13:"shutter_speed";i:0;s:5:"title";s:0:"";}}'),
-(1752, 457, '_zilla_likes', '2'),
+(1752, 457, '_zilla_likes', '3'),
 (1753, 265, '_zilla_likes', '1'),
 (1754, 312, '_zilla_likes', '0'),
 (1755, 113, '_zilla_likes', '0'),
@@ -1849,7 +1867,12 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2029, 674, '_edit_lock', '1401402407:1'),
 (2030, 674, '_edit_last', '1'),
 (2031, 674, '_wp_mf_page_template', 'default'),
-(2036, 241, '_rawhtml_settings', '0,0,0,0');
+(2036, 241, '_rawhtml_settings', '0,0,0,0'),
+(2038, 426, '_zilla_likes', '0'),
+(2039, 681, '_edit_lock', '1401829659:1'),
+(2040, 681, '_edit_last', '1'),
+(2041, 681, '_wp_page_template', 'dao.php'),
+(2042, 681, '_rawhtml_settings', '0,0,0,0');
 
 -- --------------------------------------------------------
 
@@ -1857,7 +1880,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 -- Table structure for table `wp_posts`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_posts` (
+CREATE TABLE `wp_posts` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -1886,7 +1909,7 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
   KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
   KEY `post_parent` (`post_parent`),
   KEY `post_author` (`post_author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=681 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=684 ;
 
 --
 -- Dumping data for table `wp_posts`
@@ -2346,7 +2369,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (454, 1, '2014-05-14 23:35:38', '2014-05-14 23:35:38', '', 'sleep', '', 'inherit', 'open', 'open', '', 'sleep', '', '', '2014-05-14 23:35:38', '2014-05-14 23:35:38', '', 35, 'http://micorazon.wp/wp-content/uploads/2014/05/sleep.jpg', 0, 'attachment', 'image/jpeg', 0),
 (455, 1, '2014-05-14 23:36:58', '2014-05-14 23:36:58', '', 'activo', '', 'inherit', 'open', 'open', '', 'activo', '', '', '2014-05-14 23:36:58', '2014-05-14 23:36:58', '', 34, 'http://micorazon.wp/wp-content/uploads/2014/05/activo.jpg', 0, 'attachment', 'image/jpeg', 0),
 (456, 1, '2014-05-14 23:38:34', '2014-05-14 23:38:34', '', 'comi', '', 'inherit', 'open', 'open', '', 'comi', '', '', '2014-05-14 23:38:34', '2014-05-14 23:38:34', '', 33, 'http://micorazon.wp/wp-content/uploads/2014/05/comi.jpg', 0, 'attachment', 'image/jpeg', 0),
-(457, 1, '2014-05-14 23:39:24', '2014-05-14 23:39:24', '', 'Recuerda que el programa lleva 2 semanas ¿cómo te sientes hasta el momento?', '', 'publish', 'open', 'open', '', 'recuerda-que-el-programa-lleva-2-semanas-como-te-sientes-hasta-el-momento', '', '', '2014-05-15 01:59:35', '2014-05-15 01:59:35', '', 0, 'http://micorazon.wp/?post_type=comunidad&#038;p=457', 0, 'comunidad', '', 17),
+(457, 1, '2014-05-14 23:39:24', '2014-05-14 23:39:24', '', 'Recuerda que el programa lleva 2 semanas ¿cómo te sientes hasta el momento?', '', 'publish', 'open', 'open', '', 'recuerda-que-el-programa-lleva-2-semanas-como-te-sientes-hasta-el-momento', '', '', '2014-05-15 01:59:35', '2014-05-15 01:59:35', '', 0, 'http://micorazon.wp/?post_type=comunidad&#038;p=457', 0, 'comunidad', '', 18),
 (458, 1, '2014-05-14 23:41:22', '2014-05-14 23:41:22', '', 'pencilin', '', 'inherit', 'open', 'open', '', 'pencilin', '', '', '2014-05-14 23:41:22', '2014-05-14 23:41:22', '', 32, 'http://micorazon.wp/wp-content/uploads/2014/05/pencilin.jpg', 0, 'attachment', 'image/jpeg', 0),
 (459, 1, '2014-05-14 23:45:53', '2014-05-14 23:45:53', '', 'marra', '', 'inherit', 'open', 'open', '', 'marra', '', '', '2014-05-14 23:45:53', '2014-05-14 23:45:53', '', 23, 'http://micorazon.wp/wp-content/uploads/2014/05/marra.jpg', 0, 'attachment', 'image/jpeg', 0),
 (460, 1, '2014-05-14 23:51:18', '2014-05-14 23:51:18', '', 'run2', '', 'inherit', 'open', 'open', '', 'run2', '', '', '2014-05-14 23:51:18', '2014-05-14 23:51:18', '', 99, 'http://micorazon.wp/wp-content/uploads/2014/05/run2.jpg', 0, 'attachment', 'image/jpeg', 0),
@@ -2574,7 +2597,10 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (677, 1, '2014-05-29 22:40:51', '2014-05-29 22:40:51', '<div class="information-int">\r\n<div class="post sec-ponte">\r\n<h1>Come saludable</h1>\r\n<h2>Toda persona puede elegir lo que come y cómo consumirlo. Este capítulo te ayuda a saber qué opciones pueden ser más relevantes para tu salud cardiaca y tu salud en general.</h2>\r\n<img class="aligncenter" src="/wp-content/themes/micorazon/images/fake/post2.png" alt="" />\r\n<h1>Verdadero o falso</h1>\r\n[raw]\r\n<div class="quiz">\r\n<h3>Algunos tipos de grasa en la dieta pueden reducir el colesterol.</h3>\r\n<div class="cont">\r\n	<div class="quest-option">\r\n	<input id="verdaderoq" class="radio" name="pregunta" type="radio" value="verdadero" /><label for="verdaderoq">Verdadero</label>\r\n	</div>\r\n	<div class="quest-option">\r\n	<input id="falsoq" class="radio" name="pregunta" type="radio" value="falso" /><label for="falsoq">Falso</label>\r\n	</div>\r\n<div class="respo" id="respoq">\r\n	<strong>Respuesta:</strong> <span>Verdadero</span>. El consumo de grasas monoinsaturadas como los aceites de canola, cacahuate y oliva, son “grasas buenas” y pueden reducir el colesterol. \r\n</div>\r\n</div>\r\n</div>\r\n<div class="cont-submit2"><button class="submit1" type="button" id="pregunta">Continuar</button></div>\r\n</div>\r\n</div>\r\n[/raw]', 'Pregunta de opinión', '', 'inherit', 'open', 'open', '', '156-revision-v1', '', '', '2014-05-29 22:40:51', '2014-05-29 22:40:51', '', 156, 'http://micorazon.blend.mx/156-revision-v1/', 0, 'revision', '', 0),
 (678, 1, '2014-05-29 22:42:12', '2014-05-29 22:42:12', '<div class="information-int">\r\n<div class="post sec-ponte">\r\n<h1>Duerme bien</h1>\r\n<h2>Tú inviertes alrededor de una tercera parte de la vida en dormir por estas razones: ayuda a mantener una salud física y mental adecuada, reduce el estrés y recupera la energía del organismo. Sin embargo, para muchas personas conseguir una buena noche de sueño es algo inalcanzable.</h2>\r\n<img class="aligncenter" src="/wp-content/themes/micorazon/images/fake/post2.png" alt="" />\r\n<h1>Verdadero o falso</h1>\r\n[raw]\r\n<div class="quiz">\r\n<h3>Dormir suficiente puede ayudar a perder peso.</h3>\r\n<div class="cont">\r\n	<div class="quest-option">\r\n	<input id="verdaderoq" class="radio" name="pregunta" type="radio" value="verdadero" /><label for="verdaderoq">Verdadero</label>\r\n	</div>\r\n	<div class="quest-option">\r\n	<input id="falsoq" class="radio" name="pregunta" type="radio" value="falso" /><label for="falsoq">Falso</label>\r\n	</div>\r\n<div class="respo" id="respoq">\r\n	<strong>Respuesta:</strong> <span>Verdadero</span>. La carencia de sueño favorece la ganancia ponderal al estimular el apetito y privar al organismo de un sueño de calidad que puede ayudar a degradar la grasa.\r\n</div>\r\n</div>\r\n</div>\r\n<div class="cont-submit2"><button class="submit1" type="button" id="pregunta">Continuar</button></div>\r\n</div>\r\n</div>\r\n[/raw]', 'Pregunta de opinión', '', 'inherit', 'open', 'open', '', '229-revision-v1', '', '', '2014-05-29 22:42:12', '2014-05-29 22:42:12', '', 229, 'http://micorazon.blend.mx/229-revision-v1/', 0, 'revision', '', 0),
 (679, 1, '2014-05-29 22:43:00', '2014-05-29 22:43:00', 'Una rutina relajante justo antes de la hora de dormir te ayuda a hacer a un lado el estrés, la excitación y el paso agitado de la vida cotidiana. Si sigues esta práctica con regularidad comenzarás a asociar la conducta de reposo con el sueño.\r\n\r\nTranquiliza la mente. Elimina los pensamientos negativos de tu cabeza. Trata de enfrentar las preocupaciones a una hora más temprana en el día (incluso mejor: ¡preocúpate menos!). Lee un libro relajante o una revista, toma un baño caliente, escucha música o reflexiona sobre las cosas buenas que te ocurrieron durante el día.\r\n<ul>\r\n	<li><strong>Crea un ambiente silencioso, oscuro y fresco para dormir.</strong> Bloquea o reduce el ruido exterior. Apaga toda la luz ambiental en tu recámara, lo que incluye los focos tipo led. La temperatura de la habitación debe ser más bien fresca. </li>\r\n\r\n\r\n	<li><strong>Apaga los aparatos electrónicos. </strong>Este tiempo debes reservarlo para ti mismo, y no ser un periodo para más estrés y distracciones.</li>\r\n\r\n\r\n	<li><strong>No ingieras una cena abundante justo antes de ir a la cama.</strong> Una colación ligera suele estar bien, pues el estómago lleno o un alimento pesado muy condimentado puede generar malestar durante la noche.</li>\r\n\r\n\r\n	<li><strong>Limita la actividad extenuante al entrar la noche. </strong>El ejercicio diurno que se practica con regularidad favorece el sueño, pero el entrenamiento extenuante a la misma hora tiene el efecto opuesto en algunos individuos, lo que dificulta aún más que concilien el sueño. Las relaciones sexuales constituyen una excepción a la regla, puesto que la intimidad ayuda a promover el sueño.</li>\r\n\r\n\r\n	<li><strong>Resiste a la urgencia de tomar siestas a horas avanzadas del día.</strong> Tomar una siesta al mediodía es apropiado en tanto no afecte el sueño por la noche, pero debes evitar tomar siestas después de las 3 p.m. Por lo general, las siestas sólo deben durar entre 10 y 30 minutos.</li>\r\n\r\n</ul>\r\n\r\n', 'Establece una rutina constante para la hora de acostarte', '', 'inherit', 'open', 'open', '', '241-revision-v1', '', '', '2014-05-29 22:43:00', '2014-05-29 22:43:00', '', 241, 'http://micorazon.blend.mx/241-revision-v1/', 0, 'revision', '', 0),
-(680, 1, '2014-05-29 22:44:12', '2014-05-29 22:44:12', '<div class="information-int">\r\n<div class="post sec-ponte">\r\n<h1>Conoce más</h1>\r\n<h2>Al igual que puede planearse qué hacer en caso de incendio, saber qué acciones tomar si uno mismo u otra persona desarrolla una urgencia cardiaca puede hacer una diferencia de vida o muerte.</h2>\r\n&nbsp;\r\n\r\n[raw]\r\n<div class="quiz">\r\n<h3>Si tú eres testigo de que alguien se desploma y carece de respuesta, debes llamar a los teléfonos de emergencia, dar dos respiraciones boca a boca y luego iniciar las compresiones torácicas.</h3>\r\n<div class="cont">\r\n<div class="quest-option"><input id="verdaderoq" class="radio" name="pregunta" type="radio" value="verdadero" /><label for="verdaderoq">Verdadero</label></div>\r\n<div class="quest-option"><input id="falsoq" class="radio" name="pregunta" type="radio" value="falso" /><label for="falsoq">Falso</label></div>\r\n<div id="respoq" class="respo"><strong>Respuesta:</strong> Falso. La respiración boca a boca no es necesaria para que un testigo provea reanimación cardiopulmonar. Ha de llamarse a los teléfonos de emergencia e iniciar las compresiones torácicas.</div>\r\n</div>\r\n</div>\r\n<div class="cont-submit2"><button id="pregunta" class="submit1" type="button">Continuar</button></div>\r\n</div>\r\n</div>\r\n[/raw]', 'Pregunta de opinión', '', 'inherit', 'open', 'open', '', '286-revision-v1', '', '', '2014-05-29 22:44:12', '2014-05-29 22:44:12', '', 286, 'http://micorazon.blend.mx/286-revision-v1/', 0, 'revision', '', 0);
+(680, 1, '2014-05-29 22:44:12', '2014-05-29 22:44:12', '<div class="information-int">\r\n<div class="post sec-ponte">\r\n<h1>Conoce más</h1>\r\n<h2>Al igual que puede planearse qué hacer en caso de incendio, saber qué acciones tomar si uno mismo u otra persona desarrolla una urgencia cardiaca puede hacer una diferencia de vida o muerte.</h2>\r\n&nbsp;\r\n\r\n[raw]\r\n<div class="quiz">\r\n<h3>Si tú eres testigo de que alguien se desploma y carece de respuesta, debes llamar a los teléfonos de emergencia, dar dos respiraciones boca a boca y luego iniciar las compresiones torácicas.</h3>\r\n<div class="cont">\r\n<div class="quest-option"><input id="verdaderoq" class="radio" name="pregunta" type="radio" value="verdadero" /><label for="verdaderoq">Verdadero</label></div>\r\n<div class="quest-option"><input id="falsoq" class="radio" name="pregunta" type="radio" value="falso" /><label for="falsoq">Falso</label></div>\r\n<div id="respoq" class="respo"><strong>Respuesta:</strong> Falso. La respiración boca a boca no es necesaria para que un testigo provea reanimación cardiopulmonar. Ha de llamarse a los teléfonos de emergencia e iniciar las compresiones torácicas.</div>\r\n</div>\r\n</div>\r\n<div class="cont-submit2"><button id="pregunta" class="submit1" type="button">Continuar</button></div>\r\n</div>\r\n</div>\r\n[/raw]', 'Pregunta de opinión', '', 'inherit', 'open', 'open', '', '286-revision-v1', '', '', '2014-05-29 22:44:12', '2014-05-29 22:44:12', '', 286, 'http://micorazon.blend.mx/286-revision-v1/', 0, 'revision', '', 0),
+(681, 1, '2014-06-03 20:59:09', '2014-06-03 20:59:09', '', 'dao', '', 'publish', 'open', 'open', '', 'dao', '', '', '2014-06-03 21:09:52', '2014-06-03 21:09:52', '', 0, 'http://micorazon.wp:8888/?page_id=681', 0, 'page', '', 0),
+(682, 1, '2014-06-03 20:59:09', '2014-06-03 20:59:09', '', 'dao', '', 'inherit', 'open', 'open', '', '681-revision-v1', '', '', '2014-06-03 20:59:09', '2014-06-03 20:59:09', '', 681, 'http://micorazon.wp:8888/681-revision-v1/', 0, 'revision', '', 0),
+(683, 1, '2014-06-03 21:09:55', '2014-06-03 21:09:55', '', 'dao', '', 'inherit', 'open', 'open', '', '681-autosave-v1', '', '', '2014-06-03 21:09:55', '2014-06-03 21:09:55', '', 681, 'http://micorazon.wp:8888/681-autosave-v1/', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
@@ -2582,7 +2608,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 -- Table structure for table `wp_signups`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_signups` (
+CREATE TABLE `wp_signups` (
   `signup_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `domain` varchar(200) NOT NULL DEFAULT '',
   `path` varchar(100) NOT NULL DEFAULT '',
@@ -2604,54 +2630,10 @@ CREATE TABLE IF NOT EXISTS `wp_signups` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_terms`
---
-
-CREATE TABLE IF NOT EXISTS `wp_terms` (
-  `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL DEFAULT '',
-  `slug` varchar(200) NOT NULL DEFAULT '',
-  `term_group` bigint(10) NOT NULL DEFAULT '0',
-  `term_order` int(4) DEFAULT '0',
-  PRIMARY KEY (`term_id`),
-  UNIQUE KEY `slug` (`slug`),
-  KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
-
---
--- Dumping data for table `wp_terms`
---
-
-INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`, `term_order`) VALUES
-(1, 'Uncategorized', 'uncategorized', 0, 1),
-(2, 'Prepárate', 'preparate', 0, 2),
-(3, 'Ponte en marcha', 'ponte-en-marca', 0, 3),
-(4, 'Conoce más', 'conoce-mas', 0, 4),
-(5, 'Tu riesgo más grande', 'tu-riesgo-mas-grande', 0, 1),
-(6, 'Conoce tus antecedentes personales', 'conoce-tus-antecedentes-personales', 0, 2),
-(7, 'Prepárate para comenzar', 'preparate-para-comenzar', 0, 3),
-(8, 'Establece objetivos', 'establece-objetivos', 0, 4),
-(9, 'Come 5, muévete 10, duerme 8', 'come-5-muevete-10-duerme-8', 0, 1),
-(10, 'Conoce tus cifras personales', 'conoce-tus-cifras-personales', 0, 2),
-(11, 'Come saludable y mantén un peso saludable', 'come-saludable-y-manten-un-peso-saludable', 0, 3),
-(12, 'Sé activo', 'se-activo', 0, 4),
-(13, 'Duerme bien', 'duerme-bien', 0, 5),
-(14, 'Haz frente al tabaco', 'haz-frente-al-tabaco', 0, 6),
-(15, 'Toma tus medicamentos', 'toma-tus-medicamentos', 0, 1),
-(16, 'Planea para emergencias', 'planea-para-emergencias', 0, 2),
-(17, 'Disfruta la vida', 'disfruta-la-vida', 0, 3),
-(18, 'Cómo funciona tu corazón', 'como-funciona-tu-corazon', 0, 4),
-(19, 'Recetas Saludables', 'recetas', 0, 5),
-(20, 'Actividades interactivas', 'actividades', 0, 6),
-(21, 'Comunidad para un corazón sano', 'comunidad-para-un-corazon-sano', 0, 7);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `wp_term_relationships`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
+CREATE TABLE `wp_term_relationships` (
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `term_order` int(11) NOT NULL DEFAULT '0',
@@ -2985,7 +2967,7 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- Table structure for table `wp_term_taxonomy`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
+CREATE TABLE `wp_term_taxonomy` (
   `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `taxonomy` varchar(32) NOT NULL DEFAULT '',
@@ -3027,10 +3009,54 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `wp_terms`
+--
+
+CREATE TABLE `wp_terms` (
+  `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL DEFAULT '',
+  `slug` varchar(200) NOT NULL DEFAULT '',
+  `term_group` bigint(10) NOT NULL DEFAULT '0',
+  `term_order` int(4) DEFAULT '0',
+  PRIMARY KEY (`term_id`),
+  UNIQUE KEY `slug` (`slug`),
+  KEY `name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+
+--
+-- Dumping data for table `wp_terms`
+--
+
+INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`, `term_order`) VALUES
+(1, 'Uncategorized', 'uncategorized', 0, 1),
+(2, 'Prepárate', 'preparate', 0, 2),
+(3, 'Ponte en marcha', 'ponte-en-marca', 0, 3),
+(4, 'Conoce más', 'conoce-mas', 0, 4),
+(5, 'Tu riesgo más grande', 'tu-riesgo-mas-grande', 0, 1),
+(6, 'Conoce tus antecedentes personales', 'conoce-tus-antecedentes-personales', 0, 2),
+(7, 'Prepárate para comenzar', 'preparate-para-comenzar', 0, 3),
+(8, 'Establece objetivos', 'establece-objetivos', 0, 4),
+(9, 'Come 5, muévete 10, duerme 8', 'come-5-muevete-10-duerme-8', 0, 1),
+(10, 'Conoce tus cifras personales', 'conoce-tus-cifras-personales', 0, 2),
+(11, 'Come saludable y mantén un peso saludable', 'come-saludable-y-manten-un-peso-saludable', 0, 3),
+(12, 'Sé activo', 'se-activo', 0, 4),
+(13, 'Duerme bien', 'duerme-bien', 0, 5),
+(14, 'Haz frente al tabaco', 'haz-frente-al-tabaco', 0, 6),
+(15, 'Toma tus medicamentos', 'toma-tus-medicamentos', 0, 1),
+(16, 'Planea para emergencias', 'planea-para-emergencias', 0, 2),
+(17, 'Disfruta la vida', 'disfruta-la-vida', 0, 3),
+(18, 'Cómo funciona tu corazón', 'como-funciona-tu-corazon', 0, 4),
+(19, 'Recetas Saludables', 'recetas', 0, 5),
+(20, 'Actividades interactivas', 'actividades', 0, 6),
+(21, 'Comunidad para un corazón sano', 'comunidad-para-un-corazon-sano', 0, 7);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wp_usermeta`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_usermeta` (
+CREATE TABLE `wp_usermeta` (
   `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) DEFAULT NULL,
@@ -3091,7 +3117,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- Table structure for table `wp_users`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_users` (
+CREATE TABLE `wp_users` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_login` varchar(60) NOT NULL DEFAULT '',
   `user_pass` varchar(64) NOT NULL DEFAULT '',
@@ -3112,7 +3138,7 @@ CREATE TABLE IF NOT EXISTS `wp_users` (
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(1, 'admin', '$P$BWTSFcQeEpZZ4730jiIBIjuyzsHSRp/', 'admin', 'angel@blend.mx', '', '2014-05-09 16:42:16', '', 0, 'admin'),
+(1, 'angel@blend.mx', '$P$BWTSFcQeEpZZ4730jiIBIjuyzsHSRp/', 'admin', 'angel@blend.mx', '', '2014-05-09 16:42:16', '', 0, 'admin'),
 (2, 'lilo', '$P$B2ov4uYiXV5vX48cLVccP9A33rFyZN/', 'lilo', 'lilo@blend.mx', '', '2014-05-22 18:47:03', '', 0, 'lilo gaez');
 
 -- --------------------------------------------------------
@@ -3121,7 +3147,7 @@ INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_
 -- Table structure for table `wp_wti_like_post`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_wti_like_post` (
+CREATE TABLE `wp_wti_like_post` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `post_id` int(11) NOT NULL,
   `value` int(2) NOT NULL,
@@ -3146,7 +3172,7 @@ INSERT INTO `wp_wti_like_post` (`id`, `post_id`, `value`, `date_time`, `ip`, `us
 -- Table structure for table `wp_zaki_like_dislike_comments`
 --
 
-CREATE TABLE IF NOT EXISTS `wp_zaki_like_dislike_comments` (
+CREATE TABLE `wp_zaki_like_dislike_comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_id` int(11) NOT NULL,
   `rate_like_value` int(11) NOT NULL DEFAULT '0',
@@ -3154,7 +3180,7 @@ CREATE TABLE IF NOT EXISTS `wp_zaki_like_dislike_comments` (
   `rate_like_ip` longtext NOT NULL,
   `rate_dislike_ip` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `wp_zaki_like_dislike_comments`
@@ -3163,8 +3189,10 @@ CREATE TABLE IF NOT EXISTS `wp_zaki_like_dislike_comments` (
 INSERT INTO `wp_zaki_like_dislike_comments` (`id`, `comment_id`, `rate_like_value`, `rate_dislike_value`, `rate_like_ip`, `rate_dislike_ip`) VALUES
 (1, 21, 1, 0, '["127.0.0.1"]', '[]'),
 (2, 18, 1, 0, '["127.0.0.1"]', '[]'),
-(3, 19, 1, 0, '["127.0.0.1"]', '[]');
+(3, 19, 1, 0, '["127.0.0.1"]', '[]'),
+(4, 17, 1, 0, '["127.0.0.1"]', '[]'),
+(5, 4, 1, 0, '["127.0.0.1"]', '[]'),
+(6, 5, 1, 0, '["127.0.0.1"]', '[]'),
+(7, 6, 1, 0, '["127.0.0.1"]', '[]'),
+(8, 22, 1, 0, '["127.0.0.1"]', '[]');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
