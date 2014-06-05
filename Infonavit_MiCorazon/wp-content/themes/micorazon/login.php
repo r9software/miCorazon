@@ -65,7 +65,9 @@ include 'header-registro.php';
 						<label>Contraseña</label><input type="password" name="pass" value="" class="field1" />
 
 					</div>
-					<input type="submit" value="submit" class="submitred"/> 
+					<div class="form-group center">
+					<input type="submit" value="Enviar" class="submitred1"/>
+					</div>
 				</form> 
 				<?php
 			if(isset($_GET['mal'])){ ?>

@@ -88,6 +88,9 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
 .submit1:active{background-color:#AB4254;}
 .submitred{background-color: #D54254; border:0px; outline:none; width:130px; height:36px; font-weight:400; color:#FFFFFF; font-size:13px; cursor:pointer;  }
 .submitred:active{background-color:#D54254;}
+.submitred1{background-color: #D54254; border:0px; outline:none; width:130px; height:36px; font-weight:400; color:#FFFFFF; font-size:13px; cursor:pointer; margin:0px auto;   }
+.submitred1:active{background-color:#D54254;}
+.center{text-align:center; }
 .submit2{background-color: #63B7E3; border:0px; outline:none; float:left; padding:0px 40px 0px 40px;  text-decoration:none;   height:36px; line-height:36px; font-weight:400; color:#FFFFFF; font-size:13px; cursor:pointer; float: right; margin-right: 10px }
 .submit2:active{background-color:#AB4254;}
 .submit3{background-color: #63B7E3; border:0px; outline:none; width:130px; height:36px; font-weight:400; color:#FFFFFF; font-size:13px; cursor:pointer; float: right; margin-right: 93px;margin-top: 25px;}
