@@ -78,8 +78,7 @@ include 'header-registro.php';
 			</div>
 			<?php } ?>
 			</div>
-			
-				
+		
 			<div class="options-login">
 				<ul>
 					<li><a href="#">¿Olvidaste tu contraseña? Actualízala</a></li>

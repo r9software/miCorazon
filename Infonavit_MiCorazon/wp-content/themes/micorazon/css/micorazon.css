@@ -21,7 +21,6 @@ select::-ms-expand {
 select::-moz-focus-inner {
   border: 0;
 }
-
 select:focus
 {
   outline: none;
