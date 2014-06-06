@@ -8,7 +8,7 @@
   echo "<pre>";
   print_r($_POST);
   echo "</pre>";
-*/
+ */
 
 $bandera = true;
 $cadena = "?";
@@ -96,6 +96,9 @@ if ( isset( $_POST['mail'] ) ) {
 			$genero = 'F';
 		}
 	}
+} else if ( !isset( $_POST['genero'] ) ) {
+	$bandera = false;
+	$cadena = $cadena . "&gm=";
 }
 
 
@@ -141,6 +144,15 @@ if ( $bandera ) {
 						':acepto' => $acepto,
 						':avatar' => site_url() . "/wp-contents/uploads/avatar/" . $id . ".jpg" )
 					) ) {
+				$creds = array();
+				$creds['user_login'] = $mail;
+				$creds['user_password'] = $password;
+				$creds['remember'] = true;
+				$user = wp_signon( $creds, false );
+				if ( is_wp_error( $user ) ) {
+					header( "Location: " . site_url() . "/login?mal=true" );
+					exit;
+				}
 				header( "Location:" . site_url() . "/cuestionario/" );
 			}
 		}
