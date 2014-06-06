@@ -4,7 +4,6 @@
   Template Name: Login
  */
 global $current_user;
-
 				
 			
 // Obtenemos la informacion del usuario conectado y asignamos los valores a las variables globales
@@ -24,7 +23,7 @@ if ( isset( $_GET['codigo'] ) && isset( $_GET['empresa'] ) ) {
 	$codigo = strip_tags( $codigo );
 	$locationError = "http://micorazon.wp/?error=true";
 	try {
-		$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", "root" );
+		$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root",DB_PASSWORD );
 		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		$stmnt = $conn->query( "SELECT * FROM empresa WHERE codigo='{$codigo}' LIMIT 1" );
 

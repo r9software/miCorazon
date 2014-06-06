@@ -1,7 +1,4 @@
 
-CREATE DATABASE `ricardo_xvh` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `ricardo_xvh`;
-
 -- --------------------------------------------------------
 
 --

@@ -21,6 +21,7 @@ $globalSettings=Array();
 $globalSettings['server']='localhost';
 $globalSettings['mysqluser']='habitos';
 $globalSettings['mysqlpassword']='eureka';
+//Zqf1z0#5
 $globalSettings['mysqldb']='ricardo_xvh';
 
 $db = mysql_connect($globalSettings['server'],$globalSettings['mysqluser'],$globalSettings['mysqlpassword']) or exit(json_encode(array('status'=>false,'error'=>'MYSQL_CONNECT_ERROR')));

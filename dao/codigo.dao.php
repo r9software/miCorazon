@@ -11,7 +11,7 @@ if (isset($_POST['codigo'])) {
     $codigo = strip_tags($codigo);
     $locationError = "http://micorazon.wp/?error=true";
     try {
-        $conn = new PDO('mysql:host=localhost;dbname=micorazon', "root", "root");
+        $conn = new PDO('mysql:host=localhost;dbname=micorazon', "root", "r6Pk1b^9");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmnt = $conn->query("SELECT * FROM empresa WHERE codigo='{$codigo}' LIMIT 1");
 

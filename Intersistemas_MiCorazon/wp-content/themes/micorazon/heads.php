@@ -4,6 +4,10 @@
  *
  * @package micorazon
  */
+
+if ( !is_user_logged_in() ) {
+	header( "Location: " . site_url() . "/login" );
+}
 ?>
 <html <?php language_attributes(); ?>>
 	<head>

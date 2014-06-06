@@ -3,6 +3,10 @@
   @package micorazon
   Template Name: Perfil
  */
+
+if ( !is_user_logged_in() ) {
+	header( "Location: " . site_url() . "/login" );
+}
 ?>
 <?php include 'header-registro.php'; ?>
     <body >

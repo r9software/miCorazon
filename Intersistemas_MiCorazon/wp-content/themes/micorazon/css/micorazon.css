@@ -62,10 +62,10 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
 .alert1{float:left; display:none;   background-color:red; color:#FFF;  height:24px; line-height:24px; padding:0px 10px 0px 10px;   font-size:13px; margin-left:20px; margin-top:5px; position:relative;      }
 .alert1:after{ content: ""; position: absolute; width: 0; height: 0; border-width: 12px; border-style: solid; border-color: transparent red transparent transparent; top: 0px; left: -24px;}
 
-.alert2{float:left; display:none;   background-color:red; color:#FFF;  height:24px; line-height:24px; padding:0px 10px 0px 10px;   font-size:13px; margin-top:5px; position:relative;      }
+.alert2{float:left;    background-color:red; color:#FFF;  height:24px; line-height:24px; padding:0px 10px 0px 10px;   font-size:13px; margin-top:5px; position:relative;      }
 .alert2:after{ content: ""; position: absolute; width: 0; height: 0; border-width: 12px; border-style: solid; border-color: transparent transparent red transparent; top: -20px; left:44%;}
 
-.alert3{float:left; display:none;   background-color:red; color:#FFF;  height:24px; line-height:24px; padding:0px 10px 0px 10px;   font-size:13px; margin-top:8px; left:46%;  position:relative;      }
+.alert3{float:left;   background-color:red; color:#FFF;  height:24px; line-height:24px; padding:0px 10px 0px 10px;   font-size:13px; margin-top:8px; left:46%;  position:relative;      }
 .alert3:after{ content: ""; position: absolute; width: 0; height: 0; border-width: 12px; border-style: solid; border-color: transparent transparent red transparent; top: -20px; left:44%;}
 
 .alert4{float:left; display:none;   background-color:red; color:#FFF;  height:24px; line-height:24px; padding:0px 10px 0px 10px;   font-size:13px; margin-top:8px; left:46%;  position:relative;      }

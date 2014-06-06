@@ -3,6 +3,10 @@
   @package micorazon
   Template Name: cuestionario
  */
+
+if ( is_user_logged_in() ) {
+	header( "Location: " . site_url() . "" );
+}
 ?>
 <?php include 'header-registro.php'; ?>
 <body >
