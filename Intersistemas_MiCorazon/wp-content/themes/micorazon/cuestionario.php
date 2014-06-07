@@ -118,7 +118,7 @@ $id=$current_user->ID;
 										<div class="imc-result" id="res">
 											IMC:
 										</div>
-										<a onClick="calculaIMC()">Calcula tu IMC</a>
+										
 									</div>
 								</div>
 								<div class="alert2" id="alert-imc">

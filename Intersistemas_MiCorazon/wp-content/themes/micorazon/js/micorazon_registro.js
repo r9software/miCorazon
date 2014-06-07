@@ -1,5 +1,10 @@
 
 /*DROPKICK PLUGIN*/
+
+var calculaIMC=function(peso,altura) {
+    return (peso/Math.pow((altura),2))
+};
+
 $(function() {
     $('.default').dropkick();
 });
@@ -78,15 +83,16 @@ $(document).ready(function() {
             });
         }
     });
+    /*
     $("#peso").keydown(function(e) {
-        altura =  parseInt($('#altura').val());
-        peso =  parseInt($('#peso').val());
+        altura =  parseFloat($('#altura').val());
+        peso =  parseFloat($('#peso').val());
         imc = calculaIMC(peso, altura);
         $("#res").text("IMC: " + imc);
     });
     $("#altura").keydown(function(e) {
-        altura = parseInt($('#altura').val());
-        peso = parseInt($('#peso').val());
+        altura = parseFloat($('#altura').val());
+        peso = parseFloat($('#peso').val());
         imc = calculaIMC(peso, altura);
         $("#res").text("IMC: " + imc);
     });
