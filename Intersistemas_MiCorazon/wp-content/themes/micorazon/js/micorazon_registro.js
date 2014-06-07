@@ -1,16 +1,157 @@
+
 /*DROPKICK PLUGIN*/
 $(function() {
     $('.default').dropkick();
 });
 /*JQUERY*/
 $(document).ready(function() {
+    /*VALIDACIONES NUMERICAS*/
+    $("#cifra-presion-sistolico").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                    $('#cifra-presion-sistolico').val('');
+                }
+            });
+        }
+    });
+    $("#cifra-presion-diastolico").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                    $('#cifra-presion-diastolico').val('');
+                }
+            });
+        }
+    });
+    $("#cifra-glucosa").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                    $('#cifra-glucosa').val('');
+                }
+            });
+        }
+    });
+    $("#cifra-trigliceridos").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                    $('#cifra-trigliceridos').val('');
+                }
+            });
+        }
+    });
+    $("#peso").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                    $('#peso').val('');
+                }
+            });
+        }
+    });
+    $("#altura").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                    $('#altura').val('');
+                }
+            });
+        }
+    });
+    $("#peso").keydown(function(e) {
+        altura =  parseInt($('#altura').val());
+        peso =  parseInt($('#peso').val());
+        imc = calculaIMC(peso, altura);
+        $("#res").text("IMC: " + imc);
+    });
+    $("#altura").keydown(function(e) {
+        altura = parseInt($('#altura').val());
+        peso = parseInt($('#peso').val());
+        imc = calculaIMC(peso, altura);
+        $("#res").text("IMC: " + imc);
+    });
+    /*CUESTIONARIO VALIDACIÓN PASO1*/
+
+    var bandera = true;
+    $('#sig1x').click(function() {
+        if (!$("input[name='presion']:checked").length > 0 || !$("input[name='glucosa']:checked").length > 0 || !$("input[name='trigliceridos']:checked").length > 0) {
+            bandera = false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus()
+                }
+            });
+        }
+        if ($('#presion-si').is(':checked')) {
+            if ($('#cifra-presion-sistolico').val().length == 0) {
+                bandera = false;
+                $('#aviso5').lightbox_me({
+                    centered: true,
+                    onLoad: function() {
+                        $('#aviso5').find('input:first').focus()
+                    }
+                });
+            }
+        }
+        if ($('#glucosa-si').is(':checked')) {
+
+            if ($('#cifra-glucosa').val().length == 0) {
+                bandera = false;
+                $('#aviso5').lightbox_me({
+                    centered: true,
+                    onLoad: function() {
+                        $('#aviso5').find('input:first').focus()
+                    }
+                });
+            }
+        }
+        if ($('#trigliceridos-si').is(':checked')) {
+
+            if ($('#cifra-trigliceridos').val().length == 0) {
+                bandera = false;
+                $('#aviso5').lightbox_me({
+                    centered: true,
+                    onLoad: function() {
+                        $('#aviso5').find('input:first').focus()
+                    }
+                });
+            }
+        }
+        if (bandera) {
+            alert("OK");
+        }
+
+    });
+
+    /*REGISTRO VALIDACIÓN ALERT*/
     $('#buttonsubmit').click(function() {
         if ($('#terminos').is(':checked')) {
-          $('#myform').submit();
+            $('#myform').submit();
 
         } else {
-             $('#alert-terminos').show();
-             return false;
+            $('#alert-terminos').show();
+            return false;
         }
     });
     /*CUESTIONARIO Paso1 pregunta 1*/
@@ -28,7 +169,6 @@ $(document).ready(function() {
                     $('#aviso1').find('input:first').focus()
                 }
             });
-            e.preventDefault();
         }
     });
     /*CUESTIONARIO Paso1 pregunta 2*/
@@ -46,7 +186,6 @@ $(document).ready(function() {
                     $('#aviso2').find('input:first').focus()
                 }
             });
-            e.preventDefault();
         }
     });
     /*CUESTIONARIO Paso1 pregunta 3*/
@@ -64,7 +203,6 @@ $(document).ready(function() {
                     $('#aviso3').find('input:first').focus()
                 }
             });
-            e.preventDefault();
         }
     });
     /*CUESTIONARIO Paso4 pregunta 1*/

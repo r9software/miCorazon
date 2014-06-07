@@ -24,6 +24,18 @@ $id=$current_user->ID;
 		<a href="#" class="close"></a>
 		<p>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de triglicéridos.</p>
 	</div>
+        <div class="aviso1" id="aviso4">
+		<a href="#" class="close"></a>
+		<p>Debes seleccionar una opción por cada pregunta.</p>
+	</div>
+    <div class="aviso1" id="aviso5">
+		<a href="#" class="close"></a>
+		<p>Si conoces tus cifras, los campos no pueden estar vacios.</p>
+	</div>
+     <div class="aviso1" id="aviso6">
+		<a href="#" class="close"></a>
+		<p>Solo puedes ingresar valores numéricos.</p>
+	</div>
 	<div class="content-all">
 		<div class="bg_registro">   
 		</div>
@@ -58,7 +70,7 @@ $id=$current_user->ID;
 									<input name="presion" type="radio" id="presion-si"  value="1" />
 									<label for="presion-si" class="radie">Sí</label>
 									<div class="si-value" id="presion-value">
-										<input type="text" name="cifra-presion-sistolico" value="" class="field3" /><span>sistólico</span>  <input type="text" name="cifra-presion-diastolico" value="" class="field3" /><span>diastólico</span>
+										<input type="text" name="cifra-presion-sistolico" id="cifra-presion-sistolico" value="" class="field3" /><span>sistólico</span>  <input type="text" name="cifra-presion-diastolico" id="cifra-presion-diastolico" value="" class="field3" /><span>diastólico</span>
 									</div>
 									<div class="alert1" id="alert-presion">
 										*Campo obligatorio
@@ -71,7 +83,7 @@ $id=$current_user->ID;
 									<input name="glucosa" type="radio" id="glucosa-no"  value="0" /><label for="glucosa-no" class="radie">No</label>
 									<input name="glucosa" type="radio" id="glucosa-si"  value="1" /><label for="glucosa-si" class="radie">Sí</label>
 									<div class="si-value" id="glucosa-value">
-										<input type="text" name="cifra-glucosa" value="" class="field3" /><span>mg/dL</span>
+										<input type="text" name="cifra-glucosa" value="" class="field3" id="cifra-glucosa" /><span>mg/dL</span>
 									</div>
 									<div class="alert1" id="alert-glucosa">
 										*Campo obligatorio
@@ -84,52 +96,23 @@ $id=$current_user->ID;
 									<input name="trigliceridos" type="radio" id="trigliceridos-no"  value="0" /><label for="trigliceridos-no" class="radie">No</label>
 									<input name="trigliceridos" type="radio" id="trigliceridos-si"  value="1" /><label for="trigliceridos-si" class="radie">Sí</label>
 									<div class="si-value" id="trigliceridos-value">
-										<input type="text" name="cifra-trigliceridos" value="" class="field3" /><span>mg/dL</span>
+										<input type="text" name="cifra-trigliceridos" value="" class="field3" id="cifra-trigliceridos" /><span>mg/dL</span>
 									</div>
 									<div class="alert1" id="alert-trigliceridos">
 										*Campo obligatorio
 									</div>
 								</div>
 							</div>
-							<script type="text/javascript"> 
-							//definimos la funcion 
-							function calculaIMC() { 
-							//declaramos las variables 
-						   var peso, altura, imc; 
-						   //hacemos la llamada a los datos introducidos 
-							peso=document.getElementById("peso").value; 
-							altura=document.getElementById("altura").value/100; 
-						   //calculamos el imc 
-							imc=peso/(altura*altura); 
-						   //enviamos el resultado a la caja correspondiente y lo reducimos a 2 decimales 
-							document.getElementById("res").innerHTML+= value=imc.toFixed(2);
-						   //mediante if comparamos el resultado para determinar si es correcto el peso 
-							if(imc<=20.5) 
-							 { 
-							 //determinamos el defecto en peso y definimos el comentario 
-							 alert("Considera empezar un programa de aumento de peso."); 
-							 } 
-							 else if(imc>=25.5) 
-							{ 
-							//determinamos el exceso en peso y definimos el comentario
-							alert("Considera empezar un programa de pérdida de peso."); 
-							} 
-							else 
-							 { 
-							 alert("Tienes un peso saludable"); 
-							 } 
-							 }  
-							</script>
 							<div class="form-group">
 								<div class="cal-imc">
 									<h2>Índice de masa corporal (IMC)</h2>
 									<div class="form-group">
 										<label>Anota tu peso (kg):</label>
-										<input type="text" name="peso" id="peso" value=""  class="field" />
+                                                                                <input type="text" name="peso" id="peso" value="" placeholder="65"  class="field" />
 									</div>
 									<div class="form-group">
-										<label>Anota tu estatura (m):</label>
-										<input type="text" name="altura" id="altura" value=""  class="field" />
+										<label>Anota tu estatura (cm):</label>
+										<input type="text" name="altura" id="altura" value="" placeholder="170"  class="field" />
 									</div>
 									<div class="form-group0">
 										<div class="imc-result" id="res">
@@ -143,7 +126,7 @@ $id=$current_user->ID;
 								</div>
 							</div>
 							<div class="cont-submit3">
-								<a  class="submit2 nexttab" id="sig1">Siguiente</a>
+								<a  class="submit2 " id="sig1x">Siguiente</a>
 							</div>
 						</div>
 						<div id="fragment-2"  >
