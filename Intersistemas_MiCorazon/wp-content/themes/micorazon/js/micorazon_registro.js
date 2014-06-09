@@ -1,15 +1,145 @@
 
 /*DROPKICK PLUGIN*/
 
-var calculaIMC=function(peso,altura) {
-    return (peso/Math.pow((altura),2))
-};
 
 $(function() {
     $('.default').dropkick();
 });
 /*JQUERY*/
 $(document).ready(function() {
+    $('#sig2x').click(function() {
+         var bandera = true;
+        if ($('#raciones-fruta').val() == 'default') {
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                }
+            });
+        }
+        if ($('#raciones-verdura').val() == 'default') {
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                }
+            });
+        }
+        if ($('#frecuencia-empanizado').val() == 'default') {
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                }
+            });
+        }
+        if ($('#frecuencia-azucaradas').val() == 'default') {
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                }
+            });
+        }
+        if ($('#frecuencia-sal').val() == 'default') {
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                }
+            });
+        }
+        if (bandera) {
+         
+            window.location.href='#fragment-3';
+            window.location.reload();
+        }
+    });
+    $('#sig3x').click(function() {
+        var bandera = true;
+        if ($('#nivel-estres').val() == 'default') {
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                }
+            });
+        }
+        if ($('#actividades-fisicas').val() == 'default') {
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                }
+            });
+        }
+        if ($('#hora-sueno').val() == 'default') {
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                }
+            });
+        }
+         if (bandera) {
+         
+            window.location.href='#fragment-4';
+            window.location.reload();
+        }
+    });
+    $('#sig4x').click(function() {
+        var bandera = true;
+        if(!$("input[name='fumas']:checked").length > 0){
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus()
+                }
+            });
+        }
+        if(!$("input[name='familiar-directo']:checked").length > 0){
+            bandera=false;
+            $('#aviso4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus()
+                }
+            });
+        }
+        if ($('#fumas-si').is(':checked')) {
+            if ($('#frecuencia-fumas').val() == 'default') {
+                bandera=false;
+                $('#aviso7').lightbox_me({
+                    centered: true,
+                    onLoad: function() {
+                        $('#aviso7').find('input:first').focus();
+                    }
+                });
+            }
+            if ($('#frecuencia-fumas2').val() == 'default') {
+                bandera=false;
+                $('#aviso7').lightbox_me({
+                    centered: true,
+                    onLoad: function() {
+                        $('#aviso7').find('input:first').focus();
+                    }
+                });
+            }
+
+        }
+        if (bandera) {
+          $('#myform').submit();
+        }
+    });
     /*VALIDACIONES NUMERICAS*/
     $("#cifra-presion-sistolico").keypress(function(e) {
         //SI NO ES NUMERICO...
@@ -83,18 +213,94 @@ $(document).ready(function() {
             });
         }
     });
-    /*
-    $("#peso").keydown(function(e) {
-        altura =  parseFloat($('#altura').val());
-        peso =  parseFloat($('#peso').val());
-        imc = calculaIMC(peso, altura);
-        $("#res").text("IMC: " + imc);
-    });
-    $("#altura").keydown(function(e) {
+
+    $("#peso").keyup(function(e) {
         altura = parseFloat($('#altura').val());
         peso = parseFloat($('#peso').val());
-        imc = calculaIMC(peso, altura);
-        $("#res").text("IMC: " + imc);
+        dataString = "altura=" + altura + "&peso=" + peso;
+
+        $.ajax({
+            type: "POST",
+            url: "/imc-json",
+            data: dataString,
+            dataType: "json",
+            //if received a response from the server
+            success: function(data) {
+                //our country code was correct so we have some information to display
+                if (data.success) {
+                    $("#res").text("IMC: " + parseFloat(data.imc).toFixed(2));
+                    imc = parseFloat(data.imc).toFixed(2);
+                    $('input[name="imc"]').attr('value',imc);
+                    if (imc <= 20.5)
+                    {
+                        //determinamos el defecto en peso y definimos el comentario 
+                        $("#resimc").text("Considera empezar un programa de aumento de peso.");
+                    }
+                    else if (imc >= 25.5)
+                    {
+                        //determinamos el exceso en peso y definimos el comentario
+                        $("#resimc").text("Considera empezar un programa de pérdida de peso.");
+                    }
+                    else
+                    {
+                       $("#resimc").text("Tienes un peso saludable");
+                    }
+                }
+                //display error message
+                else {
+                    $("#res").text("IMC: " + 0);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("Something really bad happened " + textStatus);
+                $("#ajaxResponse").html(jqXHR.responseText);
+       },
+        });
+
+    });
+    $("#altura").keyup(function(e) {
+        altura = parseFloat($('#altura').val());
+        peso = parseFloat($('#peso').val());
+        dataString = "altura=" + altura + "&peso=" + peso;
+
+        $.ajax({
+            type: "POST",
+            url: "/imc-json",
+            data: dataString,
+            dataType: "json",
+            //if received a response from the server
+            success: function(data) {
+                //our country code was correct so we have some information to display
+                if (data.success) {
+                    $("#res").text("IMC: " + parseFloat(data.imc).toFixed(2));
+                    imc = parseFloat(data.imc).toFixed(2);
+                    $('input[name="imc"]').attr('value',imc);
+                    if (imc <= 20.5)
+                    {
+                        //determinamos el defecto en peso y definimos el comentario 
+                        $("#resimc").text("Considera empezar un programa de aumento de peso.");
+                    }
+                    else if (imc >= 25.5)
+                    {
+                        //determinamos el exceso en peso y definimos el comentario
+                        $("#resimc").text("Considera empezar un programa de pérdida de peso.");
+                    }
+                    else
+                    {
+                       $("#resimc").text("Tienes un peso saludable");
+                    }
+                }
+                //display error message
+                else {
+                    $("#res").text("IMC: " + 0);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("Something really bad happened " + textStatus);
+                $("#ajaxResponse").html(jqXHR.responseText);
+            },
+        });
+
     });
     /*CUESTIONARIO VALIDACIÓN PASO1*/
 
@@ -145,7 +351,9 @@ $(document).ready(function() {
             }
         }
         if (bandera) {
-            alert("OK");
+         
+            window.location.href='#fragment-2';
+            window.location.reload();
         }
 
     });

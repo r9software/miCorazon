@@ -7,8 +7,7 @@
   echo "<pre>";
   print_r( $_POST);
   echo '</pre>';
- * 
- */
+*/
 $current_user = wp_get_current_user();
 $id = $current_user->ID;
 $cps;
@@ -57,6 +56,9 @@ $apbacs = 0;
 $abapacs = 0;
 $abmacs = 0;
 $abamacs = 0;
+
+//riesgo
+$riesgo = 1;
 
 
 $presion = $_POST['presion'];
@@ -110,6 +112,11 @@ if ( isset( $_POST['altura'] ) ) {
 } else {
 	$altura = 0;
 }
+if ( isset( $_POST['imc'] ) ) {
+	$imc = $_POST['imc'];
+} else {
+	$imc = 0;
+}
 if ( isset( $_POST['raciones-fruta'] ) ) {
 	$rfruta = $_POST['raciones-fruta'];
 } else {
@@ -156,15 +163,24 @@ if ( isset( $_POST['fumas'] ) ) {
 	$fumas = 0;
 }
 if ( isset( $_POST['frecuencia-fumas'] ) ) {
-	$ffumas1 = $_POST['frecuencia-fumas'];
+	if ( is_numeric( $_POST['frecuencia-fumas'] ) ) {
+		$ffumas1 = $_POST['frecuencia-fumas'];
+	} else {
+		$ffumas1 = 0;
+	}
 } else {
 	$ffumas1 = 0;
 }
 if ( isset( $_POST['frecuencia-fumas2'] ) ) {
-	$ffumas2 = $_POST['frecuencia-fumas2'];
+	if ( is_numeric( $_POST['frecuencia-fumas2'] ) ) {
+		$ffumas2 = $_POST['frecuencia-fumas2'];
+	} else {
+		$ffumas2 = 0;
+	}
 } else {
 	$ffumas2 = 0;
 }
+
 
 if ( isset( $_POST['familiar-directo'] ) ) {
 	if ( $_POST['familiar-directo'] ) {
@@ -249,6 +265,87 @@ if ( isset( $_POST['familiar-directo'] ) ) {
 	}
 }
 
+$imc = calculaIMC( $peso, $altura );
+
+function calculaIMC( $peso, $altura ) {
+	$altura = $altura / 100;
+	return $peso / ( ( $altura * $altura ) );
+}
+
+if ( !$presion ) {
+
+	$riesgo = 2;
+} else if ( !$glucosa ) {
+	$riesgo = 2;
+} else if ( !$trigliceridos ) {
+	$riesgo = 2;
+} else if ( $imc > 27 ) {
+	$riesgo = 2;
+} else if ( $rfruta == 0 ) {
+	$riesgo = 2;
+} else if ( $rverdura == 0 ) {
+	$riesgo = 2;
+} else if ( $fempanizado < 3 ) {
+	$riesgo = 2;
+} else if ( $fazucaradas < 3 ) {
+	$riesgo = 2;
+} else if ( $fsal == 1 ) {
+	$riesgo = 2;
+} else if ( $nestres > 3 ) {
+	$riesgo = 2;
+} else if ( $afisicas < 3 ) {
+	$riesgo = 2;
+} else if ( $hsueno != 2 ) {
+	$riesgo = 2;
+} else if ( $fumas == 1 ) {
+	if ( $ffumas1 > 1 ) {
+		$riesgo = 2;
+	}if ( $ffumas2 > 1 ) {
+		$riesgo = 2;
+	}
+} else if ( $_POST['familiar-directo'] == 1 ) {
+	$riesgo = 2;
+}
+if ( $riesgo < 2 ) {
+	if ( $presion ) {
+		if ( $cps < 120 ) {
+			if ( $cpd < 80 ) {
+				if ( $glucosa ) {
+					if ( $cg < 100 ) {
+						if ( $trigliceridos ) {
+							if ( $ct < 150 ) {
+								if ( $imc < 25 ) {
+									if ( $rfruta > 2 ) {
+										if ( $rverdura > 2 ) {
+											if ( $fempanizado > 3 ) {
+												if ( $fazucaradas > 3 ) {
+													if ( $fsal == 3 ) {
+														if ( $nestres < 3 ) {
+															if ( $afisicas > 4 ) {
+																if ( $hsueno == 2 ) {
+																	if ( $fumas == 0 ) {
+																		if ( $_POST['familiar-directo'] == 0 ) {
+																			$riesgo = 0;
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 
 try {
 	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
@@ -293,15 +390,14 @@ try {
 			:padre_acs,:madre_acs,:apb_acs,:abap_acs,:abm_acs,:abam_acs
 			)";
 		$q = $conn->prepare( $sql );
-
 		if ( $q->execute( array( ':user_id' => $id, ':padre_cardio' => $pcardio, ':madre_cardio' => $mcardio, ':apb_cardio' => $apbcardio, ':abap_cardio' => $abapcardio, ':abm_cardio' => $abmcardio, ':abam_cardio' => $abamcardio,
 					':padre_evc' => $padreevc, ':madre_evc' => $madreevc, ':apb_evc' => $apbevc, ':abap_evc' => $abapevc, ':abm_evc' => $abmevc, ':abam_evc' => $abamevc,
 					':padre_miocardio' => $padremiocardio, ':madre_miocardio' => $madremiocardio, ':apb_miocardio' => $apbmiocardio, ':abap_miocardio' => $abapmiocardio, ':abm_miocardio' => $abmmiocardio, ':abam_miocardio' => $abammiocardio,
 					':padre_acs' => $padreacs, ':madre_acs' => $madreacs, ':apb_acs' => $apbacs, ':abap_acs' => $abapacs, ':abm_acs' => $abmacs, ':abam_acs' => $abamacs ) ) ) {
-			$sql = "";
+			$sql = "UPDATE wp_usersinfo SET riesgo=:riesgo where user_id=:id";
 			$q = $conn->prepare( $sql );
-			if ( $q->execute( array() ) ) {
-				header( "Location:" . site_url() . "/cuestionario/" );
+			if ( $q->execute( array( ':riesgo' => $riesgo, ':id' => $id ) ) ) {
+				header( "Location:" . site_url() . "/motivaciones/" );
 			}
 		}
 	}

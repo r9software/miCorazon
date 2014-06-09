@@ -23,7 +23,7 @@ if ( !is_user_logged_in() ) {
                     <div class="logo4"></div>
                 </div>
             </div>
-            <form name="cuestionario" action="">
+            <form name="cuestionario" action="<?php echo site_url()."/motivaciones-dao/";  ?>" method="POST">
                 <div class="page">
                     <div class="registro-box">
                         <h3 >Por último, selecciona 3 motivaciones por las<br/> cuales quieres tener un vida más saludable</h3>
@@ -31,89 +31,89 @@ if ( !is_user_logged_in() ) {
                         <div class="motivaciones">
                              <div class="form-group5">
                                  <span>1.-</span>
-									 <select name="mes" class="default" id="motivacion1" style="width:780px; ">
+									 <select name="motivacion1" class="default" id="motivacion1" style="width:780px; ">
 										 <option value="0" selected="selected">Selecciona</option>
-										 <option value="m1-1">Verme mejor</option>
-										 <option value="m1-2">Mejorar mi resistencia física</option>
-										 <option value="m1-3">Comer sanamente</option>
-										 <option value="m1-4">Dejar de fumar</option>
-										 <option value="m1-5">Mejorar mis niveles de colesterol</option>
-										 <option value="m1-6">Prevenir o manejar la diabetes</option>
-										 <option value="m1-7">Aumentar mi energía</option>
-										 <option value="m1-8">Mejorar mi autoimagen y autoconfianza</option>
-										 <option value="m1-9">Reducir el estrés y la ansiedad</option>
-										 <option value="m1-10">Mejorar mis expectativas de vida</option>
-										 <option value="m1-11">Mejorar mi calidad de vida</option>
-										 <option value="m1-12">Aumentar mi esperanza de vida</option>
-										 <option value="m1-13">Sentirme mejor conmigo mismo</option>
-										 <option value="m1-14">Sentirme más sano</option>
-										 <option value="m1-15">Sentir que tengo más control sobre mi vida</option>
-										 <option value="m1-16">Ser un ejemplo a seguir para mi familia</option>
-										 <option value="m1-17">Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral</option>
-										 <option value="m1-18">Manejar mi enfermedad cardiaca</option>
-										 <option value="m1-19">Aumentar mi capacidad pulmonar</option>
-										 <option value="m1-20">Prevenir la hipertensión</option>
-										 <option value="m1-21">Reducir mi presión sanguínea</option>
-										 <option value="m1-22">Mejorar mi sistema inmune</option>
+										 <option value="Verme mejor">Verme mejor</option>
+										 <option value="Mejorar mi resistencia física">Mejorar mi resistencia física</option>
+										 <option value="Comer sanamente">Comer sanamente</option>
+										 <option value="Dejar de fumar">Dejar de fumar</option>
+										 <option value="Mejorar mis niveles de colesterol">Mejorar mis niveles de colesterol</option>
+										 <option value="Prevenir o manejar la diabetes">Prevenir o manejar la diabetes</option>
+										 <option value="Aumentar mi energía">Aumentar mi energía</option>
+										 <option value="Mejorar mi autoimagen y autoconfianza">Mejorar mi autoimagen y autoconfianza</option>
+										 <option value="Reducir el estrés y la ansiedad">Reducir el estrés y la ansiedad</option>
+										 <option value="Mejorar mis expectativas de vida">Mejorar mis expectativas de vida</option>
+										 <option value="Mejorar mi calidad de vida">Mejorar mi calidad de vida</option>
+										 <option value="Aumentar mi esperanza de vida">Aumentar mi esperanza de vida</option>
+										 <option value="Sentirme mejor conmigo mismo">Sentirme mejor conmigo mismo</option>
+										 <option value="Sentirme más sano">Sentirme más sano</option>
+										 <option value="Sentir que tengo más control sobre mi vida">Sentir que tengo más control sobre mi vida</option>
+										 <option value="Ser un ejemplo a seguir para mi familia">Ser un ejemplo a seguir para mi familia</option>
+										 <option value="Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral">Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral</option>
+										 <option value="Manejar mi enfermedad cardiaca">Manejar mi enfermedad cardiaca</option>
+										 <option value="Aumentar mi capacidad pulmonar">Aumentar mi capacidad pulmonar</option>
+										 <option value="Prevenir la hipertensión">Prevenir la hipertensión</option>
+										 <option value="Reducir mi presión sanguínea">Reducir mi presión sanguínea</option>
+										 <option value="Mejorar mi sistema inmune">Mejorar mi sistema inmune</option>
 							</select>
                              </div>
                             <div class="form-group5">
-                                 <span>2.-</span><select name="mes" class="default" id="motivacion2" style="width:780px;" >
+                                 <span>2.-</span><select name="motivacion2" class="default" id="motivacion2" style="width:780px;" >
 										 <option value="0" selected="selected">Selecciona</option>
-										 <option value="m2-1">Verme mejor</option>
-										 <option value="m2-2">Mejorar mi resistencia física</option>
-										 <option value="m2-3">Comer sanamente</option>
-										 <option value="m2-4">Dejar de fumar</option>
-										 <option value="m2-5">Mejorar mis niveles de colesterol</option>
-										 <option value="m2-6">Prevenir o manejar la diabetes</option>
-										 <option value="m2-7">Aumentar mi energía</option>
-										 <option value="m2-8">Mejorar mi autoimagen y autoconfianza</option>
-										 <option value="m2-9">Reducir el estrés y la ansiedad</option>
-										 <option value="m2-10">Mejorar mis expectativas de vida</option>
-										 <option value="m2-11">Mejorar mi calidad de vida</option>
-										 <option value="m2-12">Aumentar mi esperanza de vida</option>
-										 <option value="m2-13">Sentirme mejor conmigo mismo</option>
-										 <option value="m2-14">Sentirme más sano</option>
-										 <option value="m2-15">Sentir que tengo más control sobre mi vida</option>
-										 <option value="m2-16">Ser un ejemplo a seguir para mi familia</option>
-										 <option value="m2-17">Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral</option>
-										 <option value="m2-18">Manejar mi enfermedad cardiaca</option>
-										 <option value="m2-19">Aumentar mi capacidad pulmonar</option>
-										 <option value="m2-20">Prevenir la hipertensión</option>
-										 <option value="m2-21">Reducir mi presión sanguínea</option>
-										 <option value="m2-22">Mejorar mi sistema inmune</option>
+										 <option value="Verme mejor">Verme mejor</option>
+										 <option value="Mejorar mi resistencia física">Mejorar mi resistencia física</option>
+										 <option value="Comer sanamente">Comer sanamente</option>
+										 <option value="Dejar de fumar">Dejar de fumar</option>
+										 <option value="Mejorar mis niveles de colesterol">Mejorar mis niveles de colesterol</option>
+										 <option value="Prevenir o manejar la diabetes">Prevenir o manejar la diabetes</option>
+										 <option value="Aumentar mi energía">Aumentar mi energía</option>
+										 <option value="Mejorar mi autoimagen y autoconfianza">Mejorar mi autoimagen y autoconfianza</option>
+										 <option value="Reducir el estrés y la ansiedad">Reducir el estrés y la ansiedad</option>
+										 <option value="Mejorar mis expectativas de vida">Mejorar mis expectativas de vida</option>
+										 <option value="Mejorar mi calidad de vida">Mejorar mi calidad de vida</option>
+										 <option value="Aumentar mi esperanza de vida">Aumentar mi esperanza de vida</option>
+										 <option value="Sentirme mejor conmigo mismo">Sentirme mejor conmigo mismo</option>
+										 <option value="Sentirme más sano">Sentirme más sano</option>
+										 <option value="Sentir que tengo más control sobre mi vida">Sentir que tengo más control sobre mi vida</option>
+										 <option value="Ser un ejemplo a seguir para mi familia">Ser un ejemplo a seguir para mi familia</option>
+										 <option value="Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral">Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral</option>
+										 <option value="Manejar mi enfermedad cardiaca">Manejar mi enfermedad cardiaca</option>
+										 <option value="Aumentar mi capacidad pulmonar">Aumentar mi capacidad pulmonar</option>
+										 <option value="Prevenir la hipertensión">Prevenir la hipertensión</option>
+										 <option value="Reducir mi presión sanguínea">Reducir mi presión sanguínea</option>
+										 <option value="Mejorar mi sistema inmune">Mejorar mi sistema inmune</option>
 							</select>
                              </div>
                             <div class="form-group5">
-                                 <span>2.-</span><select name="mes" class="default" id="motivacion3" style="width:780px; ">
+                                 <span>2.-</span><select name="motivacion3" class="default" id="motivacion3" style="width:780px; ">
 										 <option value="0" selected="selected">Selecciona</option>
-										 <option value="m3-1">Verme mejor</option>
-										 <option value="m3-2">Mejorar mi resistencia física</option>
-										 <option value="m3-3">Comer sanamente</option>
-										 <option value="m3-4">Dejar de fumar</option>
-										 <option value="m3-5">Mejorar mis niveles de colesterol</option>
-										 <option value="m3-6">Prevenir o manejar la diabetes</option>
-										 <option value="m3-7">Aumentar mi energía</option>
-										 <option value="m3-8">Mejorar mi autoimagen y autoconfianza</option>
-										 <option value="m3-9">Reducir el estrés y la ansiedad</option>
-										 <option value="m3-10">Mejorar mis expectativas de vida</option>
-										 <option value="m3-11">Mejorar mi calidad de vida</option>
-										 <option value="m3-12">Aumentar mi esperanza de vida</option>
-										 <option value="m3-13">Sentirme mejor conmigo mismo</option>
-										 <option value="m3-14">Sentirme más sano</option>
-										 <option value="m3-15">Sentir que tengo más control sobre mi vida</option>
-										 <option value="m3-16">Ser un ejemplo a seguir para mi familia</option>
-										 <option value="m3-17">Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral</option>
-										 <option value="m3-18">Manejar mi enfermedad cardiaca</option>
-										 <option value="m3-19">Aumentar mi capacidad pulmonar</option>
-										 <option value="m3-20">Prevenir la hipertensión</option>
-										 <option value="m3-21">Reducir mi presión sanguínea</option>
-										 <option value="m3-22">Mejorar mi sistema inmune</option>
+										 <option value="Verme mejor">Verme mejor</option>
+										 <option value="Mejorar mi resistencia física">Mejorar mi resistencia física</option>
+										 <option value="Comer sanamente">Comer sanamente</option>
+										 <option value="Dejar de fumar">Dejar de fumar</option>
+										 <option value="Mejorar mis niveles de colesterol">Mejorar mis niveles de colesterol</option>
+										 <option value="Prevenir o manejar la diabetes">Prevenir o manejar la diabetes</option>
+										 <option value="Aumentar mi energía">Aumentar mi energía</option>
+										 <option value="Mejorar mi autoimagen y autoconfianza">Mejorar mi autoimagen y autoconfianza</option>
+										 <option value="Reducir el estrés y la ansiedad">Reducir el estrés y la ansiedad</option>
+										 <option value="Mejorar mis expectativas de vida">Mejorar mis expectativas de vida</option>
+										 <option value="Mejorar mi calidad de vida">Mejorar mi calidad de vida</option>
+										 <option value="Aumentar mi esperanza de vida">Aumentar mi esperanza de vida</option>
+										 <option value="Sentirme mejor conmigo mismo">Sentirme mejor conmigo mismo</option>
+										 <option value="Sentirme más sano">Sentirme más sano</option>
+										 <option value="Sentir que tengo más control sobre mi vida">Sentir que tengo más control sobre mi vida</option>
+										 <option value="Ser un ejemplo a seguir para mi familia">Ser un ejemplo a seguir para mi familia</option>
+										 <option value="Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral">Reducir mi riesgo de enfermedad del corazón o evento vascular cerebral</option>
+										 <option value="Manejar mi enfermedad cardiaca">Manejar mi enfermedad cardiaca</option>
+										 <option value="Aumentar mi capacidad pulmonar">Aumentar mi capacidad pulmonar</option>
+										 <option value="Prevenir la hipertensión">Prevenir la hipertensión</option>
+										 <option value="Reducir mi presión sanguínea">Reducir mi presión sanguínea</option>
+										 <option value="Mejorar mi sistema inmune">Mejorar mi sistema inmune</option>
 							</select>
                              </div>
                         </div>
                             <div class="cont-submit4">
-                                <a class="submit2" id="sig-mot">¡Comienza una vida más sana!</a>
+                                <input type="submit" class="submit2" id="sig-mot" value="&iexcl;Comienza una vida m&aacute;s sana!"/>
                             </div>
                         </div>
                 </div>

@@ -52,9 +52,9 @@ $id=$current_user->ID;
 				<h3 >¿Cómo afectan tus hábitos a tu corazón?</h3>
 				<h4>Evalúa tus hábitos y conoce que impacto tienen en tu salud cardiovascular.</h4>
 				<!--INICIA PASO1-->
-				<form name="cuestionario" action="<?php echo site_url()."/cuestionario-dao/";  ?>" method="POST">
+				<form name="cuestionario" id="myform" action="<?php echo site_url()."/cuestionario-dao/";  ?>" method="POST">
 					<div id="tabs">
-						<ul style="" >
+						<ul style="display: none;" >
             <li><a href="#fragment-1"><span>One</span></a></li>
             <li><a href="#fragment-2"><span>Two</span></a></li>
             <li><a href="#fragment-3"><span>Three</span></a></li>
@@ -118,11 +118,12 @@ $id=$current_user->ID;
 										<div class="imc-result" id="res">
 											IMC:
 										</div>
-										
+										<input type="hidden" name="imc" id="imc" value=""/>
 									</div>
 								</div>
-								<div class="alert2" id="alert-imc">
-									*Campos obligatorios
+								
+								<div id="resimc">
+									
 								</div>
 							</div>
 							<div class="cont-submit3">
@@ -135,7 +136,7 @@ $id=$current_user->ID;
 							<div class="form-group4">
 								<label>¿Cuántas raciones de fruta ingieres en un día?</label>
 								<select name="raciones-fruta" class="default"  id="raciones-fruta" style="width: 220px;">
-									<option value="">Selecciona</option>
+									<option value="default">Selecciona</option>
 									<option value="0">Ninguna</option>
 									<option value="1">Una</option>
 									<option value="2">Dos</option>
@@ -155,7 +156,7 @@ $id=$current_user->ID;
 							<div class="form-group4">
 								<label>¿Cuántas raciones de verduras ingieres en un día?</label>
 								<select name="raciones-verdura" class="default"  id="raciones-verdura" style="width: 220px;">
-									<option value="">Selecciona</option>
+									<option value="default">Selecciona</option>
 									<option value="0">Ninguna</option>
 									<option value="1">Una</option>
 									<option value="2">Dos</option>
@@ -175,7 +176,7 @@ $id=$current_user->ID;
 							<div class="form-group4">
 								<label>¿Con qué frecuencia consume alimentos fritos capeados o empanizados?</label>
 								<select name="frecuencia-empanizado" class="default"  id="frecuencia-empanizado" style="width: 220px;">
-									<option value="">Selecciona</option>
+									<option value="default">Selecciona</option>
 									<option value="1">Todos los días</option>
 									<option value="2">Más de 3 veces a la semana</option>
 									<option value="3">2 a 3 veces al mes</option>
@@ -189,7 +190,7 @@ $id=$current_user->ID;
 							<div class="form-group4">
 								<label>¿Con qué frecuencia consumes bebidas azucaradas incluyendo refrescos "normales" (que no sean de light)<br/> y jugos comerciales?</label>
 								<select name="frecuencia-azucaradas" class="default"  id="frecuencia-azucaradas" style="width: 220px;">
-									<option value="">Selecciona</option>
+									<option value="default">Selecciona</option>
 									<option value="1">Todos los días</option>
 									<option value="2">Más de 3 veces a la semana</option>
 									<option value="3">2 a 3 veces al mes</option>
@@ -203,7 +204,7 @@ $id=$current_user->ID;
 							<div class="form-group4">
 								<label>¿Añades sal a los alimentos?</label>
 								<select name="frecuencia-sal" class="default"  id="frecuencia-sal" style="width: 220px;">
-									<option value="">Selecciona</option>
+									<option value="default">Selecciona</option>
 									<option value="1">Sí</option>
 									<option value="2">Ocasionalmente</option>
 									<option value="3">No</option>
@@ -213,7 +214,7 @@ $id=$current_user->ID;
 								</div>
 							</div>
 							<div class="cont-submit3">
-								<a  class="submit2 nexttab" id="sig2">Siguiente</a>
+								<a  class="submit2 " id="sig2x">Siguiente</a>
 							</div>
 						</div>
 						<div id="fragment-3"  >
@@ -222,7 +223,7 @@ $id=$current_user->ID;
 							<div class="form-group4">
 								<label>¿Cómo clasificarías tu nivel de estrés? (Donde 1 es el número menor y 5 es el mayor nivel de estrés).</label>
 								<select name="nivel-estres" class="default"  id="nivel-estres" style="width: 260px;">
-									<option value="">Selecciona</option>
+									<option value="default">Selecciona</option>
 									<option value="1">1 (nivel más bajo)</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -236,7 +237,7 @@ $id=$current_user->ID;
 							<div class="form-group4">
 								<label>¿Cuántas veces a la semana realizas actividades físicas moderadas a vigorosas?</label>
 								<select name="actividades-fisicas" class="default"  id="actividades-fisicas" style="width: 260px;">
-									<option value="">Selecciona</option>
+									<option value="default">Selecciona</option>
 									<option value="1">No realizo actividad alguna</option>
 									<option value="2">Menos de 30 minutos a la semana</option>
 									<option value="3">De 30 a 69 minutos a la semana</option>
@@ -251,7 +252,7 @@ $id=$current_user->ID;
 							<div class="form-group4">
 								<label>En un día promedio, ¿cuántas horas duermes?</label>
 								<select name="hora-sueno" class="default"  id="hora-sueno" style="width: 260px;">
-									<option value="">Selecciona</option>
+									<option value="default">Selecciona</option>
 									<option value="1">Menos de 7 horas</option>
 									<option value="2">Entre 7 y 9 horas</option>
 									<option value="3">Más de 9 horas</option>
@@ -261,7 +262,7 @@ $id=$current_user->ID;
 								</div>
 							</div>
 							<div class="cont-submit3">
-								<a  class="submit2 nexttab" id="sig3">Siguiente</a>
+								<a  class="submit2" id="sig3x">Siguiente</a>
 							</div>
 						</div>
 						<div id="fragment-4">
@@ -275,7 +276,7 @@ $id=$current_user->ID;
 									<label for="fumas-si" class="radie">Sí</label>
 									<div class="si-value" id="fumas-value">
 										<select name="frecuencia-fumas" class="default"  id="frecuencia-fumas" style="width: 176px;">
-											<option value="">Frecuencia</option>
+											<option value="default">Frecuencia</option>
 											<option value="1">Ocasionalmente </option>
 											<option value="2">La mayoría de los días</option>
 											<option value="3">Todos los días</option>
@@ -289,7 +290,7 @@ $id=$current_user->ID;
 							<div class="form-group4 hide" id="cigarros-diarios">
 								<label>Indica la cantidad de cigarros que fumas regularmente en un día</label>
 								<select name="frecuencia-fumas2" class="default"  id="frecuencia-fumas2" style="width: 176px;">
-									<option value="">Frecuencia</option>
+									<option value="default">Frecuencia</option>
 									<option value="1">Uno</option>
 									<option value="2">Dos a cuatro</option>
 									<option value="3">5 o más</option>
@@ -359,7 +360,7 @@ $id=$current_user->ID;
 								</table>
 							</div>
 							<div class="cont-submit3">
-								<input type="submit" class="submit2" value="Siguiente"/>
+								<a  class="submit2" id="sig4x">Siguiente</a>
 							</div>
 						</div>
 					</div>
