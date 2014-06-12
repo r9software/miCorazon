@@ -8,6 +8,39 @@
 if ( !is_user_logged_in() ) {
 	header( "Location: " . site_url() . "/login" );
 }
+$current_user = wp_get_current_user();
+$id = $current_user->ID;
+
+try {
+	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	$sql = "Select riesgo,nombre,apaterno,amaterno,avatar,motivation1,motivation2,motivation3 from wp_usersinfo join wp_usersmotivation on wp_usersmotivation.user_id=wp_usersinfo.user_id where wp_usersinfo.user_id={$id}"
+			. " LIMIT 1";
+	$rs = $conn->prepare( $sql );
+	$rs->execute();
+	$rs2 = $rs->fetchAll();
+	if ( isset( $rs2[0]['riesgo'] ) ) {
+		$riesgo = $rs2[0]['riesgo'];
+		$nombre = $rs2[0]['nombre'] . " " . $rs2[0]['apaterno'] . " " . $rs2[0]['amaterno'];
+		$avatar = $rs2[0]['avatar'];
+		$m1 = $rs2[0]['motivation1'];
+		$m2 = $rs2[0]['motivation2'];
+		$m3 = $rs2[0]['motivation3'];
+
+		if ( $riesgo == 1 ) {
+			$level = "medio";
+		} else if ( $riesgo == 0 ) {
+			$level = "bajo";
+		} else if ( $riesgo == 2 ) {
+			$level = "alto";
+		}
+	} else {
+		header( "Location:" . site_url() . "/cuestionario/" );
+	}
+} catch ( PDOException $e ) {
+	echo "ERROR: " . $e->getMessage();
+	die();
+}
 ?>
 <?php get_header(); ?>
 <div class="content">
@@ -133,9 +166,31 @@ if ( !is_user_logged_in() ) {
 					'number' => '3' ));
 					foreach($comments as $comment) {?>
 					<div class="result people">
+						<?php
+						
+						try {
+							$cc = get_comment_id();
+							$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+							$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+							$sql = "Select wp_usersinfo.avatar from wp_comments join wp_usersinfo on wp_comments.user_id=wp_usersinfo.user_id where wp_comments.comment_ID={$cc} "
+									. " LIMIT 1";
+							$rs = $conn->prepare( $sql );
+							$rs->execute();
+							$rs2 = $rs->fetchAll();
+							if ( isset( $rs2[0]['avatar'] ) ) {
+								$avatar = $rs2[0]['avatar'];
+							} else {
+								header( "Location:" . site_url() . "/cuestionario/" );
+							}
+						} catch ( PDOException $e ) {
+							echo "ERROR: " . $e->getMessage();
+							die();
+						}
+						?>
 					<div class="avatar-mini">
 						<div class="looney-tunes"></div>
-						<?php echo get_avatar( get_the_author_meta( )); ?>
+						<img src="<?php echo get_template_directory_uri(); ?>/images/avatar/<?php echo $avatar; ?>" width="105px"/>
+						
 					</div>
 						<?php $comment_trim = substr( get_comment_text( $comment_ID ), 0, 92 );?>
 						<p><?php if(strlen($comment_trim)>91) {echo $comment_trim.'...'; }else{ echo $comment_trim;} ?></p>
