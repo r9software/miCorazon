@@ -31,6 +31,7 @@ $fumas;
 $ffumas1;
 $ffumas2;
 //familiares directos
+
 $fd;
 $pcardio = 0;
 $mcardio = 0;
@@ -183,6 +184,7 @@ if ( isset( $_POST['frecuencia-fumas2'] ) ) {
 
 
 if ( isset( $_POST['familiar-directo'] ) ) {
+	$fam=$_POST['familiar-directo'];
 	if ( $_POST['familiar-directo'] ) {
 		$fd = $_POST['familiar-directo'];
 
@@ -354,9 +356,9 @@ try {
 			`trigliceridos`, `cifratrigliceridos`, `peso`, 
 			`altura`, `imc`, `r_fruta`, `r_verdura`, `f_empanizado`, 
 			`f_azucaradas`, `f_sal`, `nivel_estres`, `act_fisicas`, 
-			`horas_sueno`, `fumas`, `f_fumas`, `f_fumas2`) 
+			`horas_sueno`, `fumas`, `f_fumas`, `f_fumas2`,`familiares`) 
 			VALUES (:user_id,:presion,:cifra_ps,:cifra_pd,:glucosa,:cifraglucosa,:trigliceridos,:cifratrigliceridos,:peso,:altura,:imc,:r_fruta,
-			:r_verdura,:f_empanizado,:f_azucaradas,:f_sal,:nivel_estres,:act_fisicas,:horas_sueno,:fumas,:f_fumas,:f_fumas2)";
+			:r_verdura,:f_empanizado,:f_azucaradas,:f_sal,:nivel_estres,:act_fisicas,:horas_sueno,:fumas,:f_fumas,:f_fumas2,:familiares)";
 	$q = $conn->prepare( $sql );
 	if ( $q->execute( array( ':user_id' => $id,
 				':presion' => $presion,
@@ -379,7 +381,9 @@ try {
 				':horas_sueno' => $hsueno,
 				':fumas' => $fumas,
 				':f_fumas' => $ffumas1,
-				':f_fumas2' => $ffumas2 ) ) ) {
+				':f_fumas2' => $ffumas2,
+		':familiares' => $fam
+		) ) ) {
 		$sql = "INSERT INTO wp_usersparentinfo(`user_id`, `padre-cardio`, `madre-cardio`, `apb-cardio`, `abap-cardio`, `abm-cardio`, 
 			`abam-cardio`, `padre-evc`, `madre-evc`, `apb-evc`, `abap-evc`, `abm-evc`, `abam-evc`, `padre-miocardio`, 
 			`madre-miocardio`, `apb-miocardio`, `abap-miocardio`, `abm-miocardio`, `abam-miocardio`, `padre-acs`, 
@@ -403,7 +407,7 @@ try {
 	}
 	$conn = null;
 } catch ( PDOException $e ) {
-	echo "ERROR: " . $e->getMessage();
+	header( "Location:" . site_url() . "/login/" );
 	die();
 }
 ?>

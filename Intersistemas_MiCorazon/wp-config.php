@@ -18,6 +18,8 @@
 /** The name of the database for WordPress */
 define('DB_NAME', 'micorazon');
 
+
+
 /** MySQL database username */
 define('DB_USER', 'root');
 
@@ -85,6 +87,7 @@ define('WP_DEBUG', false);
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
+
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');

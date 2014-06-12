@@ -21,7 +21,7 @@ if ( isset( $_GET['codigo'] ) && isset( $_GET['empresa'] ) ) {
 	$emp = $_GET['empresa'];
 
 	$codigo = strip_tags( $codigo );
-	$locationError = "http://micorazon.wp/?error=true";
+	$locationError = site_url()."?error=true";
 	try {
 		$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root",DB_PASSWORD );
 		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );

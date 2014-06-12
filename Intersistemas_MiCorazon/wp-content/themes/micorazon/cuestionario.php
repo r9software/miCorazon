@@ -9,9 +9,25 @@ if ( !is_user_logged_in() ) {
 }
 $current_user = wp_get_current_user();
 $id=$current_user->ID;
+try {
+	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	$sql = "Select user_id from wp_usersmedicalinfo where user_id={$id}"
+			. " LIMIT 1";
+	$rs=$conn->prepare($sql);
+	$rs->execute();
+	$rs2=$rs->fetchAll();
+	if(isset($rs2[0]['user_id']))
+		header( "Location:" . site_url() . "/perfil/" );
+		
+}
+catch ( PDOException $e ) {
+	echo "ERROR: " . $e->getMessage();
+	die();
+}
 ?>
 <?php include 'header-registro.php'; ?>
-<body >
+<body>
 	<div class="aviso1" id="aviso1">
 		<a href="#" class="close"></a>
 		<p>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de presión arterial. Al conocer tu nivel, puedes prevenir enfermedades cardiacas, eventos vasculares cerebrales  y otras enfermedades.</p>
