@@ -4,9 +4,11 @@
   @package micorazon
   Template Name: Perfil
  */
+/*
 if (!is_user_logged_in()) {
     header("Location: " . site_url() . "/login");
-}
+	exit;
+}*/
 $current_user = wp_get_current_user();
 $id = $current_user->ID;
 
@@ -55,7 +57,7 @@ try {
     $rs = $conn->prepare($sql);
     $rs->execute();
     $rs2 = $rs->fetchAll();
-    if (isset($rs2[0]['riesgo'])&& !empty($rs2[0]['riesgo'])) {
+    if (isset($rs2[0]['riesgo'])) {
         $riesgo = $rs2[0]['riesgo'];
         $nombre = $rs2[0]['nombre'] . " " . $rs2[0]['apaterno'] . " " . $rs2[0]['amaterno'];
         $avatar = $rs2[0]['avatar'];
@@ -68,7 +70,7 @@ try {
             $level = "alto";
         } 
     } else {
-        header("Location:" . site_url() . "/cuestionario/");
+        wp_safe_redirect(  site_url() . "/cuestionario/");
     }
 } catch (PDOException $e) {
     echo "ERROR: " . $e->getMessage();

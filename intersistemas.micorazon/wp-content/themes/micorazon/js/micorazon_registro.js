@@ -179,8 +179,32 @@ $(document).ready(function() {
             $('#aviso6').lightbox_me({
                 centered: true,
                 onLoad: function() {
-                    $('#aviso4').find('input:first').focus();
+                    $('#aviso6').find('input:first').focus();
                     $('#cifra-trigliceridos').val('');
+                }
+            });
+        }
+    });
+    $("#cifra-colesterol").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso6').find('input:first').focus();
+                    $('#cifra-colesterol').val('');
+                }
+            });
+        }
+    });
+    $("#cintura-cifra").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso6').find('input:first').focus();
+                    $('#cintura-cifra').val('');
                 }
             });
         }
@@ -227,19 +251,14 @@ $(document).ready(function() {
                     $("#res").text("IMC: " + parseFloat(data.imc).toFixed(2));
                     imc = parseFloat(data.imc).toFixed(2);
                     $('input[name="imc"]').attr('value',imc);
-                    if (imc <= 20.5)
+                    if (imc < 25)
                     {
-                        //determinamos el defecto en peso y definimos el comentario 
-                        $("#resimc").text("Considera empezar un programa de aumento de peso.");
+                        $("#resimc").text("Tienes un peso saludable");
                     }
-                    else if (imc >= 25.5)
+                    else if (imc >= 25)
                     {
                         //determinamos el exceso en peso y definimos el comentario
                         $("#resimc").text("Considera empezar un programa de pérdida de peso.");
-                    }
-                    else
-                    {
-                       $("#resimc").text("Tienes un peso saludable");
                     }
                 }
                 //display error message
@@ -271,19 +290,14 @@ $(document).ready(function() {
                     $("#res").text("IMC: " + parseFloat(data.imc).toFixed(2));
                     imc = parseFloat(data.imc).toFixed(2);
                     $('input[name="imc"]').attr('value',imc);
-                    if (imc <= 20.5)
+                    if (imc < 25)
                     {
-                        //determinamos el defecto en peso y definimos el comentario 
-                        $("#resimc").text("Considera empezar un programa de aumento de peso.");
+                        $("#resimc").text("Tienes un peso saludable");
                     }
-                    else if (imc >= 25.5)
+                    else if (imc >= 25)
                     {
                         //determinamos el exceso en peso y definimos el comentario
                         $("#resimc").text("Considera empezar un programa de pérdida de peso.");
-                    }
-                    else
-                    {
-                       $("#resimc").text("Tienes un peso saludable");
                     }
                 }
                 //display error message
@@ -322,6 +336,17 @@ $(document).ready(function() {
                 });
             }
         }
+        if ($('#cintura-si').is(':checked')) {
+            if ($('#cifra-cintura').val().length == 0) {
+                bandera = false;
+                $('#aviso5').lightbox_me({
+                    centered: true,
+                    onLoad: function() {
+                        $('#aviso5').find('input:first').focus()
+                    }
+                });
+            }
+        }
         if ($('#glucosa-si').is(':checked')) {
 
             if ($('#cifra-glucosa').val().length == 0) {
@@ -346,6 +371,29 @@ $(document).ready(function() {
                 });
             }
         }
+        if ($('#altura').val().length == 0) {
+                bandera = false;
+                $('#aviso5').lightbox_me({
+                    centered: true,
+                    onLoad: function() {
+                        $('#aviso5').find('input:first').focus()
+                    }
+                });
+            
+        }
+        if ($('#peso').val().length == 0) {
+                bandera = false;
+                $('#aviso5').lightbox_me({
+                    centered: true,
+                    onLoad: function() {
+                        $('#aviso5').find('input:first').focus()
+                    }
+                });
+            
+        }
+        
+        
+        
         if (bandera) {
         $('#tabs').tabs( "option", "active", 1 );
         }
@@ -379,11 +427,59 @@ $(document).ready(function() {
             });
         }
     });
+    $('#cintura-no').click(function() {
+        if ($('#cintura-no').is(':checked')) {
+            $('#cintura-value').hide();
+            $('#aviso8').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso8').find('input:first').focus()
+                }
+            });
+        }
+    });
     /*CUESTIONARIO Paso1 pregunta 2*/
     $('#glucosa-si').click(function() {
         if ($('#glucosa-si').is(':checked')) {
             $('#glucosa-value').show();
         }
+    });
+    $('#cintura-si').click(function() {
+        if ($('#cintura-si').is(':checked')) {
+            $('#cintura-value').show();
+        }
+    });
+    $('#sis-dias').click(function() {
+        $('#tabla1').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#tabla1').find('input:first').focus()
+                }
+            });
+    });
+    $('#link-gluc').click(function() {
+        $('#tabla2').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#tabla2').find('input:first').focus()
+                }
+            });
+    });
+    $('#link-trig').click(function() {
+        $('#tabla3').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#tabla3').find('input:first').focus()
+                }
+            });
+    });
+    $('#link-cole').click(function() {
+        $('#tabla4').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#tabla4').find('input:first').focus()
+                }
+            });
     });
     $('#glucosa-no').click(function() {
         if ($('#glucosa-no').is(':checked')) {
@@ -722,8 +818,20 @@ $(document).ready(function() {
             $('#aviso6').lightbox_me({
                 centered: true,
                 onLoad: function() {
-                    $('#aviso4').find('input:first').focus();
+                    $('#aviso6').find('input:first').focus();
                     $('#cifra-glucosa').val('');
+                }
+            });
+        }
+    });
+     $("#cifra-cintura").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso6').find('input:first').focus();
+                    $('#cifra-cintura').val('');
                 }
             });
         }

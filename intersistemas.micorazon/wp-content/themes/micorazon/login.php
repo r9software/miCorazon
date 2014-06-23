@@ -3,18 +3,17 @@
   @package micorazon
   Template Name: Login
  */
-global $current_user;
+
+if ( is_user_logged_in() ) {
+	header( "Location: " . site_url() . "" );
+	exit;
+}
+
 				
 			
 // Obtenemos la informacion del usuario conectado y asignamos los valores a las variables globales
 // Mas info sobre 'get_currentuserinfo()':
 // http://codex.wordpress.org/Function_Reference/get_currentuserinfo
-get_currentuserinfo();
-// Guardamos el nombre del usuario en una variable
-
-if ( is_user_logged_in() ) {
-	header( "Location: " . site_url() . "" );
-}
 
 if ( isset( $_GET['codigo'] ) && isset( $_GET['empresa'] ) ) {
 	$codigo = $_GET['codigo'];
@@ -53,7 +52,7 @@ include 'header-registro.php';
 		<div class="page">
 			<div class="login">
 				<div class="head-log"><div><img src="<?php bloginfo( 'template_url' ); ?>/images/whitney2/usuario.png" /></div></div>
-				<div class="body-log"><div><img src="<?php bloginfo( 'template_url' ); ?>/images/whitney2/logo_corazon.png" /><img src="<?php bloginfo( 'template_url' ); ?>/images/pack.infonavit/logo-info.png" class="img-derecha"/></div></div></div>
+				<div class="body-log"><div><img src="<?php bloginfo( 'template_url' ); ?>/images/whitney2/logo_corazon.png" /><img src="<?php bloginfo( 'template_url' ); ?>/images/pack.intersistemas/logo-info.png" class="img-derecha"/></div></div></div>
 			<div class="foot-log">
 				<form name="login" method="POST" action="<?php echo bloginfo( 'wpurl' ) . "/dao"; ?>">
 					<div class="form-group">
@@ -73,6 +72,14 @@ include 'header-registro.php';
 			<div class="error">
 				
 					<h4>Usuario o contrase&ntilde;a incorrecto</h4>
+
+			</div>
+			<?php } ?>
+				<?php
+			if(isset($_GET['existe'])){ ?>
+			<div class="error">
+				
+				<h4>El usuario con que intentaste registrarte ya existe. <br> Debes ingresar para continuar con tu cuestionario.</h4>
 
 			</div>
 			<?php } ?>

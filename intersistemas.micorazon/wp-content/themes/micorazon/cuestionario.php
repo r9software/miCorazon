@@ -6,6 +6,7 @@
 
 if ( !is_user_logged_in() ) {
 	header( "Location: " . site_url() . "/login" );
+	exit;
 }
 $current_user = wp_get_current_user();
 $id=$current_user->ID;
@@ -56,6 +57,139 @@ catch ( PDOException $e ) {
 		<a href="#" class="close"></a>
 		<p> Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de colesterol total)</p>
 	</div>
+    <div class="aviso1" id="aviso8">
+		<a href="#" class="close"></a>
+		<p>Es importante que conozcas esta medida y visites a tu Doctor, es un factor que debes cuidar día a día.</p>
+	</div>
+    <div class="aviso2" id="tabla1">
+        <a href="#" class="close"></a>
+        <h2>Parámetros</h2>
+        <table border="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Presión arterial</th>
+                    <th>sistólica</th>
+                    <th>diastólica</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Óptima</strong></td>
+                    <td>Menos de 120</td>
+                    <td>Menos de 80</td>
+                </tr>
+                <tr>
+                    <td><strong>Normal</strong></td>
+                    <td>120 a 139</td>
+                    <td>80 a 89</td>
+                </tr>
+                <tr>
+                    <td><strong>Alto</strong></td>
+                    <td>140 a 159</td>
+                    <td>90 a 99</td>
+                </tr>
+                <tr>
+                    <td><strong>Muy Alto</strong></td>
+                    <td>160 o más</td>
+                    <td>100 o más</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <span class="source">Fuente: National  Institute of Health, 2003</span>
+        </p>
+    </div>
+    <div class="aviso2" id="tabla2">
+        <a href="#" class="close"></a>
+        <h2>Parámetros</h2>
+        <table border="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Glucosa en la sangre</th>
+                    <th>Nivel de glucosa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Normal</strong></td>
+                    <td>70 a 100 mg/dl</td>
+                </tr>
+                <tr>
+                    <td><strong>Alto</strong></td>
+                    <td>101 a 125 mg/dl</td>
+                </tr>
+                <tr>
+                    <td><strong>Muy Alto</strong></td>
+                    <td>126 mg/dl o más en dos pruebas separadas</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <span class="source">Fuente: American Diabetes Association, 2008 </span>
+        </p>
+    </div>
+    <div class="aviso2" id="tabla3">
+        <a href="#" class="close"></a>
+        <h2>Parámetros</h2>
+        <table border="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Triglicéridos</th>
+                    <th>Nivel de triglicéridos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Normal</strong></td>
+                    <td>Menos de 50 mg/dL</td>
+                </tr>
+                <tr>
+                    <td><strong>Límites de lo normal</strong></td>
+                    <td>150-199 mg/dL</td>
+                </tr>
+                <tr>
+                    <td><strong>Alto</strong></td>
+                    <td>200 a 499 mg/dL</td>
+                </tr>
+                <tr>
+                    <td><strong>Muy alto</strong></td>
+                    <td>Mayor o igual a 500 </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <span class="source">Fuente: Adaptado de la American Heart Association, 2007 </span>
+        </p>
+    </div>
+    <div class="aviso2" id="tabla4">
+        <a href="#" class="close"></a>
+        <h2>Parámetros</h2>
+        <table border="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Colesterol</th>
+                    <th>Nivel de colesterol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Normal</strong></td>
+                    <td>Menos de 200 mg/dL</td>
+                </tr>
+                <tr>
+                    <td><strong>Límites de lo normal</strong></td>
+                    <td>200-239 mg/dL</td>
+                </tr>
+                <tr>
+                    <td><strong>Alto</strong></td>
+                    <td>Mayor o igual a 240 mg/dL</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <span class="source">Fuente: Adaptado de la American Heart Association, 2007 </span>
+        </p>
+    </div>
    
 	<div class="content-all">
 		<div class="bg_registro">   
@@ -91,20 +225,27 @@ catch ( PDOException $e ) {
 									<input name="presion" type="radio" id="presion-si"  value="1" />
 									<label for="presion-si" class="radie">Sí</label>
 									<div class="si-value" id="presion-value">
-										<input type="text" name="cifra-presion-sistolico" id="cifra-presion-sistolico" value="" class="field3" /><span>sistólico</span>  <input type="text" name="cifra-presion-diastolico" id="cifra-presion-diastolico" value="" class="field3" /><span>diastólico</span>
+                                                                            <input type="text" name="cifra-presion-sistolico" id="cifra-presion-sistolico" value="" class="field3" placeholder="120" /><span>sistólica</span>  <input type="text" name="cifra-presion-diastolico" id="cifra-presion-diastolico" value="" class="field3" placeholder="80"  /><span>diastólica</span><a class="liga" id="sis-dias">Conoce tus cifras</a>
 									</div>
 									<div class="alert1" id="alert-presion">
 										*Campo obligatorio
 									</div>
 								</div>
 							</div>
+							<?php 
+							if(isset($_GET["genero"])){
+								      echo "<input type='hidden' name='genero' value='{$_GET["genero"]}'> ";
+							}else{
+								 echo "<input type='hidden' name='genero' value='M'> ";
+							} 
+							?>
 							<div class="form-group4">
 								<label>¿Conoces tu nivel de glucosa en sangre?</label>
 								<div class="customui">
 									<input name="glucosa" type="radio" id="glucosa-no"  value="0" /><label for="glucosa-no" class="radie">No</label>
 									<input name="glucosa" type="radio" id="glucosa-si"  value="1" /><label for="glucosa-si" class="radie">Sí</label>
 									<div class="si-value" id="glucosa-value">
-										<input type="text" name="cifra-glucosa" value="" class="field3" id="cifra-glucosa" /><span>mg/dL</span>
+										<input type="text" name="cifra-glucosa" value="" class="field3" id="cifra-glucosa" placeholder="80"  /><span>mg/dL</span><a class="liga" id="link-gluc">Conoce tus cifras</a>
 									</div>
 									<div class="alert1" id="alert-glucosa">
 										*Campo obligatorio
@@ -117,7 +258,7 @@ catch ( PDOException $e ) {
 									<input name="trigliceridos" type="radio" id="trigliceridos-no"  value="0" /><label for="trigliceridos-no" class="radie">No</label>
 									<input name="trigliceridos" type="radio" id="trigliceridos-si"  value="1" /><label for="trigliceridos-si" class="radie">Sí</label>
 									<div class="si-value" id="trigliceridos-value">
-										<input type="text" name="cifra-trigliceridos" value="" class="field3" id="cifra-trigliceridos" /><span>mg/dL</span>
+										<input type="text" name="cifra-trigliceridos" value="" class="field3" id="cifra-trigliceridos" placeholder="140" /><span>mg/dL</span><a class="liga" id="link-trig">Conoce tus cifras</a>
 									</div>
 									<div class="alert1" id="alert-trigliceridos">
 										*Campo obligatorio
@@ -130,7 +271,20 @@ catch ( PDOException $e ) {
 									<input name="colesterol" type="radio" id="colesterol-no"  value="0" /><label for="colesterol-no" class="radie">No</label>
 									<input name="colesterol" type="radio" id="colesterol-si"  value="1" /><label for="colesterol-si" class="radie">Sí</label>
 									<div class="si-value" id="colesterol-value">
-										<input type="text" name="cifra-colesterol" value="" class="field3" id="cifra-colesterol" /><span>mg/dL</span>
+										<input type="text" name="cifra-colesterol" value="" class="field3" id="cifra-colesterol" placeholder="180" /><span>mg/dL</span><a  class="liga" id="link-cole">Conoce tus cifras</a>
+									</div>
+									<div class="alert1" id="alert-colesterol">
+										*Campo obligatorio
+									</div>
+								</div>
+							</div>
+                                                        <div class="form-group4">
+								<label>¿Conoces el diámetro de tu cintura?</label>
+								<div class="customui">
+									<input name="cintura" type="radio" id="cintura-no"  value="0" /><label for="cintura-no" class="radie">No</label>
+									<input name="cintura" type="radio" id="cintura-si"  value="1" /><label for="cintura-si" class="radie">Sí</label>
+									<div class="si-value" id="cintura-value">
+										<input type="text" name="cifra-cintura" value="" class="field3" id="cifra-cintura" placeholder="" /><span>cms</span>
 									</div>
 									<div class="alert1" id="alert-colesterol">
 										*Campo obligatorio

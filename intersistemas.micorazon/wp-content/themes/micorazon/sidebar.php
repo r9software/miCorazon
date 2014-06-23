@@ -147,8 +147,8 @@ try {
 						} ?>
 				</form>
 			</div>
-			<!---
-   <p><a href="#">Ver todos mis registros</a></p> -->
+		
+   <p><a href="/historial-de-registro-hoy/">Ver todos mis registros</a></p>
 		</div>
 		<div class="mis-retos">
 			<h3 class="tit tmisretos">Mis retos</h3>

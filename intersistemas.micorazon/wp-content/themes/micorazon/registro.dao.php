@@ -85,6 +85,7 @@ if ( isset( $_POST['mail'] ) ) {
 		$cadena = $cadena . "&y" . $ano . "=" . $ano . "&fecha=";
 	}
 } if ( isset( $_POST['genero'] ) ) {
+	$genero = $_POST['genero'];
 	$cadena = $cadena . "&genero=" . $genero;
 	if ( !is_numeric( $_POST['genero'] ) ) {
 		$bandera = false;
@@ -109,38 +110,25 @@ if ( isset( $_POST['consejos'] ) )
 else
 	$acepto = 0;
 if ( $bandera ) {
-	
+
 	try {
 		$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
 		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-/*
-		$sql = "SELECT * FROM `wp_users` left join `wp_usersmedicalinfo` on `wp_users`.ID=`wp_usersmedicalinfo`.user_id left join `wp_usersinfo` on `wp_users`.ID=`wp_usersinfo`.user_id  where `wp_users`.user_login='{$mail}'"
+
+		$sql = "SELECT * FROM `wp_users` where user_login='{$mail}'"
 				. " LIMIT 1";
 		echo $sql;
 		$rs = $conn->prepare( $sql );
 		$rs->execute();
 		$rs2 = $rs->fetchAll();
-		if ( isset( $rs2[0]['user_mail'] ) ) {
-			if ( empty( $rs2[0]['riesgo'] ) ) {
-				$id= $rs2[0]['ID'];
-				$sql = "DELETE FROM `wp_users` WHERE user_id={$id};"
-				. "DELETE FROM `wp_usersinfo` WHERE user_id={$id};"
-				. "DELETE FROM `wp_usersmedicalinfo` WHERE user_id={$id};"
-				. "DELETE FROM `wp_usersmotivation` WHERE user_id={$id};"
-				. "DELETE FROM `wp_usersparentinfo` WHERE user_id={$id};"
-						. "DELETE FROM `wp_usersactivity` WHERE user_id={$id};"
-				. "";
-				$rs = $conn->prepare( $sql );
-			if($rs->execute()){
-				echo "bien";
-			}
-			}
+		if ( isset( $rs2[0]['ID'] ) ) {
+			header( "Location:" . site_url() . "/login?existe=true" );
+			exit;
 		}
-		} catch ( PDOException $e ) {
-		echo "ERROR: " . $e->getMessage();
-		die();
-}} */
 		
+
+
+
 		$sql = "INSERT INTO wp_users (user_login,user_pass,user_nicename,"
 				. "user_email,user_registered,display_name) "
 				. "VALUES (:user_login,:user_pass,:user_nicename,:user_email,:user_registered,:display_name)";
@@ -179,10 +167,11 @@ if ( $bandera ) {
 				$creds['remember'] = true;
 				$user = wp_signon( $creds, false );
 				if ( is_wp_error( $user ) ) {
-					header( "Location: " . site_url() . "/login?mal=true" );
-					exit;
+					header( "Location: " . site_url() . "/login?existe=si" );
+					
 				}
-				header( "Location:" . site_url() . "/cuestionario/" );
+				header( "Location:" . site_url() . "/cuestionario?genero=" . $genero );
+				
 			}
 		}
 
@@ -193,6 +182,7 @@ if ( $bandera ) {
 	}
 } else {
 	header( "Location:" . site_url() . "/crea-tu-cuenta/" . $cadena );
+	
 }
 /*
   echo "<pre>";
