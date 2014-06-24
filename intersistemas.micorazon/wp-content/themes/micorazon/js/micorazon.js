@@ -124,5 +124,7 @@ $(document).ready(function() {
         });
         $('input#chtres').attr("disabled", true);
     }));
-    
+    $(function() {
+        $("#tabs").tabs();
+    });
 });

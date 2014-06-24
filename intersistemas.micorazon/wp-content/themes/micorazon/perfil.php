@@ -385,7 +385,7 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
                             echo "<a id='light-fact1-alto'>Detalle</a>";
                         } else if ($presion) {
                             $mylevel;
-                            if ($cps <= 120 && $cps > 60 && $cpd <= 80 && $cpd > 40)
+                            if ($cps <= 120 && $cps > 60 && $cpd <= 80 && $cpd > 50)
                                 $mylevel = "bajo";
                             else if (($cps > 120 && $cps < 140) && ($cpd < 90 && $cpd > 80))
                                 $mylevel = "medio";
@@ -435,7 +435,7 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
                             echo "<a id='light-fact3-alto'>Detalle</a>";
                         } else if ($trigliceridos) {
                             $mylevel;
-                            if ($ctrigliceridos <= 199)
+                            if ($ctrigliceridos <= 199 && $ctrigliceridos >= 49)
                                 $mylevel = "bajo";
                             else if (($ctrigliceridos > 200 && $ctrigliceridos <= 499))
                                 $mylevel = "medio";
@@ -475,7 +475,7 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
                             echo "<a id='light-fact4-alto'>Detalle</a>";
                         } else if ($colesterol) {
                             $mylevel;
-                            if ($cc <= 200)
+                            if ($cc <= 200 && $cc >=99)
                                 $mylevel = "bajo";
                             else if (($cc > 200 && $cc <= 239))
                                 $mylevel = "medio";
@@ -580,9 +580,6 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
                         $ftot = $fumas1 + $fumas2;
                         if ($fumas) {
                             $mensaje = "Si";
-                            if ($fumas1 == 1 && $fumas2 == 1)
-                                $mylevel = "medio";
-                            else
                                 $mylevel = "alto";
                         }
                         else {

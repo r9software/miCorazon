@@ -13,6 +13,10 @@ $ac3;
 $r1="Comer saludable";
 $r2="Hacer ejercicio";
 $r3="Reducir el estr&eacute;s";
+$url1="#";
+$url2="#";
+$url3="#";
+
 $riesgo;
 try {
 	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
@@ -75,7 +79,11 @@ try {
 		$r1=$rs2[0]['reto1'];
 		$r2=$rs2[0]['reto2'];
 		$r3=$rs2[0]['reto3'];
-		
+		$url1=$rs2[0]['url1'];
+		$url2=$rs2[0]['url2'];
+		$url3=$rs2[0]['url3'];
+
+
 		
 	}
 	
@@ -155,9 +163,9 @@ try {
 			<div class="options">
 				<ul>
 					<!--<li class="line"><a href="#">Comer saludable</a></li>-->
-					<li><a href="#"><?php echo $r1 ?></a>
-					<li ><a href="#"><?php echo $r2 ?></a></li>
-					<li><a href="#"><?php echo $r3 ?></a></li>
+					<li><a href="<?php echo site_url()."/".$url1 ?>"><?php echo $r1 ?></a>
+					<li ><a href="<?php echo site_url()."/".$url2 ?>"><?php echo $r2 ?></a></li>
+					<li><a href="<?php echo site_url()."/".$url3 ?>"><?php echo $r3 ?></a></li>
 				</ul>
 			</div>
 		</div>

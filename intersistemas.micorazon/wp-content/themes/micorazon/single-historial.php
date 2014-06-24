@@ -52,13 +52,13 @@ function getdia( $var ) {
 			break;
 		case 2: return "Martes";
 			break;
-		case 3: return "Miercoles";
+		case 3: return "Mi&eacute;rcoles";
 			break;
 		case 4: return "Jueves";
 			break;
 		case 5: return "Viernes";
 			break;
-		case 6: return "Sabado";
+		case 6: return "S&aacute;bado";
 			break;
 		case 0: return "Domingo";
 			break;
@@ -280,13 +280,13 @@ try {
 			array_push( $tabla, $columnaVacia );
 			$columnaVacia = array( 43, 0, 0, 0, " ","Martes" );
 			array_push( $tabla, $columnaVacia );
-			$columnaVacia = array( 43, 0, 0, 0," ", "Miercoles" );
+			$columnaVacia = array( 43, 0, 0, 0," ", "Mi&eacute;rcoles" );
 			array_push( $tabla, $columnaVacia );
 			$columnaVacia = array( 43, 0, 0, 0, " ","Jueves" );
 			array_push( $tabla, $columnaVacia );
 			$columnaVacia = array( 43, 0, 0, 0, " ","Viernes" );
 			array_push( $tabla, $columnaVacia );
-			$columnaVacia = array( 43, 0, 0, 0, " ","Sabado" );
+			$columnaVacia = array( 43, 0, 0, 0, " ","S&aacute;bado" );
 			array_push( $tabla, $columnaVacia );
 			$columnaVacia = array( 43, 0, 0, 0, " ","Domingo" );
 			array_push( $tabla, $columnaVacia );
@@ -307,11 +307,11 @@ try {
 				$columnaVacia = array( 43, 0, 0, 0, " ", "Martes" );
 				array_push( $tabla, $columnaVacia );
 			}
-			if ( strcmp( $d[$bc], "Miercoles" ) == 0 ) {
+			if ( strcmp( $d[$bc], "Mi&eacute;rcoles" ) == 0 ) {
 				array_push( $tabla, $pretabla[$bc - 1] );
 				$bc++;
 			} else {
-				$columnaVacia = array( 43, 0, 0, 0, " ", "Miercoles" );
+				$columnaVacia = array( 43, 0, 0, 0, " ", "Mi&eacute;rcoles" );
 				array_push( $tabla, $columnaVacia );
 			}
 			if ( strcmp( $d[$bc], "Jueves" ) == 0 ) {
@@ -330,11 +330,11 @@ try {
 				array_push( $tabla, $columnaVacia );
 			}
 
-			if ( strcmp( $d[$bc], "Sabado" ) == 0 ) {
+			if ( strcmp( $d[$bc], "S&aacute;bado" ) == 0 ) {
 				array_push( $tabla, $pretabla[$bc - 1] );
 				$bc++;
 			} else {
-				$columnaVacia = array( 43, 0, 0, 0, " ", "Sabado" );
+				$columnaVacia = array( 43, 0, 0, 0, " ", "S&aacute;bado" );
 				array_push( $tabla, $columnaVacia );
 			}
 
@@ -357,13 +357,13 @@ try {
 			array_push( $tabla, $columnaVacia );
 			$columnaVacia = array( 43, 0, 0, 0, " ","Martes" );
 			array_push( $tabla, $columnaVacia );
-			$columnaVacia = array( 43, 0, 0, 0, " ","Miercoles" );
+			$columnaVacia = array( 43, 0, 0, 0, " ","Mi&eacute;rcoles" );
 			array_push( $tabla, $columnaVacia );
 			$columnaVacia = array( 43, 0, 0, 0, " ","Jueves" );
 			array_push( $tabla, $columnaVacia );
 			$columnaVacia = array( 43, 0, 0, 0, " ","Viernes" );
 			array_push( $tabla, $columnaVacia );
-			$columnaVacia = array( 43, 0, 0, 0, " ","Sabado" );
+			$columnaVacia = array( 43, 0, 0, 0, " ","S&aacute;bado" );
 			array_push( $tabla, $columnaVacia );
 			$columnaVacia = array( 43, 0, 0, 0, " ","Domingo" );
 			array_push( $tabla, $columnaVacia );

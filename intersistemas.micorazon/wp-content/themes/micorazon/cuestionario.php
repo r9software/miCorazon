@@ -6,7 +6,6 @@
 
 if ( !is_user_logged_in() ) {
 	header( "Location: " . site_url() . "/login" );
-	exit;
 }
 $current_user = wp_get_current_user();
 $id=$current_user->ID;
@@ -55,7 +54,7 @@ catch ( PDOException $e ) {
 	</div>
     <div class="aviso1" id="aviso7">
 		<a href="#" class="close"></a>
-		<p> Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de colesterol total)</p>
+		<p> Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de colesterol total.</p>
 	</div>
     <div class="aviso1" id="aviso8">
 		<a href="#" class="close"></a>

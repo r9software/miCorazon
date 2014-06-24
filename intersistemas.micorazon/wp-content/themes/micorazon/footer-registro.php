@@ -26,13 +26,13 @@
 	<script>
 		    $(document).ready(function() {
 				$("#tabs").tabs();
-				$("#sig1").click(function() {
+				$("#tabs-1").click(function() {
 					$('#tabs').tabs( "option", "active", 1 );
 				});
-				$("#sig2").click(function() {
+				$("#tabs-2").click(function() {
 					$('#tabs').tabs( "option", "active", 2 );
 				});
-				$("#sig3").click(function() {
+				$("#tabs-3").click(function() {
 					$('#tabs').tabs( "option", "active", 3 );
 				});
 

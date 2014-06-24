@@ -168,10 +168,9 @@ if ( $bandera ) {
 				$user = wp_signon( $creds, false );
 				if ( is_wp_error( $user ) ) {
 					header( "Location: " . site_url() . "/login?existe=si" );
-					
+					exit;
 				}
 				header( "Location:" . site_url() . "/cuestionario?genero=" . $genero );
-				
 			}
 		}
 
@@ -182,7 +181,6 @@ if ( $bandera ) {
 	}
 } else {
 	header( "Location:" . site_url() . "/crea-tu-cuenta/" . $cadena );
-	
 }
 /*
   echo "<pre>";

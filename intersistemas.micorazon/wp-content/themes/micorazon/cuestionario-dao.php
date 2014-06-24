@@ -345,7 +345,7 @@ if ( !$presion ) {
 }
 
 if ( $presion ) {
-	if ( $cps > 160 || $cpd > 100 )
+	if ( $cps > 160 || $cpd > 100 || $cps<=59 ||$cpd<=49 )
 		$riesgo = 2;
 }
 if ( $cintura ) {
@@ -358,15 +358,15 @@ if ( $cintura ) {
 	}
 }
 if ( $glucosa ) {
-	if ( $cg > 126 )
+	if ( $cg > 126 || $cg <=69)
 		$riesgo = 2;
 }
 if ( $trigliceridos ) {
-	if ( $ct >= 500 )
+	if ( $ct >= 500 || $ct <=49)
 		$riesgo = 2;
 }
 if ( $colesterol ) {
-	if ( $cc >= 240 )
+	if ( $cc >= 240 || $cc <=99 )
 		$riesgo = 2;
 }
 
@@ -379,7 +379,7 @@ if ( $riesgo < 2 ) {
 						if ( $glucosa ) {
 							if ( $cg <= 100 ) {
 								if ( $trigliceridos ) {
-									if ( $ct <= 199 ) {
+									if ( $ct < 150 ) {
 
 										if ( $imc < 25 ) {
 											if ( $rfruta > 2 ) {

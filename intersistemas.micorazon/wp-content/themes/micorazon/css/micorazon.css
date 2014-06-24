@@ -166,6 +166,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .familiar-tabla td{border-bottom:1px solid #53A8DC; padding:5px;   }
     .familiar-tabla .desc{width:240px; }
     .familiar-tabla .pad{width:120px; text-align:center; padding:8px 8px 8px 0px;    }
+    .aviso2,
     .aviso-bajo,
     .aviso-medio,
     .aviso-alto,
@@ -178,7 +179,12 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .aviso-bajo a,
     .aviso-medio a,
     .aviso-alto a,
+    .aviso2 a,
     .aviso1 a{background:url('../images/base/close_lightbox.png') no-repeat; width:30px; height:30px; display:block; position:absolute; top:-10px; right:-10px;       }
+    
+    .aviso2{width:680px; background-color:#FFFFFF; min-height:40px; padding:40px;    position:relative; }
+    .aviso2 h2{color:#53A8DC; font-size:20px; font-weight:600;  }
+    .source{color:#666666; font-size:14px; }
     
     .aviso-bajo,
     .aviso-medio,
@@ -194,7 +200,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .g-cuest1 label{font-size:16px; color:#2F2F2F; float:left; text-align:left;  }
     .g-cuest2{float:left; width:100%; display:inline-block; padding-top:15px;  }
     .g-cuest2 label{font-size:16px; color:#2F2F2F; float:left; text-align:left;  }
-    .q1{width:365px; float:left;  }ad
+    .q1{width:365px; float:left;  }
     .q2{width:492px; float:left; line-height:31px;    }
     
     .triple{ padding-top: 10px}
@@ -208,6 +214,8 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .imc-result{float:right; font-weight:700; font-size:20px; color:#FFFFFF; width:100px; border-top:1px solid #FFFFFF; text-align:center; padding-top:10px; position:relative; right:-10px;      }
     .divisor1{display:inline-block; height:40px; width:100%;   }
     .submit-cuestionario{padding-left:482px; }
+    
+    .liga{color: #53A8DC; font-size:14px; margin-top:8px; float:left;   }
     
     /*MOTIVACIONES*/
     .col3,
@@ -236,14 +244,14 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .riesgos-box p strong{font-weight:300; }
     .riesgo-alto{background-color:#F54C4A; }
     .riesgo-bajo{background-color:#7ED321; }
-    .riesgo-medio{background-color:#FFC906; }
+    .riesgo-medio{background-color:#F3A933; }
     .risk-row{background-color:#F6F6F5; display:block; border-bottom:1px solid #9B9B9B; padding:25px 20px 25px 20px; overflow:hidden;    }
     .risk-row.last{border-bottom:0px; }
     .risk-box{width:33.3%; float:left; padding-right: 20px; }
     .risk-box h2{font-size:16px; color:#2F2E46; font-weight:700; margin-bottom:25px; display:block;    }
     .risk-box h3{font-size:16px; line-height:22px;  }
     .risk-box .bajo{font-weight:600; color:#48AE33;  }
-    .risk-box .medio{font-weight:600; color:#F5A623;  }
+    .risk-box .medio{font-weight:600; color:#F3A933;  }
     .risk-box .alto{font-weight:600; color:#D54254;  }
     .risk-box a{float:left; margin-top:20px; color:#2F2E46; font-weight:700; text-decoration:underline;  }
     .motivaciones-row{background-color:#CAF7EC; padding:25px 20px 25px 20px; margin-bottom:60px;   }
@@ -289,9 +297,9 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .sidebar .profile.alto .ranking{background-color:#F86962;}
     
     /*PROFILE MEDIO*/
-    .sidebar .profile.medio .actividad{background-color:#FFCB00; }
+    .sidebar .profile.medio .actividad{background-color:#F3A933; }
     .sidebar .profile.medio .looney-tunes{position:absolute; background:url('../images/base/mi_actividad_foto_medio.png');}
-    .sidebar .profile.medio .ranking{background-color:#FFD127;}
+    .sidebar .profile.medio .ranking{background-color:#F09300;}
     
     /*PROFILE BAJO*/
     .sidebar .profile.bajo .actividad{background-color:#77D200; }
@@ -313,7 +321,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .sidebar .options .check{ float:left; margin-top:3px;  }
     .sidebar .options .form-group{margin-bottom:5px;}
     .sidebar .options label{color: #4D4542; font-size:13px; line-height:16px;  margin-left:5px; float:left; width:125px;     }
-    .sidebar .mi-registro p{width:100%; text-align:center; padding-bottom:10px;  }
+    .sidebar .mi-registro p{width:100%; text-align:center; padding-bottom:10px; padding-top:10px;   }
     .sidebar .mi-registro a{color: #4D4542; text-decoration:none;  font-size:13px; }
     .heart-points{ width:100%; padding:20px 0px 20px 0px;    }
     .points{ margin:0px auto; color:#FFFFFF; font-weight:600; font-size:16px; text-align:center;  height:31px; line-height:35px; font-style:italic;    }
@@ -598,8 +606,91 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
 .historial .ok{background:url('../images/base/historia_ok.png') no-repeat; display:block; width:20px; height:20px; margin:0px auto;   }
 .historial .no{background:url('../images/base/historia_no.png') no-repeat; display:block; width:20px; height:20px; margin:0px auto;}
 .historial td{ padding:10px;  text-align:left;  }
-.semanas{margin-top:20px; }
-.semanas a{color:#4D4542; }
+.semanas{margin-top:20px; text-align:center;  }
+.semanas a{color:#4D4542; font-size:14px;  }
 
 /*XTRAS*/
 .file{margin-bottom:10px }
+
+/*TABLA DEFAULT*/
+table{ margin-top:40px; margin-bottom:40px;  }
+table thead{text-align:left; }
+table thead th{background-color:#FFFFFF; padding-bottom:20px; color:#666666; font-size:14px;  }
+table tr:nth-child(odd){background-color:#E4E4DD;}
+table tr:nth-child(even){background-color:#DBDBD2;}
+table td{ padding:10px;  text-align:left; font-size:14px;   }
+/*TABS ACTIVIDADES*/
+.ui-tabs-nav{overflow:hidden; margin-bottom:0px !important;  }
+.ui-state-default{ float:left; padding:0px; margin:0px !important;  text-align:center; background-color:#D4D4D4; list-style-type: none !important}
+.ui-state-default a{float:left; color:#FFFFFF !important; font-weight:300 !important; text-decoration:none; height:60px; width:240px; line-height:60px; font-size:19px;  }
+.ui-state-active{background-color:#3FAF2A; }
+.tab-content{width:100%; float:left; }
+.tab-content h3{ height:36px; background-color:#3FAF2A; line-height:36px; text-align:center; font-size:16px; color:#FFFFFF;  font-weight:300 !important; margin-bottom:2px;  }
+.inst-pad{padding:20px; background-color:#3FAF2A;  }
+.inst-pad *{color:#FFFFFF !important;}
+
+/*ACTIVIDAD 1 ACTIVIDAD FISICA*/
+.ico{margin-right:5px; }
+#tabs{position:relative; }
+#tabs .hist{position:absolute; right:0px; top:30px; color:#72D700; font-size:14px;  }
+.cont-margin{width:100%; overflow:hidden;  }
+.actividad1{border:0px; margin-top:0px; border-spacing:2px 0px; border-collapse: separate; width:754px; margin-left:-2px;   }
+.actividad1 td{text-align:center; width:150px; }
+.actividad1 tr:nth-child(odd){background-color:#33B01E; color:#FFFFFF !important;}
+.actividad1 tr:nth-child(even){background-color:#DFF1DC; color:#34A41F !important;}
+.actividad1 .int-num{width:50px; height:20px; border:0px; padding:3px; color:#666666; font-size:13px; text-align:center;   }
+.actividad1 .int-num:focus{outline: none;}
+.actividad1 .empty{background-color:#FFFFFF; color:#666666; text-align:right; font-size:16px; font-weight:400;    }
+.actividad1 .highlight1{background-color:#78D500; font-weight:600; font-size:16px; }
+.actividad1 .highlight1 span{font-weight:400 !important; font-size:14px; }
+.actividad1 .highlight2{background-color:#EBF7EA; color:#999999; font-weight:600; font-size:16px;  }
+.actividad1 .highlight3{background-color:#78D500; color:#FFFFFF; font-weight:600; font-size:20px;  }
+/*ACTIVIDAD 2 ACTIVIDAD sueno*/
+.int-check{width:20px; height:20px; border:0px; padding:3px; color:#666666; text-align:center; margin: 0px !important; position: relative; top: 5px}
+.int-check:focus{outline: none;}
+.int-select{border: 1px solid #ccc; bottom: 3px; height: 20px; position: relative; width: 130px}
+.actividad1 .highlight4{background-color:#EBF7EA; color:#999999; font-size:16px; font-weight: bold; border-top: 1px solid #fff}
+/*ACTIVIDAD 3 ACTIVIDAD alimento*/
+.int-pesos{ background-color: #dff1dc; width: 100%; height: 85px; padding: 15px 10px 10px 10px; float: left}
+.int-pesos .int-num{width:80px; height:40px; border: 1px solid #33b01e; padding:3px; color:#666666; font-size:13px; text-align:center;}
+.int-pesos .int-num:focus{outline: none;}
+.int-pesos .int-num2{width:120px; height:40px; border: 1px solid #33b01e; padding:3px; color:#666666; font-size:13px; text-align:center;   }
+.int-pesos .int-num2:focus{outline: none;}
+.peso-single{ width: auto; float: left; text-align: center}
+.peso-single p{ font-size: 12px !important; color: #33b01e !important;}
+.int-pesos label{ float: left; margin-left: 10px; margin-right: 10px; color: #33b01e; margin-top: 7px}
+.int-sentirse{ float: right; width: 200px; height: 30px; margin-top: 12px}
+.int-sentirse p{ font-size: 12px !important; font-weight: bold !important; color: #33b01e !important; float: left !important; margin-right: 10px}
+.int-select2{border: 1px solid #ccc; height: 20px; width: 130px}
+.actividad2 .width180{ width: 150px !important;}
+
+.half-area { width: 370px; height: 160px; float: left; background-color: #dff1dc; margin-top: 20px}
+.half-area .head-area{ background-color: #3ca227; display: block;; width: 100%; padding-left: 10px; height: 40px; padding-top: 7px}
+.half-area .head-area h1{ color: #dff1dc !important; font-size: 18px !important; font-weight: normal !important}
+.half-area .int-textarea{ width: 350px; height: 100px; border: 1px solid #3ca227; margin-left: 10px; margin-top: 10px; padding: 6px; }
+.half-area *{ vertical-align: top;}
+
+.half-area2 .head-area{ background-color: #3ca227; display: block;; width: 100%; padding-left: 10px; height: 40px; padding-top: 7px}
+.half-area2 .head-area h1{ color: #dff1dc !important; font-size: 18px !important; font-weight: normal !important}
+.half-area2{ width: 370px; height: 160px; float: left; background-color: #dff1dc; margin-top: 20px; margin-left: 10px}
+.half-area2 .int-textarea{ width: 350px; height: 100px; border: 1px solid #3ca227; margin-left: 10px; margin-top: 10px; padding: 6px; }
+
+.full-area{ width: 100%; height: 160px; float: left; background-color: #dff1dc; margin-top: 20px; margin-bottom: 20px}
+.full-area .head-area{background-color: #3ca227; display: block;; width: 100%; padding-left: 10px; height: 40px; padding-top: 7px}
+.full-area .head-area h1{ color: #dff1dc !important; font-size: 18px !important; font-weight: normal !important}
+.full-area .int-textarea2{ width: 730px; height: 100px; border: 1px solid #3ca227; margin-left: 10px; margin-top: 10px; padding: 6px; }
+select{ padding-left: 5px}
+/*ACTIVIDAD 2*/
+.actividad2{border:0px; margin-top:0px; border-spacing:2px 0px; border-collapse: separate; width:754px; margin-left:-2px; margin-bottom: 0px !important }
+.actividad2 td{text-align:center; }
+.actividad2 tr:nth-child(odd){background-color:#33B01E; color:#FFFFFF !important;}
+.actividad2 tr:nth-child(even){background-color:#DFF1DC; color:#34A41F !important;}
+.actividad2 .int-num{width:50px; height:20px; border:0px; padding:3px; color:#666666; font-size:13px; text-align:center;   }
+.actividad2 .int-num:focus{outline: none;}
+.actividad2 .empty{background-color:#FFFFFF; color:#666666; text-align:right; font-size:16px; font-weight:400;    }
+.actividad2 .highlight1{background-color:#78D500; font-weight:600; font-size:16px; }
+.actividad2 .highlight1 span{font-weight:400 !important; font-size:14px; }
+.actividad2 .highlight2{background-color:#EBF7EA; color:#999999; font-weight:600; font-size:16px;  }
+.actividad2 .highlight3{background-color:#78D500; color:#FFFFFF; font-weight:600; font-size:20px;  }
+
+
