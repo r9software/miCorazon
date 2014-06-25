@@ -5,25 +5,21 @@
  */
 $bandera = false;
 
-function compararFechas($hoy,$fecha){
-$hoy=  explode("-",$hoy);
-$fecha= explode("-", $fecha);
-$hoy2=mktime(0,0,0,$hoy[1],$hoy[2],$hoy[0]);
-$fecha2=mktime(0,0,0,$fecha[1],$fecha[2],$fecha[0]);
-if($hoy2<=$fecha2)
-{
-    //echo"Hoy: ".$hoy[1]."-".$hoy[2]."-".$hoy[0]." es menor o igual que"
-	//		.$fecha[1]."-".$fecha[2]."-".$fecha[0]."</br>";
-	return true;
-}
-else
-{
-     //echo"Hoy: ".$hoy[1]."-".$hoy[2]."-".$hoy[0]." es mayor"
-	//		 . ""
-	//		.$fecha[1]."-".$fecha[2]."-".$fecha[0]."</br>";
-	return false;
-	
-} 
+function compararFechas( $hoy, $fecha ) {
+	$hoy = explode( "-", $hoy );
+	$fecha = explode( "-", $fecha );
+	$hoy2 = mktime( 0, 0, 0, $hoy[1], $hoy[2], $hoy[0] );
+	$fecha2 = mktime( 0, 0, 0, $fecha[1], $fecha[2], $fecha[0] );
+	if ( $hoy2 <= $fecha2 ) {
+		//echo"Hoy: ".$hoy[1]."-".$hoy[2]."-".$hoy[0]." es menor o igual que"
+		//		.$fecha[1]."-".$fecha[2]."-".$fecha[0]."</br>";
+		return true;
+	} else {
+		//echo"Hoy: ".$hoy[1]."-".$hoy[2]."-".$hoy[0]." es mayor"
+		//		 . ""
+		//		.$fecha[1]."-".$fecha[2]."-".$fecha[0]."</br>";
+		return false;
+	}
 }
 
 function diaSemana( $fecha ) {
@@ -97,16 +93,16 @@ function getmes( $var ) {
 $current_user = wp_get_current_user();
 $id = $current_user->ID;
 if ( isset( $_GET['fecha'] ) ) {
-	$fechaget = explode( "-",$_GET['fecha']);
+	$fechaget = explode( "-", $_GET['fecha'] );
 	if ( count( $fechaget ) > 0 ) {
-		$month=$fechaget[1];
-		$day=$fechaget[2];
-		$year=$fechaget[0];
+		$month = $fechaget[1];
+		$day = $fechaget[2];
+		$year = $fechaget[0];
 		if ( checkdate( $month, $day, $year ) ) {
-			$fecha_actual=$_GET['fecha'];
+			$fecha_actual = $_GET['fecha'];
 			//echo "fecha valida ".$fecha_actual;
-			
-			$bandera=true;
+
+			$bandera = true;
 		} else {
 			//echo "No es fecha valida";
 			$fecha_actual = date( "Y-m-d" );
@@ -117,7 +113,7 @@ if ( isset( $_GET['fecha'] ) ) {
 	}
 } else {
 	//echo "Es el dia de hoy";
-	
+
 	$fecha_actual = date( "Y-m-d" );
 }
 
@@ -245,378 +241,400 @@ switch ( $diaSemana ) {
 		break;
 }
 ?>
+
 <?php get_header(); ?>
-<div class="content">
-    <div <?php post_class('post'); ?>>
-        <h1><?php the_title(); ?></h1>
-        <p><?php echo $post->post_content; ?></p>
-        <?php if (is_single(462)) { ?>
-            <!--START ACTIVIDAD FISICA-->
-            <div id="tabs">
-                <ul>
-                    <li><a href="#tabs-1">Actividades</a></li>
-                    <li><a href="#tabs-2">Instrucciones</a></li>
-                </ul>
-                <a href="#" class="hist">Ver historial</a>
-                <div id="tabs-1" class="tab-content">
-                    <h3><?php echo $semana;?></h3>
-                    <div class="cont-margin">
-                        <table border="0"  class="actividad1">
-                            <tbody>
-                                <tr>
-                                    <td>Día de la semana</td>
-                                    <td><img src="<?php bloginfo('template_url'); ?>/images/actividades/icon_aero.png" class="ico">Aeróbicos</td>
-                                    <td><img src="<?php bloginfo('template_url'); ?>/images/actividades/icon_est.png" class="ico">Estiramiento</td>
-                                    <td><img src="<?php bloginfo('template_url'); ?>/images/actividades/icon_fue.png" class="ico">Fuerza</td>
-                                    <td class="highlight1"><span>Tiempo total</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Domingo</td>
-                                    <td><input type="text" name="dom-aero" class="int-num"></td>
-                                    <td><input type="text" name="dom-est" class="int-num"></td>
-                                    <td><input type="text" name="dom-fue" class="int-num"></td>
-                                    <td class="highlight2">0</td>
-                                </tr>
-                                <tr>
-                                    <td>Lunes</td>
-                                    <td><input type="text" name="lun-aero" class="int-num"></td>
-                                    <td><input type="text" name="lun-est" class="int-num"></td>
-                                    <td><input type="text" name="lun-fue" class="int-num"></td>
-                                    <td class="highlight1">20</td>
-                                </tr>
-                                <tr>
-                                    <td>Martes</td>
-                                    <td><input type="text" name="mar-aero" class="int-num"></td>
-                                    <td><input type="text" name="mar-est" class="int-num"></td>
-                                    <td><input type="text" name="mar-fue" class="int-num"></td>
-                                    <td class="highlight2">0</td>
-                                </tr>
-                                <tr>
-                                    <td>Miércoles</td>
-                                    <td><input type="text" name="mier-aero" class="int-num"></td>
-                                    <td><input type="text" name="mier-est" class="int-num"></td>
-                                    <td><input type="text" name="mier-fue" class="int-num"></td>
-                                    <td class="highlight1">0</td>
-                                </tr>
-                                <tr>
-                                    <td>Jueves</td>
-                                    <td><input type="text" name="jue-aero" class="int-num"></td>
-                                    <td><input type="text" name="jue-est" class="int-num"></td>
-                                    <td><input type="text" name="jue-fue" class="int-num"></td>
-                                    <td class="highlight2">0</td>
-                                </tr>
-                                <tr>
-                                    <td>Viernes</td>
-                                    <td><input type="text" name="vie-aero" class="int-num"></td>
-                                    <td><input type="text" name="vie-est" class="int-num"></td>
-                                    <td><input type="text" name="vie-fue" class="int-num"></td>
-                                    <td class="highlight1">0</td>
-                                </tr>
-                                <tr>
-                                    <td>Sábado</td>
-                                    <td><input type="text" name="sab-aero" class="int-num"></td>
-                                    <td><input type="text" name="sab-est" class="int-num"></td>
-                                    <td><input type="text" name="sab-fue" class="int-num"></td>
-                                    <td class="highlight2">0</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4" class="empty">Suma de todos los tiempos</td>
-                                    <td class="highlight3">195</td>
-                                </tr>
-                            </tbody>
-                        </table> 
-                    </div>
-                </div>
-                <div id="tabs-2" class="tab-content">
-                    <div class="inst-pad">
-                        <?php
-                        $my_postid = 792; //This is page id or post id
-                        $content_post = get_post($my_postid);
-                        $content = $content_post->post_content;
-                        $content = apply_filters('the_content', $content);
-                        $content = str_replace(']]>', ']]&gt;', $content);
-                        echo $content;
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <!--END ACTIVIDAD FISICA-->
-        <?php } elseif (is_single(461)) { ?>
-            <!--START PESO & ALIMENTACION-->
-            <div id="tabs">
-                <ul>
-                    <li><a href="#tabs-1">Actividades</a></li>
-                    <li><a href="#tabs-2">Instrucciones</a></li>
-                </ul>
-                <a href="#" class="hist">Ver historial</a>
-                <div id="tabs-1" class="tab-content">
-					<form>
-                    <h3><?php echo $semana;?></h3>
-                    <div class="cont-margin">
-                        <div class="int-pesos">
-                            <div class="peso-single"><input type="text" name="dom-aero" class="int-num"><p>Peso inicial</p></div><label>-</label>
-                            <div class="peso-single"><input type="text" name="dom-aero" class="int-num"><p>Peso de hoy</p></div><label>=</label>
-                            <div class="peso-single"><input type="text" name="dom-aero" class="int-num2"><p>Cambio de peso</p></div>
-                            <div class="int-sentirse">
-                            <p>Me siento</p>
-                            <select name="siento-alimento" class="int-select2">
-                                <option>Bien</option>
-                                <option>Regular</option>
-                                <option>Mal</option>
-                            </select>
-                        </div>
-                        </div>
-                        
-                    </div>
-                    <table border="0"  class="actividad2">
-                        <tbody>
-                            <tr>
-                                <!-- <td class="width180">Grupo de alimentos</td> -->
-                                <td>Raciones diarias</td>
-                                <td>Dia 1</td>
-                                <td>Dia 2</td>
-                                <td>Dia 3</td>
-                                <td>Dia 4</td>
-                                <td>Dia 5</td>
-                                <td>Dia 6</td>
-                                <td>Dia 7</td>
-                            </tr>
-                            <tr>
-                                 <td>Verduras</td> 
-                                <!--<td><input type="text" name="dom-aero" class="int-num"></td>-->
-								 <td><input type="text" name="v1"  maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="v2" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="v3" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="v4" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="v5" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="v6" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="v7" maxlength="1" class="int-check"></td>
-                            </tr>
-                            <tr>
-                                <td>Frutas</td>
-                                <td><input type="text" name="f1" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="f2" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="f3" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="f4" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="f5" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="f6" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="f7" maxlength="1" class="int-check"></td>
-                            </tr>
-                            <tr>
-                                <td>Carbohidratos</td>
-                                <td><input type="text" name="c1" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="c2" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="c3" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="c4" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="c5" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="c6" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="c7" maxlength="1" class="int-check"></td>
-                            </tr>
-                            <tr>
-                                <td>Proteína / Lácteos</td>
-                                <td><input type="text" name="p1" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="p2" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="p3" maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="p4" maxlength="1"   class="int-check"></td>
-                                <td><input type="text" name="p5"  maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="p6"  maxlength="1" class="int-check"></td>
-                                <td><input type="text" name="p7" maxlength="1"  class="int-check"></td>
-                            </tr>
-                            <tr>
-                                <td>Grasas</td>
-                                <td><input type="text" name="g1" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="g2" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="g3" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="g4" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="g5" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="g6" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="g7" maxlength="1"  class="int-check"></td>
-                            </tr>
-                            <tr>
-                                <td>Dulces</td>
-                                <td><input type="text" name="d1" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="d2" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="d3" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="d4" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="d5" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="d6" maxlength="1"  class="int-check"></td>
-                                <td><input type="text" name="d7" maxlength="1"  class="int-check"></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                    <div class="half-area">
-                        <div class="head-area"><h1>Lo que te funcionó bien:</h1></div>
-                        <textarea class="int-textarea" col="4" rows="6"></textarea>
-                    </div>
-                    <div class="half-area2">
-                        <div class="head-area"><h1>Lo que no funcionó tan bien:</h1></div>
-                        <textarea  class="int-textarea"></textarea>
-                    </div>
-                    <div class="full-area">
-                        <div class="head-area"><h1>Estoy muy orgulloso de:</h1></div>
-                        <textarea class="int-textarea2"></textarea>
-                    </div>
-					<input type="submit" value="Guardar">
-					</form>
-                </div>
-                            <div id="tabs-2" class="tab-content">
-                <div class="inst-pad">
-                    <?php
-                    $my_postid = 800; //This is page id or post id
-                    $content_post = get_post($my_postid);
-                    $content = $content_post->post_content;
-                    $content = apply_filters('the_content', $content);
-                    $content = str_replace(']]>', ']]&gt;', $content);
-                    echo $content;
-                    ?>
-                </div>
-            </div>
-            </div>
-
-
-    <!--END PESO & ALIMENTACION-->
-<?php } elseif (is_single(61)) { ?>
-    <!--START DIARIO DE SUENO-->
-    <div id="tabs">
-        <ul>
-            <li><a href="#tabs-1">Actividades</a></li>
-            <li><a href="#tabs-2">Instrucciones</a></li>
-        </ul>
-        <a href="#" class="hist">Ver historial</a>
-        <div id="tabs-1" class="tab-content">
-            <h3><?php echo $semana;?></h3>
-            <div class="cont-margin">
-                <table border="0"  class="actividad1">
-                    <tbody>
-                        <tr>
-                            <td>Día de la semana</td>
-                            <td>Menos de 7 horas</td>
-                            <td>De 7 a 9 horas</td>
-                            <td>Más de 9 horas</td>
-                            <td class="highlight1"><span>Califica tu sueño</span></td>
-                        </tr>
-                        <tr>
-                            <td>Domingo</td>
-                            <td><input type="radio" name="horasd" value="7" class="int-check"></td>
-                            <td><input type="radio" name="horasd" value="8" class="int-check"></td>
-                            <td><input type="radio" name="horasd" value="9" class="int-check"></td>
-                            <td class="highlight2">
-                                <select name="calidad-suenod" class="int-select">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Lunes</td>
-                            <td><input type="radio" name="horasl" value="7" class="int-check"></td>
-                            <td><input type="radio" name="horasl" value="8" class="int-check"></td>
-                            <td><input type="radio" name="horasl" value="9" class="int-check"></td>
-                            <td class="highlight2">
-                                <select name="calidad-suenol" class="int-select">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Martes</td>
-                            <td><input type="radio" name="horasm" value="7" class="int-check"></td>
-                            <td><input type="radio" name="horasm" value="8" class="int-check"></td>
-                            <td><input type="radio" name="horasm" value="9" class="int-check"></td>
-                            <td class="highlight2">
-                                <select name="calidad-suenom" class="int-select">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Miércoles</td>
-                            <td><input type="radio" name="horasmi" value="7" class="int-check"></td>
-                            <td><input type="radio" name="horasmi" value="8" class="int-check"></td>
-                            <td><input type="radio" name="horasmi" value="9" class="int-check"></td>
-                            <td class="highlight2">
-                                <select name="calidad-suenomi" class="int-select">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Jueves</td>
-                            <td><input type="radio" name="horasj" value="7" class="int-check"></td>
-                            <td><input type="radio" name="horasj" value="8" class="int-check"></td>
-                            <td><input type="radio" name="horasj" value="9" class="int-check"></td>
-                            <td class="highlight2">
-                                <select name="calidad-suenoj" class="int-select">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Viernes</td>
-                            <td><input type="radio" name="horasv" value="7" class="int-check"></td>
-                            <td><input type="radio" name="horasv" value="8" class="int-check"></td>
-                            <td><input type="radio" name="horasv" value="9" class="int-check"></td>
-                            <td class="highlight2">
-                                <select name="calidad-suenov" class="int-select">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sábado</td>
-                            <td><input type="radio" name="horass" value="7" class="int-check"></td>
-                            <td><input type="radio" name="horass" value="8" class="int-check"></td>
-                            <td><input type="radio" name="horass" value="9" class="int-check"></td>
-                            <td class="highlight2">
-                                <select name="calidad-suenos" class="int-select">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
-                            </td>
-                        </tr>
-						
-						<!-- 
-                        <tr>
-                            <td class="highlight1">Tiempo total</td>
-                            <td class="highlight2"></td>
-                            <td class="highlight2"></td>
-                            <td class="highlight2"></td>
-                            <td class="highlight4">Promedio</td>
-                        </tr>
-						-->
-                    </tbody>
-                </table> 
-            </div>
-        </div>
-        <div id="tabs-2" class="tab-content">
-            <div class="inst-pad">
-                <?php
-                $my_postid = 802; //This is page id or post id
-                $content_post = get_post($my_postid);
-                $content = $content_post->post_content;
-                $content = apply_filters('the_content', $content);
-                $content = str_replace(']]>', ']]&gt;', $content);
-                echo $content;
-                ?>
-            </div>
-        </div>
-    </div>
-    <!--END DIARIO DE SUENO-->
-<?php } ?>
+<div class="aviso1" id="aviso5">
+	<a href="#" class="close"></a>
+	<p>Si conoces tus cifras, los campos no pueden estar vacios.</p>
 </div>
+<div class="aviso1" id="aviso6">
+	<a href="#" class="close"></a>
+	<p>Solo puedes ingresar valores numéricos.</p>
+</div>
+<div class="content">
+	<div <?php post_class( 'post' ); ?>>
+		<h1><?php the_title(); ?></h1>
+		<p><?php echo $post->post_content; ?></p>
+		<?php if ( is_single( 462 ) ) { ?>
+			<!--START ACTIVIDAD FISICA-->
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Actividades</a></li>
+					<li><a href="#tabs-2">Instrucciones</a></li>
+				</ul>
+				<a href="#" class="hist">Ver historial</a>
+				<div id="tabs-1" class="tab-content">
+					<h3><?php echo $semana; ?></h3>
+					<div class="cont-margin">
+						<table border="0"  class="actividad1">
+							<tbody>
+								<tr>
+									<td>Día de la semana</td>
+									<td><img src="<?php bloginfo( 'template_url' ); ?>/images/actividades/icon_aero.png" class="ico">Aeróbicos</td>
+									<td><img src="<?php bloginfo( 'template_url' ); ?>/images/actividades/icon_est.png" class="ico">Estiramiento</td>
+									<td><img src="<?php bloginfo( 'template_url' ); ?>/images/actividades/icon_fue.png" class="ico">Fuerza</td>
+									<td class="highlight1"><span>Tiempo total</span></td>
+								</tr>
+							<form action="<?php echo site_url() . "/actividades-dao" ?>" id="formsa" method="post">
+
+								<tr>
+									<td>Lunes</td>
+									<td><input type="text" name="lun-aero" id="lun-aero" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="lun-est" id="lun-est" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="lun-fue" id="lun-fue" maxlength="4"  class="int-num"></td>
+									<td class="highlight2" id="lun-tot">0</td>
+								</tr>
+								<tr>
+									<td>Martes</td>
+									<td><input type="text" name="mar-aero" id="mar-aero" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="mar-est" id="mar-est" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="mar-fue" id="mar-fue" maxlength="4"  class="int-num"></td>
+									<td class="highlight1" id="mar-tot">0</td>
+								</tr>
+								<tr>
+									<td>Miércoles</td>
+									<td><input type="text" name="mier-aero" maxlength="4"  id="mier-aero" class="int-num"></td>
+									<td><input type="text" name="mier-est" maxlength="4"  id="mier-est" class="int-num"></td>
+									<td><input type="text" name="mier-fue" maxlength="4"  id="mier-fue" class="int-num"></td>
+									<td class="highlight2" id="mier-tot">0</td>
+								</tr>
+								<tr>
+									<td>Jueves</td>
+									<td><input type="text" name="jue-aero" id="jue-aero" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="jue-est" id="jue-est" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="jue-fue" id="jue-fue" maxlength="4"  class="int-num"></td>
+									<td class="highlight1" id="jue-tot">0</td>
+								</tr>
+								<tr>
+									<td>Viernes</td>
+									<td><input type="text" name="vie-aero" id="vie-aero" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="vie-est" id="vie-est" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="vie-fue" id="vie-fue" maxlength="4"  class="int-num"></td>
+									<td class="highlight2" id="vie-tot">0</td>
+								</tr>
+								<tr>
+									<td>Sábado</td>
+									<td><input type="text" name="sab-aero" id="sab-aero" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="sab-est" id="sab-est" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="sab-fue" id="sab-fue" maxlength="4"  class="int-num"></td>
+								<input type="hidden" name="lunes" value="<?php echo $lunes; ?>">
+								<input type="hidden" name="domingo" value="<?php echo $domingo; ?>">
+
+								<td class="highlight1" id="sab-tot">0</td>
+								</tr>
+								<tr>
+									<td>Domingo</td>
+									<td><input type="text" name="dom-aero" id="dom-aero" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="dom-est" id="dom-est" maxlength="4"  class="int-num"></td>
+									<td><input type="text" name="dom-fue" id="dom-fue" maxlength="4"  class="int-num"></td>
+									<td class="highlight2" id="dom-tot">0</td>
+								</tr>
+								<tr>
+									<td><a href="#"  id="sguardar" value="Guardar">Guardar</a></td>
+									<td colspan="3" class="empty">Suma de todos los tiempos</td>
+									<td class="highlight3" id="sumatot">0</td>
+								</tr>
+
+							</form>
+							</tbody>
+						</table> 
+					</div>
+				</div>
+				<div id="tabs-2" class="tab-content">
+					<div class="inst-pad">
+						<?php
+						$my_postid = 792; //This is page id or post id
+						$content_post = get_post( $my_postid );
+						$content = $content_post->post_content;
+						$content = apply_filters( 'the_content', $content );
+						$content = str_replace( ']]>', ']]&gt;', $content );
+						echo $content;
+						?>
+					</div>
+				</div>
+			</div>
+			<!--END ACTIVIDAD FISICA-->
+		<?php } elseif ( is_single( 461 ) ) { ?>
+			<!--START PESO & ALIMENTACION-->
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Actividades</a></li>
+					<li><a href="#tabs-2">Instrucciones</a></li>
+				</ul>
+				<a href="#" class="hist">Ver historial</a>
+				<div id="tabs-1" class="tab-content">
+
+					<h3><?php echo $semana; ?></h3>
+					<div class="cont-margin">
+						<div class="int-pesos">
+							<div class="peso-single"><input type="text" name="dom-aero" class="int-num"><p>Peso inicial</p></div><label>-</label>
+							<div class="peso-single"><input type="text" name="dom-aero" class="int-num"><p>Peso de hoy</p></div><label>=</label>
+							<div class="peso-single"><input type="text" name="dom-aero" class="int-num2"><p>Cambio de peso</p></div>
+							<div class="int-sentirse">
+								<p>Me siento</p>
+								<select name="siento-alimento" class="int-select2">
+									<option>Bien</option>
+									<option>Regular</option>
+									<option>Mal</option>
+								</select>
+							</div>
+						</div>
+
+					</div>
+					<table border="0"  class="actividad2">
+						<tbody>
+							<tr>
+								<td class="width180">Grupo de alimentos</td>
+								<td>Raciones diarias</td>
+								<td>Dia 1</td>
+								<td>Dia 2</td>
+								<td>Dia 3</td>
+								<td>Dia 4</td>
+								<td>Dia 5</td>
+								<td>Dia 6</td>
+								<td>Dia 7</td>
+							</tr>
+							<tr>
+								<td>Verduras</td> 
+								<td><input type="text" name="dom-aero" class="int-num"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+							</tr>
+							<tr>
+								<td>Frutas</td>
+								<td><input type="text" name="dom-aero" class="int-num"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+							</tr>
+							<tr>
+								<td>Carbohidratos</td>
+								<td><input type="text" name="dom-aero" class="int-num"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+							</tr>
+							<tr>
+								<td>Proteína / Lácteos</td>
+								<td><input type="text" name="dom-aero" class="int-num"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+							</tr>
+							<tr>
+								<td>Grasas</td>
+								<td><input type="text" name="dom-aero" class="int-num"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+							</tr>
+							<tr>
+								<td>Dulces</td>
+								<td><input type="text" name="dom-aero" class="int-num"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+								<td><input type="checkbox" name="lun-aero" class="int-check"></td>
+							</tr>
+
+						</tbody>
+					</table>
+					<div class="half-area">
+						<div class="head-area"><h1>Lo que te funcionó bien:</h1></div>
+						<textarea class="int-textarea" col="4" rows="6"></textarea>
+					</div>
+					<div class="half-area2">
+						<div class="head-area"><h1>Lo que no funcionó tan bien:</h1></div>
+						<textarea  class="int-textarea"></textarea>
+					</div>
+					<div class="full-area">
+						<div class="head-area"><h1>Estoy muy orgulloso de:</h1></div>
+						<textarea class="int-textarea2"></textarea>
+					</div>
+					<input type="submit" value="Guardar">
+
+				</div>
+				<div id="tabs-2" class="tab-content">
+					<div class="inst-pad">
+						<?php
+						$my_postid = 800; //This is page id or post id
+						$content_post = get_post( $my_postid );
+						$content = $content_post->post_content;
+						$content = apply_filters( 'the_content', $content );
+						$content = str_replace( ']]>', ']]&gt;', $content );
+						echo $content;
+						?>
+					</div>
+				</div>
+			</div>
+
+
+			<!--END PESO & ALIMENTACION-->
+		<?php } elseif ( is_single( 61 ) ) { ?>
+			<!--START DIARIO DE SUENO-->
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Actividades</a></li>
+					<li><a href="#tabs-2">Instrucciones</a></li>
+				</ul>
+				<a href="#" class="hist">Ver historial</a>
+				<div id="tabs-1" class="tab-content">
+					<h3><?php echo $semana; ?></h3>
+					<div class="cont-margin">
+						<table border="0"  class="actividad1">
+							<tbody>
+								<tr>
+									<td>Día de la semana</td>
+									<td>Menos de 7 horas</td>
+									<td>De 7 a 9 horas</td>
+									<td>Más de 9 horas</td>
+									<td class="highlight1"><span>Califica tu sueño</span></td>
+								</tr>
+								<tr>
+									<td>Domingo</td>
+									<td><input type="radio" name="horasd" value="7" class="int-check"></td>
+									<td><input type="radio" name="horasd" value="8" class="int-check"></td>
+									<td><input type="radio" name="horasd" value="9" class="int-check"></td>
+									<td class="highlight2">
+										<select name="calidad-suenod" class="int-select">
+											<option value="b">Bueno</option>
+											<option value="r">Regular</option>
+											<option value="m">Malo</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Lunes</td>
+									<td><input type="radio" name="horasl" value="7" class="int-check"></td>
+									<td><input type="radio" name="horasl" value="8" class="int-check"></td>
+									<td><input type="radio" name="horasl" value="9" class="int-check"></td>
+									<td class="highlight2">
+										<select name="calidad-suenol" class="int-select">
+											<option value="b">Bueno</option>
+											<option value="r">Regular</option>
+											<option value="m">Malo</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Martes</td>
+									<td><input type="radio" name="horasm" value="7" class="int-check"></td>
+									<td><input type="radio" name="horasm" value="8" class="int-check"></td>
+									<td><input type="radio" name="horasm" value="9" class="int-check"></td>
+									<td class="highlight2">
+										<select name="calidad-suenom" class="int-select">
+											<option value="b">Bueno</option>
+											<option value="r">Regular</option>
+											<option value="m">Malo</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Miércoles</td>
+									<td><input type="radio" name="horasmi" value="7" class="int-check"></td>
+									<td><input type="radio" name="horasmi" value="8" class="int-check"></td>
+									<td><input type="radio" name="horasmi" value="9" class="int-check"></td>
+									<td class="highlight2">
+										<select name="calidad-suenomi" class="int-select">
+											<option value="b">Bueno</option>
+											<option value="r">Regular</option>
+											<option value="m">Malo</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Jueves</td>
+									<td><input type="radio" name="horasj" value="7" class="int-check"></td>
+									<td><input type="radio" name="horasj" value="8" class="int-check"></td>
+									<td><input type="radio" name="horasj" value="9" class="int-check"></td>
+									<td class="highlight2">
+										<select name="calidad-suenoj" class="int-select">
+											<option value="b">Bueno</option>
+											<option value="r">Regular</option>
+											<option value="m">Malo</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Viernes</td>
+									<td><input type="radio" name="horasv" value="7" class="int-check"></td>
+									<td><input type="radio" name="horasv" value="8" class="int-check"></td>
+									<td><input type="radio" name="horasv" value="9" class="int-check"></td>
+									<td class="highlight2">
+										<select name="calidad-suenov" class="int-select">
+											<option value="b">Bueno</option>
+											<option value="r">Regular</option>
+											<option value="m">Malo</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Sábado</td>
+									<td><input type="radio" name="horass" value="7" class="int-check"></td>
+									<td><input type="radio" name="horass" value="8" class="int-check"></td>
+									<td><input type="radio" name="horass" value="9" class="int-check"></td>
+									<td class="highlight2">
+										<select name="calidad-suenos" class="int-select">
+											<option value="b">Bueno</option>
+											<option value="r">Regular</option>
+											<option value="m">Malo</option>
+										</select>
+									</td>
+								</tr>
+
+								<!-- 
+								<tr>
+									<td class="highlight1">Tiempo total</td>
+									<td class="highlight2"></td>
+									<td class="highlight2"></td>
+									<td class="highlight2"></td>
+									<td class="highlight4">Promedio</td>
+								</tr>
+								-->
+							</tbody>
+						</table> 
+					</div>
+				</div>
+				<div id="tabs-2" class="tab-content">
+					<div class="inst-pad">
+						<?php
+						$my_postid = 802; //This is page id or post id
+						$content_post = get_post( $my_postid );
+						$content = $content_post->post_content;
+						$content = apply_filters( 'the_content', $content );
+						$content = str_replace( ']]>', ']]&gt;', $content );
+						echo $content;
+						?>
+					</div>
+				</div>
+			</div>
+			<!--END DIARIO DE SUENO-->
+		<?php } ?>
+	</div>
 </div>
 </div><!--main-->
 <?php get_sidebar(); ?>

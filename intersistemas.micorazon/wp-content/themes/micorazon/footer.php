@@ -64,6 +64,7 @@
 <script src="<?php bloginfo('template_url'); ?>/js/jquery-1.11.1.min.js"></script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/jquery-ui-1.10.4.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/micorazon.js"></script>
+	<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery.lightbox_me.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.min.js"></script>
 </body>
 </html>
