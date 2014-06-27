@@ -464,7 +464,7 @@ try {
 		<div class="semanas">
 			<a href="<?php echo site_url()."/historial-de-registro-hoy?fecha={$fechaanterior}" ?>" class="prev">Semana anterior</a>
 		 <?php if($bandera){ ?>
-			<a href="<?php echo site_url()."/historial-de-registro-hoy/" ?>" class="prev">Regresar a mi registro de hoy</a>
+			<a href="<?php echo site_url()."/historial-de-registro-hoy/" ?>" ><span>Regresar a mi registro de hoy</span></a>
 			<a href="<?php echo site_url()."/historial-de-registro-hoy?fecha={$fechasiguiente}" ?>" class="next">Semana siguiente</a>
 			
 		 <?php } ?>

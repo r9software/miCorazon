@@ -435,6 +435,66 @@ $(document).ready(function() {
             });
         }
     });
+    $("#pesoguardar").click(function(e) {
+        bandera = true;
+        
+        if (bandera) {
+            $('#formpeso').submit();
+        } else {
+            $('#aviso5').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso5').find('input:first').focus();
+                    $('#lun-est').val('');
+                }
+            });
+        }
+    });
+    $("#horasguardar").click(function(e) {
+        bandera = true;
+        
+        if (bandera) {
+            $('#formhoras').submit();
+        } else {
+            $('#aviso5').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso5').find('input:first').focus();
+                    $('#lun-est').val('');
+                }
+            });
+        }
+    });
+    $('.actividades-select').bind('change', function () {
+          var url = $(this).val(); // get selected value
+          if (url) { // require a URL
+              window.location = url; // redirect
+          }
+          return false;
+      });
+   /*
+    $("#raf").click(function(e) {
+        window.open("../../actividad/registro-de-actividad-fisica/");
+		
+    });
+    $("#rpa").click(function(e) {
+        window.open("../../actividad/registro-de-peso-y-alimentacion/");
+		
+    });
+    $("#ds").click(function(e) {
+        window.open("../../actividad/duerme-bien/");
+		
+    });*/
+    
+    $("#Conoce").click(function(e) {
+        $('#tabla1').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso5').find('input:first').focus();
+                   
+                }
+            });
+    });
     $("#sab-aero").keyup(function(e) {
         aero = Number($('#sab-aero').val());
         est = 0;

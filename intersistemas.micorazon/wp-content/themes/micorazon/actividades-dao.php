@@ -16,6 +16,7 @@ $miercolesaero;
 $juevesaero;
 $viernesaero;
 $sabadoaero;
+$mysingle;
 //estiramientos
 $domingoestira;
 $lunesestira;
@@ -155,28 +156,53 @@ if(isset($_POST['domingo'])){
 }else{
 	$fechafin="0000-00-00";
 }
-
-//insercion
+if(isset($_POST['mysingle'])){
+	$mysingle=$_POST['mysingle'];
+}else{
+	header( "Location:" . site_url() . "/introduccion-9/" );
+}
 $current_user = wp_get_current_user();
 $id = $current_user->ID;
+//insercion
+if($mysingle==462){
+	//actividad Fisica
+
 try {
 	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
 	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-	$sql = " INSERT INTO wp_usersregistroaerobicos(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
-			VALUES ({$id},{$lunesaero},{$martesaero},{$miercolesaero},{$juevesaero},{$viernesaero},{$sabadoaero},{$domingoaero},'{$fechaini}','{$fechafin}');"
-			. " INSERT INTO wp_usersregistroestiramiento(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
-			VALUES ({$id},{$lunesestira},{$martesestira},{$miercolesestira},{$juevesestira},{$viernesestira},{$sabadoestira},{$domingoestira},'{$fechaini}','{$fechafin}');"
-			. " INSERT INTO wp_usersregistrofuerza(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
-			VALUES ({$id},{$lunesfue},{$martesfue},{$miercolesfue},{$juevesfue},{$viernesfue},{$sabadofue},{$domingofue},'{$fechaini}','{$fechafin}');";
-	echo $martesaero;
+	$sql = " UPDATE wp_usersregistroaerobicos SET `lunes`={$lunesaero},`martes`={$martesaero}, `miercoles`={$miercolesaero}, `jueves`={$juevesaero},`viernes`={$viernesaero}, `sabado`={$sabadoaero}, `domingo`={$domingoaero} 
+			  WHERE `user_id`={$id} and `fechaini`='{$fechaini}' and `fechafin`='{$fechafin}'; "
+			. " UPDATE wp_usersregistroestiramiento SET `lunes`={$lunesestira},`martes`={$martesestira}, `miercoles`={$miercolesestira}, `jueves`={$juevesestira},`viernes`={$viernesestira}, `sabado`={$sabadoestira}, `domingo`={$domingoestira} 
+			  WHERE `user_id`={$id} and `fechaini`='{$fechaini}' and `fechafin`='{$fechafin}'; "
+			. " UPDATE wp_usersregistrofuerza SET `lunes`={$lunesfue},`martes`={$martesfue}, `miercoles`={$miercolesfue}, `jueves`={$juevesfue},`viernes`={$viernesfue}, `sabado`={$sabadofue}, `domingo`={$domingofue} 
+			  WHERE `user_id`={$id} and `fechaini`='{$fechaini}' and `fechafin`='{$fechafin}'; ";
+			// echo $martesaero;
 			echo $sql;
 			$q = $conn->prepare( $sql );
 	$q->execute( );
-	header( "Location:" . site_url() . "/actividad/registro-de-actividad-fisica/" );
+	header( "Location:" . site_url() . "/actividad/registro-de-actividad-fisica/?guardado=true" );
 	$conn = null;
 } catch ( PDOException $e ) {
 	echo "".$e->getMessage();
 //header( "Location:" . site_url() . "/login/" );
 	die();
 }
+//end actividad fisica
+}else if($mysingle==461){
+	//start peso y alimentacion
+	echo "<pre>";
+	print_r($_POST);
+	echo "</pre>";
+	//end peso y alimentacion
+}else if($mysingle==61){
+	//startt diario de sueño
+	//
+	//
+	echo "<pre>";
+	print_r($_POST);
+	echo "</pre>";
+	//end diaro de sueño
+}else{
+	header( "Location:" . site_url() . "/introduccion-9/" );
+} 
 ?>
