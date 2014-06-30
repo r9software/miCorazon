@@ -132,7 +132,8 @@ try {
 				<?php wp_reset_query(); ?>
 			</ul>
 		</div>
-		<div class="participa">
+
+		<!--<div class="participa">
 			<div class="more"><a href="#"></a></div>
 			<h3 class="tparticipa"><?php $obj = get_post_type_object( 'comunidad' ); echo $obj->labels->singular_name; ?></h3>
 			<div class="cont">
@@ -204,8 +205,17 @@ try {
 						<?php endwhile;}?>
 				<?php wp_reset_query(); ?>
 			</div>
-		</div>
+		</div>-->
+		<div class="apptivate">
+			<div class="more"><a href="#"></a></div>
+			<h3 class="aparticipa">Ejercícios</h3>
+			<div class="ejercicio-row">
+				<h1>Flexibilidad</h1>
+				<p>Te ayuda a mantener saludables tus articulaciones, huesos y prevenir caídas</p>
+				<div class="app-plus"></div>
+			</div>
 	</div>
+		</div>
 </div>
 </div><!--main-->
 <?php get_sidebar(); ?>
@@ -245,7 +255,9 @@ echo $obj->labels->singular_name;
 <?php wp_reset_query(); ?>
 	</ul>
 </div>
-<div class="ejercicios">
+
+
+<!--<div class="ejercicios">
 	<div class="more"><a href="#"></a></div>
 	<h3 class="tejercicios"><?php
 		$obj = get_post_type_object( 'ejercicios' );
@@ -277,5 +289,9 @@ echo $obj->labels->singular_name;
 <?php wp_reset_query(); ?>
 	</div>
 </div>
+-->
+
+
+
 </div><!--page-->
 <?php get_footer(); ?>

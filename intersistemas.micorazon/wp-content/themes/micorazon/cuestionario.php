@@ -34,7 +34,7 @@ catch ( PDOException $e ) {
 	</div>
 	<div class="aviso1" id="aviso2">
 		<a href="#" class="close"></a>
-		<p>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de colesterol total.</p>
+		<p>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de glucosa total.</p>
 	</div>
 	<div class="aviso1" id="aviso3">
 		<a href="#" class="close"></a>
@@ -58,7 +58,7 @@ catch ( PDOException $e ) {
 	</div>
     <div class="aviso1" id="aviso8">
 		<a href="#" class="close"></a>
-		<p>Es importante que conozcas esta medida y visites a tu Doctor, es un factor que debes cuidar día a día.</p>
+		<p>Es importante que conozcas esta medida y visites a tu doctor, es un factor que debes cuidar día a día.</p>
 	</div>
     <div class="aviso2" id="tabla1">
         <a href="#" class="close"></a>
@@ -140,7 +140,7 @@ catch ( PDOException $e ) {
             <tbody>
                 <tr>
                     <td><strong>Normal</strong></td>
-                    <td>Menos de 50 mg/dL</td>
+                    <td>Menos de 150 mg/dL</td>
                 </tr>
                 <tr>
                     <td><strong>Límites de lo normal</strong></td>

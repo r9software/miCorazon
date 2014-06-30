@@ -25,6 +25,7 @@ select:focus
 {
   outline: none;
 }
+
 /*BASIC DEFINITIONS*/
 *, *:after, *:before {
     -webkit-box-sizing: border-box;
@@ -162,8 +163,8 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     
     .single-space{margin-bottom:15px; }
     /*CUESTIONARIO*/
-    .familiar-tabla th{font-size:13px; color:#53A8DC;  }
-    .familiar-tabla td{border-bottom:1px solid #53A8DC; padding:5px;   }
+    .familiar-tabla th{font-size:13px; color:#53A8DC; background-color: #fff; }
+    .familiar-tabla td{border-bottom:1px solid #53A8DC; padding:5px; background-color: #fff; }
     .familiar-tabla .desc{width:240px; }
     .familiar-tabla .pad{width:120px; text-align:center; padding:8px 8px 8px 0px;    }
     .aviso2,
@@ -314,7 +315,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .sidebar .mis-motivaciones ul li{margin-bottom:10px; padding-left:15px; max-height:36px; overflow:hidden; }
     .sidebar .mis-motivaciones ul li a{color: #4D4542; text-decoration:none; }
     .sidebar .mis-retos ul{list-style:none; font-size:13px; }
-    .sidebar .mis-retos ul li{margin-bottom:10px; padding-left:15px; max-height:36px; overflow:hidden;   }
+    .sidebar .mis-retos ul li{margin-bottom:10px; padding-left:15px; overflow:hidden;   }
     .sidebar .mis-retos ul li.line{text-decoration:line-through; color:#CED1D1; opacity:0.8;   }
     .sidebar .mis-retos ul li a{color: #4D4542; text-decoration:none; }
     .sidebar .options{padding:10px 10px 0px 10px;   }
@@ -325,6 +326,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .sidebar .mi-registro a{color: #4D4542; text-decoration:none;  font-size:13px; }
     .heart-points{ width:100%; padding:20px 0px 20px 0px;    }
     .points{ margin:0px auto; color:#FFFFFF; font-weight:600; font-size:16px; text-align:center;  height:31px; line-height:35px; font-style:italic;    }
+    .points a{text-decoration: none; color: #FFF;}
     .week{text-align:center; color:#FFFFFF; font-size:16px; margin-bottom:20px;  }
     .ranking ul{padding-bottom:15px; width:100%;  }
     .ranking ul li{display:inline; padding-left:35px;  }
@@ -364,6 +366,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .participa .more a{width:40px; height:40px; position:absolute; background:url('../images/base/more.png'); background-repeat:no-repeat; background-position:0px 0px; right:0px; top:0px;    }
     .participa .more a:hover{ background-position:0px -40px;}
     .participa .cont{padding:20px 20px 15px 20px; display:inline-block; position:relative;   }
+    .apptivate .cont{padding:20px 20px 15px 20px; display:inline-block; position:relative;   }
     .participa .avatar-mini{ float:left; margin-right:20px;  }
     .participa .avatar-mini img{width:44px; height:44px;  }
     .avatar-mini .looney-tunes{background:url('../images/base/avatar_mini.png'); background-repeat:no-repeat; width:44px; height:44px; position:absolute; z-index:3;    }
@@ -642,7 +645,7 @@ table td{ padding:10px;  text-align:left; font-size:14px;   }
 .actividad1 .int-num:focus{outline: none;}
 .actividad1 .empty{background-color:#FFFFFF; color:#666666; text-align:right; font-size:16px; font-weight:400;    }
 .actividad1 .highlight1{background-color:#78D500; font-weight:600; font-size:16px; }
-.actividad1 .highlight1 span{font-weight:400 !important; font-size:14px; }
+.actividad1 .highlight1 span{font-weight:400 !important; font-size:14px; color: #fff }
 .actividad1 .highlight2{background-color:#EBF7EA; color:#999999; font-weight:600; font-size:16px;  }
 .actividad1 .highlight3{background-color:#78D500; color:#FFFFFF; font-weight:600; font-size:20px;  }
 /*ACTIVIDAD 2 ACTIVIDAD sueno*/
@@ -681,6 +684,7 @@ table td{ padding:10px;  text-align:left; font-size:14px;   }
 .full-area .int-textarea2{ width: 730px; height: 100px; border: 1px solid #3ca227; margin-left: 10px; margin-top: 10px; padding: 6px; }
 select{ padding-left: 5px}
 /*ACTIVIDAD 2*/
+textarea{ resize:none;}
 .actividad2{border:0px; margin-top:0px; border-spacing:2px 0px; border-collapse: separate; width:754px; margin-left:-2px; margin-bottom: 0px !important }
 .actividad2 td{text-align:center; }
 .actividad2 tr:nth-child(odd){background-color:#33B01E; color:#FFFFFF !important;}
@@ -692,5 +696,62 @@ select{ padding-left: 5px}
 .actividad2 .highlight1 span{font-weight:400 !important; font-size:14px; }
 .actividad2 .highlight2{background-color:#EBF7EA; color:#999999; font-weight:600; font-size:16px;  }
 .actividad2 .highlight3{background-color:#78D500; color:#FFFFFF; font-weight:600; font-size:20px;  }
+.actividad2 a{ color: #33B01E}
+.actividades-select{ border: 1px solid #ccc; color: #4d4542;float: right;font-size: 14px;height: 30px;padding-top: 4px; position: relative;width: 214px;}
+/*APPTIVATE*/
+.circule{ float: left; margin-right: 10px; position: relative; top: 2px; color: #f5723d;}
+.instruction img{ margin-left: 85px; margin-top: 20px; margin-bottom: 20px; }
+.instruction { background-image: url('../images/bg-app.jpg'); background-repeat: repeat-x; background-position: 10px}
+.step h2{ color: #f5723d !important}
+.step { border-bottom: 1px solid #DDD}
+.ejercicio-box{ height: 122px; width: 480px; margin-top: 20px; float: left; border: 1px solid #ddd; padding-right: 15px}
+.ejercicio-info a{ text-decoration: none; color: #4d4542;}
+.ejercicio-info { margin-left: 20px; float: left; width: 320px; margin-top: 20px}
+.ejercicio-box p{ font-size: 18px; margin-left: 15px; float: left; margin-top: 20px}
+.ejercicio-img{ width: 120px; height: 120px; overflow: hidden; float: left; border-right: solid 1px #ddd;}
+.ejercicio-img img{ position: relative; left: -80%; top: -10%}
+.paloma{ background-image: url('../images/paloma.png'); width: 20px; height: 20px; float: right; margin-top: 23px; margin-right: 10px}
+.taches{ background-image: url('../images/tache.png'); width: 20px; height: 20px; float: right; margin-top: 23px; margin-right: 10px}
+
+.apptivate{display:inline-block; float:left; margin-bottom:20px; position:relative; width: 100%;}
+    .apptivate .more a{width:40px; height:40px; position:absolute; background:url('../images/base/more.png'); background-repeat:no-repeat; background-position:0px 0px; right:0px; top:0px;    }
+    .apptivate .more a:hover{ background-position:0px -40px;}
+    .apptivate h5{margin-bottom:10px; }
+    .apptivate h5 a{ color:#F5723D; text-decoration:none; font-size:20px;   }
+    .apptivate-wrapper{  background-color: #e4e4dd; float: left; height: 386px; width: 100% }
+    .apptivate h3 a{ font-size: 16px; font-style: italic; font-weight: bold; text-decoration: none;}
+    .apptivate p a{ color: #222222; font-size: 14px; text-decoration: none; font-style: normal; font-weight: normal;}
+    .app-uno a{color:#5DBFCB;}
+     .app-dos a{color:#90CD05;}
+      .app-tres a{color:#EE9100;}
+       .app-cuatro a{color:#D23339;}
+       .app-info{ float: left; width: 355px}
+    .ejercicio-row{ height:60px;background-image: url('../images/actividades/app1.png'); width: 100%; padding-left: 70px; background-repeat: no-repeat; background-position: left; margin-top: 15px;  margin-bottom: 18px}
+    .ejercicio-row2{ height:60px;background-image: url('../images/actividades/app2.png'); width: 100%; padding-left: 70px; background-repeat: no-repeat; background-position: left; margin-top: 15px;  margin-bottom: 18px}
+    .ejercicio-row3{ height:60px;background-image: url('../images/actividades/app3.png'); width: 100%; padding-left: 70px; background-repeat: no-repeat; background-position: left; margin-top: 15px;  margin-bottom: 18px}
+    .ejercicio-row4{ height:60px;background-image: url('../images/actividades/app4.png'); width: 100%; padding-left: 70px; background-repeat: no-repeat; background-position: left; margin-top: 15px; }
+.app-plus{ float: right; width: 14px; height: 20px;font-style: italic; margin-left: 10px; margin-top: 20px; font-weight: bold}
+.app-plus a { color: #6A6561; text-decoration: none; font-style: italic;}
+/*APPTIVATE*/
+/* iconos perfil*/
+.i1{ background-image: url('../images/icons/i1.png'); background-repeat: no-repeat; padding-left: 45px; height: 45px; line-height: 2}
+.i2{ background-image: url('../images/icons/i2.png'); background-repeat: no-repeat; padding-left: 45px; height: 45px; line-height: 2}
+.i3{ background-image: url('../images/icons/i3.png'); background-repeat: no-repeat; padding-left: 45px; height: 45px; line-height: 2}
+.i4{ background-image: url('../images/icons/i4.png'); background-repeat: no-repeat; padding-left: 45px; height: 45px; line-height: 2}
+.i5{ background-image: url('../images/icons/i5.png'); background-repeat: no-repeat; padding-left: 50px; height: 45px; line-height: 2}
+.i6{ background-image: url('../images/icons/i6.png'); background-repeat: no-repeat; padding-left: 45px; height: 45px; line-height: 2}
+.i7{ background-image: url('../images/icons/i7.png'); background-repeat: no-repeat; padding-left: 45px; height: 45px; line-height: 2}
+.i8{ background-image: url('../images/icons/i8.png'); background-repeat: no-repeat; padding-left: 52px; height: 45px; line-height: 3}
+.i9{ background-image: url('../images/icons/i9.png'); background-repeat: no-repeat; padding-left: 50px; height: 45px; line-height: 2}
+.i10{ background-image: url('../images/icons/i10.png'); background-repeat: no-repeat; padding-left: 45px; height: 45px; line-height: 2}
+.i11{ background-image: url('../images/icons/i11.png'); background-repeat: no-repeat; padding-left: 50px; height: 45px; line-height: }
+/* iconos perfil*/
+.actividad-btn{ background-color: #3ca227; padding-top: 9px; height: 35px; color: #fff; text-decoration: none; width: 90px; font-size: 14px; float: left; display: block; text-align: center}
+
+
+
+
+
+
 
 

@@ -114,7 +114,7 @@ try {
 			<h4><?php echo $nombre; ?></h4>
 			<div class="ranking">
 				<div class="heart-points">
-					<div class="points">Riesgo <?php echo $level; ?></div>
+					<div class="points"><a href="/perfil">Riesgo <?php echo $level; ?></a></div>
 				</div>
 
 				<ul>

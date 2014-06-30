@@ -168,13 +168,13 @@ try {
     </div>
     <div class="aviso-bajo" id="text-fact3-bajo">
         <a href="#" class="close"></a>
-        <p><strong>ndicaste que tu nivel de triglicéridos está dentro de lo saludable. Mantener tus niveles dentro de lo normal te  ayuda a reducir el riesgo de desarrollar una enfermedad cardíaca. Sigue consumiendo poca azúcar, cuida tu peso y limita o evita las bebidas alcohólicas.</strong></p>
+        <p><strong>Indicaste que tu nivel de triglicéridos está dentro de lo saludable. Mantener tus niveles dentro de lo normal te  ayuda a reducir el riesgo de desarrollar una enfermedad cardíaca. Sigue consumiendo poca azúcar, cuida tu peso y limita o evita las bebidas alcohólicas.</strong></p>
     </div>
     <!--LIGHTBOX END Fact3-->
     <!--LIGHTBOX START Fact4-->
     <div class="aviso-alto" id="text-fact4-alto">
         <a href="#" class="close"></a>
-        <p>Necesitas bajar tus niveles de colesterol. Lógralo con estos pasos:</p>
+        <p><strong>Necesitas bajar tus niveles de colesterol. Lógralo con estos pasos:</strong></p>
 		<ol>
 			<li>Sustituye el aceite convencional por el de oliva o canola.</li>
 			<li>Elige las variedades con bajo contenido en grasa de leche, yogur y otros productos lácteos.</li>
@@ -185,7 +185,7 @@ try {
     </div>
     <div class="aviso-medio" id="text-fact4-medio">
         <a href="#" class="close"></a>
-        <p>Reduce tus niveles de colesterol con estos consejos.</p>
+        <p><strong>Reduce tus niveles de colesterol con estos consejos.</strong></p>
 		<ol>
 			<li>Elije lo bueno. Consume alimentos con grasas sanas como pescado, nueces o aguacate.</li>
 			<li>Muévete en cada oportunidad que tengas. Realiza 30 minutos de actividad física al día.</li>
@@ -209,7 +209,7 @@ try {
 					<!--LIGHTBOX START Fact5-->
 					<div class="aviso-alto" id="text-fact5-alto">
 						<a href="#" class="close"></a>
-						<p>Es importante que reduzcas tu peso y circunferencia de cintura. Empieza con estos pasos.</p>
+						<p><strong>Es importante que reduzcas tu peso y circunferencia de cintura. Empieza con estos pasos.</strong></p>
 						<ol>
 							<li>Lleva un diario de lo que comes durante todo un día. Hazlo por una semana.</li>
 							<li>En lugar de hacer 30, haz 45 minutos de caminata al día para perder peso.</li>
@@ -312,7 +312,7 @@ try {
 								<!--LIGHTBOX START Fact8-->
 								<div class="aviso-alto" id="text-fact8-alto">
 									<a href="#" class="close"></a>
-									<p>Necesitas realizar actividad física para que tu corazón esté sano, haz lo siguiente:</p>
+									<p><strong>Necesitas realizar actividad física para que tu corazón esté sano, haz lo siguiente:</strong></p>
 									<ol>
 										<li>Párate y camina. Evita estar mucho tiempo sentado.</li>
 										<li>Comienza con 10 minutos si realizas poca actividad física o hace mucho ya no haces.</li>
@@ -380,9 +380,9 @@ try {
 								<!--LIGHTBOX START Fact10-->
 								<div class="aviso-alto" id="text-fact10-alto">
 									<a href="#" class="close"></a>
-									<p>Dejar de fumar es de gran importancia para evitar cualquier  enfermedad del corazón, lógralo con estos tips:</p>
+									<p><strong>Dejar de fumar es de gran importancia para evitar cualquier  enfermedad del corazón, lógralo con estos tips:</strong></p>
 									<ol>
-										<li>Determina cuándo y por qué fumas. lleva un diario que te ayude a darte cuenta de estos puntos.</li>
+										<li>Determina cuándo y por qué fumas. Lleva un diario que te ayude a darte cuenta de estos puntos.</li>
 										<li>Pon una fecha para dejar de fumar y tira todos tus cigarros antes de ese día.</li>
 										<li>Cambia tus rutinas que te hacían fumar.</li>
 										<li>Haz un plan para evitar una recaída y que te recuerde los beneficios de dejar de fumar.</li>
@@ -765,7 +765,7 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 													$mylevel = "bajo";
 													$newriesgo=0;
 													}
-													else if ( ($nestres > 1) && $nestres < 3 ){
+													else if ( ($nestres > 2) && $nestres < 4 ){
 													$mylevel = "medio";
 													$newriesgo = 1;
 													}

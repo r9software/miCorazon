@@ -40,7 +40,7 @@
 			echo '<div class="slogan"><h2 class="tponte"><span>Pon a latir</span>a tu corazón.</h2></div>';
 		}
 		else {
-			echo '<div class="slogan"><h2 class="tconoce"><span>Prepárate para el éxito </span>y valora tu esfuerzo.</h2></div>';
+			echo '<div class="slogan"><h2 class="tconoce"><span>Comienza hoy</span> a vivir mejor.</h2></div>';
 		}
 		?>
 	<div class="main">

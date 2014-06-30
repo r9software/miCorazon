@@ -118,7 +118,7 @@ if ( isset( $_GET['fecha'] ) ) {
 	}
 } else {
 	//echo "Es el dia de hoy";
-	
+
 	$fecha_actual = date( "Y-m-d" );
 }
 
@@ -250,58 +250,133 @@ $hoy = date( "Y-m-d" );
 $fechasiguiente = operacion_fecha( $domingo, 7 );
 if ( compararFechas( $hoy, $domingo ) ) {
 	$bandera = false;
-	$diaSemana=diaSemana( date( "Y-m-d" ) );
-	
+	$diaSemana = diaSemana( date( "Y-m-d" ) );
 }
-$tabla = array();
-try {
-	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
-	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-	$sql = "Select * from wp_usersregistroaerobicos where user_id={$id} and fechaini='{$lunes}' and fechafin='{$domingo}'  LIMIT 1;";
-	/*
-	  . "Select * from wp_usersregistroestiramiento where user_id={$id} and fechaini>= CURDATE() and fechafin<=CURDATE()  LIMIT 1;"
-	  . "Select * from wp_usersregistrofuerza where user_id={$id} and fechaini>= CURDATE() and fechafin<=CURDATE()  LIMIT 1;";
-	 * */
-	
-	$rs = $conn->prepare( $sql );
-	$rs->execute();
+if ( is_single( 462 ) ) {
+	$tabla = array();
+	try {
+		$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+		$sql = "Select * from wp_usersregistroaerobicos where user_id={$id} and fechaini='{$lunes}' and fechafin='{$domingo}'  LIMIT 1;";
+		/*
+		  . "Select * from wp_usersregistroestiramiento where user_id={$id} and fechaini>= CURDATE() and fechafin<=CURDATE()  LIMIT 1;"
+		  . "Select * from wp_usersregistrofuerza where user_id={$id} and fechaini>= CURDATE() and fechafin<=CURDATE()  LIMIT 1;";
+		 * */
 
-	$rs2 = $rs->fetchAll();
-
-	if ( isset( $rs2[0]['user_id'] ) ) {
-		array_push( $tabla, $rs2[0] );
-		$sql = "Select * from wp_usersregistroestiramiento where user_id={$id} and fechaini='{$lunes}' and fechafin='{$domingo}'  LIMIT 1;";
 		$rs = $conn->prepare( $sql );
 		$rs->execute();
-		$rs3 = $rs->fetchAll();
-		array_push( $tabla, $rs3[0] );
-		$sql = "Select * from wp_usersregistrofuerza where user_id={$id} and fechaini='{$lunes}' and fechafin='{$domingo}' LIMIT 1;";
-		$rs = $conn->prepare( $sql );
-		$rs->execute();
-		$rs4 = $rs->fetchAll();
-		array_push( $tabla, $rs4[0] );
-	} else {
-		if ( !$bandera ) {
-			$sql = " INSERT IGNORE INTO wp_usersregistroaerobicos(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
+
+		$rs2 = $rs->fetchAll();
+
+		if ( isset( $rs2[0]['user_id'] ) ) {
+			array_push( $tabla, $rs2[0] );
+			$sql = "Select * from wp_usersregistroestiramiento where user_id={$id} and fechaini='{$lunes}' and fechafin='{$domingo}'  LIMIT 1;";
+			$rs = $conn->prepare( $sql );
+			$rs->execute();
+			$rs3 = $rs->fetchAll();
+			array_push( $tabla, $rs3[0] );
+			$sql = "Select * from wp_usersregistrofuerza where user_id={$id} and fechaini='{$lunes}' and fechafin='{$domingo}' LIMIT 1;";
+			$rs = $conn->prepare( $sql );
+			$rs->execute();
+			$rs4 = $rs->fetchAll();
+			array_push( $tabla, $rs4[0] );
+		} else {
+			if ( !$bandera ) {
+				$sql = " INSERT IGNORE INTO wp_usersregistroaerobicos(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
 			VALUES ({$id},0,0,0,0,0,0,0,'{$lunes}','{$domingo}');"
-					. " INSERT IGNORE INTO wp_usersregistroestiramiento(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
+						. " INSERT IGNORE INTO wp_usersregistroestiramiento(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
 			VALUES ({$id},0,0,0,0,0,0,0,'{$lunes}','{$domingo}');"
-					. " INSERT IGNORE INTO wp_usersregistrofuerza(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
+						. " INSERT IGNORE INTO wp_usersregistrofuerza(`user_id`, `lunes`, `martes`, `miercoles`, `jueves`,`viernes`, `sabado`, `domingo`, `fechaini`, `fechafin`) 
 			VALUES ({$id},0,0,0,0,0,0,0,'{$lunes}','{$domingo}');";
-			$q = $conn->prepare( $sql );
-			$q->execute();
+				$q = $conn->prepare( $sql );
+				$q->execute();
+			}
+			$tabla = array( array( $id, 0, 0, 0, 0, 0, 0, 0, $lunes, $domingo ), array( $id, 0, 0, 0, 0, 0, 0, 0, $lunes, $domingo ), array( $id, 0, 0, 0, 0, 0, 0, 0, $lunes, $domingo ) );
+			//echo $sql;
 		}
-		$tabla = array( array( $id, 0, 0, 0, 0, 0, 0, 0, $lunes, $domingo ), array( $id, 0, 0, 0, 0, 0, 0, 0, $lunes, $domingo ), array( $id, 0, 0, 0, 0, 0, 0, 0, $lunes, $domingo ) );
-		//echo $sql;
-	}
-	$conn = null;
-} catch ( PDOException $e ) {
-	//echo "".$e->getMessage();
+		$conn = null;
+	} catch ( PDOException $e ) {
+		//echo "".$e->getMessage();
 //header( "Location:" . site_url() . "/login/" );
-	die();
+		die();
+	}
+} elseif ( is_single( 61 ) ) {
+	$tabla = array();
+	try {
+		$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+		$sql = "Select * from wp_usersregistrosueno where user_id={$id} and fechaini='{$lunes}' and fechafin='{$domingo}'  LIMIT 1;";
+		/*
+		  . "Select * from wp_usersregistroestiramiento where user_id={$id} and fechaini>= CURDATE() and fechafin<=CURDATE()  LIMIT 1;"
+		  . "Select * from wp_usersregistrofuerza where user_id={$id} and fechaini>= CURDATE() and fechafin<=CURDATE()  LIMIT 1;";
+		 * */
+
+		$rs = $conn->prepare( $sql );
+		$rs->execute();
+
+		$rs2 = $rs->fetchAll();
+
+		if ( isset( $rs2[0]['user_id'] ) ) {
+			array_push( $tabla, $rs2[0] );
+		} else {
+			if ( !$bandera ) {
+				$sql = " INSERT IGNORE INTO wp_usersregistrosueno(`user_id`, `lun`, `mar`, `mier`, `jue`,`vie`, `sab`, `dom`,`clun`, `cmar`, `cmier`, `cjue`,`cvie`, `csab`, `cdom`, `fechaini`, `fechafin`) 
+			VALUES ({$id},0,0,0,0,0,0,0,0,0,0,0,0,0,0,'{$lunes}','{$domingo}');";
+				$q = $conn->prepare( $sql );
+				$q->execute();
+			}
+			$tabla = array( array( $id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, $lunes, $domingo ) );
+
+			//echo $sql;
+		}
+		//echo "<pre>";
+		//	print_r($tabla);
+		//	echo "</pre>";
+		$conn = null;
+	} catch ( PDOException $e ) {
+		//echo "".$e->getMessage();
+//header( "Location:" . site_url() . "/login/" );
+		die();
+	}
+} elseif ( is_single( 461 ) ) {
+	$tabla = array();
+	try {
+		$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+		$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+		$sql = "Select * from wp_userspesoalimentacion where user_id={$id} and fechaini='{$lunes}' and fechafin='{$domingo}'  LIMIT 1;";
+		/*
+		  . "Select * from wp_usersregistroestiramiento where user_id={$id} and fechaini>= CURDATE() and fechafin<=CURDATE()  LIMIT 1;"
+		  . "Select * from wp_usersregistrofuerza where user_id={$id} and fechaini>= CURDATE() and fechafin<=CURDATE()  LIMIT 1;";
+		 * */
+
+		$rs = $conn->prepare( $sql );
+		$rs->execute();
+
+		$rs2 = $rs->fetchAll();
+
+		if ( isset( $rs2[0]['user_id'] ) ) {
+			array_push( $tabla, $rs2[0] );
+		} else {
+			if ( !$bandera ) {
+				$sql = "INSERT INTO `wp_userspesoalimentacion`(`user_id`, `pesoini`, `pesofin`, `cambio`, `siento`, `fechaini`, `fechafin`, `mvd`, `mfd`, `mcd`, `mpd`, `mgd`, `mdd`, `funciono`, `nofunciono`, `orgulloso`) 
+			VALUES ({$id},0,0,0,1,'{$lunes}','{$domingo}','','','','','','','','','');";
+				$q = $conn->prepare( $sql );
+				$q->execute();
+			}
+			$tabla = array( array( $id, 0, 0, 0, 1, $lunes, $domingo, "", "", "", "", "", "", "", "", "" ) );
+
+			//echo $sql;
+		}
+		//echo "<pre>";
+		//	print_r($tabla);
+		//	echo "</pre>";
+		$conn = null;
+	} catch ( PDOException $e ) {
+		//echo "".$e->getMessage();
+//header( "Location:" . site_url() . "/login/" );
+		die();
+	}
 }
-
-
 //echo "<pre>";
 //print_r($tabla);
 //echo "</pre>";
@@ -330,7 +405,7 @@ try {
 		<tbody>
 			<tr>
 				<td><strong>Verduras</strong></td>
-				<td>2 tazas de hojas (como lechuga o espinacas) o una taza de s&oacute;lido (como zanahorias)</td>
+				<td>2 tazas de hojas (ejemplo: lechuga o espinacas) o una taza de s&oacute;lido (ejemplo: zanahorias)</td>
 
 			</tr>
 			<tr>
@@ -642,7 +717,15 @@ try {
 				</div>
 			</div>
 			<!--END ACTIVIDAD FISICA-->
-		<?php } elseif ( is_single( 461 ) ) { ?>
+		<?php
+		} elseif ( is_single( 461 ) ) {
+			$mvd = explode( "-", $tabla[0]['mvd'] );
+			$mfd = explode( "-", $tabla[0]['mfd'] );
+			$mcd = explode( "-", $tabla[0]['mcd'] );
+			$mpd = explode( "-", $tabla[0]['mpd'] );
+			$mgd = explode( "-", $tabla[0]['mgd'] );
+			$mdd = explode( "-", $tabla[0]['mdd'] );
+			?>
 			<!--START PESO & ALIMENTACION-->
 			<div id="tabs">
 				<ul>
@@ -655,15 +738,27 @@ try {
 						<h3><?php echo $semana; ?></h3>
 						<div class="cont-margin">
 							<div class="int-pesos">
-								<div class="peso-single"><input type="text" name="peso-inicial" class="int-num"><p>Peso inicial</p></div><label>-</label>
-								<div class="peso-single"><input type="text" name="peso-hoy" class="int-num"><p>Peso de hoy</p></div><label>=</label>
-								<div class="peso-single"><input type="text" name="cambio-peso" class="int-num2"><p>Cambio de peso</p></div>
+								<div class="peso-single"><input type="text" name="peso-inicial" class="int-num" <?php if ( $bandera ) {
+										echo " disabled ";
+									}?> value="<?php echo $tabla[0]['pesoini']; ?>"><p>Peso inicial</p></div><label>-</label>
+								<div class="peso-single"><input type="text" <?php if ( $bandera ) {
+										echo " disabled ";
+									}?> name="peso-hoy" class="int-num" value="<?php echo $tabla[0]['pesofin']; ?>"><p>Peso de hoy</p></div><label>=</label>
+								<div class="peso-single"><input type="text" name="cambio-peso" class="int-num2" disabled value="<?php echo $tabla[0]['cambio']; ?>"><p>Cambio de peso</p></div>
 								<div class="int-sentirse">
 									<p>Me siento</p>
-									<select name="siento-alimento" name="siento" class="int-select2">
-										<option value="b">Bien</option>
-										<option value="r">Regular</option>
-										<option value="m">Mal</option>
+									<select name="siento-alimento" name="siento" <?php if ( $bandera ) {
+										echo " disabled ";
+									}?> class="int-select2">
+										<option value="1" <?php if ( $tabla[0]['siento'] == 1 ) {
+				echo "selected";
+			} ?>>Bien</option>
+										<option value="2" <?php if ( $tabla[0]['siento'] == 2 ) {
+				echo "selected";
+			} ?>>Regular</option>
+										<option value="3" <?php if ( $tabla[0]['siento'] == 3 ) {
+				echo "selected";
+			} ?>>Mal</option>
 									</select>
 								</div>
 							</div>
@@ -671,7 +766,7 @@ try {
 						<table class="actividad2" border="0"  >
 							<tr>
 								<td class="width180">Grupo de alimentos</td>
-								<td>Raciones diarias</td>
+								<td>Meta de Raciones</td>
 								<td>Dia 1</td>
 								<td>Dia 2</td>
 								<td>Dia 3</td>
@@ -682,69 +777,309 @@ try {
 							</tr>
 							<tr>
 								<td>Verduras</td> 
-								<td><input type="text" name="meta-verduras" class="int-num"></td>
-								<td><input type="checkbox" name="lun-v" class="int-check"></td>
-								<td><input type="checkbox" name="mar-v" class="int-check"></td>
-								<td><input type="checkbox" name="mier-v" class="int-check"></td>
-								<td><input type="checkbox" name="jue-v" class="int-check"></td>
-								<td><input type="checkbox" name="vie-v" class="int-check"></td>
-								<td><input type="checkbox" name="sab-v" class="int-check"></td>
-								<td><input type="checkbox" name="dom-v" class="int-check"></td>
+								<td>4 o más</td>
+								<td><input type="checkbox" name="lun-v" class="int-check" value="1" <?php if ( $mvd[0] ) {
+				echo "checked ";
+			} ?><?php if ( $bandera ) {
+										echo " disabled ";
+									}?> ></td>
+								<td><input type="checkbox" name="mar-v" class="int-check" value="1" <?php
+									if ( $mvd[1] ) {
+										echo "checked";
+									} if ( $bandera || $diaSemana < 2 ) {
+										echo " disabled ";
+									}
+									?>></td>
+								<td><input type="checkbox" name="mier-v" class="int-check" value="1" <?php
+										   if ( $mvd[2] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 3 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
+								<td><input type="checkbox" name="jue-v" class="int-check" value="1" <?php
+										   if ( $mvd[3] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 4 ) {
+											   echo " disabled ";
+										   }
+										   ?> ></td>
+								<td><input type="checkbox" name="vie-v" class="int-check" value="1" <?php
+										   if ( $mvd[4] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 5 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
+								<td><input type="checkbox" name="sab-v" class="int-check" value="1" <?php
+										   if ( $mvd[5] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 6 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
+								<td><input type="checkbox" name="dom-v" class="int-check" value="1" <?php
+								if ( $mvd[6] ) {
+									echo "checked";
+								} if ( $bandera || $diaSemana < 7 ) {
+									echo " disabled ";
+								}
+								?>></td>
 							</tr>
 							<tr>
 								<td>Frutas</td>
-								<td><input type="text" name="meta-frutas" class="int-num"></td>
-								<td><input type="checkbox" name="lun-f" class="int-check"></td>
-								<td><input type="checkbox" name="mar-f" class="int-check"></td>
-								<td><input type="checkbox" name="mier-f" class="int-check"></td>
-								<td><input type="checkbox" name="jue-f" class="int-check"></td>
-								<td><input type="checkbox" name="vie-f" class="int-check"></td>
-								<td><input type="checkbox" name="sab-f" class="int-check"></td>
-								<td><input type="checkbox" name="dom-f" class="int-check"></td>
+								<td>3 o más</td>
+								<td><input type="checkbox" name="lun-f" class="int-check" value="1" <?php if ( $mfd[0] ) {
+									echo "checked";
+								} ?><?php if ( $bandera ) {
+										echo " disabled ";
+									}?>></td>
+								<td><input type="checkbox" name="mar-f" class="int-check" value="1" <?php
+									if ( $mfd[1] ) {
+										echo "checked";
+									} if ( $bandera || $diaSemana < 2 ) {
+										echo " disabled ";
+									}
+									?>></td>
+								<td><input type="checkbox" name="mier-f" class="int-check" value="1" <?php
+										   if ( $mfd[2] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 3 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
+								<td><input type="checkbox" name="jue-f" class="int-check" value="1" <?php
+									if ( $mfd[3] ) {
+										echo "checked";
+									} if ( $bandera || $diaSemana < 4 ) {
+										echo " disabled ";
+									}
+									?>></td>
+								<td><input type="checkbox" name="vie-f" class="int-check" value="1" <?php
+										   if ( $mfd[4] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 5 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
+								<td><input type="checkbox" name="sab-f" class="int-check" value="1" <?php
+										   if ( $mfd[5] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 6 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
+								<td><input type="checkbox" name="dom-f" class="int-check" value="1" <?php
+										   if ( $mfd[6] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 7 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
 							</tr>
 							<tr>
 								<td>Carbohidratos</td>
-								<td><input type="text" name="meta-carbo" class="int-num"></td>
-								<td><input type="checkbox" name="lun-c" class="int-check"></td>
-								<td><input type="checkbox" name="mar-c" class="int-check"></td>
-								<td><input type="checkbox" name="mier-c" class="int-check"></td>
-								<td><input type="checkbox" name="jue-c" class="int-check"></td>
-								<td><input type="checkbox" name="vie-c" class="int-check"></td>
-								<td><input type="checkbox" name="sab-c" class="int-check"></td>
-								<td><input type="checkbox" name="dom-c" class="int-check"></td>
+								<td>4 a 8</td>
+								<td><input type="checkbox" name="lun-c" class="int-check" value="1" <?php if ( $mcd[0] ) {
+											   echo "checked";
+										   } ?><?php if ( $bandera ) {
+										echo " disabled ";
+									}?>></td>
+								<td><input type="checkbox" name="mar-c" class="int-check" value="1" <?php
+									if ( $mcd[1] ) {
+										echo "checked";
+									} if ( $bandera || $diaSemana < 2 ) {
+										echo " disabled ";
+									}
+									?>></td>
+								<td><input type="checkbox" name="mier-c" class="int-check" value="1" <?php
+									   if ( $mcd[2] ) {
+										   echo "checked";
+									   } if ( $bandera || $diaSemana < 3 ) {
+										   echo " disabled ";
+									   }
+									?>></td>
+								<td><input type="checkbox" name="jue-c" class="int-check" value="1" <?php
+									if ( $mcd[3] ) {
+										echo "checked";
+									} if ( $bandera || $diaSemana < 4 ) {
+										echo " disabled ";
+									}
+									?>></td>
+								<td><input type="checkbox" name="vie-c" class="int-check" value="1" <?php
+										   if ( $mcd[4] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 5 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
+								<td><input type="checkbox" name="sab-c" class="int-check" value="1" <?php
+										   if ( $mcd[5] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 6 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
+								<td><input type="checkbox" name="dom-c" class="int-check" value="1" <?php
+										   if ( $mcd[6] ) {
+											   echo "checked";
+										   } if ( $bandera || $diaSemana < 7 ) {
+											   echo " disabled ";
+										   }
+										   ?>></td>
 							</tr>
 							<tr>
 								<td>Proteína / Lácteos</td>
-								<td><input type="text" name="meta-proteina" class="int-num"></td>
-								<td><input type="checkbox" name="lun-p" class="int-check"></td>
-								<td><input type="checkbox" name="mar-p" class="int-check"></td>
-								<td><input type="checkbox" name="mier-p" class="int-check"></td>
-								<td><input type="checkbox" name="jue-p" class="int-check"></td>
-								<td><input type="checkbox" name="vie-p" class="int-check"></td>
-								<td><input type="checkbox" name="sab-p" class="int-check"></td>
-								<td><input type="checkbox" name="dom-p" class="int-check"></td>
+								<td>3 a 7</td>
+								<td><input type="checkbox" name="lun-p" class="int-check" value="1" <?php if ( $mpd[0] ) {
+											   echo "checked";
+										   } ?><?php if ( $bandera ) {
+										echo " disabled ";
+									}?>></td>
+								<td><input type="checkbox" name="mar-p" class="int-check" value="1" <?php
+						if ( $mpd[1] ) {
+							echo "checked";
+						} if ( $bandera || $diaSemana < 2 ) {
+							echo " disabled ";
+						}
+										   ?>></td>
+								<td><input type="checkbox" name="mier-p" class="int-check" value="1" <?php
+						if ( $mpd[2] ) {
+							echo "checked";
+						} if ( $bandera || $diaSemana < 3 ) {
+							echo " disabled ";
+						}
+						?>></td>
+								<td><input type="checkbox" name="jue-p" class="int-check" value="1" <?php
+						if ( $mpd[3] ) {
+							echo "checked";
+						} if ( $bandera || $diaSemana < 4 ) {
+							echo " disabled ";
+						}
+						?>></td>
+								<td><input type="checkbox" name="vie-p" class="int-check" value="1" <?php
+						if ( $mpd[4] ) {
+							echo "checked";
+						} if ( $bandera || $diaSemana < 5 ) {
+							echo " disabled ";
+						}
+						?>></td>
+								<td><input type="checkbox" name="sab-p" class="int-check" value="1" <?php
+						if ( $mpd[5] ) {
+							echo "checked";
+						} if ( $bandera || $diaSemana < 6 ) {
+							echo " disabled ";
+						}
+						?>></td>
+								<td><input type="checkbox" name="dom-p" class="int-check" value="1" <?php
+						if ( $mpd[6] ) {
+							echo "checked";
+						} if ( $bandera || $diaSemana < 7 ) {
+							echo " disabled ";
+						}
+						?>></td>
 							</tr>
 							<tr>
 								<td>Grasas</td>
-								<td><input type="text" name="meta-grasas" class="int-num"></td>
-								<td><input type="checkbox" name="lun-g" class="int-check"></td>
-								<td><input type="checkbox" name="mar-g" class="int-check"></td>
-								<td><input type="checkbox" name="mier-g" class="int-check"></td>
-								<td><input type="checkbox" name="jue-g" class="int-check"></td>
-								<td><input type="checkbox" name="vie-g" class="int-check"></td>
-								<td><input type="checkbox" name="sab-g" class="int-check"></td>
-								<td><input type="checkbox" name="dom-g" class="int-check"></td>
+								<td>3 a 5</td>
+								<td><input type="checkbox" name="lun-g" class="int-check" value="1"<?php if ( $mgd[0] ) {
+							echo "checked";
+						} ?><?php if ( $bandera ) {
+										echo " disabled ";
+									}?>></td>
+								<td><input type="checkbox" name="mar-g" class="int-check" value="1" <?php
+						if ( $mgd[1] ) {
+							echo "checked";
+						} if ( $bandera || $diaSemana < 2 ) {
+							echo " disabled ";
+						}
+						?>></td>
+								<td><input type="checkbox" name="mier-g" class="int-check" value="1" <?php
+						if ( $mgd[2] ) {
+							echo "checked";
+						} if ( $bandera || $diaSemana < 3 ) {
+							echo " disabled ";
+						}
+						?>></td>
+								<td><input type="checkbox" name="jue-g" class="int-check" value="1" <?php
+										if ( $mgd[3] ) {
+											echo "checked";
+										} if ( $bandera || $diaSemana < 4 ) {
+											echo " disabled ";
+										}
+										?>></td>
+								<td><input type="checkbox" name="vie-g" class="int-check" value="1" <?php
+											   if ( $mgd[4] ) {
+												   echo "checked";
+											   } if ( $bandera || $diaSemana < 5 ) {
+												   echo " disabled ";
+											   }
+											   ?>></td>
+								<td><input type="checkbox" name="sab-g" class="int-check" value="1" <?php
+									if ( $mgd[5] ) {
+										echo "checked";
+									} if ( $bandera || $diaSemana < 6 ) {
+										echo " disabled ";
+									}
+											   ?>></td>
+								<td><input type="checkbox" name="dom-g" class="int-check" value="1" <?php
+											if ( $mgd[6] ) {
+												echo "checked";
+											} if ( $bandera || $diaSemana < 7 ) {
+												echo " disabled ";
+											}
+											?>></td>
 							</tr>
 							<tr>
 								<td>Dulces</td>
-								<td><input type="text" name="meta-dulces" class="int-num"></td>
-								<td><input type="checkbox" name="lun-d" class="int-check"></td>
-								<td><input type="checkbox" name="mar-d" class="int-check"></td>
-								<td><input type="checkbox" name="mier-d" class="int-check"></td>
-								<td><input type="checkbox" name="jue-d" class="int-check"></td>
-								<td><input type="checkbox" name="vie-d" class="int-check"></td>
-								<td><input type="checkbox" name="sab-d" class="int-check"></td>
-								<td><input type="checkbox" name="dom-d" class="int-check"></td>
+								<td>75  calorías</td>
+								<td><input type="checkbox" name="lun-d" class="int-check" value="1" <?php if ( $mdd[0] ) {
+													echo "checked";
+												} ?><?php if ( $bandera ) {
+										echo " disabled ";
+									}?>></td>
+								<td><input type="checkbox" name="mar-d" class="int-check" value="1" <?php
+											   if ( $mdd[1] ) {
+												   echo "checked";
+											   } if ( $bandera || $diaSemana < 2 ) {
+												   echo " disabled ";
+											   }
+											   ?>></td>
+								<td><input type="checkbox" name="mier-d" class="int-check" value="1" <?php
+										if ( $mdd[2] ) {
+											echo "checked";
+										} if ( $bandera || $diaSemana < 3 ) {
+											echo " disabled ";
+										}
+										?>></td>
+								<td><input type="checkbox" name="jue-d" class="int-check" value="1" <?php
+												if ( $mdd[3] ) {
+													echo "checked";
+												} if ( $bandera || $diaSemana < 4 ) {
+													echo " disabled ";
+												}
+												?>></td>
+								<td><input type="checkbox" name="vie-d" class="int-check" value="1" <?php
+												if ( $mdd[4] ) {
+													echo "checked";
+												} if ( $bandera || $diaSemana < 5 ) {
+													echo " disabled ";
+												}
+												?>></td>
+								<td><input type="checkbox" name="sab-d" class="int-check" value="1" <?php
+												if ( $mdd[5] ) {
+													echo "checked";
+												} if ( $bandera || $diaSemana < 6 ) {
+													echo " disabled ";
+												}
+												?>></td>
+								<td><input type="checkbox" name="dom-d" class="int-check" value="1" <?php
+										if ( $mdd[6] ) {
+											echo "checked";
+										} if ( $bandera || $diaSemana < 7 ) {
+											echo " disabled ";
+										}
+										?>></td>
 							<input type="hidden" name="lunes" value="<?php echo $lunes; ?>">
 							<input type="hidden" name="domingo" value="<?php echo $domingo; ?>">
 							<input type="hidden" name="mysingle" value="461">
@@ -757,36 +1092,59 @@ try {
 
 						<div class="half-area">
 							<div class="head-area"><h1>Lo que te funcionó bien:</h1></div>
-							<textarea class="int-textarea" col="4" rows="6" name="funciono-bien"></textarea>
+							<textarea class="int-textarea" col="4" rows="6" name="funciono-bien" <?php
+									if ( $bandera ) {
+										echo " disabled ";
+									}
+										?>><?php echo $tabla[0]['funciono']; ?></textarea>
 						</div>
 						<div class="half-area2">
 							<div class="head-area"><h1>Lo que no funcionó tan bien:</h1></div>
-							<textarea  class="int-textarea" name="no-funciono-bien"></textarea>
+							<textarea  <?php
+												if ( $bandera  ) {
+													echo " disabled ";
+												}
+										?>  class="int-textarea" name="no-funciono-bien"><?php echo $tabla[0]['nofunciono']; ?></textarea>
 						</div>
 						<div class="full-area">
 							<div class="head-area"><h1>Estoy muy orgulloso de:</h1></div>
-							<textarea class="int-textarea2" name="orgulloso"></textarea>
+							<textarea   <?php
+										if ( $bandera ) {
+											echo " disabled ";
+										}
+										?> class="int-textarea2" name="orgulloso"><?php echo $tabla[0]['orgulloso']; ?></textarea>
 						</div>
-						<a href="#" class="actividad-btn"  id="pesoguardar" value="Guardar">Guardar</a>
+										<?php if ( !$bandera ) { ?>
+							<a href="#" class="actividad-btn"  id="pesoguardar" value="Guardar">Guardar</a>
+	<?php } ?>
 					</form>
+					<div class="semanas">
+						<a href="<?php echo site_url() . "/actividad/registro-de-peso-y-alimentacion/?fecha={$fechaanterior}" ?>" class="prev">Semana anterior</a>
+											<?php if ( $bandera ) { ?>
+							<a href="<?php echo site_url() . "/actividad/registro-de-peso-y-alimentacion/" ?>" ><span>Regresar a mi registro de hoy</span></a>
+							<a href="<?php echo site_url() . "/actividad/registro-de-peso-y-alimentacion/?fecha={$fechasiguiente}" ?>" class="next">Semana siguiente</a>
+
+											<?php } ?>
+					</div>
 				</div>
 				<div id="tabs-2" class="tab-content">
 					<div class="inst-pad">
-						<?php
-						$my_postid = 800; //This is page id or post id
-						$content_post = get_post( $my_postid );
-						$content = $content_post->post_content;
-						$content = apply_filters( 'the_content', $content );
-						$content = str_replace( ']]>', ']]&gt;', $content );
-						echo $content;
-						?>
+	<?php
+	$my_postid = 800; //This is page id or post id
+	$content_post = get_post( $my_postid );
+	$content = $content_post->post_content;
+	$content = apply_filters( 'the_content', $content );
+	$content = str_replace( ']]>', ']]&gt;', $content );
+	echo $content;
+	?>
 					</div>
 				</div>
 			</div>
 
 
 			<!--END PESO & ALIMENTACION-->
-		<?php } elseif ( is_single( 61 ) ) { ?>
+										   <?php } elseif ( is_single( 61 ) ) {
+											   ?>
 			<!--START DIARIO DE SUENO-->
 			<div id="tabs">
 				<ul>
@@ -807,94 +1165,375 @@ try {
 									<td>Más de 9 horas</td>
 									<td class="highlight1"><span>Califica tu sueño</span></td>
 								</tr>
-								<tr>
-									<td>Domingo</td>
-									<td><input type="radio" name="horasd" value="7" class="int-check"></td>
-									<td><input type="radio" name="horasd" value="8" class="int-check"></td>
-									<td><input type="radio" name="horasd" value="9" class="int-check"></td>
-									<td class="highlight2">
-										<select name="calidad-suenod" class="int-select">
-											<option value="b">Excelente</option>
-											<option value="r">Regular</option>
-											<option value="m">Muy Malo</option>
-										</select>
-									</td>
-								</tr>
+
 								<tr>
 									<td>Lunes</td>
-									<td><input type="radio" name="horasl" value="7" class="int-check"></td>
-									<td><input type="radio" name="horasl" value="8" class="int-check"></td>
-									<td><input type="radio" name="horasl" value="9" class="int-check"></td>
+									<td><input type="radio" name="horasl" value="7" <?php
+										if ( $tabla[0][1] == 7 ) {
+											echo "checked=true";
+										}
+										?>  <?php
+										if ( $bandera ) {
+											echo "disabled";
+										}
+										?> class="int-check"></td>
+									<td><input type="radio" name="horasl" value="8" <?php
+										if ( $tabla[0][1] == 8 ) {
+											echo "checked=true";
+										}
+										?>  <?php
+									if ( $bandera ) {
+										echo "disabled";
+									}
+										?> class="int-check"></td>
+									<td><input type="radio" name="horasl" value="9" <?php
+											if ( $tabla[0][1] == 9 ) {
+												echo "checked=true";
+											}
+											?>  <?php
+													if ( $bandera ) {
+														echo "disabled";
+													}
+													?> class="int-check"></td>
 									<td class="highlight2">
-										<select name="calidad-suenol" class="int-select">
-											<o<option value="b">Excelente</option>
-												<option value="r">Regular</option>
-												<option value="m">Muy Malo</option>
+										<select name="calidad-suenol" class="int-select"  <?php
+										if ( $bandera ) {
+											echo "disabled";
+										}
+										?>>
+											<option value="1" <?php
+										if ( $tabla[0][9] == 1 ) {
+											echo "selected";
+										}
+										?>>Excelente</option>
+											<option value="2" <?php
+										if ( $tabla[0][9] == 2 ) {
+											echo "selected";
+										}
+										?>>Regular</option>
+											<option value="3" <?php
+										if ( $tabla[0][9] == 3 ) {
+											echo "selected";
+										}
+										?>>Muy Malo</option>
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<td>Martes</td>
-									<td><input type="radio" name="horasm" value="7" class="int-check"></td>
-									<td><input type="radio" name="horasm" value="8" class="int-check"></td>
-									<td><input type="radio" name="horasm" value="9" class="int-check"></td>
+									<td><input type="radio" name="horasm" value="7" <?php
+										   if ( $tabla[0][2] == 7 ) {
+											   echo "checked=true";
+										   }
+										?>  <?php
+											if ( $bandera || $diaSemana < 2 ) {
+												echo "disabled";
+											}
+											?> class="int-check"></td>
+									<td><input type="radio" name="horasm" value="8" <?php
+											if ( $tabla[0][2] == 8 ) {
+												echo "checked=true";
+											}
+											?>  <?php
+											if ( $bandera || $diaSemana < 2 ) {
+												echo "disabled";
+											}
+											?> class="int-check"></td>
+									<td><input type="radio" name="horasm" value="9" <?php
+											if ( $tabla[0][2] == 9 ) {
+												echo "checked=true";
+											}
+											?>  <?php
+											if ( $bandera || $diaSemana < 2 ) {
+												echo "disabled";
+											}
+											?> class="int-check"></td>
 									<td class="highlight2">
-										<select name="calidad-suenom" class="int-select">
-											<option value="b">Excelente</option>
-											<option value="r">Regular</option>
-											<option value="m">Muy Malo</option>
+										<select name="calidad-suenom" class="int-select"  <?php
+											if ( $bandera || $diaSemana < 2 ) {
+												echo "disabled";
+											}
+											?>>
+											<option value="1" <?php
+											if ( $tabla[0][10] == 1 ) {
+												echo "selected";
+											}
+											?>>Excelente</option>
+											<option value="2" <?php
+											if ( $tabla[0][10] == 2 ) {
+												echo "selected";
+											}
+											?> >Regular</option>
+											<option value="3" <?php
+						if ( $tabla[0][10] == 3 ) {
+							echo "selected";
+						}
+						?>>Muy Malo</option>
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<td>Miércoles</td>
-									<td><input type="radio" name="horasmi" value="7" class="int-check"></td>
-									<td><input type="radio" name="horasmi" value="8" class="int-check"></td>
-									<td><input type="radio" name="horasmi" value="9" class="int-check"></td>
+									<td><input type="radio" name="horasmi" value="7" <?php
+					if ( $tabla[0][3] == 7 ) {
+						echo "checked=true";
+					}
+					?>  <?php
+					if ( $bandera || $diaSemana < 3 ) {
+						echo "disabled";
+					}
+					?> class="int-check"></td>
+									<td><input type="radio" name="horasmi" value="8" <?php
+	if ( $tabla[0][3] == 8 ) {
+		echo "checked=true";
+	}
+	?>  <?php
+	if ( $bandera || $diaSemana < 3 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td><input type="radio" name="horasmi" value="9" <?php
+	if ( $tabla[0][3] == 9 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 3 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
 									<td class="highlight2">
-										<select name="calidad-suenomi" class="int-select">
-											<option value="b">Excelente</option>
-											<option value="r">Regular</option>
-											<option value="m">Muy Malo</option>
+										<select name="calidad-suenomi" class="int-select"  <?php
+	if ( $bandera || $diaSemana < 3 ) {
+		echo "disabled";
+	}
+	?>>
+											<option value="1" <?php
+	if ( $tabla[0][11] == 1 ) {
+		echo "selected";
+	}
+	?>>Excelente</option>
+											<option value="2" <?php
+	if ( $tabla[0][11] == 2 ) {
+		echo "selected";
+	}
+	?>>Regular</option>
+											<option value="3" <?php
+	if ( $tabla[0][11] == 3 ) {
+		echo "selected";
+	}
+	?>>Muy Malo</option>
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<td>Jueves</td>
-									<td><input type="radio" name="horasj" value="7" class="int-check"></td>
-									<td><input type="radio" name="horasj" value="8" class="int-check"></td>
-									<td><input type="radio" name="horasj" value="9" class="int-check"></td>
+									<td><input type="radio" name="horasj" value="7" <?php
+	if ( $tabla[0][4] == 7 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 4 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td><input type="radio" name="horasj" value="8" <?php
+	if ( $tabla[0][4] == 8 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 4 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td><input type="radio" name="horasj" value="9" <?php
+	if ( $tabla[0][4] == 9 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 4 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
 									<td class="highlight2">
-										<select name="calidad-suenoj" class="int-select">
-											<option value="b">Excelente</option>
-											<option value="r">Regular</option>
-											<option value="m">Muy Malo</option>
+										<select name="calidad-suenoj" class="int-select" <?php
+	if ( $bandera || $diaSemana < 4 ) {
+		echo "disabled";
+	}
+	?>>
+											<option value="1" <?php
+	if ( $tabla[0][12] == 1 ) {
+		echo "selected";
+	}
+	?> >Excelente</option>
+											<option value="2" <?php
+	if ( $tabla[0][12] == 2 ) {
+		echo "selected";
+	}
+	?>>Regular</option>
+											<option value="3" <?php
+	if ( $tabla[0][12] == 3 ) {
+		echo "selected";
+	}
+	?>>Muy Malo</option>
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<td>Viernes</td>
-									<td><input type="radio" name="horasv" value="7" class="int-check"></td>
-									<td><input type="radio" name="horasv" value="8" class="int-check"></td>
-									<td><input type="radio" name="horasv" value="9" class="int-check"></td>
+									<td><input type="radio" name="horasv" value="7" <?php
+	if ( $tabla[0][5] == 7 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 5 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td><input type="radio" name="horasv" value="8" <?php
+	if ( $tabla[0][5] == 8 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 5 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td><input type="radio" name="horasv" value="9" <?php
+	if ( $tabla[0][5] == 9 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 5 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
 									<td class="highlight2">
-										<select name="calidad-suenov" class="int-select">
-											<option value="b">Excelente</option>
-											<option value="r">Regular</option>
-											<option value="m">Muy Malo</option>
+										<select name="calidad-suenov" class="int-select"  <?php
+	if ( $bandera || $diaSemana < 5 ) {
+		echo "disabled";
+	}
+	?>>
+											<option value="1" <?php
+	if ( $tabla[0][13] == 1 ) {
+		echo "selected";
+	}
+	?>>Excelente</option>
+											<option value="2" <?php
+	if ( $tabla[0][13] == 2 ) {
+		echo "selected";
+	}
+	?>>Regular</option>
+											<option value="3" <?php
+	if ( $tabla[0][13] == 3 ) {
+		echo "selected";
+	}
+	?>>Muy Malo</option>
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<td>Sábado</td>
-									<td><input type="radio" name="horass" value="7" class="int-check"></td>
-									<td><input type="radio" name="horass" value="8" class="int-check"></td>
-									<td><input type="radio" name="horass" value="9" class="int-check"></td>
+									<td><input type="radio" name="horass" value="7" <?php
+	if ( $tabla[0][6] == 7 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 6 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td><input type="radio" name="horass" value="8" <?php
+	if ( $tabla[0][6] == 8 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 6 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td><input type="radio" name="horass" value="9" <?php
+	if ( $tabla[0][6] == 9 ) {
+		echo "checked=true";
+	}
+	?> <?php
+	if ( $bandera || $diaSemana < 6 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
 									<td class="highlight2">
-										<select name="calidad-suenos" class="int-select">
-											<option value="b">Excelente</option>
-											<option value="r">Regular</option>
-											<option value="m">Muy Malo</option>
+										<select name="calidad-suenos" class="int-select"  <?php
+	if ( $bandera || $diaSemana < 6 ) {
+		echo "disabled";
+	}
+	?>>
+											<option value="1" <?php
+	if ( $tabla[0][14] == 1 ) {
+		echo "selected";
+	}
+	?> >Excelente</option>
+											<option value="2" <?php
+	if ( $tabla[0][14] == 2 ) {
+		echo "selected";
+	}
+	?> >Regular</option>
+											<option value="3" <?php
+	if ( $tabla[0][14] == 3 ) {
+		echo "selected";
+	}
+	?> >Muy Malo</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>Domingo</td>
+									<td><input type="radio" name="horasd" value="7" <?php
+	if ( $tabla[0][7] == 7 ) {
+		echo "checked=true";
+	}
+	?>  <?php
+	if ( $bandera || $diaSemana < 7 ) {
+		echo "disabled";
+	}
+	?>  class="int-check"></td>
+									<td><input type="radio" name="horasd" value="8" <?php
+	if ( $tabla[0][7] == 8 ) {
+		echo "checked=true";
+	}
+	?>  <?php
+	if ( $bandera || $diaSemana < 7 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td><input type="radio" name="horasd" value="9" <?php
+	if ( $tabla[0][7] == 9 ) {
+		echo "checked=true";
+	}
+	?>  <?php
+	if ( $bandera || $diaSemana < 7 ) {
+		echo "disabled";
+	}
+	?> class="int-check"></td>
+									<td class="highlight2">
+										<select name="calidad-suenod" class="int-select"  <?php
+	if ( $bandera || $diaSemana < 7 ) {
+		echo "disabled";
+	}
+	?>>
+											<option value="1" <?php
+	if ( $tabla[0][8] == 1 ) {
+		echo "selected";
+	}
+	?>>Excelente</option>
+											<option value="2" <?php
+	if ( $tabla[0][8] == 2 ) {
+		echo "selected";
+	}
+	?>>Regular</option>
+											<option value="3" <?php
+	if ( $tabla[0][8] == 3 ) {
+		echo "selected";
+	}
+	?>>Muy Malo</option>
 										</select>
 									</td>
 								</tr>
@@ -916,24 +1555,34 @@ try {
 							</form>
 
 					</div>
-					<a href="#" class="actividad-btn"  id="horasguardar" value="Guardar">Guardar</a>
+	<?php if ( !$bandera ) { ?>
+						<a href="#" class="actividad-btn"  id="horasguardar" value="Guardar">Guardar</a>
+	<?php } ?>
+					<div class="semanas">
+						<a href="<?php echo site_url() . "/actividad/duerme-bien/?fecha={$fechaanterior}" ?>" class="prev">Semana anterior</a>
+	<?php if ( $bandera ) { ?>
+							<a href="<?php echo site_url() . "/actividad/duerme-bien/" ?>" ><span>Regresar a mi registro de hoy</span></a>
+							<a href="<?php echo site_url() . "/actividad/duerme-bien/?fecha={$fechasiguiente}" ?>" class="next">Semana siguiente</a>
+
+	<?php } ?>
+					</div>
 
 				</div>
 				<div id="tabs-2" class="tab-content">
 					<div class="inst-pad">
-						<?php
-						$my_postid = 802; //This is page id or post id
-						$content_post = get_post( $my_postid );
-						$content = $content_post->post_content;
-						$content = apply_filters( 'the_content', $content );
-						$content = str_replace( ']]>', ']]&gt;', $content );
-						echo $content;
-						?>
+	<?php
+	$my_postid = 802; //This is page id or post id
+	$content_post = get_post( $my_postid );
+	$content = $content_post->post_content;
+	$content = apply_filters( 'the_content', $content );
+	$content = str_replace( ']]>', ']]&gt;', $content );
+	echo $content;
+	?>
 					</div>
 				</div>
 			</div>
 			<!--END DIARIO DE SUENO-->
-		<?php } ?>
+<?php } ?>
 	</div>
 </div>
 </div><!--main-->
