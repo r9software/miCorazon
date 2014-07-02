@@ -36,10 +36,56 @@ $(document).ready(function() {
     $('#pregunta').click(function() {
         if ($('#falsoq').is(':checked')) {
             $('#respoq').show();
+            $('#pregunta').hide();
         }
         if ($('#verdaderoq').is(':checked')) {
             $('#respoq').show();
+            $('#pregunta').hide();
         }
+        
+    });
+    $("#peso-inicial").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                    $('#peso-inicial').val('');
+                }
+            });
+        }
+    });
+     $("#peso-hoy").keypress(function(e) {
+        //SI NO ES NUMERICO...
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            $('#aviso6').lightbox_me({
+                centered: true,
+                onLoad: function() {
+                    $('#aviso4').find('input:first').focus();
+                    $('#peso-hoy').val('');
+                }
+            });
+        }
+    });
+    
+    $("#peso-hoy").keyup(function(e) {
+        hoy = parseFloat($('#peso-hoy').val());
+        if(hoy<0){
+            hoy=0;}
+        inicial = parseFloat($('#peso-inicial').val());
+        if(inicial<0){
+            inicial=0;}
+        $('#cambio-peso').val(inicial-hoy);
+    });
+    $("#peso-inicial").keyup(function(e) {
+        hoy = parseFloat($('#peso-hoy').val());
+        if(hoy<0)
+            hoy=0;
+        inicial = parseFloat($('#peso-inicial').val());
+        if(inicial<0)
+            inicial=0;
+        $('#cambio-peso').val(inicial-hoy);
     });
     if ($('#chuno').click(function() {
         dataString = "chuno=true";
@@ -886,7 +932,27 @@ $(document).ready(function() {
             });
         }
     });
+    //impresion
+    $("#printer").click(function(e)
+	{
+            var printVersion = $('.perfil-box').clone();
+            // Eliminamos los elementos indeseables a través de jQuery. En este caso sólo uno.
+            // Creamos el contenido del documento que se va a imprimir.
+            var printContent = $('head').html() + '<div class="printVersion">' + printVersion.html() + '</div>'; 
 
+            // Establecemos la nueva ventana.
+            var windowUrl = 'about:blank'; 
+            var createdAt = new Date(); 
+            var windowName = 'printScreen' + createdAt.getTime(); 
+            var printWindow = window.open(windowUrl, windowName, 'resizable=1,scrollbars=1,left=500,top=000,width=868'); 
+            printWindow.document.write(printContent); 
 
-
+            printWindow.document.close(); 
+        
+            // Establecemos el foco.
+            printWindow.focus(); 
+        
+            // Lanzamos la impresión.
+            printWindow.print();   
+	});
 });

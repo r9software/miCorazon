@@ -11,7 +11,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {margin: 0;padding: 0; border: 0; outline: 0; font-size: 100%; font: inherit; vertical-align: baseline;}
-select,
+
 textarea{ outline:none; border:none; border:0;     -webkit-appearance: none; border-radius: 0;}
 select{-moz-appearance: none; text-indent: 0.01px;
     text-overflow: '';}
@@ -242,6 +242,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .riesgos-box h1{font-size:16px; font-weight:400; margin-bottom:5px;   }
     .riesgos-box h2{font-size:24px; margin-bottom:15px; }
     .riesgos-box p{font-size:13px; font-weight:300; margin-bottom:15px;   }
+    .riesgos-box ol{font-size:14px; font-weight:300; margin-bottom:15px; margin-left: 30px}
     .riesgos-box p strong{font-weight:300; }
     .riesgo-alto{background-color:#F54C4A; }
     .riesgo-bajo{background-color:#7ED321; }
@@ -710,15 +711,15 @@ textarea{ resize:none;}
 .ejercicio-box p{ font-size: 18px; margin-left: 15px; float: left; margin-top: 20px}
 .ejercicio-img{ width: 120px; height: 120px; overflow: hidden; float: left; border-right: solid 1px #ddd;}
 .ejercicio-img img{ position: relative; left: -80%; top: -10%}
-.paloma{ background-image: url('../images/paloma.png'); width: 20px; height: 20px; float: right; margin-top: 23px; margin-right: 10px}
-.taches{ background-image: url('../images/tache.png'); width: 20px; height: 20px; float: right; margin-top: 23px; margin-right: 10px}
+.paloma{ background-image: url('../images/paloma.png'); width: 20px; height: 20px; float: right; margin-top: 8px; margin-right: 10px}
+.taches{ background-image: url('../images/tache.png'); width: 20px; height: 20px; float: right; margin-top: 8px; margin-right: 10px}
 
 .apptivate{display:inline-block; float:left; margin-bottom:20px; position:relative; width: 100%;}
     .apptivate .more a{width:40px; height:40px; position:absolute; background:url('../images/base/more.png'); background-repeat:no-repeat; background-position:0px 0px; right:0px; top:0px;    }
     .apptivate .more a:hover{ background-position:0px -40px;}
     .apptivate h5{margin-bottom:10px; }
     .apptivate h5 a{ color:#F5723D; text-decoration:none; font-size:20px;   }
-    .apptivate-wrapper{  background-color: #e4e4dd; float: left; height: 386px; width: 100% }
+    .apptivate-wrapper{  background-color: #e4e4dd; float: left; height: 386px; width: 100%; margin-bottom:20px;  }
     .apptivate h3 a{ font-size: 16px; font-style: italic; font-weight: bold; text-decoration: none;}
     .apptivate p a{ color: #222222; font-size: 14px; text-decoration: none; font-style: normal; font-weight: normal;}
     .app-uno a{color:#5DBFCB;}

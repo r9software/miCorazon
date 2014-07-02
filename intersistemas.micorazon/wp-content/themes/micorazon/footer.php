@@ -14,13 +14,13 @@
 			<h2><?php echo get_cat_name( 2 ); ?></h2>
 			<ul>
 				<?php
-				/* QUERY CATEGORY BY ID*/
+				/* QUERY CATEGORY BY ID */
 				$categories = get_categories( 'orderby=name&depth=1&title_li=&use_desc_for_title=1&child_of=2' );
 				foreach ( $categories as $cat ) {
 					?>
-				<?php $cat_id = $cat->cat_ID;?>
-				<?php $sd = query_posts("cat=$cat_id&posts_per_page=1");?>
-				<li><a href="<?php echo get_permalink($sd[0]->ID); ?>" id="<?php echo $cat->slug; ?>"><?php echo $cat->cat_name; ?></a></li>
+					<?php $cat_id = $cat->cat_ID; ?>
+					<?php $sd = query_posts( "cat=$cat_id&posts_per_page=1" ); ?>
+					<li><a href="<?php echo get_permalink( $sd[0]->ID ); ?>" id="<?php echo $cat->slug; ?>"><?php echo $cat->cat_name; ?></a></li>
 				<?php } ?>
 			</ul>
 		</div>
@@ -28,13 +28,13 @@
 			<h2><?php echo get_cat_name( 3 ); ?></h2>
 			<ul>
 				<?php
-				/* QUERY CATEGORY BY ID*/
+				/* QUERY CATEGORY BY ID */
 				$categories = get_categories( 'orderby=name&depth=1&title_li=&use_desc_for_title=1&child_of=3' );
 				foreach ( $categories as $cat ) {
 					?>
-				<?php $cat_id = $cat->cat_ID;?>
-				<?php $sd = query_posts("cat=$cat_id&posts_per_page=1");?>
-				<li><a href="<?php echo get_permalink($sd[0]->ID); ?>" id="<?php echo $cat->slug; ?>"><?php echo $cat->cat_name; ?></a></li>
+					<?php $cat_id = $cat->cat_ID; ?>
+					<?php $sd = query_posts( "cat=$cat_id&posts_per_page=1" ); ?>
+					<li><a href="<?php echo get_permalink( $sd[0]->ID ); ?>" id="<?php echo $cat->slug; ?>"><?php echo $cat->cat_name; ?></a></li>
 				<?php } ?>
 			</ul>
 		</div>
@@ -42,14 +42,25 @@
 			<h2><?php echo get_cat_name( 4 ); ?></h2>
 			<ul>
 				<?php
-				/* QUERY CATEGORY BY ID*/
+				/* QUERY CATEGORY BY ID */
 				$categories = get_categories( 'orderby=name&depth=1&title_li=&use_desc_for_title=1&child_of=4' );
+
 				foreach ( $categories as $cat ) {
 					?>
-				<?php $cat_id = $cat->cat_ID;?>
-				<?php $sd = query_posts("cat=$cat_id&posts_per_page=1");?>
-				<li><a href="<?php echo get_permalink($sd[0]->ID); ?>" id="<?php echo $cat->slug; ?>"><?php echo $cat->cat_name; ?></a></li>
-				<?php } ?>
+					<?php $cat_id = $cat->cat_ID; ?>
+					<?php
+					$sd = query_posts( "cat=$cat_id&posts_per_page=1" );
+					if ( strcmp( $cat->slug, "recetas" ) == 0 ) {
+						?>
+						<li><a href="<?php echo site_url(); ?>/recetas-saludables/" id="<?php echo $cat->slug; ?>"><?php echo $cat->cat_name; ?></a></li>	
+					<?php } elseif ( strcmp( $cat->slug, "actividades" ) == 0 ) { ?>
+						<li><a href="<?php echo site_url(); ?>/actividad/registro-de-actividad-fisica/" id="<?php echo $cat->slug; ?>"><?php echo $cat->cat_name; ?></a></li>
+					<?php } else {
+						?>
+						<li><a href="<?php echo get_permalink( $sd[0]->ID ); ?>" id="<?php echo $cat->slug; ?>"><?php echo $cat->cat_name; ?></a></li><?php
+					}
+				}
+				?>
 			</ul>
 		</div>
 		<div class="legals">
@@ -61,10 +72,10 @@
 	</div>
 </div>
 </div><!--content-all-->
-<script src="<?php bloginfo('template_url'); ?>/js/jquery-1.11.1.min.js"></script>
+<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery-1.11.1.min.js"></script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/jquery-ui-1.10.4.min.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/js/micorazon.js"></script>
-	<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery.lightbox_me.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/js/jquery.bxslider.min.js"></script>
+<script src="<?php bloginfo( 'template_url' ); ?>/js/micorazon.js"></script>
+<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery.lightbox_me.js"></script>
+<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery.bxslider.min.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ if ( is_user_logged_in() ) {
 ?>
 <?php include 'header-registro.php'; ?>
 <body >
-	<form id="myform" name="myform" method="POST" action="<?php echo site_url()."/registro-dao/" ?>">
+	<form id="myform" name="myform" method="POST" action="<?php echo site_url() . "/registro-dao/" ?>">
 		<div class="content-all">
 			<div class="bg_registro">   
 			</div>
@@ -82,7 +82,7 @@ if ( is_user_logged_in() ) {
 								echo $_GET['ap'];
 							}
 							?>" class="field2" />
-																   <?php if ( isset( $_GET['apm'] )) { ?>	
+																   <?php if ( isset( $_GET['apm'] ) ) { ?>	
 								<div class="alert3" id="alert-apellido-paterno">
 									*Campo obligatorio
 								</div>
@@ -154,62 +154,62 @@ if ( is_user_logged_in() ) {
 									<option value="">Mes</option>
 
 									<option value="en" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="en" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "en" ) {
 										echo "Selected";
 									}
 									?>>Enero</option>
 									<option value="fe" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="fe" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "fe" ) {
 										echo "Selected";
 									}
 									?>>Febrero</option>
 									<option value="ma" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="ma" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "ma" ) {
 										echo "Selected";
 									}
 									?>>Marzo</option>
 									<option value="ab" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="ab" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "ab" ) {
 										echo "Selected";
 									}
 									?>>Abril</option>
 									<option value="may" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="may" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "may" ) {
 										echo "Selected";
 									}
 									?>>Mayo</option>
 									<option value="jun" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="jun" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "jun" ) {
 										echo "Selected";
 									}
 									?>>Junio</option>
 									<option value="jul" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="jul") {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "jul" ) {
 										echo "Selected";
 									}
 									?>>Julio</option>
 									<option value="ago" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="ago" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "ago" ) {
 										echo "Selected";
 									}
 									?>>Agosto</option>
 									<option value="sep" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="sep") {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "sep" ) {
 										echo "Selected";
 									}
 									?>>Septiembre</option>
 									<option value="oct" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="oct" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "oct" ) {
 										echo "Selected";
 									}
 									?>>Octubre</option>
 									<option value="nov" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="nov") {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "nov" ) {
 										echo "Selected";
 									}
 									?>>Noviembre</option>
 									<option value="dic" <?php
-									if ( isset( $_GET['mes'] )&& $_GET['mes']=="dic" ) {
+									if ( isset( $_GET['mes'] ) && $_GET['mes'] == "dic" ) {
 										echo "Selected";
 									}
 									?>>Diciembre</option>
@@ -242,12 +242,12 @@ if ( is_user_logged_in() ) {
 							<label>Género:</label>
 							<div class="cuatro customui" style="margin-top:5px;">
 								<input name="genero" type="radio" id="generom"  value="1"  <?php
-								if ( isset( $_GET['genero'] )&& $_GET['genero']=="1" ) {
+								if ( isset( $_GET['genero'] ) && $_GET['genero'] == "1" ) {
 									echo "checked";
 								}
 								?> /><label for="generom" class="radie" style="width:120px; ">Masculino</label>
 								<input name="genero" type="radio" id="generof"  value="2"   <?php
-								if ( isset( $_GET['genero'] )&& $_GET['genero']=="2" ) {
+								if ( isset( $_GET['genero'] ) && $_GET['genero'] == "2" ) {
 									echo "checked";
 								}
 								?>/><label for="generof" class="radie"  style="width:120px; ">Femenino</label>
@@ -289,17 +289,18 @@ if ( is_user_logged_in() ) {
 							  </div> */ ?>
 
 						</div>
-						
+
 					</div>
 					<div class="disclaimer" >
 						<div class="form-group customui">
 							<input name="terminos" type="checkbox" id="terminos" checked="checked" value="1" /><label for="terminos" class="checky">He leído y acepto los Términos y Condiciones. <a href="#">Aviso de privacidad</a></label>
-						</div>
-						<div class="form-group customui" id="diss">
-							<input name="consejos" type="checkbox" id="consejos" checked="checked" value="1" /><label for="consejos" class="checky">Acepto recibir consejos, tips y recomendaciones para tener un corazón sano a través de e-mail.</label><div class="clear"></div>
 							<div class="alert3" id="alert-terminos" style="display: none">
 								*Debes aceptar las politicas de privacidad.
 							</div>
+						</div>
+						<div class="form-group customui" id="diss">
+							<input name="consejos" type="checkbox" id="consejos" checked="checked" value="1" /><label for="consejos" class="checky">Acepto recibir consejos, tips y recomendaciones para tener un corazón sano a través de e-mail.</label><div class="clear"></div>
+
 						</div>
 						<div class="form-group center">
 							<button id="buttonsubmit" class="submit1">Continuar</button>

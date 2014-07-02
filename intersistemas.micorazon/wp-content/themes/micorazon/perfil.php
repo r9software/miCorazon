@@ -46,13 +46,43 @@ $rverdura;
 $imc;
 $nestres;
 $afisicas;
+$fecha;
 $hsueno;
 $fumas;
 $fam;
+
+function getmes( $var ) {
+	switch ( $var ) {
+		case "01": return "Enero";
+			break;
+		case "02": return "Febrero";
+			break;
+		case "03": return "Marzo";
+			break;
+		case "04": return "Abril";
+			break;
+		case "05": return "Mayo";
+			break;
+		case "06": return "Junio";
+			break;
+		case "07": return "Julio";
+			break;
+		case "08": return "Agosto";
+			break;
+		case "09": return "Septiembre";
+			break;
+		case "10": return "Octubre";
+			break;
+		case "11": return "Noviembre";
+			break;
+		case "12": return "Diciembre";
+			break;
+	}
+}
 try {
 	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
 	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-	$sql = "Select riesgo,nombre,apaterno,amaterno,avatar from wp_usersinfo where user_id={$id}"
+	$sql = "Select riesgo,nombre,apaterno,amaterno,avatar,fechariesgo from wp_usersinfo where user_id={$id}"
 			. " LIMIT 1";
 	$rs = $conn->prepare( $sql );
 	$rs->execute();
@@ -61,7 +91,9 @@ try {
 		$riesgo = $rs2[0]['riesgo'];
 		$nombre = $rs2[0]['nombre'] . " " . $rs2[0]['apaterno'] . " " . $rs2[0]['amaterno'];
 		$avatar = $rs2[0]['avatar'];
-
+		$fecha=$rs2[0]['fechariesgo'];
+		$arras=  explode("-",$fecha);
+		$fecha=$arras[2]."/".getmes($arras[1])."/".$arras[0];
 		if ( $riesgo == 1 ) {
 			$level = "medio";
 		} else if ( $riesgo == 0 ) {
@@ -97,6 +129,27 @@ try {
 			<li>Acude con tu médico para que te revise la presión y te ayude a tenerla normal.</li>
 		</ol>
     </div>
+	<div class="aviso-alto" id="text-desconocidog-alto">
+        <a href="#" class="close"></a>
+        <p><strong>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de glucosa en la sangre.</strong></p>
+		
+    </div>
+	<div class="aviso-alto" id="text-desconocidopa-alto">
+        <a href="#" class="close"></a>
+        <p><strong>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de presión arterial. Al conocer tu nivel, puedes prevenir enfermedades cardiacas, eventos vasculares cerebrales y otras enfermedades.</strong></p>
+		
+    </div>
+	<div class="aviso-alto" id="text-desconocidoc-alto">
+        <a href="#" class="close"></a>
+        <p><strong>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de colesterol total.</strong></p>
+		
+    </div>
+	<div class="aviso-alto" id="text-desconocidot-alto">
+        <a href="#" class="close"></a>
+        <p><strong>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de triglicéridos.</strong></p>
+		
+    </div>
+	
     <div class="aviso-medio" id="text-fact1-medio">
         <a href="#" class="close"></a>
         <p><strong>Tu presión arterial está por arriba de lo normal, regresa a los rangos saludables siguiendo estos consejos.</strong></p>
@@ -419,6 +472,8 @@ try {
 										<div class="perfil-box">
 											<div class="user">
 												<h2>Conoce la salud de tu corazón</h2>
+												
+													<h3><?php echo $fecha; ?></h3>
 												<h3>Este es el primer paso para mejorar tu calidad de vida. <strong>Comparte este resultado con tu médico.</strong> </h3>
 												<div class="user-icon" >
 													<?php if ( isset( $avatar ) ) { ?>
@@ -443,73 +498,38 @@ try {
 												<h1>Mi corazón está en:</h1>
 												<h2>Riesgo <?php echo $level; ?></h2>
 												<?php if ( $riesgo == 0 ) { ?>
-													<p>Tenemos buenas noticias para ti: “vas por muy buen camino”. Tus cifras de glucosa y 
-														colesterol se encuentran dentro de límites aceptables no dejes que se eleven. Mantén tu peso 
-														como hasta ahora y evita que los kilos de más te alcancen. Sigue consumiendo al menos dos frutas 
-														y tres verduras al día, no olvides el pescado al menos una vez a la semana, pero de preferencia dos 
-														veces. Continúa con ese nivel de actividad física o auméntalo un poco si te es posible. Tu salud 
-														agradece que no fumes. 
+													<p>De acuerdo a lo que respondiste acerca de tus hábitos, tu riesgo de padecer una enfermedad cardiaca es mínimo. Es importante que sigas así y continúes adoptando conductas que te ayuden a llevar una vida sana. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él y juntos crear un plan que beneficie a tu salud. Sigue estos pasos básicos:
 													</p>
-													<p><strong>Puedes seguir estas recomendaciones básicas:</strong></p>
-													<p><strong>Sigue con una vida saludable. <br/>
-															Acude a visitas médicas preventivas.<br/>
-															Realiza tu árbol genealógico de enfermedades y verás cómo puedes evitar o retrasar la aparición de problemas cardiacos.</strong></p>
+													<ol>
+														<li>No olvides revisar tus niveles de presión arterial, glucosa, colesterol y triglicéridos</li>
+														<li>Sigue consumiendo frutas y verduras, limita las grasas</li>
+														<li>Muévete por lo menos 30 minutos al día</li>
+														<li>Aléjate de las personas que fuman</li>
+														<li>Duerme entre 7 a 8 horas al día</li>
+													</ol>
 												<?php } else if ( $riesgo == 1 ) { ?>
-													<p>No tienes tanto peligro de presentar problemas cardiacos; sin embargo, si sigues por este 
-														camino es probable que a mediano plazo desarrolles una mayor predisposición para padecer problemas 
-														del corazón. Arma un plan para evitar cualquier riesgo, puedes empezar con estas sugerencias básicas. 
+													<p>Algunos hábitos están afectando tu salud y ponen en riesgo a tu corazón. Es importante que empieces a tomar acciones que eviten complicaciones a futuro. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él  y juntos crear un plan que beneficie a tu salud. Estos pasos básicos te ayudarán:
 													</p>
-													<p><strong>Puedes seguir estas recomendaciones básicas:</strong></p>
-													<p><strong>Vigila tus cifras de glucosa y colesterol. <br/>
-															Come cinco raciones de frutas y verduras al día (tres verduras y dos frutas, o más) para mantener 
-															tus niveles sanguíneos en orden y ayudar a disminuir los niveles de grasas en la sangre. 
-															<br/><br/>
-															Busca estrategias para bajar tu peso y el perímetro de tu cintura. Tener una mejor alimentación y 
-															aumentar tu actividad física puede ayudar.<br/><br/>
-															Trata de reducir tu ingesta de grasa al mínimo y evita agregar azúcar o sal a los alimentos. <br/><br/>
-															Sigue trabajando en moderar tu estrés, y mejorar tus hábitos de descanso. Mantener una 
-															integridad emocional y física es muy importante para reducir el riesgo de diabetes e 
-															hipertensión, dos de los principales enemigos del corazón. <br/><br/>
-															Trata de reducir tu ingesta de grasa al mínimo y evita agregar azúcar o sal a los alimentos. <br/><br/>
-															Evita el tabaco porque predispone al daño de las arterias y por lo tanto del corazón. Si crees que 
-															no puedes solo busca ayuda. 
-															<br/>
-														</strong></p>
+													<ol>
+														<li>Empieza por consumir alimentos más saludables como frutas y verduras</li>
+														<li>Revísa periódicamente tus niveles de glucosa, presión arterial, colesterol y triglicéridos</li>
+														<li>¡Qué esperas para realizar alguna actividad física! Puedes empezar por caminar 10 minutos al día</li>
+														<li>Ten un peso saludable, si tienes “kilitos de más” es momento de bajarlos</li>
+														<li>Busca estrategias para reducir tu estrés</li>
+													</ol>
 
 												<?php } else if ( $riesgo == 2 ) {
 													?>	
-													<p>Tenemos una mala noticia para ti: “estás en un riesgo elevado de presentar 
-														problemas cardiovasculares”; quizá ya los tengas y no te hayas dado cuenta. Pero la buena noticia 
-														es que “jamás es tarde para modificar el estilo de vida”. Nuestras recomendaciones para ti son: 
+													<p>Tus hábitos están afectando a tu corazón y presentas un riesgo elevado de tener alguna complicación. Es importante que empieces a realizar cambios en tu vida para evitar que tu salud se deteriore. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él  y juntos crear un plan que beneficie a tu salud. Estas recomendaciones te ayudarán a tener una vida sana.
 													</p>
-													<p><strong>Comienza por hacerte una evaluación médica inicial en donde te indiquen cuáles son 
-															tus cifras de presión arterial, colesterol, glucosa y triglicéridos. Además pide que te 
-															indiquen cuál es el peso ideal para ti. Es un buen momento para iniciar un registro 
-															periódico de tus metas. 
-															<br/><br/>
-															Trata de perder peso. Realizar ejercicio y modificar tus hábitos alimenticios ayudarán; 
-															las frutas y las verduras ayudarán mucho en este plan.<br/> Si no estás acostumbrado a 
-															llevar una dieta sana puedes buscar libros, revistas o incluso cursos de cocina para 
-															descubrir que existen muchas opciones sanas y ricas. 
-															<br/><br/>
-															Ve disminuyendo la cantidad de grasa en tus alimentos; hazlo de manera paulatina.<br/>
-															Trabaja en tus niveles de estrés. El ejercicio y la meditación pueden ayudar, pero si 
-															crees que es algo que no puedes manejar solo tal vez sea el momento de buscar 
-															ayuda. Recuerda que no podemos lidiar solos con todo y es importante reconocer 
-															cuando alguien nos puede tender una mano. 
-															<br/><br/>
-															No sacrifiques tu descanso, éste no lo podrás recuperar a largo plazo y sí te generará 
-															daños permanentes a la salud. Intenta identificar qué fenómenos te están llevando a 
-															no tener un descanso reparador. 
-															<br/><br/>
-															Evita el alcohol y el tabaco lo antes posible ya que para ti en particular son factores de 
-															riesgo muy importantes para tener consecuencias graves de salud. Si crees que tu solo 
-															no puedes busca ayuda.  
-															<br/><br/>
-															Y lo más importante, no te desanimes, los cambios irán ocurriendo de manera 
-															paulatina, solo debes ser constante. 
-															<br/>
-														</strong></p>
+													<ol>
+														<li>Empieza por consumir alimentos más saludables como frutas y verduras.</li>
+														<li>Revísate periódicamente tus niveles de glucosa, presión arterial, colesterol y triglicéridos.</li>
+														<li>Camina por lo menos 10 minutos tres veces al día.</li>
+														<li>Tener un peso saludable es importante. Acude con un especialista si quieres bajar de peso.</li>
+														<li>Si fumas es momento de dejar este mal hábito</li>
+														<li>Reduce tu estrés al máximo</li>
+													</ol>
 												<?php }
 												?>
 											</div>
@@ -555,11 +575,10 @@ try {
 												<div class="risk-box" id="fact1">
 													<?php
 													if ( !$presion ) {
-														echo "<h2 class='i1'>Presión arterial</h2>";
+														echo "<div class='taches'></div><h2 class='i1'>Presión arterial</h2>";
 														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
-														echo "<h3>Nivel sano: Tanto el valor superior (sistólico) como el valor inferior (diastólico) deben estar dentro 
-del rango recomendado (menos de 120/80 mmHg).</h3>";
-														echo "<a id='light-fact1-alto'>Detalle</a><div class='taches'></div>";
+														echo "<h3>Nivel sano: igual o menor de 120 a 139/80 a 89 mmHg.</h3>";
+														echo "<a id='light-desconocidopa-alto'>Detalle</a>";
 													} else if ( $presion ) {
 														$mylevel;
 														if ( $cps <= 120 && $cps > 60 && $cpd <= 80 && $cpd > 50 ) {
@@ -572,16 +591,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 															$mylevel = "alto";
 															$newriesgo = 2;
 														}
-														echo "<h2 class='i1'>Presión arterial</h2>";
-														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cps . "/" . $cpd . "mmHg</span></h3>";
-														echo "<h3>Nivel sano: Tanto el valor superior (sistólico) como el valor inferior (diastólico) deben estar dentro 
-del rango recomendado (menos de 120/80 mmHg).</h3>";
-														echo "<a id='light-fact1-{$mylevel}'>Detalle</a>";
 														if ( $newriesgo == 0 ) {
 															echo "<div class='paloma'></div>";
 														} else if ( $newriesgo == 2 ) {
 															echo "<div class='taches'></div>";
 														}
+														echo "<h2 class='i1'>Presión arterial</h2>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cps . "/" . $cpd . "mmHg</span></h3>";
+														echo "<h3>Nivel sano: igual o menor de 120 a 139/80 a 89 mmHg.</h3>";
+														echo "<a id='light-fact1-{$mylevel}'>Detalle</a>";
+														
 													}
 													?>
 
@@ -590,11 +609,11 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 
 													<?php
 													if ( !$glucosa ) {
-														echo "<h2 class='i2'>Glucosa en la sangre</h2>";
+														echo "<div class='taches'></div><h2 class='i2'>Glucosa en la sangre</h2>";
 														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
-														echo "<h3>Nivel sano: Menor de 140 mg/dL postprandial. </h3>";
-														echo "<a id='light-fact2-alto'>Detalle</a>";
-														echo "<div class='taches'></div>";
+														echo "<h3>Nivel sano: menor de 101 mg/dL.</h3>";
+														echo "<a id='light-desconocidog-alto'>Detalle</a>";
+														echo "";
 													} else if ( $glucosa ) {
 														$mylevel;
 														if ( $cglucosa > 70 && $cglucosa <= 140 ) {
@@ -607,15 +626,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 															$mylevel = "alto";
 															$newriesgo = 2;
 														}
-														echo "<h2 class='i2'>Glucosa en la sangre</h2>";
-														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cglucosa . "mg/dL</span></h3>";
-														echo "<h3>Nivel sano: Menor de 140 mg/dL postprandial.</h3>";
-														echo "<a id='light-fact2-{$mylevel}'>Detalle</a>";
 														if ( $newriesgo == 0 ) {
 															echo "<div class='paloma'></div>";
 														} else if ( $newriesgo == 2 ) {
 															echo "<div class='taches'></div>";
 														}
+														echo "<h2 class='i2'>Glucosa en la sangre</h2>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cglucosa . "mg/dL</span></h3>";
+														echo "<h3>Nivel sano: menor de 101 mg/dL.</h3>";
+														echo "<a id='light-fact2-{$mylevel}'>Detalle</a>";
+														
 													}
 													?>
 
@@ -625,11 +645,11 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 
 													<?php
 													if ( !$trigliceridos ) {
-														echo "<h2 class='i3'>Triglicéridos</h2>";
+														echo "<div class='taches'></div><h2 class='i3'>Triglicéridos</h2>";
 														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
-														echo "<h3>Nivel sano: 200 a 499 mg/dL</h3>";
-														echo "<a id='light-fact3-alto'>Detalle</a>";
-														echo "<div class='taches'></div>";
+														echo "<h3>Nivel sano: menor de 150 mg/dL.</h3>";
+														echo "<a id='light-desconocidot-alto'>Detalle</a>";
+														echo "";
 													} else if ( $trigliceridos ) {
 														$mylevel;
 														if ( $ctrigliceridos <= 199 && $ctrigliceridos >= 49 ) {
@@ -642,15 +662,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 															$mylevel = "alto";
 															$newriesgo = 2;
 														}
-														echo "<h2 class='i3'>Triglicéridos</h2>";
-														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
-														echo "<h3>Nivel sano: 200 a 499 mg/dL</h3>";
-														echo "<a id='light-fact3-{$mylevel}'>Detalle</a>";
 														if ( $newriesgo == 0 ) {
 															echo "<div class='paloma'></div>";
 														} else if ( $newriesgo == 2 ) {
 															echo "<div class='taches'></div>";
 														}
+														echo "<h2 class='i3'>Triglicéridos</h2>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
+														echo "<h3>Nivel sano: menor de 150 mg/dL.</h3>";
+														echo "<a id='light-fact3-{$mylevel}'>Detalle</a>";
+														
 													}
 													/*
 													  <div class="risk-box" id="fact5">
@@ -675,10 +696,10 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 												<div class="risk-box" id="fact4">
 													<?php
 													if ( !$colesterol ) {
-														echo "<h2 class='i4'>Colesterol</h2>";
+														echo "<div class='taches'></div><h2 class='i4'>Colesterol</h2>";
 														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
-														echo "<h3>Nivel sano: menor a 200 mg/dL</h3>";
-														echo "<a id='light-fact4-alto'>Detalle</a>";echo "<div class='taches'></div>";
+														echo "<h3>Nivel sano: menor de 200 mg/dL.</h3>";
+														echo "<a id='light-desconocidoc-alto'>Detalle</a>";echo "";
 													} else if ( $colesterol ) {
 														$mylevel;
 														if ( $cc <= 200 && $cc >= 99 ) {
@@ -691,15 +712,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 															$mylevel = "alto";
 															$newriesgo = 2;
 														}
-														echo "<h2 class='i4'>Colesterol</h2>";
-														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
-														echo "<h3>Nivel sano: menor a 200 mg/dL</h3>";
-														echo "<a id='light-fact4-{$mylevel}'>Detalle</a>";
 														if ( $newriesgo == 0 ) {
 															echo "<div class='paloma'></div>";
 														} else if ( $newriesgo == 2 ) {
 															echo "<div class='taches'></div>";
 														}
+														echo "<h2 class='i4'>Colesterol</h2>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
+														echo "<h3>Nivel sano: menor de 200 mg/dL.</h3>";
+														echo "<a id='light-fact4-{$mylevel}'>Detalle</a>";
+														
 													}
 													?>
 												</div>
@@ -716,15 +738,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 														$mylevel = "alto";
 														$newriesgo = 2;
 													}
-													echo "<h2 class='i5'>Peso y cintura (IMC)</h2>";
-													echo "<h3>IMC actual: <span class='" . $mylevel . "'>" . $imc . " </span></h3>";
-													echo "<h3>IMC sano: 19 a 24.9</h3>";
-													echo "<a id='light-fact5-{$mylevel}'>Detalle</a>";
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
 													} else if ( $newriesgo == 2 ) {
 														echo "<div class='taches'></div>";
 													}
+													echo "<h2 class='i5'>Peso y cintura (IMC)</h2>";
+													echo "<h3>IMC actual: <span class='" . $mylevel . "'>" . $imc . " </span></h3>";
+													echo "<h3>Nivel sano: IMC de 19 a 24.9 (peso sano)</h3>";
+													echo "<a id='light-fact5-{$mylevel}'>Detalle</a>";
+													
 													?>
 
 												</div>
@@ -742,15 +765,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 														$mylevel = "alto";
 														$newriesgo = 2;
 													}
-													echo "<h2 class='i6'>Nutrición</h2>";
-													echo "<h3>Raciones actuales: <span class='" . $mylevel . "'>" . $rtot . "</span></h3>";
-													echo "<h3>Raciones recomendadas:  5 raciones de frutas y verduras o más </h3>";
-													echo "<a id='light-fact6-{$mylevel}'>Detalle</a>";
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
 													} else if ( $newriesgo == 2 ) {
 														echo "<div class='taches'></div>";
 													}
+													echo "<h2 class='i6'>Nutrición</h2>";
+													echo "<h3>Raciones actuales: <span class='" . $mylevel . "'>" . $rtot . "</span></h3>";
+													echo "<h3>Nivel sano: 5 raciones de frutas y verduras o más</h3>";
+													echo "<a id='light-fact6-{$mylevel}'>Detalle</a>";
+													
 													?>
 
 
@@ -773,16 +797,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 													$mylevel = "alto";
 													$newriesgo=2;
 													}
-													echo "<h2 class='i7'>Estrés</h2>";
-													echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $nestres . "</span></h3>";
-													echo "<h3>Nivel sano: 1 - Adopta técnicas para controlar el estrés. 
-</h3>";
-													echo "<a id='light-fact7-{$mylevel}'>Detalle</a>";
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
 													} else if ( $newriesgo == 2 ) {
 														echo "<div class='taches'></div>";
 													}
+													echo "<h2 class='i7'>Estrés</h2>";
+													echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $nestres . "</span></h3>";
+													echo "<h3>Nivel sano: 1 - 2: Adopta técnicas para controlar el estrés.</h3>";
+													echo "<a id='light-fact7-{$mylevel}'>Detalle</a>";
+													
 													?>
 
 												</div>
@@ -816,15 +840,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 														$newriesgo=2;
 														
 													}
-													echo "<h2 class='i8'>Actividad física</h2>";
-													echo "<h3>Minutos: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
-													echo "<h3>Tu objetivo semanal es realizar más de 110 minutos por semana. </h3>";
-													echo "<a id='light-fact8-{$mylevel}'>Detalle</a>";
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
 													} else if ( $newriesgo == 2 ) {
 														echo "<div class='taches'></div>";
 													}
+													echo "<h2 class='i8'>Actividad física</h2>";
+													echo "<h3>Minutos: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
+													echo "<h3>Nivel sano: tu objetivo semanal es realizar más de 120 minutos por semana.</h3>";
+													echo "<a id='light-fact8-{$mylevel}'>Detalle</a>";
+													
 													?>
 												</div>
 												<div class="risk-box" id="fact10">
@@ -841,15 +866,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 														$mylevel = "bajo";
 														$newriesgo=0;
 													}
-													echo "<h2 class='i10'>Tabaquismo</h2>";
-													echo "<h3>Fumas: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
-													echo "<h3>No utilices productos con tabaco y evita el humo de segunda mano</h3>";
-													echo "<a id='light-fact10-{$mylevel}'>Detalle</a>";
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
 													} else if ( $newriesgo == 2 ) {
 														echo "<div class='taches'></div>";
 													}
+													echo "<h2 class='i10'>Tabaquismo</h2>";
+													echo "<h3>Fumas: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
+													echo "<h3>Nivel sano: no utilices productos con tabaco y evita el humo de segunda mano.</h3>";
+													echo "<a id='light-fact10-{$mylevel}'>Detalle</a>";
+													
 													?>
 
 												</div>
@@ -873,15 +899,16 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 														$mylevel = "alto";
 														$newriesgo=2;
 													}
-													echo "<h2 class='i9'>Sueño</h2>";
-													echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
-													echo "<h3>Nivel sano:  Entre 7 y 9 horas</h3>";
-													echo "<a id='light-fact9-{$mylevel}'>Detalle</a>";
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
 													} else if ( $newriesgo == 2 ) {
 														echo "<div class='taches'></div>";
 													}
+													echo "<h2 class='i9'>Sueño</h2>";
+													echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
+													echo "<h3>Nivel sano:  Entre 7 y 9 horas</h3>";
+													echo "<a id='light-fact9-{$mylevel}'>Detalle</a>";
+													
 													?>
 
 												</div>
@@ -893,11 +920,11 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 
 													if ( $fam ) {
 														$bandera = true;
-														$myvar = "Presentes";
+														$myvar = "Presentes </span></h3> <h3>Marcaste que presentas antecedentes heredofamiliares que pueden influir en tu salud cardiovascular.</h3>";
 														
 													} else {
 														$bandera = false;
-														$myvar = "No presentes";
+														$myvar = "No presentes </span></h3> <h3>Marcaste que no presentas antecedentes heredofamiliares que pueden influir en tu salud cardiovascular.</h3>";
 													}
 													?>
 													<h2 class="i11">Padecimientos<br/> heredofamiliares</h2>
@@ -907,8 +934,8 @@ del rango recomendado (menos de 120/80 mmHg).</h3>";
 														} else {
 															echo "bajo";
 														}
-														?>"><?php echo $myvar ?></span></h3>
-													<h3> Nivel sano: te felicitamos por no tener antecedentes familiares que afecten tu salud</h3>
+														?>"><?php echo $myvar ?>
+													
 												</div>
 
 

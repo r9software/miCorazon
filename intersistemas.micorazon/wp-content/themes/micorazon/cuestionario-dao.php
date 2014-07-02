@@ -493,7 +493,7 @@ try {
 					':padre_evc' => $padreevc, ':madre_evc' => $madreevc, ':apb_evc' => $apbevc, ':abap_evc' => $abapevc, ':abm_evc' => $abmevc, ':abam_evc' => $abamevc,
 					':padre_miocardio' => $padremiocardio, ':madre_miocardio' => $madremiocardio, ':apb_miocardio' => $apbmiocardio, ':abap_miocardio' => $abapmiocardio, ':abm_miocardio' => $abmmiocardio, ':abam_miocardio' => $abammiocardio,
 					':padre_acs' => $padreacs, ':madre_acs' => $madreacs, ':apb_acs' => $apbacs, ':abap_acs' => $abapacs, ':abm_acs' => $abmacs, ':abam_acs' => $abamacs ) ) ) {
-			$sql = "UPDATE wp_usersinfo SET riesgo=:riesgo where user_id=:id";
+			$sql = "UPDATE wp_usersinfo SET riesgo=:riesgo, fechariesgo= NOW() where user_id=:id";
 			$q = $conn->prepare( $sql );
 			if ( $q->execute( array( ':riesgo' => $riesgo, ':id' => $id ) ) ) {
 				header( "Location:" . site_url() . "/motivaciones/" );

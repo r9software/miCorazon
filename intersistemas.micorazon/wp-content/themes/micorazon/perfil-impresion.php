@@ -1,12 +1,13 @@
-
 <?php
 /*
   @package micorazon
-  Template Name: Perfil impresion
+  Template Name: Perfil
  */
-if ( !is_user_logged_in() ) {
-	header( "Location: " . site_url() . "/login" );
-}
+/*
+  if (!is_user_logged_in()) {
+  header("Location: " . site_url() . "/login");
+  exit;
+  } */
 $current_user = wp_get_current_user();
 $id = $current_user->ID;
 
@@ -22,8 +23,8 @@ $id = $current_user->ID;
  * @param string $name_media_field Atributo 'Name' del campo archivo
  * @return boolean
  */
-
 //end function
+$level = "alto";
 $riesgo;
 $nombre;
 $apaterno;
@@ -35,6 +36,8 @@ $cps;
 $cpd;
 $glucosa;
 $cglucosa;
+$colesterol;
+$cc;
 $trigliceridos;
 $ctrigliceridos;
 $rfruta;
@@ -66,596 +69,847 @@ try {
 			$level = "alto";
 		}
 	} else {
-		header( "Location:" . site_url() . "/cuestionario/" );
+		wp_safe_redirect( site_url() . "/cuestionario/" );
 	}
 } catch ( PDOException $e ) {
 	echo "ERROR: " . $e->getMessage();
 	die();
 }
 ?>
-<?php include 'header-registro.php'; ?>
+<?php include 'header-impresion.php'; ?>
 
 <body >
-	<script>
+    <script>
 		function subirFoto() {
 			document.forms["myform"].submit();
 		}
-	</script>
-	<!--LIGHTBOX START Fact1-->
-	<div class="aviso-alto" id="text-fact1-alto">
-		<a href="#" class="close"></a>
-		<p>Ve con tu médico para que juntos hagan un plan que te ayude a que tu presión arterial no se vuelva un problema; pero si ya lo es, él puede decirte cómo mantener controlada la hipertensión. El éxito está en los cambios que adoptes en tu estilo de vida y el plan que te recomiende tu doctor. </p>
-	</div>
-	<div class="aviso-medio" id="text-fact1-medio">
-		<a href="#" class="close"></a>
-		<p>Según tus resultados, estás en riesgo de padecer presión alta o ya la padeces. Es importante implementar cambios en tu estilo de vida: perder peso, dejar de fumar, llevar una dieta baja en sal y grasas, limitar el consumo excesivo de alcohol y aumentar el ejercicio.</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact1-bajo">
-		<a href="#" class="close"></a>
-		<p>Tus niveles de presión arterial son buenos, sigue así, pero no olvides ir con tu médico para realizarte mediciones periódicas. ¡Estás en buen camino! No corres algún riesgo de padecer hipertensión si mantienes hábitos saludables.</p>
-	</div>
-	<!--LIGHTBOX END Fact1-->
+    </script>
+    <!--LIGHTBOX START Fact1-->
+    <div class="aviso-alto" id="text-fact1-alto">
+        <a href="#" class="close"></a>
+        <p><strong>Indicaste que tu presión arterial es alta, disminúyela con estos tips.</strong></p>
+		<ol>
+			<li>Empieza con 15 minutos de caminata todos los días.</li>
+			<li>Come alimentos ricos en potasio como el plátano, aguacate o melón.</li>
+			<li>Si fumas es importante que lo dejes de inmediato.</li>
+			<li>No agregues sal a tus alimentos.</li>
+			<li>Acude con tu médico para que te revise la presión y te ayude a tenerla normal.</li>
+		</ol>
+    </div>
+    <div class="aviso-medio" id="text-fact1-medio">
+        <a href="#" class="close"></a>
+        <p><strong>Tu presión arterial está por arriba de lo normal, regresa a los rangos saludables siguiendo estos consejos.</strong></p>
+		<ol>
+			<li>Adopta una frase que te ayude a disminuir tu estrés, por ejemplo: estoy relajado.</li>
+			<li>Si tomas café, mejor cámbialo por té, pero no te excedas.</li>
+			<li>En las etiquetas de los alimentos, elige las que no contengan sodio o los que tengan poca cantidad.</li>
+			<li>Enjuaga los alimentos enlatados para eliminar el sodio que tengan.</li>
+			<li>Evita las botanas saldas.</li>
+		</ol>
+    </div>
+    <div class="aviso-bajo" id="text-fact1-bajo">
+        <a href="#" class="close"></a>
+        <p><strong>Tu presión arterial está dentro de lo saludable para mantenerte así haz lo siguiente:</strong></p>
+		<ol>
+			<li>Elige aderezos que no contengan sodio.</li>
+			<li>No dejes de moverte. Aprovecha cualquier oportunidad para mantenerte activo.</li>
+			<li>Evita comer en la calle.</li>
+			<li>Recuerda ir con el médico para que te revise tu presión.</li>
+			<li>Medita o realiza otra técnica que te ayude a controlar tu estrés.</li>
+		</ol>
+    </div>
+    <!--LIGHTBOX END Fact1-->
 
-	<!--LIGHTBOX START Fact2-->
-	<div class="aviso-alto" id="text-fact2-alto">
-		<a href="#" class="close"></a>
-		<p>Lo más seguro es que ya padezcas diabetes. Es de vital importancia que trabajes en conjunto con tu médico para que aprendas a vivir con este padecimiento. Realiza cambios en tu estilo de vida para evitar complicaciones; aliméntate sanamente, realiza ejercicio, cuida tus pies y dientes; además pregunta cada cuánto debes revisar tu glucosa. </p>
-	</div>
-	<div class="aviso-medio" id="text-fact2-medio">
-		<a href="#" class="close"></a>
-		<p>Tu glucosa está elevada pero no lo suficiente para ser considerada diabetes. Sin embargo, puedes prevenir o retrasar este padecimiento al realizar cambios saludables en tu estilo de vida. Si tienes prediabetes consulta a tu médico con regularidad y pregúntale con qué frecuencia debe evaluar tu glucosa. También solicítale un plan de alimentación y ejercicio para ayudarte a prevenirla.</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact2-bajo">
-		<a href="#" class="close"></a>
-		<p>Estás en el camino correcto. Un nivel saludable de azúcar (glucosa) en la sangre indica que no tienes diabetes. Para seguir así realiza lo siguiente: vigila tu peso, aliméntate sanamente –sigue comiendo frutas y verduras, come granos integrales y evita los alimentos con demasiado contenido en grasas— además, realiza al menos 30 minutos de ejercicio casi todos los días.</p>
-	</div>
-	<!--LIGHTBOX END Fact2-->
+    <!--LIGHTBOX START Fact2-->
+    <div class="aviso-alto" id="text-fact2-alto">
+        <a href="#" class="close"></a>
+        <p><strong>Es importante que disminuyas tu nivel de glucosa en la sangre. Sigue estos pasos básicos para empezar:</strong></p>
+		<ol>
+			<li>Elimina todos los refrescos azucarados de tu vida.</li>
+			<li>Limita los dulces, la goma de mascar y otros dulces.</li>
+			<li>Mantente activo, por ejemplo sal a bailar.</li>
+			<li>Los números cuentan. Revísate periódicamente tu nivel de glucosa.</li>
+			<li>Llega a tu peso saludable si tienes sobrepeso u obesidad.</li>
+		</ol>
+    </div>
+    <div class="aviso-medio" id="text-fact2-medio">
+        <a href="#" class="close"></a>
+		<p><strong>Tus nivel de glucosa está arriba de lo normal, para regresar a la normalidad haz lo siguiente:</strong></p>
+		<ol>
+			<li>Consume productos de pan que contengan fibra. </li>
+			<li>Come espinacas y otros alimentos ricos en magnesio como el aguacate, nueces y otros vegetales verdes.</li>
+			<li>Toma un vaso de leche o un yogur bajo en grasa todos los días.</li>
+			<li>Muévete. Empieza por caminar cinco cuadras a diario.</li>
+			<li>Después de comer haz algo divertido que te haga reír, esto te ayudará a disminuir tus niveles de azúcar.</li>
+		</ol>
+    </div>
+    <div class="aviso-bajo" id="text-fact2-bajo">
+        <a href="#" class="close"></a>
+        <p><strong>Para mantener en un nivel sano tu nivel de glucosa realiza lo siguiente:</strong></p>
+		<ol>
+			<li>Pon tus músculos a trabajar. Incluye en tu rutina ejercicios de fortalecimiento.</li>
+			<li>No te saltes ninguna comida para mantener tus niveles de glucosa estables.</li>
+			<li>Duerme ocho horas a diario.</li>
+			<li>Mantén tu peso saludable o baja esos kilitos de más.</li>
+			<li>Incluye en tus comidas alimentos como frijoles o lentejas que son ricos en fibra.</li>
+		</ol>
+    </div>
+    <!--LIGHTBOX END Fact2-->
 
-	<!--LIGHTBOX START Fact3-->
-	<div class="aviso-alto" id="text-fact3-alto">
-		<a href="#" class="close"></a>
-		<p>Tienes niveles altos de triglicéridos y riesgo de padecer una enfermedad cardiaca, es muy importante que vayas con tu médico para que te recomiende acciones que te ayuden a prevenir algún padecimiento que ponga en peligro tu salud.</p>
-	</div>
-	<div class="aviso-medio" id="text-fact3-medio">
-		<a href="#" class="close"></a>
-		<p>Tienes niveles altos de triglicéridos y riesgo de padecer una enfermedad cardiaca, es muy importante que vayas con tu médico para que te recomiende acciones que te ayuden a prevenir algún padecimiento que ponga en peligro tu salud.</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact3-bajo">
-		<a href="#" class="close"></a>
-		<p>Indicaste que tu nivel de triglicéridos está dentro del espectro saludable. ¡Excelente! Enorgullécete porque esto indica que llevas un estilo de vida saludable, y continúa así. Mantener el nivel de triglicéridos dentro del espectro normal ayuda a reducir el riesgo de desarrollar una enfermedad cardíaca. Para ello, sigue consumiendo poca azúcar, cuida tu peso y limita o evita las bebidas alcohólicas.</p>
-	</div>
-	<!--LIGHTBOX END Fact3-->
-	<!--LIGHTBOX START Fact4-->
-	<div class="aviso-alto" id="text-fact4-alto">
-		<a href="#" class="close"></a>
-		<p>Si tienes colesterol elevado se pueden desarrollar depósitos de ácidos grasos en tus vasos sanguíneos, lo que puede ocasionar algún padecimiento cardiovascular. Apóyate con tu médico para que te recomiende un plan que te ayude a reducir tus niveles de colesterol. </p>
-	</div>
-	<div class="aviso-medio" id="text-fact4-medio">
-		<a href="#" class="close"></a>
-		<p>Reducir tu nivel de colesterol podría beneficiarte. Los niveles altos de éste pueden aumentar el riesgo de ataque cardiaco. Los cambios en el estilo de vida son esenciales para disminuir tus riesgos. Para ello, debes perder el exceso de peso, consumir alimentos saludables como frutas, verduras, pescado y granos integrales, además de aumentar el grado de actividad física. Si fumas, debes dejar de hacerlo.</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact4-bajo">
-		<a href="#" class="close"></a>
-		<p>Tu nivel de colesterol se encuentra dentro de lo saludable. ¡Excelente! Es importante mantener los niveles de colesterol tan bajos como sea posible. Para seguir así, cuida tu peso, consume alimentos saludables —como frutas, verduras, pescado, granos integrales— y aumenta el grado de actividad física. </p>
-	</div>
-	<!--LIGHTBOX END Fact4-->
-	<!--LIGHTBOX START Fact5-->
-	<div class="aviso-alto" id="text-fact5-alto">
-		<a href="#" class="close"></a>
-		<p>Cuidado! Por lo que indica tu índice de masa corporal (IMC) padeces obesidad, lo que te pone en una mayor predisposición de padecer diabetes o alguna enfermedad cardiaca. Acude con un especialista para que te ayude a armar un plan integral. También realiza cambios en tu estilo de vida, integra la actividad física y aliméntate sanamente.  </p>
-	</div>
-	<div class="aviso-medio" id="text-fact5-medio">
-		<a href="#" class="close"></a>
-		<p>Tu índice de masa corporal (IMC), sugiere que podría ser beneficioso para ti perder peso. Empieza a disminuirlo con estos cinco consejos básicos: desayuna saludablemente todos los días, evita los alimentos con grasa, come frutas y verduras, elige alimentos con granos enteros y realiza actividad física. </p>
-	</div>
-	<div class="aviso-bajo" id="text-fact5-bajo">
-		<a href="#" class="close"></a>
-		<p>¡Buenas noticias! Al mantener un peso saludable, continuarás reduciendo el riesgo de desarrollar ciertos problemas de salud, como presión arterial alta, enfermedad cardiaca, accidente cerebrovascular (embolia) y diabetes. Para seguir con un peso saludable, consume muchas frutas, verduras, granos integrales, y realiza actividad física casi todos los días.</p>
-	</div>
-	<!--LIGHTBOX END Fact5-->
-	<!--LIGHTBOX START Fact6-->
-	<div class="aviso-alto" id="text-fact6-alto">
-		<a href="#" class="close"></a>
-		<p>Es muy importante que realices cambios en tus hábitos para mejorar tu alimentación. Te sugerimos consumir más frutas y verduras, y limitar el consumo de alimentos fritos. Recuerda que las elecciones saludables diarias conducen a un estilo de vida más sano. Arma un plan con ayuda de tu médico o nutriólogo para alimentarte de mejor manera.</p>
-	</div>
-	<div class="aviso-medio" id="text-fact6-medio">
-		<a href="#" class="close"></a>
-		<p>Sigue estas recomendaciones nutricionales básicas para tener una mejor alimentación: come más frutas, verduras y granos integrales; limita las grasas saturadas, las grasas trans (ejemplos: alimentos de origen animal, yemas de huevo y productos lácteos enteros, dulces, pasteles y papas fritas) y la sal. Además, controla el tamaño de tus porciones y el número total de calorías que consumes diariamente.</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact6-bajo">
-		<a href="#" class="close"></a>
-		<p>Indicaste que consumes la cantidad correcta de frutas y verduras, y evitas los alimentos fritos. ¡Excelente! Para continuar gozando de buena salud, descubre nuevas recetas saludables que te agraden y se adecuen a tu estilo de vida, así fortalecerás a tu organismo para prevenir la diabetes, enfermedades cardiacas y la obesidad, entre otras afecciones.</p>
-	</div>
-	<!--LIGHTBOX END Fact6-->
-	<!--LIGHTBOX START Fact7-->
-	<div class="aviso-alto" id="text-fact7-alto">
-		<a href="#" class="close"></a>
-		<p>Demasiado  estrés puede afectar tu cuerpo, tus pensamientos, tus sentimientos y tu comportamiento. ¡Comienza a disminuir el estrés hoy mismo! Una forma de lograrlo es respirar profundamente cuando sientas que vas a estallar. Te recomendamos aprender técnicas de relajación o escuchar música.</p>
-	</div>
-	<div class="aviso-medio" id="text-fact7-medio">
-		<a href="#" class="close"></a>
-		<p>Texto no disponible</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact7-bajo">
-		<a href="#" class="close"></a>
-		<p>¡Excelente! Si controlas tu estrés y tus estados de ánimo, podrás disfrutar más de la vida. Continúa dedicando tiempo a ti mismo, participa en actividades que te resulten placenteras y dedica tiempo a las personas importantes de tu vida.</p>
-	</div>
-	<!--LIGHTBOX END Fact7-->
-	<!--LIGHTBOX START Fact8-->
-	<div class="aviso-alto" id="text-fact8-alto">
-		<a href="#" class="close"></a>
-		<p>Realizar más actividad física puede ser benéfico en tu caso. Puede ayudarte a disminuir la presión arterial y, con ella, tu riesgo de padecer alguna enfermedad cardiovascular. Recuerda que hay muchas maneras de mantenerte físicamente activo, como caminar, nadar, bailar o andar en bicicleta.</p>
-	</div>
-	<div class="aviso-medio" id="text-fact8-medio">
-		<a href="#" class="close"></a>
-		<p>Texto no disponible</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact8-bajo">
-		<a href="#" class="close"></a>
-		<p>¡Muy bien! Estás demostrando un admirable compromiso por mantenerte activo. Como resultado, probablemente goces de mayor energía, mejor imagen personal, mayor control del estrés y menores riesgos para tu salud.</p>
-	</div>
-	<!--LIGHTBOX END Fact8-->
-	<!--LIGHTBOX START Fact9-->
-	<div class="aviso-alto" id="text-fact9-alto">
-		<a href="#" class="close"></a>
-		<p>Al no dormir las horas recomendadas, tal vez te sientas cansado y sin energía. Si esto te sucede, ¡Empieza a cambiar tus hábitos de sueño! Crea una rutina para antes de irte a dormir, como leer o tener un ambiente totalmente oscuro en tu habitación. Si el problema persiste te recomendamos acudir con un especialista que te ayude con este problema.</p>
-	</div>
-	<div class="aviso-medio" id="text-fact9-medio">
-		<a href="#" class="close"></a>
-		<p>Texto no disponible</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact9-bajo">
-		<a href="#" class="close"></a>
-		<p>¡Felicidades tu calidad de sueño y descanso es buena! Seguramente despiertas con la energía que necesitas para realizar tus actividades diarias. Sigue con este buen hábito que tiene un gran impacto en tu salud física y emocional. Dormir bien también ayuda a mejorar tu memoria, a sentirte feliz y tener una mayor capacidad de concentración.</p>
-	</div>
-	<!--LIGHTBOX END Fact9-->
-	<!--LIGHTBOX START Fact10-->
-	<div class="aviso-alto" id="text-fact10-alto">
-		<a href="#" class="close"></a>
-		<p>Indicaste que fumas. Es importante que dejes este mal hábito ya que éste afecta tu salud cardiaca y respiratoria. Acude con tu médico para que te recomiende algún tratamiento que te ayude con este problema, además realiza cambios en tu estilo de vida y aléjate de los detonadores que te hacen fumar. </p>
-	</div>
-	<div class="aviso-medio" id="text-fact10-medio">
-		<a href="#" class="close"></a>
-		<p>Te felicitamos por haber dejado de fumar. Sigue por este camino. Si crees que puedes recaer apóyate de tu médico para que juntos armen un plan para evitar esta situación. Además, cambia los hábitos que te hacían fumar, crea estrategias para evitarlos.</p>
-	</div>
-	<div class="aviso-bajo" id="text-fact10-bajo">
-		<a href="#" class="close"></a>
-		<p>¡Continúa así! Sin consumir productos de tabaco y mantente alejado del tabaquismo pasivo. Al no fumar tienes una mejor salud cardiaca, respiratoria, tu presión arterial se mantiene sana, tus dientes y encías estarán sanos y te sentirás con energía.  </p>
-	</div>
-	<!--LIGHTBOX END Fact10-->
-	<div class="content-all">
-		<div class="bg_perfil">   
-		</div>
-		<div class="header">
-			<div class="wrap">
-				<div class="logo3"></div>
-				<div class="logo4"></div>
-			</div>
-		</div>
-		
-			<div class="page">
-				<div class="slogan"><h2 class="tperfil"><span>Comienza ya tu nuevo </span>plan para sentirte bien.</h2></div>
-				<div class="perfil-box">
-					<div class="user">
-						<h2>Conoce la salud de tu corazón</h2>
-						<h3>Este es el primer paso para mejorar tu calidad de vida. <strong>Comparte este resultado con tu médico.</strong> </h3>
-						<div class="user-icon" >
-							<?php if(isset($avatar)){?>
-						<a href="#" style="background:url('<?php  echo get_template_directory_uri();?>/images/avatar/<?php echo $avatar; ?> ') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;background-size: cover;"></a> 
-							<?php }else{?>
-						<a href="#"></a>		
-							<?php }?>
-						</div>
-						
-						<div class="user-info">
-							<h4><?php echo $nombre; ?> </h4>
-							<!--<input id="enviar" name="enviar" type="submit" value="Cambiar foto" /> -->
-							<div class="file">
-								<form name="myform" id="myform" enctype="multipart/form-data" method="POST" action="<?php echo site_url() . '/imagen-dao/'; ?>" >
-								<input id="uploadImage" name="uploadImage" type="file" />
-							</form>  
-							</div>
-							<a  onclick="subirFoto()" class="cambio">Cargar foto</a>
-						</div>
+    <!--LIGHTBOX START Fact3-->
+    <div class="aviso-alto" id="text-fact3-alto">
+        <a href="#" class="close"></a>
+        <p><strong>Tienes niveles altos de triglicéridos y riesgo de padecer una enfermedad cardiaca, es muy importante que vayas con tu médico para que te recomiende acciones que te ayuden a prevenir algún padecimiento que ponga en peligro tu salud.</strong></p>
+    </div>
+    <div class="aviso-medio" id="text-fact3-medio">
+        <a href="#" class="close"></a>
+        <p><strong>Tus niveles de triglicéridos están fuera de lo normal. Esto podría ponerte en un mayor riesgo de tener una enfermedad del corazón. Acude con tu médico para que juntos armen un plan que te ayude a tener una vida más saludable. </strong></p>
+    </div>
+    <div class="aviso-bajo" id="text-fact3-bajo">
+        <a href="#" class="close"></a>
+        <p><strong>Indicaste que tu nivel de triglicéridos está dentro de lo saludable. Mantener tus niveles dentro de lo normal te  ayuda a reducir el riesgo de desarrollar una enfermedad cardíaca. Sigue consumiendo poca azúcar, cuida tu peso y limita o evita las bebidas alcohólicas.</strong></p>
+    </div>
+    <!--LIGHTBOX END Fact3-->
+    <!--LIGHTBOX START Fact4-->
+    <div class="aviso-alto" id="text-fact4-alto">
+        <a href="#" class="close"></a>
+        <p><strong>Necesitas bajar tus niveles de colesterol. Lógralo con estos pasos:</strong></p>
+		<ol>
+			<li>Sustituye el aceite convencional por el de oliva o canola.</li>
+			<li>Elige las variedades con bajo contenido en grasa de leche, yogur y otros productos lácteos.</li>
+			<li>Sustituye la carne en tus comidas por otros alimentos.</li>
+			<li>Evita comer en la calle o restaurantes.</li>
+			<li>Acude con  tu médico para que apoye a controlar tu colesterol.</li>
+		</ol>
+    </div>
+    <div class="aviso-medio" id="text-fact4-medio">
+        <a href="#" class="close"></a>
+        <p><strong>Reduce tus niveles de colesterol con estos consejos.</strong></p>
+		<ol>
+			<li>Elije lo bueno. Consume alimentos con grasas sanas como pescado, nueces o aguacate.</li>
+			<li>Muévete en cada oportunidad que tengas. Realiza 30 minutos de actividad física al día.</li>
+			<li>Después de cocinas la carne enjuágala para que se elimine parte de las grasas.</li>
+			<li>Haz que tus comidas tengas más verduras y frutas.</li>
+			<li>Revisa tus niveles de colesterol con regularidad.</li>
+		</ol>
+    </div>
+    <div class="aviso-bajo" id="text-fact4-bajo">
+        <a href="#" class="close"></a>
+        <p><strong>Para que tus niveles de colesterol se mantengan saludables, realiza lo siguiente:<strong></p>
+					<ol>
+						<li>Sigue está regla, si ves alimentos con grasa en tus comidas, déjalas para el final.</li>
+						<li>Si te gusta la comida rápida, come un pedazo en el momento y al siguiente día otra parte.</li>
+						<li>Por las mañanas come un cereal rico en fibra.</li>
+						<li>Recuerda elegir leche, yogur y quesos bajos en grasa.</li>
+						<li>Haz 10 minutos de actividad física tres veces al día.</li>
+					</ol>
 					</div>
-					<div class="riesgos-box riesgo-<?php echo $level ?>">
-						<h1>Mi corazón está en:</h1>
-						<h2>Riesgo <?php echo $level; ?></h2>
-						<?php if ( $riesgo == 0 ) { ?>
-							<p>Tenemos buenas noticias para ti: “vas por muy buen camino”. Tus cifras de glucosa y 
-								colesterol se encuentran dentro de límites aceptables no dejes que se eleven. Mantén tu peso 
-								como hasta ahora y evita que los kilos de más te alcancen. Sigue consumiendo al menos dos frutas 
-								y tres verduras al día, no olvides el pescado al menos una vez a la semana, pero de preferencia dos 
-								veces. Continúa con ese nivel de actividad física o auméntalo un poco si te es posible. Tu salud 
-								agradece que no fumes. 
-							</p>
-							<p><strong>Puedes seguir estas recomendaciones básicas:</strong></p>
-							<p><strong>Sigue con una vida saludable. <br/>
-									Acude a visitas médicas preventivas.<br/>
-									Realiza tu árbol genealógico de enfermedades y verás cómo puedes evitar o retrasar la aparición de problemas cardiacos.</strong></p>
-						<?php } else if ( $riesgo == 1 ) { ?>
-							<p>No tienes tanto peligro de presentar problemas cardiacos; sin embargo, si sigues por este 
-								camino es probable que a mediano plazo desarrolles una mayor predisposición para padecer problemas 
-								del corazón. Arma un plan para evitar cualquier riesgo, puedes empezar con estas sugerencias básicas. 
-							</p>
-							<p><strong>Puedes seguir estas recomendaciones básicas:</strong></p>
-							<p><strong>Vigila tus cifras de glucosa y colesterol. <br/>
-									Come cinco raciones de frutas y verduras al día (tres verduras y dos frutas, o más) para mantener 
-									tus niveles sanguíneos en orden y ayudar a disminuir los niveles de grasas en la sangre. 
-									<br/><br/>
-									Busca estrategias para bajar tu peso y el perímetro de tu cintura. Tener una mejor alimentación y 
-									aumentar tu actividad física puede ayudar.<br/><br/>
-									Trata de reducir tu ingesta de grasa al mínimo y evita agregar azúcar o sal a los alimentos. <br/><br/>
-									Sigue trabajando en moderar tu estrés, y mejorar tus hábitos de descanso. Mantener una 
-									integridad emocional y física es muy importante para reducir el riesgo de diabetes e 
-									hipertensión, dos de los principales enemigos del corazón. <br/><br/>
-									Trata de reducir tu ingesta de grasa al mínimo y evita agregar azúcar o sal a los alimentos. <br/><br/>
-									Evita el tabaco porque predispone al daño de las arterias y por lo tanto del corazón. Si crees que 
-									no puedes solo busca ayuda. 
-									<br/>
-								</strong></p>
-
-						<?php } else if ( $riesgo == 2 ) {
-							?>	
-							<p>Tenemos una mala noticia para ti: “estás en un riesgo elevado de presentar 
-								problemas cardiovasculares”; quizá ya los tengas y no te hayas dado cuenta. Pero la buena noticia 
-								es que “jamás es tarde para modificar el estilo de vida”. Nuestras recomendaciones para ti son: 
-							</p>
-							<p><strong>Comienza por hacerte una evaluación médica inicial en donde te indiquen cuáles son 
-									tus cifras de presión arterial, colesterol, glucosa y triglicéridos. Además pide que te 
-									indiquen cuál es el peso ideal para ti. Es un buen momento para iniciar un registro 
-									periódico de tus metas. 
-									<br/><br/>
-									Trata de perder peso. Realizar ejercicio y modificar tus hábitos alimenticios ayudarán; 
-									las frutas y las verduras ayudarán mucho en este plan.<br/> Si no estás acostumbrado a 
-									llevar una dieta sana puedes buscar libros, revistas o incluso cursos de cocina para 
-									descubrir que existen muchas opciones sanas y ricas. 
-									<br/><br/>
-									Ve disminuyendo la cantidad de grasa en tus alimentos; hazlo de manera paulatina.<br/>
-									Trabaja en tus niveles de estrés. El ejercicio y la meditación pueden ayudar, pero si 
-									crees que es algo que no puedes manejar solo tal vez sea el momento de buscar 
-									ayuda. Recuerda que no podemos lidiar solos con todo y es importante reconocer 
-									cuando alguien nos puede tender una mano. 
-									<br/><br/>
-									No sacrifiques tu descanso, éste no lo podrás recuperar a largo plazo y sí te generará 
-									daños permanentes a la salud. Intenta identificar qué fenómenos te están llevando a 
-									no tener un descanso reparador. 
-									<br/><br/>
-									Evita el alcohol y el tabaco lo antes posible ya que para ti en particular son factores de 
-									riesgo muy importantes para tener consecuencias graves de salud. Si crees que tu solo 
-									no puedes busca ayuda.  
-									<br/><br/>
-									Y lo más importante, no te desanimes, los cambios irán ocurriendo de manera 
-									paulatina, solo debes ser constante. 
-									<br/>
-								</strong></p>
-						<?php }
-						?>
+					<!--LIGHTBOX END Fact4-->
+					<!--LIGHTBOX START Fact5-->
+					<div class="aviso-alto" id="text-fact5-alto">
+						<a href="#" class="close"></a>
+						<p><strong>Es importante que reduzcas tu peso y circunferencia de cintura. Empieza con estos pasos.</strong></p>
+						<ol>
+							<li>Lleva un diario de lo que comes durante todo un día. Hazlo por una semana.</li>
+							<li>En lugar de hacer 30, haz 45 minutos de caminata al día para perder peso.</li>
+							<li>Desayuna todos los días un cereal rico en fibra.</li>
+							<li>Come despacio y con calma. Evita ver la televisión cuando comes.</li>
+							<li>Toma  agua durante el día en lugar de refrescos o jugos.</li>
+						</ol>
 					</div>
-
-
-
-
-					<?php
-					try {
-						$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
-						$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-						$sql = "Select presion,cifra_ps,cifra_pd,glucosa,cifraglucosa,trigliceridos,cifratrigliceridos,r_fruta,r_verdura, "
-								. "imc,nivel_estres,act_fisicas,horas_sueno,fumas,f_fumas,f_fumas2,familiares from wp_usersmedicalinfo where user_id={$id}"
-								. " LIMIT 1";
-						$rs = $conn->prepare( $sql );
-						$rs->execute();
-						$rs2 = $rs->fetchAll();
-						$presion = $rs2[0]['presion'];
-						$cps = $rs2[0]['cifra_ps'];
-						$cpd = $rs2[0]['cifra_pd'];
-						$glucosa = $rs2[0]['glucosa'];
-						$cglucosa = $rs2[0]['cifraglucosa'];
-						$trigliceridos = $rs2[0]['trigliceridos'];
-						$ctrigliceridos = $rs2[0]['cifratrigliceridos'];
-						$rfruta = $rs2[0]['r_fruta'];
-						$rverdura = $rs2[0]['r_verdura'];
-						$imc = $rs2[0]['imc'];
-						$nestres = $rs2[0]['nivel_estres'];
-						$afisicas = $rs2[0]['act_fisicas'];
-						$hsueno = $rs2[0]['horas_sueno'];
-						$fumas = $rs2[0]['fumas'];
-						$fumas1 = $rs2[0]['f_fumas'];
-						$fumas2 = $rs2[0]['f_fumas2'];
-						$fam = $rs2[0]['familiares'];
-					} catch ( PDOException $e ) {
-						echo "ERROR: " . $e->getMessage();
-						die();
-					}
-					?>
-					<div class="risk-row">
-						<div class="risk-box" id="fact1">
-							<?php
-							if ( !$presion ) {
-								echo "<h2>Presión arterial</h2>";
-								echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
-								echo "<h3>Nivel sano: Tanto el valor superior (sistólico) como el valor inferior (diastólico) deben estar dentro 
-del rango recomendado (menos de 120/80 mmHg).</h3>";
-								echo "<a id='light-fact1-alto'>Detalle</a>";
-							} else if ( $presion ) {
-								$mylevel;
-								if ( $cps < 120 && $cps > 60 && $cpd < 80 && $cpd > 40 )
-									$mylevel = "bajo";
-								else if ( ($cps >= 120 && $cps < 140) && ($cpd < 90 && $cpd >= 80) )
-									$mylevel = "medio";
-								else
-									$mylevel = "alto";
-								echo "<h2>Presión arterial</h2>";
-								echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cps . "/" . $cpd . "mmHg</span></h3>";
-								echo "<h3>Nivel sano: Tanto el valor superior (sistólico) como el valor inferior (diastólico) deben estar dentro 
-del rango recomendado (menos de 120/80 mmHg).</h3>";
-								echo "<a id='light-fact1-{$mylevel}'>Detalle</a>";
-							}
-							?>
-
-						</div>
-						<div class="risk-box" id="fact2">
-
-							<?php
-							if ( !$glucosa ) {
-								echo "<h2>Glucosa en la sangre</h2>";
-								echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
-								echo "<h3>Nivel sano: Menor de 140 mg/dL postprandial. </h3>";
-								echo "<a id='light-fact1-alto'>Detalle</a>";
-							} else if ( $glucosa ) {
-								$mylevel;
-								if ( $cglucosa > 70 && $cglucosa <= 100 )
-									$mylevel = "bajo";
-								else if ( ($cglucosa > 100 && $cglucosa <= 125 ) )
-									$mylevel = "medio";
-								else
-									$mylevel = "alto";
-								echo "<h2>Glucosa en la sangre</h2>";
-								echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cglucosa . "mg/dL</span></h3>";
-								echo "<h3>Nivel sano: Menor de 140 mg/dL postprandial.</h3>";
-								echo "<a id='light-fact2-{$mylevel}'>Detalle</a>";
-							}
-							?>
-
-
-						</div>
-						<div class="risk-box" id="fact3">
-
-							<?php
-							if ( !$trigliceridos ) {
-								echo "<h2>Triglicéridos</h2>";
-								echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
-								echo "<h3>Nivel sano: 200 a 499 mg/dL</h3>";
-								echo "<a id='light-fact1-alto'>Detalle</a>";
-							} else if ( $trigliceridos ) {
-								$mylevel;
-								if ( $ctrigliceridos <= 199 )
-									$mylevel = "bajo";
-								else if ( ($ctrigliceridos > 200 && $ctrigliceridos <= 499 ) )
-									$mylevel = "medio";
-								else
-									$mylevel = "alto";
-								echo "<h2>Triglicéridos</h2>";
-								echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
-								echo "<h3>Nivel sano: 200 a 499 mg/dL</h3>";
-								echo "<a id='light-fact3-{$mylevel}'>Detalle</a>";
-							}
-							/*
-							  <div class="risk-row">
-							  <div class="risk-box" id="fact4">
-							  <h2>Colesterol</h2>
-							  <h3>Nivel actual: <span class="bajo">167 mg/dL</span></h3>
-							  <h3>Nivel sano: 200 a 499 mg/dL</h3>
-							  <a id="light-fact4-bajo">Detalle</a>
-							  </div>
-							  <div class="risk-box" id="fact5">
-							  <h2>Peso (IMC)</h2>
-							  <h3>IMC: <span class="bajo">19</span></h3>
-							  <h3>Nivel sano: 19 a 24.9</h3>
-							  <a id="light-fact5-bajo">Detalle</a>
-							  </div>
-							  <div class="risk-box" id="fact6">
-							  <h2>Nutrición</h2>
-							  <h3>Raciones actuales: <span class="alto">2</span></h3>
-							  <h3>Raciones recomendadas: 5 o más</h3>
-							  <a  id="light-fact6-alto">Detalle</a>
-							  </div>
-							  </div>
-							 * 
-							 * 								 */
-							?>
-						</div>
+					<div class="aviso-medio" id="text-fact5-medio">
+						<a href="#" class="close"></a>
+						<p><strong>Para bajar esos kilitos de más y disminuir la circunferencia de tu cintura haz lo siguiente:</strong></p>
+						<ol>
+							<li>Evita comer cuando te sientas estresado o ansioso.</li>
+							<li>Sube y baja escaleras o ve a caminar cada que tengas la oportunidad de hacerlo.</li>
+							<li>Lleva siempre contigo refrigerios saludables como una fruta o un sándwich integral.</li>
+							<li>Pide a tus familiares y amigos que te ayuden en tu propósito de perder peso.</li>
+							<li>Acude con tu médico para que juntos armen un plan para tener un peso saludable.</li>
+						</ol>
 					</div>
-					<div class="risk-row">
-						<div class="risk-box" id="fact5">
-							<?php
-							$mylevel;
-							if ( $imc <= 24.9 )
-								$mylevel = "bajo";
-							else if ( ($imc > 24.9 && $imc <= 27 ) )
-								$mylevel = "medio";
-							else
-								$mylevel = "alto";
-							echo "<h2>Peso (IMC)</h2>";
-							echo "<h3>IMC actual: <span class='" . $mylevel . "'>" . $imc . " </span></h3>";
-							echo "<h3>IMC sano: 19 a 24.9</h3>";
-							echo "<a id='light-fact5-{$mylevel}'>Detalle</a>";
-							?>
+					<div class="aviso-bajo" id="text-fact5-bajo">
+						<a href="#" class="close"></a>
+						<p><strong>Mantén un peso saludable con estas recomendaciones.</strong></p>
+						<ol>
+							<li>Tus comidas deben incluir más frutas y verduras que otros alimentos.</li>
+							<li>Si quieres comer un dulce o comida rápida puedes hacerlo, pero con moderación.</li>
+							<li>Sigue dando pasos. Mantente activo realizando ejercicio la mayoría de días.</li>
+							<li>Aprende a medir las porciones y raciones de tus alimentos.</li>
+							<li>Hidrata tu cuerpo con agua en lugar de refrescos o jugos.</li>
+							<ol>
+								</div>
+								<!--LIGHTBOX END Fact5-->
+								<!--LIGHTBOX START Fact6-->
+								<div class="aviso-alto" id="text-fact6-alto">
+									<a href="#" class="close"></a>
+									<p><strong>Para mejorar tu alimentación sigue estos cinco pasos básicos:</strong></p>
+									<ol>
+										<li>Consume más verduras y frutas. Rétate a consumir dos o tres comidas sin carne cada semana.
+										<li>Desayuna. Ten a la mano alimentos que puedas llevar contigo para comer antes de mediodía. 
+										<li>Busca los cereales. En lugar del arroz blanco elije el integral.
+										<li>Concéntrate en las grasas. Por ejemplo consume aguacate o nueces.
+										<li>Mantente delgado con proteínas. Sustituye la carne por otros alimentos en tus comidas.
+									</ol>
+								</div>
+								<div class="aviso-medio" id="text-fact6-medio">
+									<a href="#" class="close"></a>
+									<p><strong>Para mejorar tu alimentación, debes seguir estos pasos:</strong></p>
+									<ol>
+										<li>En tus comidas incluye alimentos como arroz, frijoles y aguacate que contienen fibra, lo que ayuda a tu corazón.</li>
+										<li>Consume grasas sanas, encuéntralas en las nueces o en el aceite de oliva.</li>
+										<li>Deja fuera de tu vida estos productos: la sal, los dulces y postres, las carnes y los lácteos ricos en grasa.</li>
+									</ol>
+								</div>
+								<div class="aviso-bajo" id="text-fact6-bajo">
+									<a href="#" class="close"></a>
+									<p><strong>Para seguir con una alimentación balanceada haz lo siguiente:</strong></p>
+									<ol>
+										<li>Recuerda desayunar todos los días.</li>
+										<li>En todos tus alimentos incluye frutas y verduras.</li>
+										<li>Come cereales, intégralos en tus alimentos.</li>
+										<li>Elimina las grasas en tus alimentos.</li>
+										<li>Busca otras fuentes de proteínas como frijoles, chicharos y lentejas.</li>
+									</ol>
+								</div>
+								<!--LIGHTBOX END Fact6-->
+								<!--LIGHTBOX START Fact7-->
+								<div class="aviso-alto" id="text-fact7-alto">
+									<a href="#" class="close"></a>
+									<p><strong>Controlar tu estrés te ayudará a mejorar tu calidad de vida y cuidar tu corazón, sigue estos cinco pasos básicos.</strong></p>
+									<ol>
+										<li>Aprende a reconocer los signos de estrés en tu cuerpo y mente. Aprende algunas técnicas para controlarlo como respirar.</li>
+										<li>Fortalece tus relaciones con familiares, amigos y compañeros del trabajo.</li>
+										<li>Sé agradecido por las cosas que tienes y te rodean.</li>
+										<li>Busca un sentido de propósito y significado en tu vida.</li>
+										<li>Confía en tus fortalezas y habilidades</li>
+									</ol>
+								</div>
+								<div class="aviso-medio" id="text-fact7-medio">
+									<a href="#" class="close"></a>
+									<p><strong>Es importante que aprendas cómo manejar tu estrés. Hazlo con estos consejos.</strong></p>
+									<ol>
+										<li>Lleva un diario. Escribe tus pensamientos y sentimientos.</li>
+										<li>Sé paciente. Date tiempo para explorar tus sentimientos y aceptarlos.</li>
+										<li>Piensa positivamente. Considera lo que has aprendido de cada  situación difícil.</li>
+										<li>Escribe una lista de tus objetivos y tareas pendientes. Dales prioridad.</li>
+										<li>Confía en ti mismo. Cree en tu capacidad para manejar los retos de la vida.</li>
+									</ol>
+								</div>
+								<div class="aviso-bajo" id="text-fact7-bajo">
+									<a href="#" class="close"></a>
+									<p><strong>Tienes tu estrés bajo control, para seguir así incluye estos tips en tu vida.</strong></p>
+									<ol>
+										<li>Toma tiempo para actividades que disfrutes, como compartir momentos con tu familia o leer.</li>
+										<li>El ejercicio en los días de trabajo mejora tu nivel de energía y tu estado de ánimo.</li>
+										<li>Aprende algo nuevo. Busca proyectos diferentes a tu trabajo o un curso de algo que te agrade.</li> 
+										<li>Sigue disfrutando lo que haces. Tanto en tu vida personal como laboral.</li>
+										<li>Da gracias por los beneficios que tienes en tu vida.</li>
+									</ol>
+								</div>
+								<!--LIGHTBOX END Fact7-->
+								<!--LIGHTBOX START Fact8-->
+								<div class="aviso-alto" id="text-fact8-alto">
+									<a href="#" class="close"></a>
+									<p><strong>Necesitas realizar actividad física para que tu corazón esté sano, haz lo siguiente:</strong></p>
+									<ol>
+										<li>Párate y camina. Evita estar mucho tiempo sentado.</li>
+										<li>Comienza con 10 minutos si realizas poca actividad física o hace mucho ya no haces.</li>
+										<li>Si vas a realizar algún tipo de ejercicio, calienta antes de empezar y utiliza un tiempo para enfriarte después de tu actividad.</li>
+										<li>Incluye ejercicios de fortalecimiento en tu rutina. </li>
+										<li>Elige actividades que disfrutes.</li>
+									</ol>
+								</div>
+								<div class="aviso-medio" id="text-fact8-medio">
+									<a href="#" class="close"></a>
+									<p><strong>Necesitas incrementar tu nivel de actividad física. Lógralo con estas ideas:</strong></p>
+									<ol>
+										<li>Aumenta los minutos que realizas actividad física.</li>
+										<li>Si no puedes hacer 30 minutos seguidos de ejercicio. Divídelos en bloques de 10 minutos durante el día.</li>
+										<li>Haz una lista de las actividades que te gustan y realízalas.</li>
+										<li>Utiliza más las escaleras en lugar del elevador.</li>
+									</ol>
+								</div>
+								<div class="aviso-bajo" id="text-fact8-bajo">
+									<a href="#" class="close"></a>
+									<p><strong>Tienes un buen nivel de actividad física, para mantenerlo realiza lo siguiente:</strong></p>
+									<ol>
+										<li>Sigue caminando. Recuerda que cualquier situación es buena para dar algunos pasos.</li>
+										<li>Incrementa un poco más los minutos que realizas de actividad física. </li>
+										<li>Cambia tu rutina para no aburrirte y seguir ejercitándote. </li>
+										<li>Incluye o incrementa los días que realizas entrenamiento de fuerza.</li>
+										<li>Sigue disfrutando de la actividad física.</li>
+									</ol>
+								</div>
+								<!--LIGHTBOX END Fact8-->
+								<!--LIGHTBOX START Fact9-->
+								<div class="aviso-alto" id="text-fact9-alto">
+									<a href="#" class="close"></a>
+									<p><strong>Necesitas mejorar tu calidad del sueño, hazlo con estos consejos:</strong></p>
+									<ol>
+										<li>Elimina los pensamientos negativos de tu cabeza.</li>
+										<li>Evita ingerir una cena abundante antes de dormir.</li>
+										<li>No te duermas durante el día.</li>
+										<li>Trata de irte a la cama casi a la misma hora cada noche y trata de levantarte a la misma hora cada mañana.</li>
+										<li>Si tienes problemas del sueño acude inmediatamente con tu médico.</li>
+									</ol>
+								</div>
+								<div class="aviso-medio" id="text-fact9-medio">
+									<a href="#" class="close"></a>
+									<p><strong>Necesitas mejorar tus hábitos de sueño, lógralo con estos tips:</strong></p>
+									<ol>
+										<li>Lleva un diario de sueño para conocer tus patrones al dormir.</li>
+										<li>Evita ver la televisión antes de dormir.</li>
+										<li>Evitar el café, el té y otras fuentes de cafeína por la tarde y al comenzar la noche.</li>
+										<li>Ve con tu médico si tienes algún  trastorno del sueño.</li>
+									</ol>
+								</div>
+								<div class="aviso-bajo" id="text-fact9-bajo">
+									<a href="#" class="close"></a>
+									<p><strong>Tienes una buena calidad de sueño para mantenerte así, sigue estas recomendaciones. </strong></p>
+									<ol>
+										<li>Duerme entre 7 y 8 horas al día.</li>
+										<li>Mejora tu rutina para antes de irte a dormir.</li>
+										<li>Crea un ambiente silencioso, oscuro y fresco para dormir.</li>
+										<li>Evita el café antes de acostarte.</li>
+										<li>Acude con tu médico para descartar cualquier problema.</li>
+									</ol>
+								</div>
+								<!--LIGHTBOX END Fact9-->
+								<!--LIGHTBOX START Fact10-->
+								<div class="aviso-alto" id="text-fact10-alto">
+									<a href="#" class="close"></a>
+									<p><strong>Dejar de fumar es de gran importancia para evitar cualquier  enfermedad del corazón, lógralo con estos tips:</strong></p>
+									<ol>
+										<li>Determina cuándo y por qué fumas. Lleva un diario que te ayude a darte cuenta de estos puntos.</li>
+										<li>Pon una fecha para dejar de fumar y tira todos tus cigarros antes de ese día.</li>
+										<li>Cambia tus rutinas que te hacían fumar.</li>
+										<li>Haz un plan para evitar una recaída y que te recuerde los beneficios de dejar de fumar.</li>
+										<li>Acude con tu médico para que te apoye a dejar este mal hábito.</li>
+										</p>
+								</div>
+								<div class="aviso-medio" id="text-fact10-medio">
+									<a href="#" class="close"></a>
+									<p>Te felicitamos por haber dejado de fumar. Sigue por este camino. Si crees que puedes recaer apóyate de tu médico para que juntos armen un plan para evitar esta situación. Además, cambia los hábitos que te hacían fumar, crea estrategias para evitarlos.</p>
+								</div>
+								<div class="aviso-bajo" id="text-fact10-bajo">
+									<a href="#" class="close"></a>
+									<p><stron>Al no fumar estás en un menor riesgo de padecer alguna enfermedad del corazón, para seguir así te damos estos pasos:</strong></p>
+										<ol>
+											<li>Evita estar cerca de la gente que fuma.</li>
+											<li>Pide a tus familiares y amigos que no fumen en tu casa.</li>
+											<li>Elige sitios donde esté prohibido fumar.</li>
+											<li>Coloca letreros de “No fumar” en tu auto.</li>
+										</ol>
+								</div>
+								<!--LIGHTBOX END Fact10-->
+								<div class="content-all">
+									<div class="bg_perfil">   
+									</div>
+									<div class="header">
+										<div class="wrap">
+											<div class="logo3"></div>
+											<div class="logo4"></div>
+										</div>
+									</div>
 
-						</div>
-						<div class="risk-box" id="fact6">
-							<?php
-							$mylevel;
-							$rtot = $rfruta + $rverdura;
-							if ( $rtot >= 5 )
-								$mylevel = "bajo";
-							else if ( ($rtot < 5 && $rtot > 3 ) )
-								$mylevel = "medio";
-							else
-								$mylevel = "alto";
-							echo "<h2>Nutrición</h2>";
-							echo "<h3>Raciones actuales: <span class='" . $mylevel . "'>" . $rtot . "</span></h3>";
-							echo "<h3>Raciones recomendadas:  5 raciones de frutas y verduras o más </h3>";
-							echo "<a id='light-fact6-{$mylevel}'>Detalle</a>";
-							?>
+									<div class="page">
+										<div class="slogan"><h2 class="tperfil"><span>Comienza ya tu nuevo </span>plan para sentirte bien.</h2></div>
+										<div class="perfil-box">
+											<div class="user">
+												<h2>Conoce la salud de tu corazón</h2>
+												<h3>Este es el primer paso para mejorar tu calidad de vida. <strong>Comparte este resultado con tu médico.</strong> </h3>
+												<div class="user-icon" >
+													<?php if ( isset( $avatar ) ) { ?>
+														<a href="#" style="background:url('<?php echo get_template_directory_uri(); ?>/images/avatar/<?php echo $avatar; ?> ') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;background-size: cover;"></a> 
+													<?php } else { ?>
+														<a href="#"></a>		
+													<?php } ?>
+												</div>
 
+												<div class="user-info">
+													<h4><?php echo $nombre; ?> </h4>
+													
+												</div>
+											</div>
+											<div class="riesgos-box riesgo-<?php echo $level ?>">
+												<h1>Mi corazón está en:</h1>
+												<h2>Riesgo <?php echo $level; ?></h2>
+												<?php if ( $riesgo == 0 ) { ?>
+													<p>De acuerdo a lo que respondiste acerca de tus hábitos, tu riesgo de padecer una enfermedad cardiaca es mínimo. Es importante que sigas así y continúes adoptando conductas que te ayuden a llevar una vida sana. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él y juntos crear un plan que beneficie a tu salud. Sigue estos pasos básicos:
+													</p>
+													<ol>
+														<li>No olvides revisar tus niveles de presión arterial, glucosa, colesterol y triglicéridos</li>
+														<li>Sigue consumiendo frutas y verduras, limita las grasas</li>
+														<li>Muévete por lo menos 30 minutos al día</li>
+														<li>Aléjate de las personas que fuman</li>
+														<li>Duerme entre 7 a 8 horas al día</li>
+													</ol>
+												<?php } else if ( $riesgo == 1 ) { ?>
+													<p>Algunos hábitos están afectando tu salud y ponen en riesgo a tu corazón. Es importante que empieces a tomar acciones que eviten complicaciones a futuro. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él  y juntos crear un plan que beneficie a tu salud. Estos pasos básicos te ayudarán:
+													</p>
+													<ol>
+														<li>Empieza por consumir alimentos más saludables como frutas y verduras</li>
+														<li>Revísa periódicamente tus niveles de glucosa, presión arterial, colesterol y triglicéridos</li>
+														<li>¡Qué esperas para realizar alguna actividad física! Puedes empezar por caminar 10 minutos al día</li>
+														<li>Ten un peso saludable, si tienes “kilitos de más” es momento de bajarlos</li>
+														<li>Busca estrategias para reducir tu estrés</li>
+													</ol>
 
-						</div>
-						<div class="risk-box" id="fact7">
-							<?php
-							$mylevel;
-							if ( $nestres == 1 )
-								$mylevel = "bajo";
-							else if ( ($nestres > 1) && $nestres < 3 )
-								$mylevel = "medio";
-							else
-								$mylevel = "alto";
-							echo "<h2>Estrés</h2>";
-							echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $nestres . "</span></h3>";
-							echo "<h3>Nivel sano: 1 - Adopta técnicas para controlar el estrés. 
-</h3>";
-							echo "<a id='light-fact7-{$mylevel}'>Detalle</a>";
-							?>
-
-						</div>
-					</div>
-					<div class="risk-row">
-
-						<div class="risk-box" id="fact8">
-							<?php
-							$mylevel;
-							$mensaje;
-							if($afisicas==1){
-								
-								$mensaje="No realizo actividad alguna";
-							}else if($afisicas==2){
-								$mensaje="Menos de 30 minutos a la semana";
-							}else if($afisicas==3){
-								$mensaje="30 a 69 minutos a la semana";
-							}else if($afisicas==4){
-								$mensaje="70 a 109 minutos a la semana";
-							}else if($afisicas==5){
-								$mensaje="110 a 149 minutos a la semana";
-							}else if($afisicas==6){
-								$mensaje="150 minutos o m&aacute;s a la semana";
-							}
-							
-							if ( $afisicas >=  5 )
-								$mylevel = "bajo";
-							else if ( ($afisicas < 5) && $afisicas > 3 )
-								$mylevel = "medio";
-							else
-								$mylevel = "alto";
-							echo "<h2>Actividad física</h2>";
-							echo "<h3>Minutos: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
-							echo "<h3>Tu objetivo semanal es realizar más de 110 minutos por semana. </h3>";
-							echo "<a id='light-fact8-{$mylevel}'>Detalle</a>";
-							?>
-						</div>
-						<div class="risk-box" id="fact10">
-							<?php
-							$mylevel;
-							$mensaje;
-							$ftot = $fumas1 + $fumas2;
-							if ( $fumas ) {
-								$mensaje="Si";
-								if ( $fumas1 == 1 && $fumas2 == 1 )
-									$mylevel = "medio";
-								else
-									$mylevel = "alto";
-							}
-							else {
-								$mensaje="No";
-								$mylevel = "bajo";
-							}
-							echo "<h2>Tabaquismo</h2>";
-							echo "<h3>Fumas: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
-							echo "<h3>No utilices productos con tabaco y evita el humo de segunda mano</h3>";
-							echo "<a id='light-fact10-{$mylevel}'>Detalle</a>";
-							?>
-
-						</div>
-						<div class="risk-box" id="fact9">
-							<?php
-							$mylevel;
-							$mensaje="";
-							if ( $hsueno == 2 ) {
-								$mensaje=" 7 a 9 horas";
-								$mylevel = "bajo";
-							} else if($hsueno == 1) {
-								$mensaje="Menos de 7 horas";
-								$mylevel = "alto";
-							}else if($hsueno == 3) {
-								$mensaje="M&aacute;s de 9 horas";
-							$mylevel = "alto";}
-							echo "<h2>Sueño</h2>";
-							echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
-							echo "<h3>Nivel sano:  Entre 7 y 9 horas</h3>";
-							echo "<a id='light-fact9-{$mylevel}'>Detalle</a>";
-							?>
-
-						</div>
-					</div>
-					<div class="risk-row last">
-
-						<div class="risk-box">
-
-							<?php
-							$myvar;
-							$bandera;
-
-							if ( $fam ) {
-								$bandera = true;
-								$myvar = "Presentes";
-							} else {
-								$bandera = false;
-								$myvar = "No presentes";
-							}
-							?>
-							<h2>Padecimientos<br/> heredofamiliares</h2>
-							<h3><span class="<?php
-								if ( $bandera ) {
-									echo "alto";
-								} else {
-									echo "bajo";
-								}
-								?>"><?php echo $myvar ?></span></h3>
-							<h3> Nivel sano: te felicitamos por no tener antecedentes familiares que afecten tu salud</h3>
-						</div>
-						<div class="risk-box">
-
-						</div>
-					</div>
-					<div class="motivaciones-row">
-						<?php
-						try {
-							$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
-							$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-							$sql = "Select motivation1,motivation2,motivation3 from wp_usersmotivation where user_id={$id}"
-									. " LIMIT 1";
-							$rs = $conn->prepare( $sql );
-							$rs->execute();
-							$rs2 = $rs->fetchAll();
-							if ( isset( $rs2[0]['motivation1'] ) ) {
-								$motivation1 = $rs2[0]['motivation1'];
-								$motivation2 = $rs2[0]['motivation2'];
-								$motivation3 = $rs2[0]['motivation3'];
-							}
-						} catch ( PDOException $e ) {
-							echo "ERROR: " . $e->getMessage();
-							die();
-						}
-						?>
+												<?php } else if ( $riesgo == 2 ) {
+													?>	
+													<p>Tus hábitos están afectando a tu corazón y presentas un riesgo elevado de tener alguna complicación. Es importante que empieces a realizar cambios en tu vida para evitar que tu salud se deteriore. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él  y juntos crear un plan que beneficie a tu salud. Estas recomendaciones te ayudarán a tener una vida sana.
+													</p>
+													<ol>
+														<li>Empieza por consumir alimentos más saludables como frutas y verduras.</li>
+														<li>Revísate periódicamente tus niveles de glucosa, presión arterial, colesterol y triglicéridos.</li>
+														<li>Camina por lo menos 10 minutos tres veces al día.</li>
+														<li>Tener un peso saludable es importante. Acude con un especialista si quieres bajar de peso.</li>
+														<li>Si fumas es momento de dejar este mal hábito</li>
+														<li>Reduce tu estrés al máximo</li>
+													</ol>
+												<?php }
+												?>
+											</div>
 
 
 
 
-						<h2>¡Recuerda tus motivaciones!</h2>
-						<label><?php echo $motivation1; ?></label>
-						<label><?php echo $motivation2; ?></label>
-						<label><?php echo $motivation3; ?></label>
-					</div>
-					<div class="cont-submit5">
-						<a href="/home-page/" class="submit2">&iexcl;Comienza una vida más sana!</a>
-					</div>
-					<?php include 'footer-registro.php'; ?>
+											<?php
+											try {
+												$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+												$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+												$sql = "Select presion,cifra_ps,cifra_pd,glucosa,cifraglucosa,colesterol,cifracolesterol,trigliceridos,cifratrigliceridos,r_fruta,r_verdura, "
+														. "imc,nivel_estres,act_fisicas,horas_sueno,fumas,f_fumas,f_fumas2,familiares from wp_usersmedicalinfo where user_id={$id}"
+														. " LIMIT 1";
+												$rs = $conn->prepare( $sql );
+												$rs->execute();
+												$rs2 = $rs->fetchAll();
+												$presion = $rs2[0]['presion'];
+												$cps = $rs2[0]['cifra_ps'];
+												$cpd = $rs2[0]['cifra_pd'];
+												$glucosa = $rs2[0]['glucosa'];
+												$cglucosa = $rs2[0]['cifraglucosa'];
+												$colesterol = $rs2[0]['colesterol'];
+												$cc = $rs2[0]['cifracolesterol'];
+												$trigliceridos = $rs2[0]['trigliceridos'];
+												$ctrigliceridos = $rs2[0]['cifratrigliceridos'];
+												$rfruta = $rs2[0]['r_fruta'];
+												$rverdura = $rs2[0]['r_verdura'];
+												$imc = $rs2[0]['imc'];
+												$nestres = $rs2[0]['nivel_estres'];
+												$afisicas = $rs2[0]['act_fisicas'];
+												$hsueno = $rs2[0]['horas_sueno'];
+												$fumas = $rs2[0]['fumas'];
+												$fumas1 = $rs2[0]['f_fumas'];
+												$fumas2 = $rs2[0]['f_fumas2'];
+												$fam = $rs2[0]['familiares'];
+											} catch ( PDOException $e ) {
+												echo "ERROR: " . $e->getMessage();
+												die();
+											}
+											?>
+											<div class="risk-row">
+												<div class="risk-box" id="fact1">
+													<?php
+													if ( !$presion ) {
+														echo "<div class='taches'></div><h2 class='i1'>Presión arterial</h2>";
+														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
+														echo "<h3>Nivel sano: igual o menor de 120 a 139/80 a 89 mmHg.</h3>";
+														echo "<a id='light-fact1-alto'>Detalle</a>";
+													} else if ( $presion ) {
+														$mylevel;
+														if ( $cps <= 120 && $cps > 60 && $cpd <= 80 && $cpd > 50 ) {
+															$mylevel = "bajo";
+															$newriesgo = 0;
+														} else if ( ($cps > 120 && $cps < 140) && ($cpd < 90 && $cpd > 80) ) {
+															$mylevel = "medio";
+															$newriesgo = 1;
+														} else {
+															$mylevel = "alto";
+															$newriesgo = 2;
+														}
+														if ( $newriesgo == 0 ) {
+															echo "<div class='paloma'></div>";
+														} else if ( $newriesgo == 2 ) {
+															echo "<div class='taches'></div>";
+														}
+														echo "<h2 class='i1'>Presión arterial</h2>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cps . "/" . $cpd . "mmHg</span></h3>";
+														echo "<h3>Nivel sano: igual o menor de 120 a 139/80 a 89 mmHg.</h3>";
+														echo "<a id='light-fact1-{$mylevel}'>Detalle</a>";
+														
+													}
+													?>
+
+												</div>
+												<div class="risk-box" id="fact2">
+
+													<?php
+													if ( !$glucosa ) {
+														echo "<div class='taches'></div><h2 class='i2'>Glucosa en la sangre</h2>";
+														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
+														echo "<h3>Nivel sano: menor de 101 mg/dL.</h3>";
+														echo "<a id='light-fact2-alto'>Detalle</a>";
+														echo "";
+													} else if ( $glucosa ) {
+														$mylevel;
+														if ( $cglucosa > 70 && $cglucosa <= 140 ) {
+															$mylevel = "bajo";
+															$newriesgo = 0;
+														} else if ( ($cglucosa > 140 && $cglucosa <= 165 ) ) {
+															$mylevel = "medio";
+															$newriesgo = 1;
+														} else {
+															$mylevel = "alto";
+															$newriesgo = 2;
+														}
+														if ( $newriesgo == 0 ) {
+															echo "<div class='paloma'></div>";
+														} else if ( $newriesgo == 2 ) {
+															echo "<div class='taches'></div>";
+														}
+														echo "<h2 class='i2'>Glucosa en la sangre</h2>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cglucosa . "mg/dL</span></h3>";
+														echo "<h3>Nivel sano: menor de 101 mg/dL.</h3>";
+														echo "<a id='light-fact2-{$mylevel}'>Detalle</a>";
+														
+													}
+													?>
+
+
+												</div>
+												<div class="risk-box" id="fact3">
+
+													<?php
+													if ( !$trigliceridos ) {
+														echo "<div class='taches'></div><h2 class='i3'>Triglicéridos</h2>";
+														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
+														echo "<h3>Nivel sano: menor de 150 mg/dL.</h3>";
+														echo "<a id='light-fact3-alto'>Detalle</a>";
+														echo "";
+													} else if ( $trigliceridos ) {
+														$mylevel;
+														if ( $ctrigliceridos <= 199 && $ctrigliceridos >= 49 ) {
+															$mylevel = "bajo";
+															$newriesgo = 0;
+														} else if ( ($ctrigliceridos > 200 && $ctrigliceridos <= 499 ) ) {
+															$mylevel = "medio";
+															$newriesgo = 1;
+														} else {
+															$mylevel = "alto";
+															$newriesgo = 2;
+														}
+														if ( $newriesgo == 0 ) {
+															echo "<div class='paloma'></div>";
+														} else if ( $newriesgo == 2 ) {
+															echo "<div class='taches'></div>";
+														}
+														echo "<h2 class='i3'>Triglicéridos</h2>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
+														echo "<h3>Nivel sano: menor de 150 mg/dL.</h3>";
+														echo "<a id='light-fact3-{$mylevel}'>Detalle</a>";
+														
+													}
+													/*
+													  <div class="risk-box" id="fact5">
+													  <h2>Peso (IMC)</h2>
+													  <h3>IMC: <span class="bajo">19</span></h3>
+													  <h3>Nivel sano: 19 a 24.9</h3>
+													  <a id="light-fact5-bajo">Detalle</a>
+													  </div>
+													  <div class="risk-box" id="fact6">
+													  <h2>Nutrición</h2>
+													  <h3>Raciones actuales: <span class="alto">2</span></h3>
+													  <h3>Raciones recomendadas: 5 o más</h3>
+													  <a  id="light-fact6-alto">Detalle</a>
+													  </div>
+													 * 
+													 * 								 */
+													?>
+												</div>
+											</div>
+
+											<div class="risk-row">
+												<div class="risk-box" id="fact4">
+													<?php
+													if ( !$colesterol ) {
+														echo "<div class='taches'></div><h2 class='i4'>Colesterol</h2>";
+														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
+														echo "<h3>Nivel sano: menor de 200 mg/dL.</h3>";
+														echo "<a id='light-fact4-alto'>Detalle</a>";echo "";
+													} else if ( $colesterol ) {
+														$mylevel;
+														if ( $cc <= 200 && $cc >= 99 ) {
+															$mylevel = "bajo";
+															$newriesgo = 0;
+														} else if ( ($cc > 200 && $cc <= 239 ) ) {
+															$mylevel = "medio";
+															$newriesgo = 1;
+														} else {
+															$mylevel = "alto";
+															$newriesgo = 2;
+														}
+														if ( $newriesgo == 0 ) {
+															echo "<div class='paloma'></div>";
+														} else if ( $newriesgo == 2 ) {
+															echo "<div class='taches'></div>";
+														}
+														echo "<h2 class='i4'>Colesterol</h2>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
+														echo "<h3>Nivel sano: menor de 200 mg/dL.</h3>";
+														echo "<a id='light-fact4-{$mylevel}'>Detalle</a>";
+														
+													}
+													?>
+												</div>
+												<div class="risk-box" id="fact5">
+													<?php
+													$mylevel;
+													if ( $imc <= 24.9 ) {
+														$mylevel = "bajo";
+														$newriesgo = 0;
+													} else if ( ($imc > 24.9 && $imc <= 27 ) ) {
+														$mylevel = "medio";
+														$newriesgo = 1;
+													} else {
+														$mylevel = "alto";
+														$newriesgo = 2;
+													}
+													if ( $newriesgo == 0 ) {
+														echo "<div class='paloma'></div>";
+													} else if ( $newriesgo == 2 ) {
+														echo "<div class='taches'></div>";
+													}
+													echo "<h2 class='i5'>Peso y cintura (IMC)</h2>";
+													echo "<h3>IMC actual: <span class='" . $mylevel . "'>" . $imc . " </span></h3>";
+													echo "<h3>Nivel sano: IMC de 19 a 24.9 (peso sano)</h3>";
+													echo "<a id='light-fact5-{$mylevel}'>Detalle</a>";
+													
+													?>
+
+												</div>
+												<div class="risk-box" id="fact6">
+													<?php
+													$mylevel;
+													$rtot = $rfruta + $rverdura;
+													if ( $rtot >= 5 ) {
+														$mylevel = "bajo";
+														$newriesgo = 0;
+													} else if ( ($rtot < 5 && $rtot > 3 ) ) {
+														$mylevel = "medio";
+														$newriesgo = 1;
+													} else {
+														$mylevel = "alto";
+														$newriesgo = 2;
+													}
+													if ( $newriesgo == 0 ) {
+														echo "<div class='paloma'></div>";
+													} else if ( $newriesgo == 2 ) {
+														echo "<div class='taches'></div>";
+													}
+													echo "<h2 class='i6'>Nutrición</h2>";
+													echo "<h3>Raciones actuales: <span class='" . $mylevel . "'>" . $rtot . "</span></h3>";
+													echo "<h3>Nivel sano: 5 raciones de frutas y verduras o más</h3>";
+													echo "<a id='light-fact6-{$mylevel}'>Detalle</a>";
+													
+													?>
+
+
+												</div>
+
+											</div>
+											<div class="risk-row">
+												<div class="risk-box" id="fact7">
+													<?php
+													$mylevel;
+													if ( $nestres == 1 ){
+													$mylevel = "bajo";
+													$newriesgo=0;
+													}
+													else if ( ($nestres > 2) && $nestres < 4 ){
+													$mylevel = "medio";
+													$newriesgo = 1;
+													}
+													else{
+													$mylevel = "alto";
+													$newriesgo=2;
+													}
+													if ( $newriesgo == 0 ) {
+														echo "<div class='paloma'></div>";
+													} else if ( $newriesgo == 2 ) {
+														echo "<div class='taches'></div>";
+													}
+													echo "<h2 class='i7'>Estrés</h2>";
+													echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $nestres . "</span></h3>";
+													echo "<h3>Nivel sano: 1 - 2: Adopta técnicas para controlar el estrés.</h3>";
+													echo "<a id='light-fact7-{$mylevel}'>Detalle</a>";
+													
+													?>
+
+												</div>
+												<div class="risk-box" id="fact8">
+													<?php
+													$mylevel;
+													$mensaje;
+													if ( $afisicas == 1 ) {
+
+														$mensaje = "No realizo actividad alguna";
+													} else if ( $afisicas == 2 ) {
+														$mensaje = "Menos de 30 minutos a la semana";
+													} else if ( $afisicas == 3 ) {
+														$mensaje = "30 a 69 minutos a la semana";
+													} else if ( $afisicas == 4 ) {
+														$mensaje = "70 a 109 minutos a la semana";
+													} else if ( $afisicas == 5 ) {
+														$mensaje = "110 a 149 minutos a la semana";
+													} else if ( $afisicas == 6 ) {
+														$mensaje = "150 minutos o m&aacute;s a la semana";
+													}
+
+													if ( $afisicas >= 5 ) {
+														$mylevel = "bajo";
+														$newriesgo=0;
+													} else if ( ($afisicas < 5) && $afisicas > 3 ) {
+														$mylevel = "medio";
+														$newriesgo = 1;
+													} else {
+														$mylevel = "alto";
+														$newriesgo=2;
+														
+													}
+													if ( $newriesgo == 0 ) {
+														echo "<div class='paloma'></div>";
+													} else if ( $newriesgo == 2 ) {
+														echo "<div class='taches'></div>";
+													}
+													echo "<h2 class='i8'>Actividad física</h2>";
+													echo "<h3>Minutos: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
+													echo "<h3>Nivel sano: tu objetivo semanal es realizar más de 120 minutos por semana.</h3>";
+													echo "<a id='light-fact8-{$mylevel}'>Detalle</a>";
+													
+													?>
+												</div>
+												<div class="risk-box" id="fact10">
+													<?php
+													$mylevel;
+													$mensaje;
+													$ftot = $fumas1 + $fumas2;
+													if ( $fumas ) {
+														$mensaje = "Si";
+														$mylevel = "alto";
+														$newriesgo=2;
+													} else {
+														$mensaje = "No";
+														$mylevel = "bajo";
+														$newriesgo=0;
+													}
+													if ( $newriesgo == 0 ) {
+														echo "<div class='paloma'></div>";
+													} else if ( $newriesgo == 2 ) {
+														echo "<div class='taches'></div>";
+													}
+													echo "<h2 class='i10'>Tabaquismo</h2>";
+													echo "<h3>Fumas: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
+													echo "<h3>Nivel sano: no utilices productos con tabaco y evita el humo de segunda mano.</h3>";
+													echo "<a id='light-fact10-{$mylevel}'>Detalle</a>";
+													
+													?>
+
+												</div>
+
+											</div>
+											<div class="risk-row last">
+												<div class="risk-box" id="fact9">
+													<?php
+													$mylevel;
+													$mensaje = "";
+													if ( $hsueno == 2 ) {
+														$mensaje = " 7 a 9 horas";
+														$mylevel = "bajo";
+														$newriesgo=0;
+													} else if ( $hsueno == 1 ) {
+														$mensaje = "Menos de 7 horas";
+														$mylevel = "alto";
+															$newriesgo=2;
+													} else if ( $hsueno == 3 ) {
+														$mensaje = "M&aacute;s de 9 horas";
+														$mylevel = "alto";
+														$newriesgo=2;
+													}
+													if ( $newriesgo == 0 ) {
+														echo "<div class='paloma'></div>";
+													} else if ( $newriesgo == 2 ) {
+														echo "<div class='taches'></div>";
+													}
+													echo "<h2 class='i9'>Sueño</h2>";
+													echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
+													echo "<h3>Nivel sano:  Entre 7 y 9 horas</h3>";
+													echo "<a id='light-fact9-{$mylevel}'>Detalle</a>";
+													
+													?>
+
+												</div>
+												<div class="risk-box">
+
+													<?php
+													$myvar;
+													$bandera;
+
+													if ( $fam ) {
+														$bandera = true;
+														$myvar = "Presentes </span></h3> <h3>Marcaste que presentas antecedentes heredofamiliares que pueden influir en tu salud cardiovascular.</h3>";
+														
+													} else {
+														$bandera = false;
+														$myvar = "No presentes </span></h3> <h3>Marcaste que no presentas antecedentes heredofamiliares que pueden influir en tu salud cardiovascular.</h3>";
+													}
+													?>
+													<h2 class="i11">Padecimientos<br/> heredofamiliares</h2>
+													<h3><span class="<?php
+														if ( $bandera ) {
+															echo "alto";
+														} else {
+															echo "bajo";
+														}
+														?>"><?php echo $myvar ?>
+													
+												</div>
+
+
+											</div>
+											<div class="motivaciones-row">
+												<?php
+												try {
+													$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+													$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+													$sql = "Select motivation1,motivation2,motivation3 from wp_usersmotivation where user_id={$id}"
+															. " LIMIT 1";
+													$rs = $conn->prepare( $sql );
+													$rs->execute();
+													$rs2 = $rs->fetchAll();
+													if ( isset( $rs2[0]['motivation1'] ) ) {
+														$motivation1 = $rs2[0]['motivation1'];
+														$motivation2 = $rs2[0]['motivation2'];
+														$motivation3 = $rs2[0]['motivation3'];
+													}
+												} catch ( PDOException $e ) {
+													echo "ERROR: " . $e->getMessage();
+													die();
+												}
+												?>
+
+
+
+
+												<h2>¡Recuerda tus motivaciones!</h2>
+												<label><?php echo $motivation1; ?></label>
+												<label><?php echo $motivation2; ?></label>
+												<label><?php echo $motivation3; ?></label>
+											</div>
+										</div>
+									</div>
+											<div class="cont-submit5">
+												<a href="/home-page/" id="printer" class="submit2">Imprimir</a>
+											</div>
+<?php include 'footer-impresion.php'; ?>

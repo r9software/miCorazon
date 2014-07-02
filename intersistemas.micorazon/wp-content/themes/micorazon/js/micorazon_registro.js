@@ -233,6 +233,9 @@ $(document).ready(function() {
             });
         }
     });
+    
+
+    
 
     $("#peso").keyup(function(e) {
         altura = parseFloat($('#altura').val());
@@ -273,6 +276,8 @@ $(document).ready(function() {
         });
 
     });
+    
+    
     $("#altura").keyup(function(e) {
         altura = parseFloat($('#altura').val());
         peso = parseFloat($('#peso').val());
@@ -540,6 +545,38 @@ $(document).ready(function() {
             centered: true,
             onLoad: function() {
                 $('#text-fact1-alto').find('input:first').focus()
+            }
+        });
+    });
+    $('#light-desconocidog-alto').click(function() {
+        $('#text-desconocidog-alto').lightbox_me({
+            centered: true,
+            onLoad: function() {
+                $('#text-fact7-bajo').find('input:first').focus()
+            }
+        });
+    });
+    $('#light-desconocidopa-alto').click(function() {
+        $('#text-desconocidopa-alto').lightbox_me({
+            centered: true,
+            onLoad: function() {
+                $('#text-fact7-bajo').find('input:first').focus()
+            }
+        });
+    });
+    $('#light-desconocidot-alto').click(function() {
+        $('#text-desconocidot-alto').lightbox_me({
+            centered: true,
+            onLoad: function() {
+                $('#text-fact7-bajo').find('input:first').focus()
+            }
+        });
+    });
+    $('#light-desconocidoc-alto').click(function() {
+        $('#text-desconocidoc-alto').lightbox_me({
+            centered: true,
+            onLoad: function() {
+                $('#text-fact7-bajo').find('input:first').focus()
             }
         });
     });

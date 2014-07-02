@@ -127,32 +127,17 @@ try {
 			<h3 class="tmiregistro">Mi registro hoy</h3>
 			<div class="options">
 				<form name="registro-hoy">
-						<?php if($bandera){  ?>
-					
+						
 					<div class="form-group">
-						<input type="checkbox" name="uno"  value="ON" <?php if($ac1){echo "checked='checked'"; }?> disabled="true" id="chuno" class="check" /><label for="uno">Comí 5 raciones</label>
+						<input type="checkbox" name="uno"  value="ON" <?php if($ac1){echo "checked='checked' disabled='true'"; }?> id="chuno" class="check" /><label for="uno">Comí 5 raciones</label>
 					</div>
 					<div class="form-group">
-						<input type="checkbox" name="dos" value="ON"  <?php if($ac2){echo "checked='checked'"; }?> disabled="true" id="chdos" class="check"/><label for="dos">Me moví 10 minutos</label>
+						<input type="checkbox" name="dos" value="ON"  <?php if($ac2){echo "checked='checked' disabled='true'"; }?>  id="chdos" class="check"/><label for="dos">Me moví 10 minutos</label>
 					</div>
 					<div class="form-group">
-						<input type="checkbox" name="tres" value="ON" <?php if($ac3){echo "checked='checked'"; }?> disabled="true"  id="chtres" class="check" /><label for="tres">Dormí 8 horas</label>
-					</div>
-						<?php }else{
-						?>
-					
-					<div class="form-group">
-						<input type="checkbox" name="uno" value="ON"  id="chuno" class="check" /><label for="uno">Comí 5 raciones</label>
-					</div>
-					<div class="form-group">
-						<input type="checkbox" name="dos" value="ON"   id="chdos" class="check"/><label for="dos">Me moví 10 minutos</label>
-					</div>
-					<div class="form-group">
-						<input type="checkbox" name="tres" value="ON"    id="chtres" class="check" /><label for="tres">Dormí 8 horas</label>
+						<input type="checkbox" name="tres" value="ON" <?php if($ac3){echo "checked='checked' disabled='true'"; }?>   id="chtres" class="check" /><label for="tres">Dormí 8 horas</label>
 					</div>
 					
-						<?php
-						} ?>
 				</form>
 			</div>
 		

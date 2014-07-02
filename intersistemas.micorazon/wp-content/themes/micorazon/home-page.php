@@ -206,16 +206,32 @@ try {
 				<?php wp_reset_query(); ?>
 			</div>
 		</div>-->
+		<div class="apptivate-wrapper">
 		<div class="apptivate">
 			<div class="more"><a href="#"></a></div>
 			<h3 class="aparticipa">Ejercícios</h3>
 			<div class="ejercicio-row">
-				<h1>Flexibilidad</h1>
-				<p>Te ayuda a mantener saludables tus articulaciones, huesos y prevenir caídas</p>
-				<div class="app-plus"></div>
+				<div class="app-info"><h3 class="app-uno"><a href="/flexibilidad/">Flexibilidad</a></h3>
+				<p><a href="/flexibilidad/">Te ayuda a mantener saludables tus articulaciones, huesos y prevenir caídas</a></p></div>
+				<div class="app-plus"><a href="/flexibilidad/">+</a></div>
+			</div>
+			<div class="ejercicio-row2">
+				<div class="app-info"><h3 class="app-dos"><a href="/fortalecimiento/">Fortalecimiento</a></h3>
+				<p><a href="/fortalecimiento/">Con ayuda de estos ejercicios podrás fortalecer tus músculos y huesos.</a></p></div>
+				<div class="app-plus"><a href="/fortalecimiento/">+</a></div>
+			</div>
+			<div class="ejercicio-row3">
+				<div class="app-info"><h3 class="app-tres"><a href="/rutina-de-centro/">Rutina de centro</a></h3>
+				<p><a href="/rutina-de-centro/">Con estos ejercicios tendrás una espalda saludable y un mejor equilibrio.</a></p></div>
+				<div class="app-plus"><a href="/rutina-de-centro/">+</a></div>
+			</div>
+			<div class="ejercicio-row4">
+				<div class="app-info"><h3 class="app-cuatro"><a href="/equilibrio/">Equilibrio</a></h3>
+				<p><a href="/equilibrio/">Este tipo de ejercicios harán que tengas menos riesgo de lesionarte y aumenta el entrenamiento de fuerza.</a></p></div>
+				<div class="app-plus"><a href="/equilibrio/">+</a></div>
 			</div>
 	</div>
-		</div>
+</div></div>
 </div>
 </div><!--main-->
 <?php get_sidebar(); ?>
