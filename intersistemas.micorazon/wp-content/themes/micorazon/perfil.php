@@ -473,7 +473,7 @@ try {
 											<div class="user">
 												<h2>Conoce la salud de tu corazón</h2>
 												
-													<h3><?php echo $fecha; ?></h3>
+												
 												<h3>Este es el primer paso para mejorar tu calidad de vida. <strong>Comparte este resultado con tu médico.</strong> </h3>
 												<div class="user-icon" >
 													<?php if ( isset( $avatar ) ) { ?>
@@ -488,14 +488,16 @@ try {
 													<!--<input id="enviar" name="enviar" type="submit" value="Cambiar foto" /> -->
 													<div class="file">
 														<form name="myform" id="myform" enctype="multipart/form-data" method="POST" action="<?php echo site_url() . '/imagen-dao/'; ?>" >
-															<input id="uploadImage" name="uploadImage" type="file" />
+															<input id="uploadImage" class="subir-imagen" name="uploadImage" type="file" />
 														</form>  
 													</div>
 													<a  onclick="subirFoto()" class="cambio">Cargar foto</a>
+													
 												</div>
 											</div>
 											<div class="riesgos-box riesgo-<?php echo $level ?>">
 												<h1>Mi corazón está en:</h1>
+												<h3 class="fecha-evaluacion">Fecha de evaluaci&oacute;n: <?php echo $fecha; ?></h3>
 												<h2>Riesgo <?php echo $level; ?></h2>
 												<?php if ( $riesgo == 0 ) { ?>
 													<p>De acuerdo a lo que respondiste acerca de tus hábitos, tu riesgo de padecer una enfermedad cardiaca es mínimo. Es importante que sigas así y continúes adoptando conductas que te ayuden a llevar una vida sana. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él y juntos crear un plan que beneficie a tu salud. Sigue estos pasos básicos:
@@ -971,5 +973,6 @@ try {
 											</div>
 											<div class="cont-submit5">
 												<a href="/home-page/" class="submit2">&iexcl;Comienza una vida más sana!</a>
+												<a  href="<?php echo site_url()."/perfil-impresion"; ?>" id='printer' class="imprimir">Imprimir</a>
 											</div>
 <?php include 'footer-registro.php'; ?>
