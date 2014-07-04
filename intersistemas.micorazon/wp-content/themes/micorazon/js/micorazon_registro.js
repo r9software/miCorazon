@@ -254,9 +254,11 @@ $(document).ready(function() {
                     $("#res").text("IMC: " + parseFloat(data.imc).toFixed(2));
                     imc = parseFloat(data.imc).toFixed(2);
                     $('input[name="imc"]').attr('value',imc);
-                    if (imc < 25)
+                    if (imc < 19)
                     {
-                        $("#resimc").text("Tienes un peso saludable");
+                        $("#resimc").text("Tu indice de masa corporal, es muy bajo. Visita un especialista.");
+                    }else if(imc >=19 && imc<25){
+                        $("#resimc").text("Tienes un peso saludable.");
                     }
                     else if (imc >= 25)
                     {
@@ -295,9 +297,11 @@ $(document).ready(function() {
                     $("#res").text("IMC: " + parseFloat(data.imc).toFixed(2));
                     imc = parseFloat(data.imc).toFixed(2);
                     $('input[name="imc"]').attr('value',imc);
-                    if (imc < 25)
+                    if (imc < 19)
                     {
-                        $("#resimc").text("Tienes un peso saludable");
+                        $("#resimc").text("Tu &iacute;ndice de masa corporal, es muy bajo. Visita un especialista.");
+                    }else if(imc >=19 && imc<25){
+                        $("#resimc").text("Tienes un peso saludable.");
                     }
                     else if (imc >= 25)
                     {
@@ -542,6 +546,14 @@ $(document).ready(function() {
     /*fact1 Presión arterial alto */
     $('#light-fact1-alto').click(function() {
         $('#text-fact1-alto').lightbox_me({
+            centered: true,
+            onLoad: function() {
+                $('#text-fact1-alto').find('input:first').focus()
+            }
+        });
+    });
+    $('#light-muybajoimc-alto').click(function() {
+        $('#text-muybajoimc-alto').lightbox_me({
             centered: true,
             onLoad: function() {
                 $('#text-fact1-alto').find('input:first').focus()

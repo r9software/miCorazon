@@ -270,7 +270,7 @@ catch ( PDOException $e ) {
 									<input name="colesterol" type="radio" id="colesterol-no"  value="0" /><label for="colesterol-no" class="radie">No</label>
 									<input name="colesterol" type="radio" id="colesterol-si"  value="1" /><label for="colesterol-si" class="radie">Sí</label>
 									<div class="si-value" id="colesterol-value">
-										<input type="text" name="cifra-colesterol" value="" class="field3" id="cifra-colesterol" placeholder="180" /><span>mg/dL</span><a  class="liga" id="link-cole">Conoce tus cifras</a>
+										<input type="text" name="cifra-co" value="" class="field3" id="cifra-colesterol" placeholder="180" /><span>mg/dL</span><a  class="liga" id="link-cole">Conoce tus cifras</a>
 									</div>
 									<div class="alert1" id="alert-colesterol">
 										*Campo obligatorio

@@ -169,7 +169,7 @@ try {
 		</style>
 	</head>
 	<html>
-		<body>
+		<body >
 			<div class="perfil-box" >
 				<table border="0" class="impresion-tabla">
 					<thead>
@@ -241,13 +241,10 @@ try {
 									$mensaje = "Desconocido";
 									$mylevel="alto";
 								} else {
-									if ( $cps <= 120 && $cps > 60 && $cpd <= 80 && $cpd > 50 ) {
+									if ( $cps <= 139 && $cps >= 60 && $cpd <= 89 && $cpd >= 50 ) {
 										$mylevel = "bajo";
 										$newriesgo = 0;
-									} else if ( ($cps > 120 && $cps < 140) && ($cpd < 90 && $cpd > 80) ) {
-										$mylevel = "medio";
-										$newriesgo = 1;
-									} else {
+								} else {
 										$mylevel = "alto";
 										$newriesgo = 2;
 									}
@@ -267,9 +264,9 @@ try {
 									$mylevel="alto";
 								} else if ( $glucosa ) {
 									$mylevel;
-									if ( $cglucosa > 70 && $cglucosa <= 140 ) {
+									if ( $cglucosa >= 70 && $cglucosa <= 100 ) {
 										$mylevel = "bajo";
-									} else if ( ($cglucosa > 140 && $cglucosa <= 165 ) ) {
+									} else if ( ($cglucosa > 100 && $cglucosa <= 125 ) ) {
 										$mylevel = "medio";
 									} else {
 										$mylevel = "alto";
@@ -290,12 +287,9 @@ try {
 									$mylevel="alto";
 								} else if ( $trigliceridos ) {
 									$mylevel;
-									if ( $ctrigliceridos <= 199 && $ctrigliceridos >= 49 ) {
+									if ( $ctrigliceridos <= 199 && $ctrigliceridos >= 50 ) {
 										$mylevel = "bajo";
 										
-									} else if ( ($ctrigliceridos > 200 && $ctrigliceridos <= 499 ) ) {
-										$mylevel = "medio";
-										$newriesgo = 1;
 									} else {
 										$mylevel = "alto";
 										
@@ -323,17 +317,17 @@ try {
 										$mylevel="alto";
 									} else if ( $colesterol ) {
 									$mylevel;
-									if ( $cc <= 200 && $cc >= 99 ) {
+									if ( $cc < 200 && $cc > 99 ) {
 									$mylevel = "bajo";
 									$newriesgo = 0;
-									} else if ( ($cc > 200 && $cc <= 239 ) ) {
+									} else if ( ($cc >= 200 && $cc <= 239 ) ) {
 									$mylevel = "medio";
 									$newriesgo = 1;
 									} else {
 									$mylevel = "alto";
 									$newriesgo = 2;
 									}
-									$mensaje=$ctrigliceridos . "mg/dL";
+									$mensaje=$cc . "mg/dL";
 									}
 									
 									?>
@@ -345,10 +339,10 @@ try {
 								<td valign="top">
 									
 									<?php
-									if ( $imc <= 24.9 ) {
+									if ( $imc < 25) {
 														$mylevel = "bajo";
 														
-													} else if ( ($imc > 24.9 && $imc <= 27 ) ) {
+													} else if ( ($imc >= 25 && $imc < 30 ) ) {
 														$mylevel = "medio";
 													} else {
 														$mylevel = "alto";
@@ -394,7 +388,7 @@ try {
 							<tr>
 								<td valign="top">
 									<?php
-									if ( $nestres == 1 ){
+									if ( $nestres <3  ){
 													$mylevel = "bajo";
 													$newriesgo=0;
 													}
@@ -432,7 +426,7 @@ try {
 													if ( $afisicas >= 5 ) {
 														$mylevel = "bajo";
 														$newriesgo=0;
-													} else if ( ($afisicas < 5) && $afisicas > 3 ) {
+													} else if ( ($afisicas < 5) && $afisicas >= 3 ) {
 														$mylevel = "medio";
 														$newriesgo = 1;
 													} else {
@@ -534,12 +528,13 @@ try {
 
 
 				</div>
-
+<!--
 				<div class="cont-submit5">
 					<a id="printer" class="submit2">Imprimir</a>
-				</div>
+				</div>-->
 				<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery-1.11.1.min.js"></script>
 				<script src="<?php bloginfo( 'template_url' ); ?>/js/jquery-ui-1.10.4.min.js"></script>
 				<script src="<?php bloginfo( 'template_url' ); ?>/js/micorazon.js"></script>
+				<script src="<?php bloginfo( 'template_url' ); ?>/js/imprimir.js"></script>
 			</body>
 		</html>

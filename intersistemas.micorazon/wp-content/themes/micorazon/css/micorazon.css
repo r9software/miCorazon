@@ -748,8 +748,9 @@ textarea{ resize:none;}
 .i11{ background-image: url('../images/icons/i11.png'); background-repeat: no-repeat; padding-left: 50px; height: 45px; line-height: }
 /* iconos perfil*/
 .actividad-btn{ background-color: #3ca227; padding-top: 9px; height: 35px; color: #fff; text-decoration: none; width: 90px; font-size: 14px; float: left; display: block; text-align: center}
-
-
+.fecha-evaluacion{ float: right; font-weight: normal;}
+.imprimir{background-color: #666; color: #ffffff; display: inline-block; font-size: 21px; height: 60px; line-height: 59px; text-align: center; text-decoration: none; width: 150px; margin: 0px; padding: 0px; font-weight: normal; }
+.subir-imagen{}
 
 
 

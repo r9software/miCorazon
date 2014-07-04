@@ -81,16 +81,6 @@ if ( isset( $_POST['cifra-presion-diastolico'] ) ) {
 } else {
 	$cpd = 0;
 }
-if ( isset( $_POST['cifra-presion-diastolico'] ) ) {
-	$cpd = $_POST['cifra-presion-diastolico'];
-} else {
-	$cpd = 0;
-}
-if ( isset( $_POST['cifra-presion-sistolico'] ) ) {
-	$cps = $_POST['cifra-presion-sistolico'];
-} else {
-	$cps = 0;
-}
 if ( isset( $_POST['glucosa'] ) ) {
 	$glucosa = $_POST['glucosa'];
 } else {
@@ -117,8 +107,8 @@ if ( isset( $_POST['colesterol'] ) ) {
 } else {
 	$colesterol = 0;
 }
-if ( isset( $_POST['cifra-colesterol'] ) ) {
-	$cc = $_POST['cifra-colesterol'];
+if ( isset( $_POST['cifra-co'] ) ) {
+	$cc = $_POST['cifra-co'];
 } else {
 	$cc = 0;
 }
@@ -345,9 +335,10 @@ if ( !$presion ) {
 }
 
 if ( $presion ) {
-	if ( $cps > 160 || $cpd > 100 || $cps<=59 ||$cpd<=49 )
+	if ( $cps >= 140 || $cpd >= 90 || $cps<=59 ||$cpd<=49 )
 		$riesgo = 2;
 }
+/*
 if ( $cintura ) {
 	if ( strcmp( $genero, "F" ) == 0 ) {
 		if ( $ccintura > 80 )
@@ -356,32 +347,36 @@ if ( $cintura ) {
 		if ( $ccintura > 90 )
 			$riesgo = 2;
 	}
-}
+} */
 if ( $glucosa ) {
-	if ( $cg > 126 || $cg <=69)
+	if ( $cg >= 126 || $cg <=69)
 		$riesgo = 2;
 }
 if ( $trigliceridos ) {
-	if ( $ct >= 500 || $ct <=49)
+	if ( $ct >= 200 || $ct <=49)
 		$riesgo = 2;
 }
 if ( $colesterol ) {
 	if ( $cc >= 240 || $cc <=99 )
 		$riesgo = 2;
 }
+if ( $imc<19 ) {
+	$riesgo = 2;
+}
+
+
 
 if ( $riesgo < 2 ) {
 	if ( $presion ) {
-		if ( $cps <= 120 ) {
-			if ( $cpd <= 80 ) {
+		if ( $cps < 140 ) {
+			if ( $cpd < 90 ) {
 				if ( $colesterol ) {
-					if ( $cc <= 200 ) {
+					if ( $cc < 200 ) {
 						if ( $glucosa ) {
 							if ( $cg <= 100 ) {
 								if ( $trigliceridos ) {
-									if ( $ct < 150 ) {
-
-										if ( $imc < 25 ) {
+									if ( $ct < 200 ) {
+											if ( $imc < 25 ) {
 											if ( $rfruta > 2 ) {
 												if ( $rverdura > 2 ) {
 													if ( $fempanizado > 3 ) {
@@ -414,6 +409,7 @@ if ( $riesgo < 2 ) {
 		}
 	}
 }
+/*
 if ( strcmp( $genero, "F" ) == 0 ) {
 
 	if ( $cintura ) {
@@ -438,7 +434,7 @@ if ( strcmp( $genero, "F" ) == 0 ) {
 	}
 }
 
-
+*/
 
 try {
 	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
@@ -448,16 +444,16 @@ try {
 			`altura`, `imc`, `r_fruta`, `r_verdura`, `f_empanizado`, 
 			`f_azucaradas`, `f_sal`, `nivel_estres`, `act_fisicas`, 
 			`horas_sueno`, `fumas`, `f_fumas`, `f_fumas2`,`familiares`,`cintura`,`ccintura`) 
-			VALUES (:user_id,:presion,:cifra_ps,:cifra_pd,:glucosa,:colesterol,:cifracolesterol,:cifraglucosa,:trigliceridos,:cifratrigliceridos,:peso,:altura,:imc,:r_fruta,
+			VALUES (:user_id,:presion,:cifra_ps,:cifra_pd,:colesterol,:cifracolesterol,:glucosa,:cifraglucosa,:trigliceridos,:cifratrigliceridos,:peso,:altura,:imc,:r_fruta,
 			:r_verdura,:f_empanizado,:f_azucaradas,:f_sal,:nivel_estres,:act_fisicas,:horas_sueno,:fumas,:f_fumas,:f_fumas2,:familiares,:cintura,:ccintura)";
 	$q = $conn->prepare( $sql );
 	if ( $q->execute( array( ':user_id' => $id,
 				':presion' => $presion,
 				':cifra_ps' => $cps,
 				':cifra_pd' => $cpd,
-				':glucosa' => $glucosa,
 				':colesterol' => $colesterol,
 				':cifracolesterol' => $cc,
+				':glucosa' => $glucosa,
 				':cifraglucosa' => $cg,
 				':trigliceridos' => $trigliceridos,
 				':cifratrigliceridos' => $ct,

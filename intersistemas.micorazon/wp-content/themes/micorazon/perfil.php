@@ -1,4 +1,3 @@
-
 <?php
 /*
   @package micorazon
@@ -79,6 +78,7 @@ function getmes( $var ) {
 			break;
 	}
 }
+
 try {
 	$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
 	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -91,9 +91,9 @@ try {
 		$riesgo = $rs2[0]['riesgo'];
 		$nombre = $rs2[0]['nombre'] . " " . $rs2[0]['apaterno'] . " " . $rs2[0]['amaterno'];
 		$avatar = $rs2[0]['avatar'];
-		$fecha=$rs2[0]['fechariesgo'];
-		$arras=  explode("-",$fecha);
-		$fecha=$arras[2]."/".getmes($arras[1])."/".$arras[0];
+		$fecha = $rs2[0]['fechariesgo'];
+		$arras = explode( "-", $fecha );
+		$fecha = $arras[2] . "/" . getmes( $arras[1] ) . "/" . $arras[0];
 		if ( $riesgo == 1 ) {
 			$level = "medio";
 		} else if ( $riesgo == 0 ) {
@@ -132,24 +132,25 @@ try {
 	<div class="aviso-alto" id="text-desconocidog-alto">
         <a href="#" class="close"></a>
         <p><strong>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de glucosa en la sangre.</strong></p>
-		
+
     </div>
+
 	<div class="aviso-alto" id="text-desconocidopa-alto">
         <a href="#" class="close"></a>
         <p><strong>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de presión arterial. Al conocer tu nivel, puedes prevenir enfermedades cardiacas, eventos vasculares cerebrales y otras enfermedades.</strong></p>
-		
+
     </div>
 	<div class="aviso-alto" id="text-desconocidoc-alto">
         <a href="#" class="close"></a>
         <p><strong>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de colesterol total.</strong></p>
-		
+
     </div>
 	<div class="aviso-alto" id="text-desconocidot-alto">
         <a href="#" class="close"></a>
         <p><strong>Las pruebas de detección son una parte importante de prevención. Acude a tu médico y pide que revise tu nivel de triglicéridos.</strong></p>
-		
+
     </div>
-	
+
     <div class="aviso-medio" id="text-fact1-medio">
         <a href="#" class="close"></a>
         <p><strong>Tu presión arterial está por arriba de lo normal, regresa a los rangos saludables siguiendo estos consejos.</strong></p>
@@ -249,7 +250,7 @@ try {
     </div>
     <div class="aviso-bajo" id="text-fact4-bajo">
         <a href="#" class="close"></a>
-        <p><strong>Para que tus niveles de colesterol se mantengan saludables, realiza lo siguiente:<strong></p>
+        <p><strong>Para que tus niveles de colesterol se mantengan saludables, realiza lo siguiente:</strong></p>
 					<ol>
 						<li>Sigue está regla, si ves alimentos con grasa en tus comidas, déjalas para el final.</li>
 						<li>Si te gusta la comida rápida, come un pedazo en el momento y al siguiente día otra parte.</li>
@@ -283,6 +284,17 @@ try {
 						</ol>
 					</div>
 					<div class="aviso-bajo" id="text-fact5-bajo">
+						<a href="#" class="close"></a>
+						<p><strong>Mantén un peso saludable con estas recomendaciones.</strong></p>
+						<ol>
+							<li>Tus comidas deben incluir más frutas y verduras que otros alimentos.</li>
+							<li>Si quieres comer un dulce o comida rápida puedes hacerlo, pero con moderación.</li>
+							<li>Sigue dando pasos. Mantente activo realizando ejercicio la mayoría de días.</li>
+							<li>Aprende a medir las porciones y raciones de tus alimentos.</li>
+							<li>Hidrata tu cuerpo con agua en lugar de refrescos o jugos.</li>
+							<ol>
+								</div>
+					<div class="aviso-alto" id="text-muybajoimc-alto">
 						<a href="#" class="close"></a>
 						<p><strong>Mantén un peso saludable con estas recomendaciones.</strong></p>
 						<ol>
@@ -448,7 +460,7 @@ try {
 								</div>
 								<div class="aviso-bajo" id="text-fact10-bajo">
 									<a href="#" class="close"></a>
-									<p><stron>Al no fumar estás en un menor riesgo de padecer alguna enfermedad del corazón, para seguir así te damos estos pasos:</strong></p>
+									<p><strong>Al no fumar estás en un menor riesgo de padecer alguna enfermedad del corazón, para seguir así te damos estos pasos:</strong></p>
 										<ol>
 											<li>Evita estar cerca de la gente que fuma.</li>
 											<li>Pide a tus familiares y amigos que no fumen en tu casa.</li>
@@ -472,15 +484,15 @@ try {
 										<div class="perfil-box">
 											<div class="user">
 												<h2>Conoce la salud de tu corazón</h2>
-												
-												
+
+
 												<h3>Este es el primer paso para mejorar tu calidad de vida. <strong>Comparte este resultado con tu médico.</strong> </h3>
 												<div class="user-icon" >
 													<?php if ( isset( $avatar ) ) { ?>
 														<a href="#" style="background:url('<?php echo get_template_directory_uri(); ?>/images/avatar/<?php echo $avatar; ?> ') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;background-size: cover;"></a> 
 													<?php } else { ?>
 														<a href="#"></a>		
-													<?php } ?>
+<?php } ?>
 												</div>
 
 												<div class="user-info">
@@ -492,14 +504,14 @@ try {
 														</form>  
 													</div>
 													<a  onclick="subirFoto()" class="cambio">Cargar foto</a>
-													
+
 												</div>
 											</div>
 											<div class="riesgos-box riesgo-<?php echo $level ?>">
 												<h1>Mi corazón está en:</h1>
 												<h3 class="fecha-evaluacion">Fecha de evaluaci&oacute;n: <?php echo $fecha; ?></h3>
 												<h2>Riesgo <?php echo $level; ?></h2>
-												<?php if ( $riesgo == 0 ) { ?>
+<?php if ( $riesgo == 0 ) { ?>
 													<p>De acuerdo a lo que respondiste acerca de tus hábitos, tu riesgo de padecer una enfermedad cardiaca es mínimo. Es importante que sigas así y continúes adoptando conductas que te ayuden a llevar una vida sana. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él y juntos crear un plan que beneficie a tu salud. Sigue estos pasos básicos:
 													</p>
 													<ol>
@@ -509,7 +521,7 @@ try {
 														<li>Aléjate de las personas que fuman</li>
 														<li>Duerme entre 7 a 8 horas al día</li>
 													</ol>
-												<?php } else if ( $riesgo == 1 ) { ?>
+<?php } else if ( $riesgo == 1 ) { ?>
 													<p>Algunos hábitos están afectando tu salud y ponen en riesgo a tu corazón. Es importante que empieces a tomar acciones que eviten complicaciones a futuro. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él  y juntos crear un plan que beneficie a tu salud. Estos pasos básicos te ayudarán:
 													</p>
 													<ol>
@@ -582,27 +594,30 @@ try {
 														echo "<h3>Nivel sano: igual o menor de 120 a 139/80 a 89 mmHg.</h3>";
 														echo "<a id='light-desconocidopa-alto'>Detalle</a>";
 													} else if ( $presion ) {
-														$mylevel;
-														if ( $cps <= 120 && $cps > 60 && $cpd <= 80 && $cpd > 50 ) {
-															$mylevel = "bajo";
-															$newriesgo = 0;
-														} else if ( ($cps > 120 && $cps < 140) && ($cpd < 90 && $cpd > 80) ) {
-															$mylevel = "medio";
-															$newriesgo = 1;
+														if ( $cps <= 59 && $cpd <= 49 ) {
+															echo "<div class='taches'></div><h2 class='i1'>Presión arterial</h2>";
+															echo "<h3>Nivel actual: <span class='alto'>" . $cps . "/" . $cpd . "mmHg</span></h3>";
+															echo "<h3>Nivel sano: igual o menor de 120 a 139/80 a 89 mmHg.</h3>";
+															echo "<a id='light-desconocidopa-alto'>Detalle</a>";
 														} else {
-															$mylevel = "alto";
-															$newriesgo = 2;
+															$mylevel;
+															if ( $cps <= 139 && $cpd <= 89 ) {
+																$mylevel = "bajo";
+																$newriesgo = 0;
+															} else {
+																$mylevel = "alto";
+																$newriesgo = 2;
+															}
+															if ( $newriesgo == 0 ) {
+																echo "<div class='paloma'></div>";
+															} else if ( $newriesgo == 2 ) {
+																echo "<div class='taches'></div>";
+															}
+															echo "<h2 class='i1'>Presión arterial</h2>";
+															echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cps . "/" . $cpd . "mmHg</span></h3>";
+															echo "<h3>Nivel sano: igual o menor de 120 a 139/80 a 89 mmHg.</h3>";
+															echo "<a id='light-fact1-{$mylevel}'>Detalle</a>";
 														}
-														if ( $newriesgo == 0 ) {
-															echo "<div class='paloma'></div>";
-														} else if ( $newriesgo == 2 ) {
-															echo "<div class='taches'></div>";
-														}
-														echo "<h2 class='i1'>Presión arterial</h2>";
-														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cps . "/" . $cpd . "mmHg</span></h3>";
-														echo "<h3>Nivel sano: igual o menor de 120 a 139/80 a 89 mmHg.</h3>";
-														echo "<a id='light-fact1-{$mylevel}'>Detalle</a>";
-														
 													}
 													?>
 
@@ -617,27 +632,34 @@ try {
 														echo "<a id='light-desconocidog-alto'>Detalle</a>";
 														echo "";
 													} else if ( $glucosa ) {
-														$mylevel;
-														if ( $cglucosa > 70 && $cglucosa <= 140 ) {
-															$mylevel = "bajo";
-															$newriesgo = 0;
-														} else if ( ($cglucosa > 140 && $cglucosa <= 165 ) ) {
-															$mylevel = "medio";
-															$newriesgo = 1;
+														if ( $cglucosa < 70 ) {
+															echo "<div class='taches'></div><h2 class='i2'>Glucosa en la sangre</h2>";
+															echo "<h3>Nivel actual: <span class='alto'>" . $cglucosa . "mg/dL</span></h3>";
+															echo "<h3>Nivel sano: menor de 101 mg/dL.</h3>";
+															echo "<a id='light-desconocidog-alto'>Detalle</a>";
+															echo "";
 														} else {
-															$mylevel = "alto";
-															$newriesgo = 2;
+															$mylevel;
+															if ( $cglucosa >= 70 && $cglucosa <= 100 ) {
+																$mylevel = "bajo";
+																$newriesgo = 0;
+															} else if ( ($cglucosa > 100 && $cglucosa <= 125 ) ) {
+																$mylevel = "medio";
+																$newriesgo = 1;
+															} else {
+																$mylevel = "alto";
+																$newriesgo = 2;
+															}
+															if ( $newriesgo == 0 ) {
+																echo "<div class='paloma'></div>";
+															} else if ( $newriesgo == 2 ) {
+																echo "<div class='taches'></div>";
+															}
+															echo "<h2 class='i2'>Glucosa en la sangre</h2>";
+															echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cglucosa . "mg/dL</span></h3>";
+															echo "<h3>Nivel sano: menor de 101 mg/dL.</h3>";
+															echo "<a id='light-fact2-{$mylevel}'>Detalle</a>";
 														}
-														if ( $newriesgo == 0 ) {
-															echo "<div class='paloma'></div>";
-														} else if ( $newriesgo == 2 ) {
-															echo "<div class='taches'></div>";
-														}
-														echo "<h2 class='i2'>Glucosa en la sangre</h2>";
-														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cglucosa . "mg/dL</span></h3>";
-														echo "<h3>Nivel sano: menor de 101 mg/dL.</h3>";
-														echo "<a id='light-fact2-{$mylevel}'>Detalle</a>";
-														
 													}
 													?>
 
@@ -653,27 +675,31 @@ try {
 														echo "<a id='light-desconocidot-alto'>Detalle</a>";
 														echo "";
 													} else if ( $trigliceridos ) {
-														$mylevel;
-														if ( $ctrigliceridos <= 199 && $ctrigliceridos >= 49 ) {
-															$mylevel = "bajo";
-															$newriesgo = 0;
-														} else if ( ($ctrigliceridos > 200 && $ctrigliceridos <= 499 ) ) {
-															$mylevel = "medio";
-															$newriesgo = 1;
+														if ( $ctrigliceridos < 50 ) {
+															echo "<div class='taches'></div><h2 class='i3'>Triglicéridos</h2>";
+															echo "<h3>Nivel actual: <span class='alto'>" . $ctrigliceridos . "mg/dL</span></h3>";
+															echo "<h3>Nivel sano: menor de 150 mg/dL.</h3>";
+															echo "<a id='light-desconocidot-alto'>Detalle</a>";
+															echo "";
 														} else {
-															$mylevel = "alto";
-															$newriesgo = 2;
+															$mylevel;
+															if ( $ctrigliceridos <= 199 && $ctrigliceridos >= 50 ) {
+																$mylevel = "bajo";
+																$newriesgo = 0;
+															} else {
+																$mylevel = "alto";
+																$newriesgo = 2;
+															}
+															if ( $newriesgo == 0 ) {
+																echo "<div class='paloma'></div>";
+															} else if ( $newriesgo == 2 ) {
+																echo "<div class='taches'></div>";
+															}
+															echo "<h2 class='i3'>Triglicéridos</h2>";
+															echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
+															echo "<h3>Nivel sano: menor de 150 mg/dL.</h3>";
+															echo "<a id='light-fact3-{$mylevel}'>Detalle</a>";
 														}
-														if ( $newriesgo == 0 ) {
-															echo "<div class='paloma'></div>";
-														} else if ( $newriesgo == 2 ) {
-															echo "<div class='taches'></div>";
-														}
-														echo "<h2 class='i3'>Triglicéridos</h2>";
-														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
-														echo "<h3>Nivel sano: menor de 150 mg/dL.</h3>";
-														echo "<a id='light-fact3-{$mylevel}'>Detalle</a>";
-														
 													}
 													/*
 													  <div class="risk-box" id="fact5">
@@ -701,13 +727,21 @@ try {
 														echo "<div class='taches'></div><h2 class='i4'>Colesterol</h2>";
 														echo "<h3>Nivel actual: <span class='alto'>Desconocido</span></h3>";
 														echo "<h3>Nivel sano: menor de 200 mg/dL.</h3>";
-														echo "<a id='light-desconocidoc-alto'>Detalle</a>";echo "";
+														echo "<a id='light-desconocidoc-alto'>Detalle</a>";
+														echo "";
 													} else if ( $colesterol ) {
+														if($cc <100){
+														echo "<div class='taches'></div><h2 class='i4'>Colesterol</h2>";
+														echo "<h3>Nivel actual: <span class='alto'>" . $cc . "mg/dL</span></h3>";
+														echo "<h3>Nivel sano: menor de 200 mg/dL.</h3>";
+														echo "<a id='light-desconocidoc-alto'>Detalle</a>";
+														echo "";
+														}else{
 														$mylevel;
-														if ( $cc <= 200 && $cc >= 99 ) {
+														if ( $cc < 200 && $cc > 99 ) {
 															$mylevel = "bajo";
 															$newriesgo = 0;
-														} else if ( ($cc > 200 && $cc <= 239 ) ) {
+														} else if ( ($cc >= 200 && $cc <= 239 ) ) {
 															$mylevel = "medio";
 															$newriesgo = 1;
 														} else {
@@ -720,20 +754,27 @@ try {
 															echo "<div class='taches'></div>";
 														}
 														echo "<h2 class='i4'>Colesterol</h2>";
-														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $ctrigliceridos . "mg/dL</span></h3>";
+														echo "<h3>Nivel actual: <span class='" . $mylevel . "'>" . $cc . "mg/dL</span></h3>";
 														echo "<h3>Nivel sano: menor de 200 mg/dL.</h3>";
 														echo "<a id='light-fact4-{$mylevel}'>Detalle</a>";
-														
+														}
 													}
 													?>
 												</div>
 												<div class="risk-box" id="fact5">
 													<?php
 													$mylevel;
-													if ( $imc <= 24.9 ) {
+													if ( $imc < 19 ) {
+														echo "<h2 class='i5'>Peso y cintura (IMC)</h2>";
+													echo "<h3>IMC actual: <span class='alto'>" . $imc . " </span></h3>";
+													echo "<h3>Nivel sano: IMC de 19 a 24.9 (peso sano)</h3>";
+													echo "<a id='light-muybajoimc-alto'>Detalle</a>";
+														
+													}else{
+														if($imc < 25 ){
 														$mylevel = "bajo";
 														$newriesgo = 0;
-													} else if ( ($imc > 24.9 && $imc <= 27 ) ) {
+													} else if ( ($imc >= 25 && $imc < 30 ) ) {
 														$mylevel = "medio";
 														$newriesgo = 1;
 													} else {
@@ -749,7 +790,7 @@ try {
 													echo "<h3>IMC actual: <span class='" . $mylevel . "'>" . $imc . " </span></h3>";
 													echo "<h3>Nivel sano: IMC de 19 a 24.9 (peso sano)</h3>";
 													echo "<a id='light-fact5-{$mylevel}'>Detalle</a>";
-													
+													}
 													?>
 
 												</div>
@@ -776,7 +817,6 @@ try {
 													echo "<h3>Raciones actuales: <span class='" . $mylevel . "'>" . $rtot . "</span></h3>";
 													echo "<h3>Nivel sano: 5 raciones de frutas y verduras o más</h3>";
 													echo "<a id='light-fact6-{$mylevel}'>Detalle</a>";
-													
 													?>
 
 
@@ -787,17 +827,15 @@ try {
 												<div class="risk-box" id="fact7">
 													<?php
 													$mylevel;
-													if ( $nestres == 1 ){
-													$mylevel = "bajo";
-													$newriesgo=0;
-													}
-													else if ( ($nestres > 2) && $nestres < 4 ){
-													$mylevel = "medio";
-													$newriesgo = 1;
-													}
-													else{
-													$mylevel = "alto";
-													$newriesgo=2;
+													if ( $nestres < 3 ) {
+														$mylevel = "bajo";
+														$newriesgo = 0;
+													} else if ( ($nestres > 2) && $nestres < 4 ) {
+														$mylevel = "medio";
+														$newriesgo = 1;
+													} else {
+														$mylevel = "alto";
+														$newriesgo = 2;
 													}
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
@@ -808,7 +846,6 @@ try {
 													echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $nestres . "</span></h3>";
 													echo "<h3>Nivel sano: 1 - 2: Adopta técnicas para controlar el estrés.</h3>";
 													echo "<a id='light-fact7-{$mylevel}'>Detalle</a>";
-													
 													?>
 
 												</div>
@@ -833,14 +870,13 @@ try {
 
 													if ( $afisicas >= 5 ) {
 														$mylevel = "bajo";
-														$newriesgo=0;
-													} else if ( ($afisicas < 5) && $afisicas > 3 ) {
+														$newriesgo = 0;
+													} else if ( ($afisicas < 5) && $afisicas >= 3 ) {
 														$mylevel = "medio";
 														$newriesgo = 1;
 													} else {
 														$mylevel = "alto";
-														$newriesgo=2;
-														
+														$newriesgo = 2;
 													}
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
@@ -851,7 +887,6 @@ try {
 													echo "<h3>Minutos: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
 													echo "<h3>Nivel sano: tu objetivo semanal es realizar más de 120 minutos por semana.</h3>";
 													echo "<a id='light-fact8-{$mylevel}'>Detalle</a>";
-													
 													?>
 												</div>
 												<div class="risk-box" id="fact10">
@@ -862,11 +897,11 @@ try {
 													if ( $fumas ) {
 														$mensaje = "Si";
 														$mylevel = "alto";
-														$newriesgo=2;
+														$newriesgo = 2;
 													} else {
 														$mensaje = "No";
 														$mylevel = "bajo";
-														$newriesgo=0;
+														$newriesgo = 0;
 													}
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
@@ -877,7 +912,6 @@ try {
 													echo "<h3>Fumas: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
 													echo "<h3>Nivel sano: no utilices productos con tabaco y evita el humo de segunda mano.</h3>";
 													echo "<a id='light-fact10-{$mylevel}'>Detalle</a>";
-													
 													?>
 
 												</div>
@@ -891,15 +925,15 @@ try {
 													if ( $hsueno == 2 ) {
 														$mensaje = " 7 a 9 horas";
 														$mylevel = "bajo";
-														$newriesgo=0;
+														$newriesgo = 0;
 													} else if ( $hsueno == 1 ) {
 														$mensaje = "Menos de 7 horas";
 														$mylevel = "alto";
-															$newriesgo=2;
+														$newriesgo = 2;
 													} else if ( $hsueno == 3 ) {
 														$mensaje = "M&aacute;s de 9 horas";
 														$mylevel = "alto";
-														$newriesgo=2;
+														$newriesgo = 2;
 													}
 													if ( $newriesgo == 0 ) {
 														echo "<div class='paloma'></div>";
@@ -910,7 +944,6 @@ try {
 													echo "<h3>Nivel: <span class='" . $mylevel . "'>" . $mensaje . "</span></h3>";
 													echo "<h3>Nivel sano:  Entre 7 y 9 horas</h3>";
 													echo "<a id='light-fact9-{$mylevel}'>Detalle</a>";
-													
 													?>
 
 												</div>
@@ -923,7 +956,6 @@ try {
 													if ( $fam ) {
 														$bandera = true;
 														$myvar = "Presentes </span></h3> <h3>Marcaste que presentas antecedentes heredofamiliares que pueden influir en tu salud cardiovascular.</h3>";
-														
 													} else {
 														$bandera = false;
 														$myvar = "No presentes </span></h3> <h3>Marcaste que no presentas antecedentes heredofamiliares que pueden influir en tu salud cardiovascular.</h3>";
@@ -931,48 +963,48 @@ try {
 													?>
 													<h2 class="i11">Padecimientos<br/> heredofamiliares</h2>
 													<h3><span class="<?php
-														if ( $bandera ) {
-															echo "alto";
-														} else {
-															echo "bajo";
-														}
-														?>"><?php echo $myvar ?>
-													
-												</div>
-
-
-											</div>
-											<div class="motivaciones-row">
-												<?php
-												try {
-													$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
-													$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-													$sql = "Select motivation1,motivation2,motivation3 from wp_usersmotivation where user_id={$id}"
-															. " LIMIT 1";
-													$rs = $conn->prepare( $sql );
-													$rs->execute();
-													$rs2 = $rs->fetchAll();
-													if ( isset( $rs2[0]['motivation1'] ) ) {
-														$motivation1 = $rs2[0]['motivation1'];
-														$motivation2 = $rs2[0]['motivation2'];
-														$motivation3 = $rs2[0]['motivation3'];
+													if ( $bandera ) {
+														echo "alto";
+													} else {
+														echo "bajo";
 													}
-												} catch ( PDOException $e ) {
-													echo "ERROR: " . $e->getMessage();
-													die();
-												}
-												?>
+													?>"><?php echo $myvar ?>
+
+															</div>
+
+
+															</div>
+															<div class="motivaciones-row">
+														<?php
+														try {
+															$conn = new PDO( 'mysql:host=localhost;dbname=micorazon', "root", DB_PASSWORD );
+															$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+															$sql = "Select motivation1,motivation2,motivation3 from wp_usersmotivation where user_id={$id}"
+																	. " LIMIT 1";
+															$rs = $conn->prepare( $sql );
+															$rs->execute();
+															$rs2 = $rs->fetchAll();
+															if ( isset( $rs2[0]['motivation1'] ) ) {
+																$motivation1 = $rs2[0]['motivation1'];
+																$motivation2 = $rs2[0]['motivation2'];
+																$motivation3 = $rs2[0]['motivation3'];
+															}
+														} catch ( PDOException $e ) {
+															echo "ERROR: " . $e->getMessage();
+															die();
+														}
+														?>
 
 
 
 
-												<h2>¡Recuerda tus motivaciones!</h2>
-												<label><?php echo $motivation1; ?></label>
-												<label><?php echo $motivation2; ?></label>
-												<label><?php echo $motivation3; ?></label>
-											</div>
-											<div class="cont-submit5">
-												<a href="/home-page/" class="submit2">&iexcl;Comienza una vida más sana!</a>
-												<a  href="<?php echo site_url()."/perfil-impresion"; ?>" id='printer' class="imprimir">Imprimir</a>
-											</div>
+																<h2>¡Recuerda tus motivaciones!</h2>
+																<label><?php echo $motivation1; ?></label>
+																<label><?php echo $motivation2; ?></label>
+																<label><?php echo $motivation3; ?></label>
+															</div>
+															<div class="cont-submit5">
+																<a href="/home-page/" class="submit2">&iexcl;Comienza una vida más sana!</a>
+																<a  href="<?php echo site_url() . "/perfil-impresion"; ?>" id='printer' class="imprimir">Imprimir</a>
+															</div>
 <?php include 'footer-registro.php'; ?>
