@@ -132,8 +132,8 @@ $(document).ready(function() {
             }
 
         }
-        if (bandera) {
-          $('#myform').submit();
+          if (bandera) {
+        $('#tabs').tabs( "option", "active", 1 );
         }
     });
     /*VALIDACIONES NUMERICAS*/
@@ -403,8 +403,9 @@ $(document).ready(function() {
         
         
         
+        
         if (bandera) {
-        $('#tabs').tabs( "option", "active", 1 );
+          $('#myform').submit();
         }
 
     });

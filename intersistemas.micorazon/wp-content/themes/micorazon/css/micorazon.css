@@ -181,20 +181,16 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .aviso-medio a,
     .aviso-alto a,
     .aviso2 a,
-    .aviso1 a{background:url('../images/base/close_lightbox.png') no-repeat; width:30px; height:30px; display:block; position:absolute; top:-10px; right:-10px;       }
-    
+    .aviso1 a{background:url('../images/base/close_lightbox.png') no-repeat; width:30px; height:30px; display:block; position:absolute; top:-10px; right:-10px; }
     .aviso2{width:680px; background-color:#FFFFFF; min-height:40px; padding:40px;    position:relative; }
     .aviso2 h2{color:#53A8DC; font-size:20px; font-weight:600;  }
     .source{color:#666666; font-size:14px; }
-    
     .aviso-bajo,
     .aviso-medio,
     .aviso-alto{width:940px;  }
-    
     .aviso-bajo{color:#7ED321; }
     .aviso-medio{color:#FFC906; }
     .aviso-alto{color:#F54C4A; }
-    
     .valores{float:left; }
     h5{font-weight: 700; font-size: 20px; color: #53A8DC; text-align:left; margin-bottom:40px;}
     .g-cuest1{float:left; width:492px; display:inline-block; padding-top:15px;  }
@@ -203,7 +199,6 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .g-cuest2 label{font-size:16px; color:#2F2F2F; float:left; text-align:left;  }
     .q1{width:365px; float:left;  }
     .q2{width:492px; float:left; line-height:31px;    }
-    
     .triple{ padding-top: 10px}
     .q3{width:492px; float:left; line-height:21px; padding-right: 25px   }
     .cal-imc{background-color: #63B7E3;  width:322px; padding:15px 30px 15px 30px; margin-bottom:20px;    }
@@ -215,9 +210,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .imc-result{float:right; font-weight:700; font-size:20px; color:#FFFFFF; width:100px; border-top:1px solid #FFFFFF; text-align:center; padding-top:10px; position:relative; right:-10px;      }
     .divisor1{display:inline-block; height:40px; width:100%;   }
     .submit-cuestionario{padding-left:482px; }
-    
     .liga{color: #53A8DC; font-size:14px; margin-top:8px; float:left;   }
-    
     /*MOTIVACIONES*/
     .col3,
     .col2,
@@ -227,7 +220,6 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .motivaciones input[type='checkbox']{margin:3px 10px 0px 0px; float:left;  }
     .motivaciones span{margin-left:0px; }
     .motivaciones .field3{width:785px; }
-    
     /*PERFIL*/
     .perfil-box{background-color:#FFFFFF; min-height:500px; min-height:500px; }
     .user{padding:25px 20px 25px 20px; overflow:hidden;  }
@@ -271,15 +263,13 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .code .field{ display:inline-block;  width:245px; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding:2px 15px 2px 15px; font-size:14px; color:#2F2F2F; height:34px;   outline:none; border:none; border:0;     -webkit-appearance: none; background-color: #FFF; margin-bottom:25px; }
     .code a{background-color:#D54254; display:inline-block; width:130px; color:#FFFFFF; font-size:13px; height:36px; line-height:36px; text-decoration:none;      }
 /*PANTALLAS TEMA*/
-    
     /*BASE*/
     .main{float:left; width:790px;  }
     .sidebar{float:left; width:180px; position:relative;   }
     .main-navigation{padding:10px; background-color:#FFFFFF; display:inline-block; width:790px;  }
     .main-navigation .last{margin-right:0px; }
-
     .logo-home a{ width:358px; height:60px; margin-top:20px;  float:left; cursor:pointer; margin-right:200px;     }
-    .search-submit{ background:url('../images/search_glass.png'); background-color:transparent; background-repeat:no-repeat;  outline:none; border:none; border:0;     -webkit-appearance: none; width:20px; height:20px; cursor:pointer;  position:absolute; top:9px; right:9px;     }
+    .search-submit{ background:url('../images/search_glass.png'); background-color:transparent; background-repeat:no-repeat;  outline:none; border:none; border:0; -webkit-appearance: none; width:20px; height:20px; cursor:pointer;  position:absolute; top:9px; right:9px;     }
     .search-box{ background-color:#E4E4E4;  background-repeat:no-repeat;  width:260px; height:32px;  -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding:2px 15px 2px 15px; position:relative; float:left; top:32px;  }
     .search{ font-size:16px; width:209px;   outline:none; border:none; border:0;     -webkit-appearance: none; background-color:transparent;   }
     .sidebar .continua-main{background-color:#FFFFFF; height:100px;   }
@@ -397,7 +387,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .module3 .more a:hover{ background-position:0px -40px;}
     
     .module3 .cont{padding:10px 10px 10px 25px; display:inline-block; width:100%;   }
-    .module3 .inf{float:left; width:585px;  }
+    .module3 .inf{float:left; width:585px; font-size: 16px}
     .module3 h1{color: #4D4542; font-size:24px; font-weight:700;   }
     .module3 h1 a{color: #4D4542; text-decoration:none;}
     .module3 h2{font-weight:400; font-size:24px; color: #4D4542; margin-bottom:15px;  }
@@ -424,7 +414,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     
     /*SLIDER RECETARIO*/
     .module3{}
-        .module3 .bx-wrapper{padding:0;*zoom:1;    }
+    .module3 .bx-wrapper{padding:0;*zoom:1;    }
 
     .module3 .bx-wrapper img{max-width:100%;display:block}
     .module3 .bx-wrapper .bx-controls-auto,
@@ -534,10 +524,10 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
 .check-box2 label{ width: 120px;}
 .check-box3 label{ width: 60px;}
 .check-box4 label{ width: 90px;}
-.paso-1{ background-image: url('../images/base/Group.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
+.paso-1{ background-image: url('../images/base/Group4.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
 .paso-2{ background-image: url('../images/base/Group2.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
 .paso-3{ background-image: url('../images/base/Group3.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
-.paso-4{ background-image: url('../images/base/Group4.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
+.paso-4{ background-image: url('../images/base/Group.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px} 
 .input-90{ width: 90px; border: 1px solid #979797; padding: 7px; height: 35px; float: left; margin-right: 70px; font-size: 14px}
 .check-box3{ margin-top: 15px}
 .check-box4{ position: relative; bottom: 6px}
@@ -713,7 +703,6 @@ textarea{ resize:none;}
 .ejercicio-img img{ position: relative; left: -80%; top: -10%}
 .paloma{ background-image: url('../images/paloma.png'); width: 20px; height: 20px; float: right; margin-top: 8px; margin-right: 10px}
 .taches{ background-image: url('../images/tache.png'); width: 20px; height: 20px; float: right; margin-top: 8px; margin-right: 10px}
-
 .apptivate{display:inline-block; float:left; margin-bottom:20px; position:relative; width: 100%;}
     .apptivate .more a{width:40px; height:40px; position:absolute; background:url('../images/base/more.png'); background-repeat:no-repeat; background-position:0px 0px; right:0px; top:0px;    }
     .apptivate .more a:hover{ background-position:0px -40px;}
@@ -751,7 +740,23 @@ textarea{ resize:none;}
 .fecha-evaluacion{ float: right; font-weight: normal;}
 .imprimir{background-color: #666; color: #ffffff; display: inline-block; font-size: 21px; height: 60px; line-height: 59px; text-align: center; text-decoration: none; width: 150px; margin: 0px; padding: 0px; font-weight: normal; }
 .subir-imagen{}
-
+.category-tu-riesgo-mas-grande h1{ background-image: url('../images/icons/i1.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-conoce-tus-antecedentes-personales h1{ background-image: url('../images/icons/i11.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-preparate-para-comenzar h1{ background-image: url('../images/icons/i7.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-establece-objetivos h1{ background-image: url('../images/icons/i5.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-come-5-muevete-10-duerme-8 h1{ background-image: url('../images/icons/i6.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-conoce-tus-cifras-personales h1{ background-image: url('../images/icons/i11.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-come-saludable-y-manten-un-peso-saludable h1{ background-image: url('../images/icons/i6.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-se-activo h1{ background-image: url('../images/icons/i8.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-duerme-bien h1{ background-image: url('../images/icons/i9.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-haz-frente-al-tabaco h1{ background-image: url('../images/icons/i10.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-ejercicios h1{ background-image: url('../images/icons/i8.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-toma-tus-medicamentos h1{ background-image: url('../images/icons/i1.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-planea-para-emergencias h1{ background-image: url('../images/icons/i11.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-disfruta-la-vida h1{ background-image: url('../images/icons/i7.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-como-funciona-tu-corazon h1{ background-image: url('../images/icons/i2.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+.category-recetas h1{background-image: url('../images/icons/i6.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
+ 
 
 
 

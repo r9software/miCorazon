@@ -298,12 +298,20 @@ if ( isset( $_POST['sab-fue'] ) ) {
 	$sabadofue = 0;
 }
 if ( isset( $_POST['peso-inicial'] ) ) {
+	if(empty($_POST['peso-inicial']))
+		$pesoini = 0;
+	else
 	$pesoini = $_POST['peso-inicial'];
+	
 } else {
 	$pesoini = 0;
 }
 if ( isset( $_POST['peso-hoy'] ) ) {
+	if(empty($_POST['peso-hoy']))
+		$pesofin = 0;
+	else
 	$pesofin = $_POST['peso-hoy'];
+	
 } else {
 	$pesofin = 0;
 }
@@ -593,6 +601,7 @@ if ( $mysingle == 462 ) {
 		echo "" . $e->getMessage();
 //header( "Location:" . site_url() . "/login/" );
 		die();
+		header( "Location:" . site_url() . "/actividad/registro-de-actividad-fisica/?guardado=true" );
 	}
 //end actividad fisica
 } else if ( $mysingle == 461 ) {
@@ -613,6 +622,7 @@ if ( $mysingle == 462 ) {
 		echo "" . $e->getMessage();
 //header( "Location:" . site_url() . "/login/" );
 		die();
+		header( "Location:" . site_url() . "/actividad/registro-de-peso-y-alimentacion/?guardado=true" );
 	}
 
 	//
@@ -638,6 +648,7 @@ if ( $mysingle == 462 ) {
 		echo "" . $e->getMessage();
 //header( "Location:" . site_url() . "/login/" );
 		die();
+		header( "Location:" . site_url() . "/actividad/duerme-bien/?guardado=true" );
 	}
 	//end diaro de sueño
 } else {

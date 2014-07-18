@@ -1,0 +1,104 @@
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+.bg_login{ background-image: none;}
+.code-box{ width: 300px; margin: 0px; padding: 10px}
+.code-box .titulo1{background:url('../images/movil/haz_corazon.png') no-repeat center center; width:300px; height:21px; margin:0px auto;  margin-bottom: 15px}
+.logo-corazon{background:url('../images/movil/logo_codebox.png') no-repeat center center; width:210px; height:90px; display:block;  margin:0px auto 10px auto;  }
+.code-box h3{ font-size: 12px; margin-bottom: 10px}
+.code-box p { font-size: 12px; line-height: 20px}
+.code-box h2 { font-size: 14px; margin-bottom: 10px; margin-top: 10px}
+.code .field{ display:inline-block;  width:245px; -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px; padding:2px 15px 2px 15px; font-size:14px; color:#2F2F2F; height:34px;   outline:none; border:none; border:0;     -webkit-appearance: none; background-color: #FFF; margin-bottom:10px; background-color: #e2e2e2 }
+.copyright{ font-size:12px; color: #2f2f2f;  line-height:22px; width: 100%; margin: 0 auto;    text-align: center;margin-top: 20px;margin-bottom: 10px; padding-left: 5px; padding-right: 5px }
+.copyright ul li a { font-size: 12px; margin-top: 15px; margin-bottom: 10px}
+.copyright ul li { margin-right: 6px}
+.copyright ul{ margin-top: 15px}
+/*LOGIN*/
+.page{ width: 100%; padding: 10px}
+.login{ width: 100%; margin-top: 0px}
+.head-log{ width: 100%; padding: 0px; text-align: center}
+.head-log img{ max-height: 40px; }
+.body-log{ width: 100%; padding: 7px}
+.body-log img{ max-height: 40px;}
+.foot-log{ width: 100%; padding-top: 10px;}
+.form-group{ margin-bottom: 10px; width: 98%}
+.foot-log label{ font-size: 14px; float: none;}
+.foot-log .field1{ background-color: #e2e2e2;}
+.foot-log .submitred1{ margin-top: 10px}
+.options-login{ width: 100%; margin-top: 10px; margin-bottom: 10px}
+.nuevo-usuario{ width: 100%; line-height: 20px; font-size: 13px; padding: 0px; margin-top: 40px}
+/*REGISTRO*/
+.bg_registro{background-image: none; }
+.wrap{ width: 300px}
+.logo3 { background:url('../images/movil/logo_codebox-s.png'); background-repeat: no-repeat; height: 40px; width: 255px }
+.header{ height: 40px; width: 100%; margin-top: 10px}
+.logo4{ height: 40px; background-image: url('../images/movil/logo_inter.png'); width: 40px}
+.registro-box{ margin: 0px; padding: 0px}
+.registro-box h3{ font-size: 16px; margin-bottom: 8px}
+.registro-box h4{ font-size: 13px; margin-bottom: 10px}
+.g-registro{ width: 100%;}
+.form-group2{ margin-bottom: 8px; }
+.g-registro label{ font-size: 13px; text-align: left; padding: 0px; width: 100%}
+.disclaimer{ width: 100%; padding: 0px; font-size: 11px; line-height: 40px}
+.paso-1{ width: 95%; background-image: url('../images/movil/Group4.png'); margin-left: 15px; height: 45px; margin-bottom: 13px}
+.paso-2{ width: 95%; background-image: url('../images/movil/Group2.png'); margin-left: 15px; height: 45px; margin-bottom: 13px}
+.paso-3{ width: 95%; background-image: url('../images/movil/Group3.png'); margin-left: 15px; height: 45px; margin-bottom: 13px}
+.paso-4{ width: 95%; background-image: url('../images/movil/Group.png'); margin-left: 15px; height: 45px; margin-bottom: 13px}
+h5{ margin-bottom: 13px; font-size: 16px}
+.form-group4{ font-size: 13px; margin-bottom: 10px}
+.cal-imc{ width: 280px; padding: 11px 30px 10px 16px; margin-bottom: 10px}
+.cal-imc h2{ font-size: 14px; margin-bottom: 10px}
+.cal-imc .form-group{ margin-bottom: 5px}
+.imc-result{ font-size: 16px}
+.aviso1{ width: 280px;padding: 10px}
+.aviso1 p{ font-size: 14px; }
+.form-group4 .field3{ width: 60px; clear: both; margin-bottom: 10px}
+.liga{ clear: both}
+.familiar-tabla th{ font-size: 9px}
+.familiar-tabla td{ padding: 0px; margin: 0px; font-size: 9px}
+.familiar-tabla .pad{ padding: 3px 0px 4px 0px; }
+.bg_perfil{ background-image: none; }
+.slogan .tperfil{ padding: 0px}
+.slogan{ height: 50px}
+.slogan h2{ font-size: 18px; color: #666; vertical-align: top; color: #666; line-height: 22px; }
+.slogan .tperfil span{ padding-right:45px}
+.user{ padding: 0px; margin: 0px}
+.user h2{ font-size: 20px; margin-bottom: 10px; margin-top: 8px}
+.user h3{ font-size: 14px; margin-bottom: 10px}
+.riesgos-box{ margin-top: 10px; padding: 10px}
+.riesgos-box h2{ font-size: 20px}
+.riesgos-box h1{ font-size: 14px}
+.riesgos-box h3{ font-size: 14px; float: left}
+.riesgos-box p{ font-size: 12px; margin-bottom: 10px}
+.riesgos-box ol{ font-size: 12px}
+.risk-row{ padding: 7px; margin-top: 10px}
+.risk-box{ width: 100%; padding-right: 0px; padding-bottom: 10px; margin-bottom: 10px }
+.cont-submit5 .submit2{ width: 150px; float: left; font-size: 16px}
+.motivaciones-row{ margin-bottom: 10px}
+.cont-submit5{ margin-bottom: 10px}
+.imprimir{ width: 119px; float: left; font-size: 16px}
+.cont-submit5{ float: left; margin-bottom: 15px}
+.registro-box h3{ font-size: 14px; margin-bottom: 10px; }
+.subir-imagen{ background-image: url('../images/movil/imagen.png'); background-repeat: no-repeat;}
+.motivaciones label{ font-size: 12px; margin-left: 4px; width: 92%; position: relative; bottom: 3px; margin-bottom: 8px}
+.col3, .col2, .col1{ width: 48%; padding-bottom: 10px; padding-right:0px;}
+.col1{ margin-right: 10px}
+.motivaciones input[type='checkbox']{margin: 0px}
+.form-group0{ width: 100%; }
+.cont-submit4 .submit2{ width: 280px}
+.cont-submit4{ margin-bottom: 0px}
+.aviso2{ width: 90%; padding: 10px}
+table thead{ text-align: center}
+.aviso-bajo, .aviso-medio, .aviso-alto{ width: 94%; font-size: 14px}
+.cont-submit5{ display: none;}
+.cont-submit6{}
+.motivaciones-movil{ background: red; width: 100%; height: auto; display: block;}
+.motivaciones-desktop{ display: none}
+.col1{ width: 100%; margin-right: 0px; font-size: 12px}
+.cont-submit6{display:block; width:100%; margin-bottom:40px; text-align:center; }
+.cont-submit6:before, .cont-submit3:after {content: " "; display: table; }
+.cont-submit6:after {clear: both; }
+.cont-submit6 .submit2{float:none; display:inline-block; width:380px; height:60px; line-height:60px;   font-size:21px;   }
+.visitanos{background-color: #63b7e3; width: 100%; padding: 10px; font-size: 14px; color :#fff; text-align: center;  }
+.visitanos span{ text-decoration: underline;}
+.fecha-evaluacion{width: 100%; float: left; margin-bottom: 10px}
+}
+/*end movil*/

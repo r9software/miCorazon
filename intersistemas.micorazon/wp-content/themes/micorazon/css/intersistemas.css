@@ -123,8 +123,6 @@
 .category-ponte-en-marca .post .quiz p span{color:#E18B3C;}
 .category-ponte-en-marca .submit1{background-color: #48AE33;}
 .category-ponte-en-marca .respo span{color:#3CA227; font-weight:bold;  }
-
-
 /*CONOCE SECCIÓN*/
 #cssmenu.category-conoce-mas>ul>li>a>span{background: #F5723D;  }
 #cssmenu.category-conoce-mas>ul>li.active>a span{background: #F5723D;}
@@ -143,8 +141,44 @@
 .category-conoce-mas .post .quiz p span{color:#7241B0;}
 .category-conoce-mas .submit1{background-color: #F5723D;}
 .category-conoce-mas .respo span{color:#F5723D; font-weight:bold;  }
+.file-input-wrapper {width: 200px;height: 40px;overflow: hidden;position: relative;}
+.file-input-wrapper > input[type="file"] {font-size: 200px;position: absolute;top: 0;right: 0;opacity: 0;}
+.file-input-wrapper > .btn-file-input {display: inline-block;width: 110px;height: 40px; background-color: #63b7e3; border: none; cursor: pointer; color: #fff; font-size: 16px}
+.file-input-wrapper:hover > .btn-file-input { background-color: #63b7e3; border: none;}
+.cont-submit6{ display: none;}
+.motivaciones-movil{ display: none;}
 
 /*ACTIVIDAD*/
 .type-actividad{border-bottom:0px !important; }
 .type-actividad h1{color: #3CA227;}
-.type-actividad p{font-size:18px; font-weight:400; color:#999999; line-height:25px; margin-bottom:15px; display:block;      }
+.type-actividad p{font-size:18px; font-weight:400; color:#999999; line-height:25px; margin-bottom:15px; display:block;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -495,21 +495,24 @@ try {
 <?php } ?>
 												</div>
 
-												<div class="user-info">
-													<h4><?php echo $nombre; ?> </h4>
-													<!--<input id="enviar" name="enviar" type="submit" value="Cambiar foto" /> -->
-													<div class="file">
-														<form name="myform" id="myform" enctype="multipart/form-data" method="POST" action="<?php echo site_url() . '/imagen-dao/'; ?>" >
-															<input id="uploadImage" class="subir-imagen" name="uploadImage" type="file" />
-														</form>  
+													<div class="user-info">
+														<h4><?php echo $nombre; ?> </h4>
+														<!--<input id="enviar" name="enviar" type="submit" value="Cambiar foto" />
+														<div class="file">
+															<form name="myform" id="myform" enctype="multipart/form-data" method="POST" action="<?php echo site_url() . '/imagen-dao/'; ?>" >
+																<input id="uploadImage" class="subir-imagen" name="uploadImage" type="file" />
+															</form>  
+														</div>
+														<a  onclick="subirFoto()" class="cambio">Cargar foto</a> -->
+													<div class="file-input-wrapper">
+	 												 <button class="btn-file-input">Subir foto</button>
+	 												 <input type="file" name="file" onchange="subirFoto()"/>
+	                  								</div>	
 													</div>
-													<a  onclick="subirFoto()" class="cambio">Cargar foto</a>
-
-												</div>
 											</div>
 											<div class="riesgos-box riesgo-<?php echo $level ?>">
-												<h1>Mi corazón está en:</h1>
 												<h3 class="fecha-evaluacion">Fecha de evaluaci&oacute;n: <?php echo $fecha; ?></h3>
+												<h1>Mi corazón está en:</h1>
 												<h2>Riesgo <?php echo $level; ?></h2>
 <?php if ( $riesgo == 0 ) { ?>
 													<p>De acuerdo a lo que respondiste acerca de tus hábitos, tu riesgo de padecer una enfermedad cardiaca es mínimo. Es importante que sigas así y continúes adoptando conductas que te ayuden a llevar una vida sana. Este reporte no trata de sustituir a tu médico, te recomendamos acudir con él y juntos crear un plan que beneficie a tu salud. Sigue estos pasos básicos:
@@ -1007,4 +1010,5 @@ try {
 																<a href="/home-page/" class="submit2">&iexcl;Comienza una vida más sana!</a>
 																<a  href="<?php echo site_url() . "/perfil-impresion"; ?>" id='printer' class="imprimir">Imprimir</a>
 															</div>
+															<div class="visitanos"><p>Encuentra más información, consejos y recetas para llevar una vida saludable en nuestro sitio <span>www.micorazonsaludable.com</span></p></div>
 <?php include 'footer-registro.php'; ?>

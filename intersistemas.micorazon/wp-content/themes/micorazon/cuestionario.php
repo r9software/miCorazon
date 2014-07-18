@@ -67,7 +67,7 @@ catch ( PDOException $e ) {
             <thead>
                 <tr>
                     <th>Presión arterial</th>
-                    <th>sistólica</th>
+                    <th>Sistólica</th>
                     <th>diastólica</th>
                 </tr>
             </thead>
@@ -209,10 +209,10 @@ catch ( PDOException $e ) {
 				<form name="cuestionario" id="myform" action="<?php echo site_url()."/cuestionario-dao/";  ?>" method="POST">
 					<div id="tabs">
 						<ul style="display: none;" >
-            <li><a href="#fragment-1"><span>One</span></a></li>
+            <li><a href="#fragment-4"><span>One</span></a></li>
             <li><a href="#fragment-2"><span>Two</span></a></li>
             <li><a href="#fragment-3"><span>Three</span></a></li>
-			<li><a href="#fragment-4"><span>Four</span></a></li>
+			<li><a href="#fragment-1"><span>Four</span></a></li>
         </ul>
 						<div id="fragment-1">
 							<div class="paso-1"></div>

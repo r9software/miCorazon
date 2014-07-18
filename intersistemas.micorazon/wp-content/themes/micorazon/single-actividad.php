@@ -741,12 +741,12 @@ if ( is_single( 462 ) ) {
 									if ( $bandera ) {
 										echo " disabled ";
 									}
-									?> value="<?php echo $tabla[0]['pesoini']; ?>"><p>Peso inicial</p></div><label>-</label>
+									?> value="<?php if(isset($tabla[0]['pesoini'])){ echo $tabla[0]['pesoini'];}else{ echo "0";} ?>"><p>Peso inicial</p></div><label>-</label>
 								<div class="peso-single"><input type="text" <?php
 								if ( $bandera ) {
 									echo " disabled ";
 								}
-								?> name="peso-hoy" class="int-num" id="peso-hoy" value="<?php echo $tabla[0]['pesofin']; ?>"><p>Peso de hoy</p></div><label>=</label>
+								?> name="peso-hoy" class="int-num" id="peso-hoy" value="<?php if(isset($tabla[0]['pesofin'])){ echo $tabla[0]['pesofin'];}else{ echo "0";} ?>"><p>Peso de hoy</p></div><label>=</label>
 								<div class="peso-single"><input type="text" name="cambio-peso" id="cambio-peso" class="int-num2" disabled value="<?php echo $tabla[0]['cambio']; ?>"><p>Cambio de peso</p></div>
 								<div class="int-sentirse">
 									<p>Me siento</p>

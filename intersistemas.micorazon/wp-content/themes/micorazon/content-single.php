@@ -67,6 +67,13 @@ echo '</ul>';
 		<?php endif ?>-->
 		<?php the_post_thumbnail( 'post' ); ?>
 		<?php the_content(); ?>
+		<?php
+    $defaults = array(
+       'before'           => '<p>' . __( 'Página:' ),
+       'after'            => '</p>'
+   );
+?>
+		<?php wp_link_pages($defaults); ?>
 	</div>
 	
 	<!--

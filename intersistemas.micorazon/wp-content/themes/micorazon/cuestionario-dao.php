@@ -96,8 +96,8 @@ if ( isset( $_POST['cintura'] ) ) {
 } else {
 	$cintura = 0;
 }
-if ( isset( $_POST['ccintura'] ) ) {
-	$ccintura = $_POST['ccintura'];
+if ( isset( $_POST['cifra-cintura'] ) ) {
+	$ccintura = $_POST['cifra-cintura'];
 } else {
 	$ccintura = 0;
 }

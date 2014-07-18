@@ -5,7 +5,7 @@
  * @package micorazon
  */
 ?>
-<?php require 'heads.php'; ?>
+<?php require 'heads-site.php'; ?>
 <div class="content-all">
 	<?php 
 	if(in_category(2)){ 
