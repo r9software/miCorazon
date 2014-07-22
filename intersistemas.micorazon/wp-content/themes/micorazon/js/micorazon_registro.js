@@ -55,7 +55,7 @@ $(document).ready(function() {
             });
         }
         if (bandera) {
-            $('#tabs').tabs( "option", "active", 2 );
+            $('#tabs').tabs( "option", "active", 1 );
         }
     });
     $('#sig3x').click(function() {
@@ -88,7 +88,7 @@ $(document).ready(function() {
             });
         }
          if (bandera) {
-         $('#tabs').tabs( "option", "active", 3 );
+         $('#tabs').tabs( "option", "active", 2 );
         }
     });
     $('#sig4x').click(function() {
@@ -133,7 +133,7 @@ $(document).ready(function() {
 
         }
           if (bandera) {
-        $('#tabs').tabs( "option", "active", 1 );
+        $('#tabs').tabs( "option", "active", 3 );
         }
     });
     /*VALIDACIONES NUMERICAS*/

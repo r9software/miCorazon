@@ -1098,7 +1098,7 @@ if ( isset( $_GET['rangoedades'] ) ) {
 			$count++;
 		}
 	}
-	?>]},{"name": "Bajo de peso",
+	?>]},{"name": "Bajo end peso",
 	"data":[<?php
 	$count = 0;
 	foreach ( $masaeb as $key => $pres ) {
@@ -1489,7 +1489,7 @@ if ( isset( $_GET['rangoedades'] ) ) {
 } elseif ( isset( $_GET['capeadosedad'] ) ) {
 	?>
 
-	[{"name": "Todos los dias",
+	[{"name": "Todos los días",
 	"data":[<?php
 	$count = 0;
 	foreach ( $capeados1 as $key => $pres ) {
@@ -1503,7 +1503,7 @@ if ( isset( $_GET['rangoedades'] ) ) {
 			$count++;
 		}
 	}
-	?>]},{"name": "Mas de 3 veces a la semana",
+	?>]},{"name": "Más de 3 veces a la semana",
 	"data":[<?php
 	$count = 0;
 	foreach ( $capeados2 as $key => $pres ) {

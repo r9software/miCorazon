@@ -524,10 +524,10 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
 .check-box2 label{ width: 120px;}
 .check-box3 label{ width: 60px;}
 .check-box4 label{ width: 90px;}
-.paso-1{ background-image: url('../images/base/Group4.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
+.paso-1{ background-image: url('../images/base/Group.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
 .paso-2{ background-image: url('../images/base/Group2.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
 .paso-3{ background-image: url('../images/base/Group3.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px}
-.paso-4{ background-image: url('../images/base/Group.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px} 
+.paso-4{ background-image: url('../images/base/Group4.png'); width: 415px; background-repeat: no-repeat; height:66px; margin: 0 auto;  margin-bottom: 40px} 
 .input-90{ width: 90px; border: 1px solid #979797; padding: 7px; height: 35px; float: left; margin-right: 70px; font-size: 14px}
 .check-box3{ margin-top: 15px}
 .check-box4{ position: relative; bottom: 6px}
