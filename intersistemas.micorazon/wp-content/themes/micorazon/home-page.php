@@ -206,10 +206,16 @@ try {
 				<?php wp_reset_query(); ?>
 			</div>
 		</div>-->
+		<div class="perfil-mob-wrapper">
+			<div class="perfil-mob">
+				<div class="more"><a href="/perfil/"></a></div>
+				<h3 class="aperfil">Mi perfíl</h3>
+			</div>
+		</div>
 		<div class="apptivate-wrapper">
 		<div class="apptivate">
-			<div class="more"><a href="#"></a></div>
-			<h3 class="aparticipa">Ejercícios</h3>
+			<div class="more"><a href="equilibrio"></a></div>
+			<h3 class="aparticipa">Ejercicios</h3>
 			<div class="ejercicio-row">
 				<div class="app-info"><h3 class="app-uno"><a href="/flexibilidad/">Flexibilidad</a></h3>
 				<p><a href="/flexibilidad/">Te ayuda a mantener saludables tus articulaciones, huesos y prevenir caídas</a></p></div>
@@ -235,6 +241,7 @@ try {
 </div>
 </div><!--main-->
 <?php get_sidebar(); ?>
+<div class="mob-fix">
 <div class="module3">
 	<div class="more"><a href="recetas-saludables/"></a></div>
 	<h3 class="trecetas"><?php $obj = get_post_type_object( 'recetas' );
@@ -259,7 +266,7 @@ echo $obj->labels->singular_name;
 						<div class="inf">
 							<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 							<h2><?php echo get( 'porciones' ); ?> porciones</h2>
-		<?php echo wp_trim_words(get_the_content(), $num_words = 60, $more = null); ?>
+		<p><?php echo wp_trim_words(get_the_content(), $num_words = 60, $more = null); ?></p>
 							<a href="<?php the_permalink(); ?>" class="vermas" style="display:block; ">Ver receta completa</a>
 						</div>
 					</div> 
@@ -271,7 +278,7 @@ echo $obj->labels->singular_name;
 <?php wp_reset_query(); ?>
 	</ul>
 </div>
-
+</div>
 
 <!--<div class="ejercicios">
 	<div class="more"><a href="#"></a></div>

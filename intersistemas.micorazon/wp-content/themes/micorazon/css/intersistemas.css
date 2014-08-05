@@ -9,7 +9,7 @@
 /*<h1>*/
 .tlogin{background:url('../images/whitney/bienvenidos.png') no-repeat; background-position:center 0px;  width:500px; height:35px; margin-bottom:20px;     }
 /*<h2>*/
-.slogan{height:200px; display:table; text-align:right; width:100%;   }
+.slogan{height:240px; display:table; text-align:right; width:100%;  position:relative;   }
 .slogan h2{color:#FFFFFF; font-size:43px;   text-shadow: 2px 2px 2px rgba(150, 150, 150, 1); line-height:45px; font-weight:600; font-style:italic;  display:table-cell; vertical-align:middle;    }
 .slogan h2 span{display:block; }
 .slogan .tcomienza{ padding-right:40px;     }
@@ -82,6 +82,7 @@
 .aparticipa{color:#FFFFFF; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;  font-weight:600; height:40px; background-color:#f5723d;  width:100%;  }
 .trecetas{ color:#FFFFFF; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;  font-weight:600; height:40px; background-color: #F5723D;  width:100%;  }
 .tejercicios{color:#FFFFFF; font-style:italic; line-height:38px; padding-left:10px; padding-right:10px; text-align:center;  font-weight:600; height:40px; background-color: #F5723D;  width:100%;  }
+.perfil-mob-wrapper{ display: none}
 /*FOOTER*/
 .tmapa{color:#FFFFFF; font-style:italic; line-height:38px; padding-right:10px; text-align:left;  font-size:28px;  font-weight:600; height:25px; }
 
@@ -141,10 +142,12 @@
 .category-conoce-mas .post .quiz p span{color:#7241B0;}
 .category-conoce-mas .submit1{background-color: #F5723D;}
 .category-conoce-mas .respo span{color:#F5723D; font-weight:bold;  }
-.file-input-wrapper {width: 200px;height: 40px;overflow: hidden;position: relative;}
+.file-input-wrapper {width: 230px;height: 40px;overflow: hidden;position: relative;}
 .file-input-wrapper > input[type="file"] {font-size: 200px;position: absolute;top: 0;right: 0;opacity: 0;}
 .file-input-wrapper > .btn-file-input {display: inline-block;width: 110px;height: 40px; background-color: #63b7e3; border: none; cursor: pointer; color: #fff; font-size: 16px}
 .file-input-wrapper:hover > .btn-file-input { background-color: #63b7e3; border: none;}
+.btn-file-subir{ }
+
 .cont-submit6{ display: none;}
 .motivaciones-movil{ display: none;}
 

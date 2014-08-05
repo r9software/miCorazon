@@ -6,8 +6,7 @@
 <div class="copyright">
 	<p>Información usada bajo licencia de Mayo Foundation For Medical Education and Research.Copyright © Edición en Español por Intersistemas, S.A. de C.V.</p>
 	<ul>
-		<li><a href="#">Aviso de Privacidad</a></li>
-		<li><a href="#">Legales</a></li>
+		<li><a href="http://micorazonsaludable.com/legal.html" target="_blank">Legales</a></li>
 	</ul>
 </div>
 </div><!--page-->

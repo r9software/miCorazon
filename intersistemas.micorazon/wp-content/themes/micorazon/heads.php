@@ -22,8 +22,9 @@ if ( !is_user_logged_in() ) {
         <!--THEME CSS-->
         <link href="<?php bloginfo('template_url'); ?>/css/intersistemas.css" media="screen" rel="stylesheet" type="text/css"/>
         <link href="<?php bloginfo('template_url'); ?>/css/movil.css" media="screen" rel="stylesheet" type="text/css"/>
+        <link href="<?php bloginfo('template_url'); ?>/css/movil-site.css" media="screen" rel="stylesheet" type="text/css"/>
         <!--[if IE]>
         <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/ie.css">
-        <![endif]-->
+        <![endif]-->   
 	</head>
 	<body>

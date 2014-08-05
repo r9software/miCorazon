@@ -274,7 +274,7 @@ blockquote.right {float: right; margin-left: 20px; margin-right: 0; text-align: 
     .search{ font-size:16px; width:209px;   outline:none; border:none; border:0;     -webkit-appearance: none; background-color:transparent;   }
     .sidebar .continua-main{background-color:#FFFFFF; height:100px;   }
     /*PROFILE*/
-    .sidebar .profile{background:url('../images/base/bg_profile.gif'); background-repeat:repeat-x; background-position-y:100px; width:180px;  min-height:490px; margin-top:-90px;   }
+    .sidebar .profile{background:url('../images/base/bg_profile.gif'); background-repeat:repeat-x; background-position-y:106px; width:180px;  min-height:490px; margin-top:-90px;   }
     .sidebar .actividad{background-color:#E4E4DD; margin-right:10px; margin-bottom:10px;  display:inline-block; width:170px;  padding-top:15px;     }
     .sidebar .foto{ position:relative; left:22px; margin-bottom:20px; height: 115px;  }
     .sidebar .foto a{width: 96px; height: 96px; margin-left: 13px; margin-top: 13px;  position: absolute; border-radius: 50%; background:#D8D8D8 url('../images/base/user-icon.png') no-repeat center center; background-size:cover;    }
@@ -756,9 +756,53 @@ textarea{ resize:none;}
 .category-disfruta-la-vida h1{ background-image: url('../images/icons/i7.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
 .category-como-funciona-tu-corazon h1{ background-image: url('../images/icons/i2.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
 .category-recetas h1{background-image: url('../images/icons/i6.png'); background-repeat: no-repeat; padding-left: 55px; height: 45px; padding-top: 6px}
- 
+.glosario-h{ font-size: 20px; font-weight: bold; color: #63B7E3; margin-top: 20px; margin-left: 10px} 
+.fake-nav{ width: 25%; text-align: center; margin-left: 36%}
+.fake-nav a{ text-decoration: none; color: #333}
+.hard-prev{ float: left;}
+.hard-next{float: right;}
+.hide-mobile, .nav-mob{ display: none;}
+
+/*legal*/
+    .legal-box{ width: 620px; padding: 20px 40px 20px 40px; background-color: #DDD}
+    .legal-box h1{  font-size: 24px; color: #2997D5;font-family: 'Open Sans', Arial; margin: 0px}
+    .legal-box p{ font-size: 12px;font-family: 'Open Sans', Arial; padding: 0px; margin: 0px; margin-bottom: 10px; line-height: 18px; }
+    .legal-box .legal-cont{ background: #FFF; padding: 10px; width: auto; height: 200px; overflow: scroll; margin-top: 20px; margin-bottom: 25px}
+    .legal-acepto .label-acepto{font-size: 14px;font-family: 'Open Sans', Arial; margin-left: 10px}
+.close-light{  bottom: 10px; background-image: url('../images/icons/close.png'); width: 26px; height: 26px; float: right; position: relative;bottom: 30px; left: 53px}
+.close-legal{ float: right}
+.legal-mob{ display: none}
+/*SEARCH*/
+.search{position:absolute; bottom:0px; right:0px; background-color:#FFFFFF; width:190px; padding-top:10px;  padding-bottom:10px; padding-right:10px;     }
+.search-field{border:1px solid #CCCCCC; height:25px;  width:170px; font-size:14px; font-weight:lighter; padding:3px 22px 3px 3px; outline:none; color:#666666;     }
+.mag-glass{ background: transparent url('../images/base/mag_class.png'); background-repeat:no-repeat; border:0px; outline:none; position:absolute; width:14px; top:15px; height:14px; right:15px;      }
+/*search results*/
+.page-search-title{color: #4D4542; font-style: italic; font-size:20px; margin-bottom:20px; margin-left:20px; margin-right:20px; margin-top:20px;    }
+.item-search{display:block; margin-bottom:20px; overflow:hidden; border-bottom:1px solid #DBDBD2; padding-bottom:20px;  margin-left:20px; margin-right:20px;     }
+.item-search img{float:left;  margin-right:20px;  }
+.item-search p{font-size:13px; line-height:20px; color:#313131;  }
+.item-search h1{margin-bottom:10px; display:block; font-weight:600;   }
+.item-search h1 a{color:#63B7E3; text-decoration:none; font-size:18px;   }
+
+.wp-pagenavi{margin-left:20px; margin-right:20px; margin-bottom:60px;  padding-top:20px; text-align:center;   }
+.wp-pagenavi .pages{border:0px; color:#666666;  }
+.wp-pagenavi .extend{border:0px; color:#CCCCCC;}
+.wp-pagenavi span.current{border:0px; color:#FFFFFF; background-color:#F54C4A;  }
+.wp-pagenavi a{border:0px; margin-left:5px; color:#63B7E3; }
+.tmismotivaciones a { text-decoration: none; color: #4D4542}
+.logo3 a{width: 358px; height: 60px; margin-top: 20px; float: left; cursor: pointer; margin-right: 200px;}
 
 
 
 
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){{ display: none}
+.alert1, .alert2, .alert3, .alert4{ left: 0px}
+.alert1:after, .alert2:after, .alert3:after, .alert4:after { left: 0px}
 
+}
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+.bg_perfil, .header, .footer, .bg_conoce, .bg_marcha{ width: 983px!important}
+}

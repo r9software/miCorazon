@@ -11,7 +11,11 @@ $(document).ready(function() {
 
     });
     $('#checar').click(function() {
+        if(!$("input[name='legal-acepto']:checked").length > 0){
+            alert("Debes aceptar las politicas de privacidad");
+        }else{
         $('form').submit();
+        }
         /*
          dataString = "codigo="+$("#pass").val();
          $.ajax({
@@ -30,5 +34,8 @@ $(document).ready(function() {
          
          */
 
+    });
+    $('#salir').click(function() {
+    $('#legal-box').trigger('close');
     });
 });

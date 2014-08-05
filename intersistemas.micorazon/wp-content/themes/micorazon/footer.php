@@ -7,6 +7,12 @@
  * @package micorazon
  */
 ?>
+<div class="legal-mob">
+			<p>Información usada bajo licencia de Mayo Foundation For Medical Education and Research.<br/>
+				Copyright © Edición en Español por Intersistemas, S.A. de C.V.</p>
+			<div class="clear"></div>
+			<a href="http://micorazonsaludable.com/legal.html" target="_blank">Legales</a>
+		</div>
 <div class="footer">
 	<div class="wrapper">
 		<h3 class="tmapa">Mapa de navegación</h3>
@@ -67,15 +73,27 @@
 			<p>Información usada bajo licencia de Mayo Foundation For Medical Education and Research.<br/>
 				Copyright © Edición en Español por Intersistemas, S.A. de C.V.</p>
 			<div class="clear"></div>
-			<a href="#">Términos y condiciones de uso</a><a href="#">Aviso de Privacidad</a>
+			<a href="http://micorazonsaludable.com/legal.html" target="_blank">Legales</a>
 		</div>
 	</div>
 </div>
 </div><!--content-all-->
+<?php
+
+?>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/jquery-1.11.1.min.js"></script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/jquery-ui-1.10.4.min.js"></script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/micorazon.js"></script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/jquery.lightbox_me.js"></script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/jquery.bxslider.min.js"></script>
+<script>
+		    $(document).ready(function() {
+		    	$("#tabso").tabs({ active: <?php $category = get_the_category( get_the_ID() ); if($category[0]->parent==3) echo "1"; elseif(empty($category)) echo "0"; else echo $category[0]->cat_ID-2;  ?> });
+		    	$("#tabso1").click(function() {
+					$("#nav-papa1").children().eq(0).children().eq(1).addClass('abierto');
+				});
+
+			});
+		</script>
 </body>
 </html>

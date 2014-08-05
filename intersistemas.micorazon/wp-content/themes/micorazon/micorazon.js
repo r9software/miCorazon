@@ -32,6 +32,35 @@ $(document).ready(function() {
         }
 
     });
+
+        $('#cssmenu2 > ul > li ul').each(function(index, element) {
+        var count = $(element).find('li').length;
+        $(element).closest('li').children('a');
+    });
+    
+    $('#cssmenu2 > ul > li > a').click(function() {
+
+        var checkElement = $(this).next();
+
+        $('#cssmenu2 li').removeClass('active');
+        $(this).closest('li').addClass('active');
+
+        if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+            $(this).closest('li').removeClass('active');
+            checkElement.slideUp('fast');
+        }
+        if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+            $('#cssmenu2 ul ul:visible').slideUp('fast');
+            checkElement.slideDown('fast');
+        }
+
+        if ($(this).closest('li').find('ul').children().length == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    });
     /*PREGUNTAS VERDADERO Y FALSO*/
     $('#pregunta').click(function() {
         if ($('#falsoq').is(':checked')) {

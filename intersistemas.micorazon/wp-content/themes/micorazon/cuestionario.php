@@ -260,7 +260,7 @@ catch ( PDOException $e ) {
 								</div>
 							</div>
 							<div class="form-group4">
-								<label>¿Con qué frecuencia consume alimentos fritos capeados o empanizados?</label>
+								<label>¿Con qué frecuencia consumes alimentos fritos capeados o empanizados?</label>
 								<select name="frecuencia-empanizado" class="default"  id="frecuencia-empanizado" style="width: 220px;">
 									<option value="default">Selecciona</option>
 									<option value="1">Todos los días</option>
@@ -274,7 +274,7 @@ catch ( PDOException $e ) {
 								</div>
 							</div>
 							<div class="form-group4">
-								<label>¿Con qué frecuencia consumes bebidas azucaradas incluyendo refrescos "normales" (que no sean light)<br/> y jugos comerciales?</label>
+								<label>¿Con qué frecuencia consumes bebidas azucaradas incluyendo refrescos "normales" (que no sean light) y jugos comerciales?</label>
 								<select name="frecuencia-azucaradas" class="default"  id="frecuencia-azucaradas" style="width: 220px;">
 									<option value="default">Selecciona</option>
 									<option value="1">Todos los días</option>

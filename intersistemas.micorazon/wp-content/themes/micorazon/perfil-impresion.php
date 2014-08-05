@@ -172,23 +172,20 @@ try {
 		<body >
 			<div class="perfil-box" >
 				<table border="0" class="impresion-tabla">
-					<thead>
-						<tr>
-							<th><img src="<?php bloginfo( 'template_url' ); ?>/images/impresion/logo.jpg" /></th>
-							<th colspan="2">
+					<tbody>
+                    <tr>
+							<td><img src="<?php bloginfo( 'template_url' ); ?>/images/impresion/logo.jpg" /></th>
+							<td colspan="2">
 								<h1><?php echo $nombre; ?></h1>
 								<h2>Mi corazón está en: <span class="riesgo-<?php echo $level; ?>">Riesgo <?php echo $level; ?></span></h2>
 								<h3><?php echo $fecha; ?></h3>
-							</th>
+							</td>
 						</tr>
 						<tr>
 							<td colspan="3">
 								<img src="<?php bloginfo( 'template_url' ); ?>/images/impresion/barra-head.jpg" />
 							</td>
 						</tr>
-					</thead>
-					<tbody>
-
 						<tr>
 							<td colspan="3">
 								<?php if ( $riesgo == 0 ) { ?>
@@ -381,6 +378,12 @@ try {
 								<td><img src="<?php bloginfo( 'template_url' ); ?>/images/impresion/barra-item.jpg" /></td>
 							</tr>
 							<tr>
+                              <td colspan="3" class="legal">
+									<p>Este documento es una referencia, si quieres ver más información consulta tu página www.micorazonsaludable.com</p> 
+									<p>Información usada bajo licencia de Mayo Foundation For Medical Education and Research.Copyright © Edición en Español por Intersistemas, S.A. de C.V.</p>
+								</td>
+							</tr>
+							<tr>
 								<td style="height: 300px;"></td>
 								<td style="height: 300px;"></td>
 								<td style="height: 300px;"></td>
@@ -517,7 +520,7 @@ try {
 								<td></td>
 							</tr>
 							<tr>
-								<td colspan="3" class="legal">
+                              <td colspan="3" class="legal">
 									<p>Este documento es una referencia, si quieres ver más información consulta tu página www.micorazonsaludable.com</p> 
 									<p>Información usada bajo licencia de Mayo Foundation For Medical Education and Research.Copyright © Edición en Español por Intersistemas, S.A. de C.V.</p>
 								</td>
@@ -528,6 +531,7 @@ try {
 
 
 				</div>
+			<a href="/" class="submit2">Regresar a mi perfil</a>
 <!--
 				<div class="cont-submit5">
 					<a id="printer" class="submit2">Imprimir</a>

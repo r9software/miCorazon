@@ -9,6 +9,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <!--BASIC CSS-->
             <link href="media/css/micorazon.css" media="screen" rel="stylesheet" type="text/css">
+            <link href="media/css/micorazon-mob.css" media="screen" rel="stylesheet" type="text/css">
            
             <!--JAVASCRIPT-->
             <title>Mi Corazon Saludable</title>
@@ -16,6 +17,7 @@
             <div class="content-all">
                 <div class="page">
                     <div class="legal-box" style="display:none" id="legal-box">
+                        <a href="#" id="salir" class="close-light"></a>
                 <h1>Aviso de Privacidad</h1>
                 <div class="legal-cont">
                     <div>
@@ -586,7 +588,7 @@
                 </div>
                 <div class="legal-acepto">
                         <input type="checkbox" id="chevalue" name="legal-acepto" value="true"><label for="legal" class="label-acepto">He leído y acepto los términos</label>
-                        <button id="checar" class="close">Continuar </button>
+                        <button id="checar" class="close-legal">Continuar </button>
                     
                 </div>
             </div>
@@ -618,7 +620,6 @@
                     <div class="copyright">
                         <p>Información usada bajo licencia de Mayo Foundation For Medical Education and Research.Copyright © Edición en Español por Intersistemas, S.A. de C.V.</p>
                         <ul>
-                            <li><a href="http://micorazon.blend.mx/#">Aviso de Privacidad</a></li>
                             <li><a href="http://micorazon.blend.mx/#">Legales</a></li>
                         </ul>
                     </div>

@@ -133,5 +133,6 @@ set_post_thumbnail_size( 290, 120, true ); // W x H, hard crop
 
 if ( function_exists( 'add_image_size' ) ) {
 	add_image_size( 'thumb1', 300, 220, true );
+	add_image_size( 'thumb2', 96, 96, true );
 	add_image_size( 'post', 490, 250, true );
 }

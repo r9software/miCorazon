@@ -118,7 +118,7 @@ try {
 				</div>
 
 				<ul>
-					<li><a href="#">Ayuda</a></li>
+					<li><a href="<?php echo site_url()."/"?>ayuda">Glosario</a></li>
 					<li><a href="<?php echo wp_logout_url( home_url() ); ?>">Salir</a></li>
 				</ul>
 			</div>
@@ -155,7 +155,7 @@ try {
 			</div>
 		</div>
 		<div class="mis-motivaciones">
-			<h3 class="tit tmismotivaciones">Mis motivaciones</h3>
+			<h3 class="tit tmismotivaciones"><a href="/motivaciones/">Mis motivaciones</a></h3>
 			<div class="options">
 				<ul>
 					<li class="line"><a href="#"><?php echo $m1; ?></a></li>

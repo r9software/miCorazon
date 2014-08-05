@@ -30,6 +30,7 @@ if ( is_user_logged_in() ) {
 				</div>
 			</div>
 			<div class="page">
+				
 				<div class="registro-box">
 					<h3>Crea tu cuenta</h3>
 					<h4>Llena los siguientes datos para empezar a utilizar esta herramienta que te ayudará a cuidar tu corazón. Todos los datos son necesarios.</h4>
@@ -292,6 +293,7 @@ if ( is_user_logged_in() ) {
 
 					</div>
 					<div class="disclaimer" >
+
 						<div class="form-group customui">
 							<input name="terminos" type="checkbox" id="terminos" checked="checked" value="1" /><label for="terminos" class="checky">He leído y acepto los Términos y Condiciones. <a href="#">Aviso de privacidad</a></label>
 							<div class="alert3" id="alert-terminos" style="display: none">

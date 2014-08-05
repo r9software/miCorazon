@@ -937,5 +937,15 @@ $(document).ready(function() {
             $('#motivaciones-form').submit();
         }
     });
-    
+    $('#enviar2').click(function() {
+        $('#legal-box').lightbox_me({
+            centered: true,
+            onLoad: function() {
+                $('#page').find('input:first').focus();
+            }
+        });
+$('#salir').click(function() {
+    $('#legal-box').trigger('close');
+    });
+    });
 });

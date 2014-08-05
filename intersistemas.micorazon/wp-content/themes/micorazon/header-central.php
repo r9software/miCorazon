@@ -16,6 +16,8 @@
        
         <link href="<?php bloginfo('template_url'); ?>/css/intersistemas.css" media="screen" rel="stylesheet" type="text/css"/>
 		<link href="<?php bloginfo('template_url'); ?>/css/dropkick.css" media="screen" rel="stylesheet" type="text/css">
+
+
         <!--[if IE]>
         <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/ie.css">
         <![endif]-->
@@ -29,7 +31,7 @@
 		<div class="wrap">
 			<div class="logo3">
 				<div class="logo-home">
-					<a href="home-page/"></a>
+					<a href="/home-page/"></a>
 				</div>
 			</div>
 			<div class="logo4"></div>
