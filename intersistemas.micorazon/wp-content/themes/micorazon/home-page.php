@@ -211,6 +211,10 @@ try {
 				<div class="more"><a href="/perfil/"></a></div>
 				<h3 class="aperfil">Mi perfíl</h3>
 			</div>
+			<div class="perfil-mob">
+				<div class="more"><a href="<?php echo wp_logout_url( home_url() ); ?>"></a></div>
+				<h3 class="aperfil" ><a href="<?php echo wp_logout_url( home_url() ); ?>" style="text-decoration: none;color:white;">Salir</a></h3>
+			</div>
 		</div>
 		<div class="apptivate-wrapper">
 		<div class="apptivate">

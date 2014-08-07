@@ -1,4 +1,5 @@
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px){{ display: none}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+input {-webkit-appearance: none !important; }
 .content-mobile{padding:0px 10px 0px 10px; }
 .bg_perfil{ background: none}
 .footer, .sidebar, .aside-nav, .slogan, .main-navigation, .actividades, .module2, .module1, .bg_conoce { display: none}

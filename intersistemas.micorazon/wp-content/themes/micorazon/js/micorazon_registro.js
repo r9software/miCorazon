@@ -323,8 +323,9 @@ $(document).ready(function() {
     });
     /*CUESTIONARIO VALIDACIÓN PASO1*/
 
-    var bandera = true;
+    
     $('#sig1x').click(function() {
+        var bandera = true;
         if (!$("input[name='presion']:checked").length > 0 || !$("input[name='glucosa']:checked").length > 0 || !$("input[name='trigliceridos']:checked").length > 0) {
             bandera = false;
             $('#aviso4').lightbox_me({

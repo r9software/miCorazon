@@ -158,9 +158,9 @@ try {
 			<h3 class="tit tmismotivaciones"><a href="/motivaciones/">Mis motivaciones</a></h3>
 			<div class="options">
 				<ul>
-					<li class="line"><a href="#"><?php echo $m1; ?></a></li>
-					<li ><a href="#"><?php echo $m2; ?></a></li>
-					<li><a href="#"><?php echo $m3; ?></a></li>
+					<li class="line"><?php echo $m1; ?></li>
+					<li ><?php echo $m2; ?></li>
+					<li><?php echo $m3; ?></li>
 				</ul>
 			</div>
 		</div>

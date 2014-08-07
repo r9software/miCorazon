@@ -145,7 +145,7 @@ switch ( $diaSemana ) {
 		if ( $mesi == $mesf ) {
 			$semana = "Semana del " . $isemana . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		} else {
-			$semana = "Semana del " . $isemana . " de " . $mesf . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
+			$semana = "Semana del " . $isemana . " de " . $mesi . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		}
 		break;
 	case 2:
@@ -161,7 +161,7 @@ switch ( $diaSemana ) {
 		if ( $mesi == $mesf ) {
 			$semana = "Semana del " . $isemana . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		} else {
-			$semana = "Semana del " . $isemana . " de " . $mesf . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
+			$semana = "Semana del " . $isemana . " de " . $mesi . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		}
 
 		break;
@@ -178,7 +178,7 @@ switch ( $diaSemana ) {
 		if ( $mesi == $mesf ) {
 			$semana = "Semana del " . $isemana . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		} else {
-			$semana = "Semana del " . $isemana . " de " . $mesf . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
+			$semana = "Semana del " . $isemana . " de " . $mesi . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		}
 		break;
 	case 4:
@@ -194,7 +194,7 @@ switch ( $diaSemana ) {
 		if ( $mesi == $mesf ) {
 			$semana = "Semana del " . $isemana . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		} else {
-			$semana = "Semana del " . $isemana . " de " . $mesf . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
+			$semana = "Semana del " . $isemana . " de " . $mesi . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		}
 		break;
 	case 5:
@@ -210,7 +210,7 @@ switch ( $diaSemana ) {
 		if ( $mesi == $mesf ) {
 			$semana = "Semana del " . $isemana . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		} else {
-			$semana = "Semana del " . $isemana . " de " . $mesf . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
+			$semana = "Semana del " . $isemana . " de " . $mesi . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		}
 		break;
 	case 6:
@@ -226,7 +226,7 @@ switch ( $diaSemana ) {
 		if ( $mesi == $mesf ) {
 			$semana = "Semana del " . $isemana . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		} else {
-			$semana = "Semana del " . $isemana . " de " . $mesf . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
+			$semana = "Semana del " . $isemana . " de " . $mesi . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		}
 		break;
 	case 0:
@@ -241,7 +241,7 @@ switch ( $diaSemana ) {
 		if ( $mesi == $mesf ) {
 			$semana = "Semana del " . $isemana . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		} else {
-			$semana = "Semana del " . $isemana . " de " . $mesf . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
+			$semana = "Semana del " . $isemana . " de " . $mesi . " al " . $fsemana . " de " . $mesf . " de " . $varf[0];
 		}
 		break;
 }
